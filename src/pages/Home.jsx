@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext';
 import BestSeller from '../components/BestSeller';
 import BottomBanner from '../components/BottomBanner';
+import FooterBar from '../components/FooterBar';
+import OurClients from '../components/OurClients';
 
 const Home = () => {
 
@@ -37,9 +39,10 @@ const {navigate} = useAppContext()
         <p className="pb-2 text-lg lg:lg:text-2xl text-rose-600 font-semibold">Category</p>
         <h2 className="text-3xl lg:text-5xl text-center font-serif font-semibold mb-10">Choose Your Best Food</h2>
 
-        <div className="grid lg:grid-cols-4 xl:grid-cols-4 grid-cols-2 gap-6 flex-wrap lg:flex-nowrap justify-center items-center">      
+        <div className="grid lg:grid-cols-4 xl:grid-cols-4 grid-cols-2 gap-6 flex-wrap lg:flex-nowrap justify-center items-center mb-4">      
         <div className='group cursor-pointer' onClick={()=> {
-        navigate("/categories/meal-thali-snack-boxes");
+        // navigate("/categories/meal-thali-snack-boxes");
+        navigate("/all-menu/meal-thali-snack-boxes");
     window.scrollTo(0, 0);}}>
         <div className="flex flex-col rounded-lg shadow-lg bg-white dark:bg-[#262525] group-hover:scale-108 transition">
           
@@ -53,7 +56,8 @@ const {navigate} = useAppContext()
         </div>
         </div>
         <div className='group cursor-pointer' onClick={()=> {
-          navigate("/categories/catering");
+          // navigate("/categories/catering");
+          navigate("/all-menu/catering");
           scrollTo(0,0)}}>
         <div className="flex flex-col rounded-lg shadow-lg bg-white dark:bg-[#262525]  group-hover:scale-108 transition">
             
@@ -68,6 +72,7 @@ const {navigate} = useAppContext()
         </div>
         <div className='group cursor-pointer' onClick={()=> 
           {navigate("/categories/bulk-delivery");
+          // {navigate("/all-menu/bulk-delivery");
            scrollTo(0,0)}
           }>
         <div className="flex flex-col rounded-lg shadow-lg bg-white dark:bg-[#262525]  group-hover:scale-108 transition">
@@ -80,7 +85,8 @@ const {navigate} = useAppContext()
         </div>
         </div>
         <div className='group cursor-pointer' onClick={()=> {
-          navigate("/categories/frozen-products");
+          // navigate("/categories/frozen-products");
+          navigate("/all-menu/frozen-products");
           scrollTo(0,0)
           }}>
         <div className="flex flex-col rounded-lg shadow-lg bg-white dark:bg-[#262525]  group-hover:scale-108 transition">
@@ -88,7 +94,7 @@ const {navigate} = useAppContext()
             <img className="w-[16rem] h-[8rem] sm:w-[18rem] sm:h-[14rem] object-center aspect-square rounded-t-lg" src="https://5.imimg.com/data5/SELLER/Default/2020/10/ZC/EB/MJ/78469313/small-paratha-500x500.jpg" alt="Card Image" />
 
             <div className="flex flex-col">
-              <h2 className="p-2 lg:p-4 lg:mb-7 mb-6 lg:text-xl font-semibold group-hover:text-primary cursor-pointer dark:text-white">Frozen Products <span className='text-xs'> (Coming Soon)</span></h2>
+              <h2 className="p-2 lg:p-4 lg:mb-7 mb-6 lg:text-xl font-semibold group-hover:text-primary cursor-pointer dark:text-white">Frozen Products</h2>
                 
                 </div>
         </div>
@@ -96,9 +102,10 @@ const {navigate} = useAppContext()
 </div>
     </div>
 </div>
-
-<BestSeller/>
+<OurClients/>
+{/* <BestSeller/> */}
 <BottomBanner/>
+<div className='block lg:hidden'><FooterBar/></div>
   </>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
+import CustomizeBar from '../components/CustomizeBar'
 
 
 
@@ -45,17 +46,26 @@ const SelectOptions = () => {
       const activeSnack = snacks.find(item => item.name === isActive);
     //   console.log(activeSnack)
 
-    const handleSelectedOptions = ( category, itemName ) =>{
-      setSelectedOptions( (prev)=> {  
-      const updated = {...prev, [category]: itemName};
-      console.log("selected options:", updated);
-      return updated;
-      } )
-      //  console.log("Hello",selectedOptions)
-    };
+ const handleSelectedOptions = (category, itemName) => {
+  setSelectedOptions((prev) => {
+    const updated = { ...prev, [category]: itemName };
+
+    setSelectedPlatter((prevPlatter) => {
+      const newPlatter = {
+        ...prevPlatter,
+        selectedOptions: updated,
+      };
+      console.log("Updated selectedPlatter:", newPlatter);
+      return newPlatter;
+    });
+
+    return updated;
+  });
+};
+
 
   return (
-      <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-screen'>
+      <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-screen  mb-16'>
              {selectedPlatter.keyword == "snacks" && (
              <div className='md:col-span-1 col-span-2 pl-4 text-lg space-y-10 py-10'>  
              <div>
@@ -85,7 +95,7 @@ const SelectOptions = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
              <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -103,7 +113,7 @@ const SelectOptions = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -121,7 +131,7 @@ const SelectOptions = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -139,7 +149,7 @@ const SelectOptions = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -153,7 +163,7 @@ const SelectOptions = () => {
                      
                  </div> }           
              </div>
-            
+            <CustomizeBar/>
       </div>
    
   )

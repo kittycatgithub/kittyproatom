@@ -7,7 +7,7 @@ export const AppContext = createContext();
 
 export const AppContextProvider = ({children})=>{
 
-    const currency = import.meta.VITE_CURRENCY;
+    const currency = import.meta.env.VITE_CURRENCY;
 
     const navigate = useNavigate()
 
@@ -16,12 +16,19 @@ export const AppContextProvider = ({children})=>{
     const [isSeller, setIsSeller] = useState(false)
 
     const [showUserLogin, setShowUserLogin] = useState(false)
+
+
     const [products, setProducts] = useState([])
+    
     const [cartItems, setCartItems] = useState({})
     const [searchQuery, setSearchQuery] = useState({})
 
     // Order Product ki Global State
     const [selectedPlatter, setSelectedPlatter] = useState({});
+
+    // Global array to store cart data
+    const [cart, setCart] = useState([])
+
 
 
 // fetch All Products
@@ -67,8 +74,29 @@ const removeFromCart = (itemId) => {
         fetchProducts()
     }, [] )
 
+    // Get Cart Item Count
+    const getCartCount = () =>{
+        let totalCount = 0;
+        for(const item in cartItems){
+            totalCount += cartItems[item]
+        }
+        return totalCount;
+    }
+
+// Get cart Total Amount
+const getCartAmount = () =>{
+    let totalAmount = 0;
+    for (const items in cartItems){
+        let itemInfo = products.find((product)=> product._id === items);
+        if(cartItems[items] > 0 ){
+            totalAmount += itemInfo.offerPrice * cartItems[items]
+        }
+    }
+    return Math.floor(totalAmount * 100 )/100;
+}
+
     const value = {navigate, user, setUser, isSeller, setIsSeller, showUserLogin, setShowUserLogin, products, currency, addToCart, updateCartItem
-        , removeFromCart, cartItems , searchQuery , setSearchQuery, selectedPlatter, setSelectedPlatter
+        , removeFromCart, cartItems , searchQuery , setSearchQuery, selectedPlatter, setSelectedPlatter, cart, setCart, getCartAmount, getCartCount
     }
 
     return <AppContext.Provider value={value}>

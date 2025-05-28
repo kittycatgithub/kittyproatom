@@ -57,11 +57,15 @@ const BulkDelivery = () => {
 
   return (
     <div>
-<div className="max-w-full mx-auto bg-rose-100/30">
-<h1 className='text-2xl md:text-3xl text-center font-medium pt-12 underline underline-offset-4 decoration-primary-dull'>Bulk Delivery</h1> 
+<div className="max-w-full mx-auto bg-[#EFF6FF]">
+{/* <h1 className='text-2xl md:text-3xl text-center font-medium pt-12 underline underline-offset-4 decoration-primary-dull'>Bulk Delivery</h1>  */}
+ <div className='flex flex-col items-end w-max mx-auto '>
+                    <p className='text-2xl font-medium  mt-10 '>Bulk Delivery</p>
+                    <div className='w-16 h-0.5 mb-5 bg-primary rounded-full'></div>
+                </div>
 <h2 className="text-md text-gray-900 leading-tight mb-1 py-4 max-w-6xl mx-auto justify-center text-center  w-fit">Charge for bulk delivery are as mentioned below. All Rates mentioned are for 1 Kg.</h2>
 
-<div className='grid md:grid-cols-2  mx-auto max-w-5xl'>
+<div className='grid md:grid-cols-2 items-start  mx-auto max-w-5xl'>
   
    {/* <!-- Grid 1 --> */}
    <div className=" flex items-center justify-center p-4 md:p-8 font-sans antialiased text-gray-900">

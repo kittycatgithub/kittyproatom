@@ -3,7 +3,7 @@ import MainBanner from '../components/MainBanner'
 
 const About = () => {
   return (
-    <div className='mt-10 '>
+    <div>
        <MainBanner/> 
     </div>
   )

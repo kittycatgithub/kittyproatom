@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
+import CustomizeBar from '../components/CustomizeBar'
 
 
 
@@ -260,8 +261,8 @@ const SelectOptionsBulkDelivery = () => {
     };
 
   return (
-      <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-full'>
-             {selectedPlatter.keyword == "snacks" && (
+      <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-full mb-16'>
+             {selectedPlatter.keyword == "snacks" || selectedPlatter.keyword == "catering" && (
              <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-4 md:space-y-6 md:py-10'>  
              <div>
                 <button onClick={() => {setIsActive("SpecialVeggies")}} className={` rounded-md transition  justify-start text-start  ${isActive === "SpecialVeggies" ? " text-primary" : " text-black"}`}> Special Veggies </button>
@@ -573,7 +574,8 @@ const SelectOptionsBulkDelivery = () => {
                  </div> } 
 
              </div>
-            
+                       <CustomizeBar/>
+ 
       </div>
    
   )

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
+import CustomizeBar from '../components/CustomizeBar'
 
 
 
@@ -99,7 +100,7 @@ const SelectOptionsSnackBoxB = () => {
     };
 
   return (
-      <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-screen'>
+      <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-screen  mb-16'>
              {selectedPlatter.keyword == "snacks" && (
              <div className='md:col-span-1 col-span-2 pl-4 text-lg space-y-10 py-10'> 
              <div>
@@ -210,7 +211,7 @@ const SelectOptionsSnackBoxB = () => {
                      
                  </div> }           
              </div>
-            
+                        <CustomizeBar/>
       </div>
    
   )

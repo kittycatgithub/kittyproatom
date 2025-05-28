@@ -1,4 +1,5 @@
 import React from 'react'
+
  const product1 = {
     title: 'Working Meal',
     currentPrice: 170,
@@ -12,21 +13,25 @@ import React from 'react'
 
   const catering = [
     {
-      name:"Menu A",
+      name:"Menu A", 
+      badge: 'Best for Professional Events',         
       list:["Special Veg", "Seasonal Veg", "Daal", "Basamati Rice", "Roti", "Savouries", "Dessert", "Salad", "Papad & Achar", "Bottled Water"]
     },
     {
       name:"Menu B",
+      badge: 'Best for Professional Events',    
       list:["Soup / Welcome Drink", "Starter", "Special Veg", "Seasonal Veg", "Daal", "Basamati Rice", "2 Type Of Rotis","Savouries", "Dessert", "Salad", "Papad & Achar", "Bottled Water"]
     },
     {
       name:"Menu C",
+      badge: 'Best for Professional Events',    
       list:["Soup", "2 Type Of Starter", "Special Veg", "2 Type Of Seasonal Veg", "Daal", "Basamati Rice", "2 Type Of Roti", "Savouries", "2 Type Of Dessert", "2 Type Of Salad", "Papad & Achar", "Bottled Water"]
     },
   ]
   const catering2 = [
     {
       name:"Short Menu",
+      badge: 'Best for Professional Events',         
       list:["Chola Bhatura, Dahi Wada, Gulab Jamun and Veg Pulao",
             "Pav Bhaji, Tawa Pulao, Boondi Raita and Rasgulla",
             " Masala Dosa, Sambar, Chutney, Curd Rice and Ghee ka Sheera",
@@ -39,6 +44,7 @@ import React from 'react'
     },
     {
       name:"Breakfast",
+      badge: 'Best for Professional Events',         
       list:["Idli, Medu Wada, Sambar, Chutney, Tea, Coffee and Cookies",
          "Aloo Poha, Chana Rassa, Batata Wada, Tea, Coffee and Cookies",
          "Misal Pao, Dhokla, Chutney, Tea, Coffee and Cookies",
@@ -48,7 +54,10 @@ import React from 'react'
          "Packaged Bottled Water will be served"]
     },
   ]
-const ProductCard = () => {
+const ProductCard = ({product}) => {
+
+  const [count, setCount] = React.useState(0);
+
   return (
     <div className='bg-blue-50'>
     <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-7xl  mx-auto '>
@@ -64,7 +73,7 @@ const ProductCard = () => {
             className="w-full  lg:h-72 xl:h-72 h-48 object-cover transition-transform duration-700 ease-in-out transform hover:scale-110"
           />
           <div className="absolute top-3 left-0 bg-gradient-to-r from-purple-600 to-pink-600  text-white px-3 py-1.5 rounded-r-full text-xs tracking-wider">
-            {product1.badge}
+            {menu.badge}
           </div>
         </div>
 

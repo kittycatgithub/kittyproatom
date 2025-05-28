@@ -2,6 +2,7 @@ import React from 'react'
 
 const FooterBar = () => {
   return (
+        <div className="fixed bottom-0 left-0 w-full z-50 bg-white shadow-md">
          <div
     className="flex h-14 justify-around border-t border-gray-200 bg-white shadow-lg"
   >
@@ -62,6 +63,7 @@ const FooterBar = () => {
  
       <div className="text-sm">Account</div>
     </div>
+  </div>
   </div>
   )
 }

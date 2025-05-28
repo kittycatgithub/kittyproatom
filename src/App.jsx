@@ -16,19 +16,23 @@ import AllProducts from './pages/AllProducts'
 import SelectOptions from './pages/SelectOptions'
 import SelectOptionsSnackBoxB from './pages/SelectOptionsSnackBoxB'
 import SelectOptionsBulkDelivery from './pages/SelectOptionsBulkDelivery'
+import AllMenus from './pages/AllMenus'
+import ProductCategory from './pages/ProductCategory'
+import Cart from './pages/Cart'
+import FillDetails from './pages/FillDetails'
 
 const App = () => {
 
   const isSellerPath = useLocation().pathname.includes("seller")
+  const isSelectPath = useLocation().pathname.includes("select")
   const {showUserLogin} = useAppContext()
 
 
 
   return (<>
   {/* This Navbar will be displayed in all pages */}
-    {isSellerPath ? null : <Navbar/> }
+    {isSellerPath && isSelectPath ? null : <Navbar/> }
     {showUserLogin ? <Login/> : null}
-
 
     <Toaster />
     
@@ -37,22 +41,26 @@ const App = () => {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
+      <Route path='/cart' element={<Cart/>}/>
+      <Route path='/fill-details/:_id' element={<FillDetails/>}/>
       <Route path='/categories/meal-thali-snack-boxes' element={<MealThaliSnackBoxes/>}/>
       <Route path='/categories/catering' element={<Catering/>}/>
       <Route path='/categories/bulk-delivery' element={<BulkDelivery/>}/>
       <Route path='/categories/frozen-products' element={<FrozenProducts/>}/>
       <Route path='/products' element={<AllProducts/>}/>
-      <Route path='/select-options' element={<SelectOptions/>}/>
-      <Route path='/select-optionsb' element={<SelectOptionsSnackBoxB/>}/>
-      <Route path='/select-options-veg' element={<SelectOptionsBulkDelivery/>}/>
+      <Route path='/select-options/:_id' element={<SelectOptions/>}/>
+      <Route path='/select-optionsb/:_id' element={<SelectOptionsSnackBoxB/>}/>
+      <Route path='/select-options-veg/:_id' element={<SelectOptionsBulkDelivery/>}/>
+      <Route path='/all-menu' element={<AllMenus/>}/>
+      <Route path='/all-menu/:category' element={<ProductCategory />}/>
       {/* <Route path='/services' element={<Services/>}/> */}
       {/* <Route path='/contact' element={<Contact/>}/> */}
       {/* <Route path='/' element={}/>
       <Route path='/' element={}/> */}
     </Routes>
   </div> 
-    {!isSellerPath && <Footer/> }
-    {!isSellerPath && <FooterBar/> }
+    {!isSellerPath && !isSelectPath && <Footer/> }
+    {/* {!isSellerPath && <div className='block lg:hidden'><FooterBar/></div> } */}
 
   </>
   )
@@ -61,3 +69,9 @@ const App = () => {
 export default App
 
 // npm run dev -- --port 300 --strictPort
+
+
+// fund managemnet , investment ms,  pms, 
+// no payment gateway
+// informative website 
+// blogs shold be dynamic
