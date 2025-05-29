@@ -112,8 +112,6 @@ const Navbar = () => {
                      </button>
                     )
                 }
-                
-                
             </div>
         )}
 

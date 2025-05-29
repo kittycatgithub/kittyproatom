@@ -103,7 +103,7 @@ const handleRemoveFromCart = (productId) => {
                 </div>
         {
             searchCategory && (<div>
-               {searchCategory.text == "Catering" ?(<div className=' mx-auto w-fit '>These are Dynamic Prices, and price will reduce as Number of Platter increases.
+               {searchCategory.text == "Catering" ?(<div className=' mx-auto w-fit px-3'>These are Dynamic Prices, and price will reduce as Number of Platter increases.
                       </div> ):( <div></div> )}
             </div>
                

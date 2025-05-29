@@ -73,10 +73,10 @@ const Footer = () => {
                 <div className=" text-center sm:text-left">
                     <h4 className="text-lg text-gray-900 font-medium mb-7">Products</h4>
                     <ul className="text-sm font-semibold  transition-all duration-500">
-                        <li className="mb-6"><a href="javascript:;"  className="text-gray-600 hover:text-gray-900">Meal Thali & Snack Boxes</a></li>
-                        <li className="mb-6"><a href="javascript:;"  className=" text-gray-600 hover:text-gray-900">Catering</a></li>
-                        <li className="mb-6"><a href="javascript:;"  className=" text-gray-600 hover:text-gray-900">Bulk Delivery</a></li>
-                        <li><a href="javascript:;"  className=" text-gray-600 hover:text-gray-900">Frozen Products</a></li>
+                        <li className="mb-6"><a href="/all-menu/meal-thali-snack-boxes"  className="text-gray-600 hover:text-gray-900">Meal Thali & Snack Boxes</a></li>
+                        <li className="mb-6"><a href="/all-menu/catering"  className=" text-gray-600 hover:text-gray-900">Catering</a></li>
+                        <li className="mb-6"><a href="/categories/bulk-delivery"  className=" text-gray-600 hover:text-gray-900">Bulk Delivery</a></li>
+                        <li><a href="/all-menu/frozen-products"  className=" text-gray-600 hover:text-gray-900">Frozen Products</a></li>
                     </ul>
                    
                 </div>  
@@ -89,8 +89,6 @@ const Footer = () => {
                         <li className="mb-6 flex items-start space-x-1"><span><img src="https://www.svgrepo.com/show/513150/location-pin.svg" className='h-4  mt-1' alt="" /></span><a href="javascript:;"  className=" text-gray-600 hover:text-gray-900">BARON INTEGRATED SERVICES PVT. LTD<br/>44, Chandra Nagar, Near Omkar Nagar Square<br/>Manewada, Nagpur, Maharashtra - 440027</a></li>
                     </ul>
                 </div>       
-              
-
             </div>
         </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-5">

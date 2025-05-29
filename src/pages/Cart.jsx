@@ -39,6 +39,13 @@ const Cart = () => {
   toast.success("Removed from Cart");
 };
 
+// Resume Button Logic
+
+const handleResume = ( product ) =>{
+    console.log(product._id)
+    navigate(`/fill-details/${product._id}`)
+}
+
 
     return  (
         <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
@@ -49,7 +56,7 @@ const Cart = () => {
 
                 <div className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 text-base font-medium pb-3">
                     <p className="text-left">Product Details</p>
-                    <p className="text-center">Subtotal</p>
+                    <p className="text-center">Status</p>
                     <p className="text-center">Action</p>
                 </div>
 {console.log(cart)}
@@ -60,8 +67,8 @@ const Cart = () => {
                                 <img className="max-w-full h-full object-cover" src={product.path} alt={product.name} />
                             </div>
                             <div>
-                                <p className="hidden md:block font-semibold">{product.name}</p>
-                                <div className="font-normal text-gray-500/70">
+                                <p className="hidden md:block text-black text-xl">{product.name}</p>
+                                {/* <div className="font-normal text-gray-500/70">
                                     <p>Size: <span>{product.size || "N/A"}</span></p>
                                     <div className='flex items-center'>
                                         <p>Qty:</p>
@@ -71,10 +78,19 @@ const Cart = () => {
                                             ))}
                                         </select>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
+                            
                         </div>
-                        <p className="text-center">${product.offerPrice * product.quantity}</p>
+                        {/* <p className="text-center">${product.offerPrice * product.quantity}</p> */}
+                  <div className="">
+  <button onClick={ ()=> handleResume(product)  } className="text-lg bg-primary  px-6 py-1 rounded-full text-white shadow-xl shadow-gray-200 hover:shadow-sm">
+    Resume 
+  </button>
+</div>     
+  
+
+                        {/* <p className="text-center">${product.offerPrice * product.quantity}</p> */}
                         <button onClick={()=> handleRemoveFromCart(product._id)} className="cursor-pointer mx-auto">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="m12.5 7.5-5 5m0-5 5 5m5.833-2.5a8.333 8.333 0 1 1-16.667 0 8.333 8.333 0 0 1 16.667 0" stroke="#FF532E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -90,7 +106,7 @@ const Cart = () => {
 
             </div>
 
-            <div className="max-w-[360px] w-full bg-gray-100/40 p-5 max-md:mt-16 border border-gray-300/70">
+            {/* <div className="max-w-[360px] w-full bg-gray-100/40 p-5 max-md:mt-16 border border-gray-300/70">
                 <h2 className="text-xl md:text-xl font-medium">Order Summary</h2>
                 <hr className="border-gray-300 my-5" />
 
@@ -141,7 +157,7 @@ const Cart = () => {
                 <button className="w-full py-3 mt-6 cursor-pointer bg-indigo-500 text-white font-medium hover:bg-indigo-600 transition">
                     Place Order
                 </button>
-            </div>
+            </div> */}
         </div>
     )
 }

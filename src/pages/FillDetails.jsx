@@ -1,55 +1,74 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Calendar, Clock, MapPin, Minus, Plus, X } from "lucide-react";
 import { User, SlidersHorizontal, Truck } from "lucide-react";
 import { useAppContext } from "../context/AppContext";
 import { useParams } from "react-router-dom";
 import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
-
 import 'react-datepicker/dist/react-datepicker.css';
 
-
 export default function FillDetails () {
-    const {products, cart} = useAppContext()
+    const {products, cart, navigate} = useAppContext()
     const {_id} = useParams()
     
     const filteredProduct = products.filter( (product)=> product._id.toLowerCase() === _id )
 
     const handleGuestChange = (delta) => {
     setGuests((prev) => Math.max(minGuests, Math.min(maxGuests, prev + delta)));
-  };
-  const originalPrice = 249;
-  const [guests, setGuests] = useState(129);
-  const minGuests = 10;
-  const maxGuests = 2000;
+    };
+    const [guests, setGuests] = useState(129);
+    useEffect(() => {
+  // console.log('Updated guests:', guests);
+  handleFormChange('guests',guests)
+}, [guests]);
 
+    const minGuests = 10;
+    const maxGuests = 2000;
+    const originalPrice = 249;
+
+  // Occasion Logic
+  const [occassion, setOccassion] = useState( "" ) 
+  const [details, setDetails] = useState({
+    occasion:  null,
+    date: null,
+    time: null,
+    guests: null,
+    totalPrice: filteredProduct[0].offerPrice,
+    address:null
+  }) 
+    
   // Dynamic pricing logic (example: simple discount by guest count)
   const getPricePerPlate = () => {
-    if (guests >= 130) return 160;
-    if (guests >= 100) return 170;
+
+    if (filteredProduct[0].name == "Working Meal"){
+      if (guests <=2000) return 170
+    }
+
+    // if (guests >= 130) return 160;
+    // if (guests >= 100) return 170;
     return originalPrice;
   };
 
   const pricePerPlate = getPricePerPlate();
   const discount = (((originalPrice - pricePerPlate) / originalPrice) * 100).toFixed(2);
 
-  // Date Format Component
-
- const [selectedDate, setSelectedDate] = useState(null);
+// Date Format Component
+  const [selectedDate, setSelectedDate] = useState(null);
   const [formattedDate, setFormattedDate] = useState('');
   const [showModal, setShowModal] = useState(false);
 
- const handleDateChange = (date) => {
+  const handleDateChange = (date) => {
     setSelectedDate(date);
     if (date) {
       setFormattedDate(format(date, 'dd/MM/yyyy'));
       setShowModal(false); // Close modal after selection
+      handleFormChange('date', format(date, 'dd/MM/yyyy'))
     }
   };
 
   // Select Time Slots
 
-   const [showModalTime, setShowModalTime] = useState(false);
+  const [showModalTime, setShowModalTime] = useState(false);
   const [activeTab, setActiveTab] = useState('morning');
   const [selectedSlot, setSelectedSlot] = useState('');
 
@@ -59,15 +78,29 @@ export default function FillDetails () {
   const handleSlotSelect = (slot) => {
     setSelectedSlot(slot);
     setShowModalTime(false);
+    handleFormChange('time', slot)
   };
+
+  // Function for form changes
+
+  const handleFormChange = (field, value) => {
+    setDetails(
+      (prev) => { const newDetails = {...prev, [field]:value} ;  console.log(newDetails) ; return newDetails}
+    ) 
+   }
+
+   const handleSubmit = () => {
+    const mergedObject = { ...filteredProduct[0], details };
+    console.log(mergedObject)
+    navigate(`/order-review/${_id}`)
+    
+   }
 
   return (
     <div className="p-4 max-w-md mx-auto bg-white min-h-screen">
       {/* Header */}
       <div className="flex justify-center mb-4">
-        {/* <button className="text-2xl">&#8592;</button> */}
         <h2 className="text-xl font-semibold">Fill Details</h2>
-        <div></div>
       </div>
 
       {/* Service Title */}
@@ -77,28 +110,28 @@ export default function FillDetails () {
         </div>
         <button className="text-gray-500 text-sm">Edit ✏️</button>
       </div>
-
-      {/* Occasion */}
+   {/* Occasion */}
       <div className="mb-4">
         <label className="text-gray-600">Choose Your Occasion (Optional)</label>
-        <select className="w-full border rounded px-3 py-2 mt-1">
-          <option>Engagement</option>
-          <option>Workshops</option>
-          <option>House Warming</option>
-          <option>Kitty Party</option>
-          <option>Cocktail Party</option>
-          <option>Wedding</option>
-          <option>Haldi</option>
-          <option>Reception</option>
-          <option>Farm House Party</option>
-          <option>Puja</option>
-          <option>Family Get-Together</option>
-          <option>Birthday Party</option>
-          <option>Corporate Events</option>
-          <option>House Party</option>
-          {/* Add more options if needed */}
+        <select value={details.occasion || ""} onChange={(e) => handleFormChange('occasion', e.target.value)} className="w-full border rounded px-3 py-2 mt-1">
+          <option value="Engagement" >Engagement</option>
+          <option value="Workshops">Workshops</option>
+          <option value="House Warming">House Warming</option>
+          <option value="Kitty Party">Kitty Party</option>
+          <option value="Cocktail Party">Cocktail Party</option>
+          <option value="Wedding">Wedding</option>
+          <option value="Haldi">Haldi</option>
+          <option value="Reception">Reception</option>
+          <option value="Farm House Party">Farm House Party</option>
+          <option value="Puja">Puja</option>
+          <option value="Family Get-Together">Family Get-Together</option>
+          <option value="Birthday Party">Birthday Party</option>
+          <option value="Corporate Events">Corporate Events</option>
+          <option value="House Party">House Party</option>
         </select>
       </div>
+
+     
        {/* Date and Time */}
       <div className="grid grid-cols-2 gap-0.5 md:gap-4 mb-4">
         <div>
@@ -110,7 +143,7 @@ export default function FillDetails () {
         className="flex items-center w-full text-left"
       >
         <Calendar className="w-5 h-5 mr-2 text-pink-500" />
-        <span className="text-gray-700 text-sm">
+        <span  className="text-gray-700 text-sm">
           {formattedDate || 'dd/mm/yyyy'}
         </span>
       </button>
@@ -146,21 +179,17 @@ export default function FillDetails () {
       </div>   
     </div>
 
-  {/* Select TimeSlot Component */}
-
-   
+  {/* Select TimeSlot Component */}   
         <div>
           <label className="text-gray-600">Time</label>
           <div className="flex items-center border rounded px-1 py-2 mt-1">
             <Clock className="w-5 h-5 mr-1 text-pink-500" />
-
-      <button
+       <button
         onClick={() => setShowModalTime(true)}
         className="rounded"
       >
         <h2 className="text-sm">{selectedSlot || 'Select Time Slot'}</h2>
       </button>
-
 
       {showModalTime && (
         <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center">
@@ -207,24 +236,20 @@ export default function FillDetails () {
           </div>
         </div>
       )}
-            {/* <span className="text-sm md:text-md">9:30 AM - 10:30 AM</span> */}
           </div>
         
         </div>
       </div>
-
-    
-     
-
 {/* Price Per Plate */}
-      <div className="bg-white flex justify-between border rounded-xl p-4 mb-4 shadow-sm">
-        <div className="text-sm font-medium text-gray-500 mb-1">Price Per Plate :</div>
-        <div className="flex items-center justify-between gap-4">
-          <div className="text-sm text-green-600 font-semibold">
+      <div className="bg-white flex border rounded-xl p-4 mb-4 shadow-sm">
+        <div className="text-sm font-medium content-center text-gray-500">Price Per Plate :</div>
+        <div className="gap-4">
+        {/* <div className="flex items-center justify-between gap-4"> */}
+          {/* <div className="text-sm text-green-600 font-semibold">
             {discount}% <span className="text-green-600">&#8595;</span>
-          </div>
-          <div className="line-through text-sm text-gray-400">₹{originalPrice}</div>
-          <div className="text-xl text-purple-700 font-bold">₹{pricePerPlate}</div>
+          </div> */}
+          {/* <div className="line-through text-sm text-gray-400">₹{originalPrice}</div> */}
+          <div className="text-xl text-purple-700 font-bold pl-3">₹{pricePerPlate}</div>
         </div>
       </div>
 
@@ -235,7 +260,7 @@ export default function FillDetails () {
         <div className="flex flex-row items-center justify-between mb-2">
           <button
             className="bg-gray-100 p-2 rounded-full"
-            onClick={() => setGuests(Math.max(minGuests, guests - 1))}
+            onClick={() => {setGuests(Math.max(minGuests, guests - 1)); handleFormChange('guests', guests-1)}}
           >
             <Minus className="w-4 h-4 text-purple-700" />
           </button>
@@ -247,14 +272,13 @@ export default function FillDetails () {
           />
           <button
             className="bg-purple-100 p-2 rounded-full"
-            onClick={() => setGuests(Math.min(maxGuests, guests + 1))}
+            onClick={() => {setGuests(Math.min(maxGuests, guests + 1)); handleFormChange('guests', guests+1)}}
           >
             <Plus className="w-4 h-4 text-purple-700" />
           </button>
         </div>
         </div>
        
-
         {/* Slider */}
         <div className="relative">
           <input
@@ -262,6 +286,7 @@ export default function FillDetails () {
             min={minGuests}
             max={maxGuests}
             value={guests}
+            // onChange={(e) => {setGuests(parseInt(e.target.value));handleFormChange('guests', guests)}}
             onChange={(e) => setGuests(parseInt(e.target.value))}
             className="w-full h-1 rounded-full bg-purple-300 accent-purple-600"
           />
@@ -276,6 +301,41 @@ export default function FillDetails () {
           ✨ <strong>DYNAMIC PRICING</strong> more guests, more savings.
         </div>
       </div>
+      {/* Address */}
+      {/* <div className="bg-white border rounded-xl p-4 mb-2 shadow-sm">
+        <div className="flex justify-between items-start">
+          <div className="flex gap-2">
+            <MapPin className="w-5 h-5 text-gray-600 mt-1" />
+            <div>
+              <div className="text-sm font-semibold text-gray-700">Home</div>
+              <div className="text-xs text-gray-500">
+                45, CF4G+HWR, Basheer Bagh, Hyderabad, Telangana, India, Pin - 500029
+              </div>
+            </div>
+          </div>
+          <button className="text-pink-500 text-sm font-medium">Change</button>
+        </div>
+      </div> */}
+      <div className="mt-4">
+  <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+    Address
+  </label>
+  <textarea
+    type="text"
+    id="address"
+    name="address"
+    value={details.address || ""}
+    onChange={(e) => handleFormChange('address', e.target.value) }
+    placeholder="Enter your address"
+    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
+  />
+</div>
+
+       <div className="py-5">
+  <button onClick={handleSubmit} className="text-lg bg-primary  px-6 py-1 rounded-full text-white shadow-xl shadow-gray-200 hover:shadow-sm">
+    Submit 
+  </button>
+</div>     
 
       {/* Preferences Section */}
       {/* <div className="bg-white border rounded-xl p-4 mb-2 flex justify-between items-center shadow-sm">
@@ -304,36 +364,7 @@ export default function FillDetails () {
         </label>
       </div> */}
 
-      {/* Address */}
-      <div className="bg-white border rounded-xl p-4 mb-24 shadow-sm">
-        <div className="flex justify-between items-start">
-          <div className="flex gap-2">
-            <MapPin className="w-5 h-5 text-gray-600 mt-1" />
-            <div>
-              <div className="text-sm font-semibold text-gray-700">Home</div>
-              <div className="text-xs text-gray-500">
-                45, CF4G+HWR, Basheer Bagh, Hyderabad, Telangana, India, Pin - 500029
-              </div>
-            </div>
-          </div>
-          <button className="text-pink-500 text-sm font-medium">Change</button>
-        </div>
-      </div>
-
-      {/* Bottom Cart Bar */}
-      {/* <div className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-md p-4 flex items-center justify-between max-w-md mx-auto">
-        <div className="flex items-center gap-2">
-          <img
-            src="/platter.png"
-            alt="platter"
-            className="w-10 h-10 rounded-full border"
-          />
-          <span className="text-sm font-medium text-gray-700">2 Platter In Cart</span>
-        </div>
-        <button className="bg-purple-700 text-white px-5 py-2 rounded-full text-sm font-semibold">
-          Update Details
-        </button>
-      </div> */}
+      
     </div>
   );
 }
