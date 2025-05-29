@@ -64,10 +64,9 @@ const Footer = () => {
                 <div className="mx-auto text-center sm:text-left">
                     <h4 className="text-lg text-gray-900 font-medium mb-7">Quick Links</h4>
                     <ul className="text-sm lg:text-md font-semibold   transition-all duration-500">
-                        <li className="mb-6"><a href="javascript:;"  className="text-gray-600 hover:text-gray-900">Home</a></li>
-                        <li className="mb-6"><a href="javascript:;"  className=" text-gray-600 hover:text-gray-900">Services</a></li>
-                        <li className="mb-6"><a href="javascript:;"  className=" text-gray-600 hover:text-gray-900">My Orders</a></li>
-                        <li className=""><a href="javascript:;"  className=" text-gray-600 hover:text-gray-900">Contact</a></li>
+                        <li className="mb-6"><a href="/"  className="text-gray-800 hover:text-gray-900">Home</a></li>
+                        <li className="mb-6"><a href="/about"  className="text-gray-800 hover:text-gray-900">About</a></li>
+                        <li className=""><a href="/contact"  className=" text-gray-800 hover:text-gray-900">Contact</a></li>
                    </ul>
                 </div>
                 {/* <!--End Col--> */}

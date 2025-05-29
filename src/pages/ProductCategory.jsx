@@ -61,32 +61,33 @@ const handleRemoveFromCart = (productId) => {
     console.log("Updated Platter (inside setSelectedPlatter):", updatedPlatter);
     return updatedPlatter});
     if (product.name === "Snack Box A"){
-      navigate(`/select-options/${product.id}`)
+      // console.log(product._id)
+      navigate(`/select-options/${product._id}`)
       scrollTo(0,0)
     }
     if (product.name === "Snack Box B"){
-      navigate(`/select-optionsb`)
+      navigate(`/select-optionsb/${product._id}`)
       scrollTo(0,0)
       // console.log(selectedPlatter)
     }    
     if (product.name === "Menu A"){
-      navigate(`/select-options-veg/${product.id}`)
+      navigate(`/select-options-veg/${product._id}`)
       scrollTo(0,0)
     }    
     if (product.name === "Menu B"){
-      navigate(`/select-options-veg/${product.id}`)
+      navigate(`/select-options-veg/${product._id}`)
       scrollTo(0,0)
     }    
     if (product.name === "Menu C"){
-      navigate(`/select-options-veg/${product.id}`)
+      navigate(`/select-options-veg/${product._id}`)
       scrollTo(0,0)
     }    
     if (product.name === "Short Menu"){
-      navigate(`/select-options-veg/${product.id}`)
+      navigate(`/select-options-veg/${product._id}`)
       scrollTo(0,0)
     }    
     if (product.name === "Breakfast"){
-      navigate(`/select-options-veg/${product.id}`)
+      navigate(`/select-options-veg/${product._id}`)
       scrollTo(0,0)
     }    
   }

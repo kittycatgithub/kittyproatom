@@ -1,10 +1,13 @@
 import React from 'react'
 import { useAppContext } from '../context/AppContext'
 import toast from 'react-hot-toast'
+import { useParams } from 'react-router-dom'
 
 const CustomizeBar = () => {
 
   const {cart, setCart, selectedPlatter, navigate} = useAppContext()
+  const {_id} = useParams()
+
   // const handleCart = () => {
 
   //   setCart( (prev)=>
@@ -13,21 +16,20 @@ const CustomizeBar = () => {
   //    toast.success("Added To Cart")
   //   console.log("Success" , cart)
   // }
-
-  const handleCart = () => {
+  const handleCart = (_id) => {
   setCart((prev) => {
     const alreadyInCart = prev.some((item) => item._id === selectedPlatter._id);
 
     if (alreadyInCart) {
       toast.error("Already in Cart");
-      navigate(`/fill-details`)
+      navigate(`/fill-details/${_id}`)
       return prev;
     }
 
     const updatedCart = [...prev, selectedPlatter];
     toast.success("Added To Cart");
     console.log("Success", updatedCart);
-        navigate(`/fill-details`)
+        navigate(`/fill-details/${_id}`)
 
     return updatedCart;
   });
@@ -59,7 +61,7 @@ const CustomizeBar = () => {
     <div className="flex flex-col items-center justify-center text-gray-950">
       
       <button 
-      onClick={handleCart}
+      onClick={()=>handleCart(_id)}
       className="flex flex-row gap-2 items-center w-fit cursor-pointer px-4 py-2 bg-primary hover:bg-primary-dull transition text-white rounded-full"
     >
       <img

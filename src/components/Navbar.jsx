@@ -34,7 +34,6 @@ const Navbar = () => {
             {/* Home,Services,Contact Us,Feedback */}
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/about'>About</NavLink>
-                <NavLink to='/services'>Services</NavLink>
                 <NavLink to='/contact'>Contact</NavLink>
                 {/* <NavLink to='#'>Feedback</NavLink> */}
 
@@ -94,14 +93,14 @@ const Navbar = () => {
             {open && (
                 <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md flex-col items-start gap-5 px-5 pb-4 text-sm md:hidden`}>
              {/* Home,Services,Contact Us,Feedback */}
-                <NavLink to='/' onClick={()=> setOpen(false)} className="block text-lg font-semibold text-gray-700">Home</NavLink>
-                <NavLink to='/about' onClick={()=> setOpen(false)} className="block text-lg font-semibold text-gray-700">About</NavLink>
-                <NavLink to='/services' onClick={()=> setOpen(false)} className="block text-lg font-semibold text-gray-700">Services</NavLink>
+                <NavLink to='/' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Home</NavLink>
+                <NavLink to='/about' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">About</NavLink>
+                <NavLink to='/services' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Services</NavLink>
                 {
                    user && 
-                    <NavLink to='/my-orders' onClick={()=> setOpen(false)} className="block text-lg font-semibold text-gray-700">My Orders</NavLink>
+                    <NavLink to='/my-orders' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">My Orders</NavLink>
                 }
-                <NavLink to='/contact' onClick={()=> setOpen(false)} className="block text-lg font-semibold text-gray-700">Contact</NavLink>
+                <NavLink to='/contact' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Contact</NavLink>
                 {
                     !user ? (
                      <button onClick={()=>{setOpen(false); setShowUserLogin(true)}} className="text-lg font-semibold cursor-pointer px-6 py-2 mt-2 bg-primary hover:bg-primary-dull transition text-white rounded-full">
