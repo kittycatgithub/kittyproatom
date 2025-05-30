@@ -20,6 +20,7 @@ import AllMenus from './pages/AllMenus'
 import ProductCategory from './pages/ProductCategory'
 import Cart from './pages/Cart'
 import FillDetails from './pages/FillDetails'
+import OrderReview from './pages/OrderReview'
 
 const App = () => {
 
@@ -43,6 +44,8 @@ const App = () => {
       <Route path='/about' element={<About/>}/>
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/fill-details/:_id' element={<FillDetails/>}/>
+      <Route path='/order-review' element={<OrderReview/>}/>
+      {/* <Route path='/order-review/:_id' element={<OrderReview/>}/> */}
       <Route path='/categories/meal-thali-snack-boxes' element={<MealThaliSnackBoxes/>}/>
       <Route path='/categories/catering' element={<Catering/>}/>
       <Route path='/categories/bulk-delivery' element={<BulkDelivery/>}/>

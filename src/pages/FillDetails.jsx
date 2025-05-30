@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default function FillDetails () {
-    const {products, cart, navigate} = useAppContext()
+    const {products, cart, setCart,  navigate} = useAppContext()
     const {_id} = useParams()
     
     const filteredProduct = products.filter( (product)=> product._id.toLowerCase() === _id )
@@ -92,7 +92,24 @@ export default function FillDetails () {
    const handleSubmit = () => {
     const mergedObject = { ...filteredProduct[0], details };
     console.log(mergedObject)
-    navigate(`/order-review/${_id}`)
+     const existingIndex = cart.findIndex(item => item._id === mergedObject._id);
+
+  if (existingIndex !== -1) {
+    // Replace existing item only
+    const updatedCart = [...cart];
+    updatedCart[existingIndex] = mergedObject;
+setCart((prev) => [
+  ...prev.filter((item) => item._id !== updatedCart[existingIndex]._id),
+  updatedCart[existingIndex],
+]);    
+// console.log(updatedCart[0], "Updated Cart")
+    // navigate(`/order-review`);
+  } else {
+    // Do nothing if the item is not in cart
+    console.log('Item not in cart, so not updating.');
+  }
+    navigate(`/order-review`)
+    // navigate(`/order-review/${_id}`)
     
    }
 
