@@ -21,18 +21,28 @@ import ProductCategory from './pages/ProductCategory'
 import Cart from './pages/Cart'
 import FillDetails from './pages/FillDetails'
 import OrderReview from './pages/OrderReview'
+import AddAddress from './pages/AddAddress'
+import MyOrders from './pages/MyOrders'
+import SellerLogin from './components/seller/SellerLogin'
+import SellerLayout from './pages/seller/SellerLayout'
+import AddProduct from './pages/seller/AddProduct'
+import ProductList from './pages/seller/ProductList'
+import Orders from './pages/seller/Orders'
+import Dashboard from './pages/seller/Dashboard'
 
 const App = () => {
 
   const isSellerPath = useLocation().pathname.includes("seller")
   const isSelectPath = useLocation().pathname.includes("select")
-  const {showUserLogin} = useAppContext()
+  const {showUserLogin, isSeller} = useAppContext()
 
 
 
-  return (<>
+  return (<div className='text-default min-h-screen text-gray-700 bg-white'>
   {/* This Navbar will be displayed in all pages */}
-    {isSellerPath && isSelectPath ? null : <Navbar/> }
+    {isSellerPath || isSelectPath ? null : <Navbar/> }
+        {/* {!isSellerPath && !isSelectPath && <Navbar/> } */}
+
     {showUserLogin ? <Login/> : null}
 
     <Toaster />
@@ -56,6 +66,14 @@ const App = () => {
       <Route path='/select-options-veg/:_id' element={<SelectOptionsBulkDelivery/>}/>
       <Route path='/all-menu' element={<AllMenus/>}/>
       <Route path='/all-menu/:category' element={<ProductCategory />}/>
+      <Route path='/add-address' element={<AddAddress />}/>
+      <Route path='/my-orders' element={<MyOrders />}/>
+      <Route path='/seller' element={ isSeller ? <SellerLayout/> : <SellerLogin/> }>
+        <Route index element={ <AddProduct/> } />
+        <Route path='dashboard' element={ <Dashboard/> } />
+        <Route path='product-list' element={ <ProductList/> } />
+        <Route path='orders' element={ <Orders/> } />
+      </Route>
       {/* <Route path='/services' element={<Services/>}/> */}
       {/* <Route path='/contact' element={<Contact/>}/> */}
       {/* <Route path='/' element={}/>
@@ -65,7 +83,7 @@ const App = () => {
     {!isSellerPath && !isSelectPath && <Footer/> }
     {/* {!isSellerPath && <div className='block lg:hidden'><FooterBar/></div> } */}
 
-  </>
+  </div>
   )
 }
 
