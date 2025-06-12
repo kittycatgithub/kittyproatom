@@ -17,7 +17,7 @@ const Navbar = () => {
                 setUser(null);
                 navigate('/')
             } else {
-                toast.error(data.message)
+                toast.error(`${data.message} Hello`)
             }
         } catch (error) {
             toast.error(error.message)
