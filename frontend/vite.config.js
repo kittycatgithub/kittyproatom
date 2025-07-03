@@ -9,8 +9,8 @@ export default defineConfig({
   server: {
     allowedHosts: ['riyabawane.site'], // <-- Add your domain here
     host: '0.0.0.0', // Needed if you're serving from a VPS or external IP
-    // port: 5150
-    port: 5173
+    port: 5150
+    // port: 5173
   },
   build: {
     chunkSizeWarningLimit: 1000, // in kB
