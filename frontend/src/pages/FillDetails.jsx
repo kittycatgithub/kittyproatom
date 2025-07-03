@@ -6,12 +6,16 @@ import { useParams } from "react-router-dom";
 import DatePicker from 'react-datepicker';
 import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
+import { actualProducts } from "../assets/assets";
+import toast from "react-hot-toast";
 
 export default function FillDetails () {
     const {products, cart, setCart,  navigate} = useAppContext()
     const {_id} = useParams()
     
-    const filteredProduct = products.filter( (product)=> product._id.toLowerCase() === _id )
+    const filteredProduct = actualProducts.filter( (product)=> product._id.toLowerCase() === _id )
+    // console.log("filteredProduct", filteredProduct)
+    console.log("cart", cart)
 
     const handleGuestChange = (delta) => {
     setGuests((prev) => Math.max(minGuests, Math.min(maxGuests, prev + delta)));
@@ -92,8 +96,16 @@ export default function FillDetails () {
    }
 
    const handleSubmit = () => {
-    const mergedObject = { ...filteredProduct[0], details };
-    console.log(mergedObject)
+    const missingFields = Object.entries(details).filter(
+      ([key, value]) => value === null || value === ""
+    );
+
+    if (missingFields.length > 0) {
+      const missingNames = missingFields.map(([key]) => key).join(", ");
+      toast.error(`Please fill all fields. Missing: ${missingNames}`);
+    } else {
+      const mergedObject = { ...filteredProduct[0], details };
+    console.log("mergedObject",mergedObject)
      const existingIndex = cart.findIndex(item => item._id === mergedObject._id);
 
   if (existingIndex !== -1) {
@@ -106,13 +118,38 @@ setCart((prev) => [
   updatedCart[existingIndex],
 ]);    
 // console.log(updatedCart[0], "Updated Cart")
-    // navigate(`/order-review`);
+    navigate(`/order-review`);
   } else {
     // Do nothing if the item is not in cart
     console.log('Item not in cart, so not updating.');
   }
-    navigate(`/order-review`)
+    // navigate(`/order-review`)
     // navigate(`/order-review/${_id}`)
+    
+      toast.success("All fields are filled! Proceeding...");
+      // Your form submission logic here
+    }
+//     const mergedObject = { ...filteredProduct[0], details };
+//     console.log("mergedObject",mergedObject)
+//      const existingIndex = cart.findIndex(item => item._id === mergedObject._id);
+
+//   if (existingIndex !== -1) {
+//     // Replace existing item only
+//     const updatedCart = [...cart];
+//     updatedCart[existingIndex] = {...updatedCart[existingIndex], ...mergedObject};
+//     console.log(updatedCart[existingIndex], "hello")
+// setCart((prev) => [
+//   ...prev.filter((item) => item._id !== updatedCart[existingIndex]._id),
+//   updatedCart[existingIndex],
+// ]);    
+// // console.log(updatedCart[0], "Updated Cart")
+//     navigate(`/order-review`);
+//   } else {
+//     // Do nothing if the item is not in cart
+//     console.log('Item not in cart, so not updating.');
+//   }
+//     // navigate(`/order-review`)
+//     // navigate(`/order-review/${_id}`)
     
    }
 
@@ -152,7 +189,6 @@ setCart((prev) => [
         </select>
       </div>
 
-     
        {/* Date and Time */}
       <div className="grid grid-cols-2 gap-0.5 md:gap-4 mb-4">
         <div>

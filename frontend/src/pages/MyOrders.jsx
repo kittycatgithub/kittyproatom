@@ -30,7 +30,7 @@ const MyOrders = () => {
 
   return (
     <div className='mt-16 pb-16 max-w-7xl mx-auto'>
-        <div className='flex flex-col items-end w-max mb-8'>
+        <div className='flex flex-col items-end w-max mb-8 px-4 lg:px-0 '>
              <p className='text-2xl font-medium uppercase'>My Orders</p>
              <div className='w-16 h-0.5 bg-primary rounded-full'>
              </div>

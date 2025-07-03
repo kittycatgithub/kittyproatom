@@ -29,6 +29,13 @@ import AddProduct from './pages/seller/AddProduct'
 import ProductList from './pages/seller/ProductList'
 import Orders from './pages/seller/Orders'
 import Dashboard from './pages/seller/Dashboard'
+import SelectOptionsMenuA from './pages/SelectOptionsMenuA'
+import SelectOptionsMenuB from './pages/SelectOptionsMenuB'
+import SelectOptionsMenuC from './pages/SelectOptionsMenuC'
+import SelectOptionsShortMenu from './pages/SelectOptionsShortMenu'
+import SelectOptionsBreakfast from './pages/SelectOptionsBreakfast'
+import Veg from './pages/Veg'
+import NonVeg from './pages/NonVeg'
 
 const App = () => {
 
@@ -64,9 +71,20 @@ const App = () => {
       <Route path='/select-options/:_id' element={<SelectOptions/>}/>
       <Route path='/select-optionsb/:_id' element={<SelectOptionsSnackBoxB/>}/>
       <Route path='/select-options-veg/:_id' element={<SelectOptionsBulkDelivery/>}/>
+      <Route path='/select-menu-a/:_id' element={<SelectOptionsMenuA/>}/>
+      <Route path='/select-menu-b/:_id' element={<SelectOptionsMenuB/>}/>
+      <Route path='/select-menu-c/:_id' element={<SelectOptionsMenuC/>}/>
+      <Route path='/select-short-menu/:_id' element={<SelectOptionsShortMenu/>}/>
+      <Route path='/select-breakfast/:_id' element={<SelectOptionsBreakfast/>}/>
+
+      {/* Bulk Delivery */}
+      <Route path='/veg/:_id' element={<Veg/>}/>
+      <Route path='/non-veg/:_id' element={<NonVeg/>}/>
+
+      
       <Route path='/all-menu' element={<AllMenus/>}/>
       <Route path='/all-menu/:category' element={<ProductCategory />}/>
-      <Route path='/add-address' element={<AddAddress />}/>
+        <Route path='/add-address' element={<AddAddress />}/>
       <Route path='/my-orders' element={<MyOrders />}/>
       <Route path='/seller' element={ isSeller ? <SellerLayout/> : <SellerLogin/> }>
         <Route index element={ <AddProduct/> } />

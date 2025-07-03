@@ -7,7 +7,7 @@ import { data } from "react-router-dom"
 const OrderReview = () => {
     const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, cart ,setCart , navigate, axios, user} = useAppContext()
     const [cartArray , setCartArray] = useState([])
-    const [addresses , setAddresses] = useState([])
+    const [addresses , setAddresses] = useState([]) 
 
     const [showAddress, setShowAddress] = useState(false)
     const [selectedAddress, setSelectedAddress] = useState(null)
@@ -84,6 +84,7 @@ const handleResume = ( product ) =>{
                     category: item.category,
                     offerPrice: item.offerPrice,
                     details: item.details,
+                    selectedOptions: item.selectedOptions
                 })),  address: selectedAddress._id
             })
              if(data.success){
@@ -123,6 +124,7 @@ const handleResume = ( product ) =>{
                 {cart.map((product, index) => (
                    <div key={index}>
                      { product.details.date  ? 
+                    //  { product.details  ? 
                     (<div  className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 items-center text-sm md:text-base font-medium pt-3">
                         <div className="flex items-center md:gap-6 gap-3">
                             <div className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded">

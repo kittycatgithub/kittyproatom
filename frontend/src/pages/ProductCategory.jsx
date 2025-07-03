@@ -71,23 +71,23 @@ const handleRemoveFromCart = (productId) => {
       // console.log(selectedPlatter)
     }    
     if (product.name === "Menu A"){
-      navigate(`/select-options-veg/${product._id}`)
+      navigate(`/select-menu-a/${product._id}`)
       scrollTo(0,0)
     }    
     if (product.name === "Menu B"){
-      navigate(`/select-options-veg/${product._id}`)
+      navigate(`/select-menu-b/${product._id}`)
       scrollTo(0,0)
     }    
     if (product.name === "Menu C"){
-      navigate(`/select-options-veg/${product._id}`)
+      navigate(`/select-menu-c/${product._id}`)
       scrollTo(0,0)
     }    
     if (product.name === "Short Menu"){
-      navigate(`/select-options-veg/${product._id}`)
+      navigate(`/select-short-menu/${product._id}`)
       scrollTo(0,0)
     }    
     if (product.name === "Breakfast"){
-      navigate(`/select-options-veg/${product._id}`)
+      navigate(`/select-breakfast/${product._id}`)
       scrollTo(0,0)
     }    
   }
@@ -199,5 +199,4 @@ const handleRemoveFromCart = (productId) => {
     </div>
   )
 }
-
 export default ProductCategory

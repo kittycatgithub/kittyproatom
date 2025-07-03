@@ -7,6 +7,7 @@ const CustomizeBar = (selectedOptions) => {
 
   const {cart, setCart, selectedPlatter, navigate} = useAppContext()
   const {_id} = useParams()
+  console.log(_id)
 
   // const handleCart = () => {
 
@@ -34,7 +35,7 @@ const CustomizeBar = (selectedOptions) => {
     return updatedCart;
   });
 };
-  console.log(cart)
+  console.log("cart",cart)
 
   return (
         <div className="fixed bottom-0 left-0 w-full z-50 shadow-md">

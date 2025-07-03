@@ -12,7 +12,8 @@ const orderSchema = new mongoose.Schema({
         offerPrice: {type: Number, required: true},
         // guests: {type: Number, required: true},
         // menu: {type: Array,default: [], required: true},
-       details: { type : Object, required: true}
+       details: { type : Object, required: true},
+       selectedOptions: { type : Object, required: true}
         // product: {type: String, required: true, ref: 'product'},
         // quantity: {type: Number, required: true},
     }],

@@ -1021,41 +1021,49 @@ export const actualProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },
-  // {
-  //   _id: "ek55j56k",
-  //   name: "Grapes 500g",
-  //   category: "Fruits",
-  //   price: 70,
-  //   offerPrice: 65,
-  //   image: [grapes_image_1],
-  //   description: [
-  //     "Fresh and juicy",
-  //     "Rich in antioxidants",
-  //     "Perfect for snacking and fruit salads",
-  //   ],
-  //   createdAt: "2025-03-25T07:17:46.018Z",
-  //   updatedAt: "2025-03-25T07:18:13.103Z",
-  //   inStock: true,
-  // },
+  {
+    _id: "ek55j56k",
+    name: "Vegetarian",
+    
+    menu:[
+      "",
+    ],
+    path:"https://img.freepik.com/free-photo/gourmet-bowl-with-healthy-rice-meat-vegetables-generated-by-ai_188544-14076.jpg",
+    badge: 'Best for Professional Events',  
+    category: "bulk-delivery",
 
-  // // Dairy
-  // {
-  //   _id: "ek56j67k",
-  //   name: "Amul Milk 1L",
-  //   category: "Dairy",
-  //   price: 60,
-  //   offerPrice: 55,
-  //   image: [amul_milk_image],
-  //   description: [
-  //     "Pure and fresh",
-  //     "Rich in calcium",
-  //     "Ideal for tea, coffee, and desserts",
-  //     "Trusted brand quality",
-  //   ],
-  //   createdAt: "2025-03-25T07:17:46.018Z",
-  //   updatedAt: "2025-03-25T07:18:13.103Z",
-  //   inStock: true,
-  // },
+    offerPrice: 95,
+    image: [mango_image_1],
+    unit:"/guest",
+    description: [
+      "GST will be +5%",
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "ek56j67k",
+    name: "Non-Vegetarian",
+    
+    menu:[
+      "",
+    ],
+    path:"https://img.freepik.com/free-photo/gourmet-bowl-with-healthy-rice-meat-vegetables-generated-by-ai_188544-14076.jpg",
+    badge: 'Best for Professional Events',  
+    category: "bulk-delivery",
+
+    offerPrice: 120,
+    image: [mango_image_1],
+    unit:"/guest",
+    description: [
+      "GST will be +5%",
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  // Dairy
   // {
   //   _id: "ek57j78k",
   //   name: "Paneer 200g",

@@ -1,0 +1,14 @@
+Anushka Sharma
+anushka@gmail.com
+
+// 
+1. Google Map Location - provide actual location
+2. COD Completed
+3. Order Management System
+5. Return Process
+6. Category Icon PNG
+7. Photo Library Of Employee
+8. Live Location 
+9. Select Size
+10. Return Order Approve From Admin Panel
+11. Need Google App Password for Email 

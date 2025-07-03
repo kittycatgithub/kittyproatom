@@ -10,6 +10,7 @@ import sellerRouter from './routes/sellerRoute.js'
 import cartRouter from './routes/cartRoute.js'
 import addressRouter from './routes/addressRoute.js'
 import orderRouter from './routes/orderRoute.js'
+import selectedRouter from './routes/selectedRoute.js'
 
 const app = express() //created app using Express Package
 const port = process.env.PORT || 4000 
@@ -30,6 +31,7 @@ app.use('/api/seller', sellerRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/address', addressRouter)
 app.use('/api/order', orderRouter)
+app.use('/api/platter', selectedRouter) //Router for selectedPlatter
 
 app.listen(port, ()=> {
     console.log(`Server is Running on http://localhost:${port}`)

@@ -2,24 +2,25 @@ import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import CustomizeBar from '../components/CustomizeBar'
 
-const SelectOptionsBulkDelivery = () => {
+
+
+const SelectOptionsMenuC = () => {
 
     const {selectedPlatter, setSelectedPlatter , navigate} = useAppContext()
     // console.log("select Platter" , selectedPlatter)
     const [selectedOptions, setSelectedOptions] = useState({
-      SpecialVeggies: null,
-      SeasonalVeggies: null,
-      Rotis: null,
-      Daals: null,
-      BasmatiRice: null,
-      Desserts: null,
-      Savouries: null,
       Soups: null,
       Starters: null,
+      SpecialVeggies: null,
+      SeasonalVeggies: null,
+      Daals: null, 
+      BasmatiRice: null,
+      Rotis: null,    
+      Savouries: null,
+      Desserts: null, 
       Salads: null,
-      Chaats: null,
-      WelcomeDrinks: null,
-      Chinese: null
+      PapadAchar: "Papad & Achar",
+      BottledWater: "BottledWater"
     })
     
 
@@ -210,39 +211,7 @@ const SelectOptionsBulkDelivery = () => {
             {name:"Mexican Salad", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
             {name:"Cheese Macaroni Salad", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
             {name:"Corn Potato Salad", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}]
-    },   
-    {   name:"Chaats",
-        value: [{name:"Pani Poorie", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Sev Poorie", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Bhel Poorie", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Papdi Chaat", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Samosa Chaat", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Kachori Chaat", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Ragda Patis", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Aloo Tikki Chaat", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}]
-            }, 
-    {   name:"WelcomeDrinks",
-        value: [{name:"Cold Drinks", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Sweet/ Salty Lemonade", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Strawberry Splash", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Orange Blossom", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Lime Leechi Squash", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Jal Jeera", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Pineapple Kick", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Blue Lagoon", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Khus Sharbat", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Kokam Sharbat", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Sole Kadhi", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}]
-    },       
-    {   name:"Chinese",
-        value: [{name:"Hakka Noodles", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Schezwan Noodles", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Chilli Garlic Noodles", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Veg Fried Rice", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Schezwan Fried Rice", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Veg Manchurian", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Exotic Vegetables Tossed in Asian Sauces", img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, ]
-           },     
+    },      
     ]
 
     const [isActive, setIsActive] = useState("SpecialVeggies")
@@ -255,12 +224,15 @@ const SelectOptionsBulkDelivery = () => {
       console.log("selected options:", updated);
       return updated;
       } )
+      setSelectedPlatter( (prev)=> ({ ...prev, selectedOptions: selectedOptions })  )
       //  console.log("Hello",selectedOptions)
     };
 
   return (
-      <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-full mb-16'>
-             {selectedPlatter.keyword == "veg" || selectedPlatter.keyword == "nonveg" && (
+    <div className='bg-[#EFF6FF]'>
+      { Object.keys(selectedPlatter).length !== 0 ? (
+        <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-full mb-16'>
+             {selectedPlatter.keyword == "snacks" || selectedPlatter.keyword == "catering" && (
              <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-4 md:space-y-6 md:py-10'>  
              <div>
                 <button onClick={() => {setIsActive("SpecialVeggies")}} className={` rounded-md transition  justify-start text-start  ${isActive === "SpecialVeggies" ? " text-primary" : " text-black"}`}> Special Veggies </button>
@@ -305,16 +277,10 @@ const SelectOptionsBulkDelivery = () => {
 
              </div>
              <div>
-                <button onClick={() => {setIsActive("Chaats")}} className={` rounded-md transition ${isActive === "Chaats" ? " text-primary" : " text-black"}`}> Chaats </button>
-                {/* {selectedOptions.Chaats !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Chaats}</p> : <p></p> } */}
+                <button className="rounded-md transition text-black"> Papad & Achar </button>
              </div>
              <div>
-                <button onClick={() => {setIsActive("WelcomeDrinks")}} className={` rounded-md transition  justify-start leading-4 text-start ${isActive === "WelcomeDrinks" ? " text-primary" : " text-black"}`}> Welcome Drinks </button>
-                {/* {selectedOptions.WelcomeDrinks !== null ? <p className='text-xs text-gray-500'>{selectedOptions.WelcomeDrinks}</p> : <p></p> } */}
-             </div>
-             <div>
-                <button onClick={() => {setIsActive("Chinese")}} className={` rounded-md transition ${isActive === "Chinese" ? " text-primary" : " text-black"}`}> Chinese </button>
-                {/* {selectedOptions.Chinese !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Chinese}</p> : <p></p> } */}
+                <button className="rounded-md transition text-black"> Bottled Water </button>
              </div>
              </div>             
              )}
@@ -324,7 +290,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
              <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -341,7 +307,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -359,7 +325,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -377,7 +343,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -395,7 +361,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -413,7 +379,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -431,7 +397,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -449,7 +415,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -467,7 +433,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -485,7 +451,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -503,7 +469,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -521,7 +487,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -539,7 +505,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -557,7 +523,7 @@ const SelectOptionsBulkDelivery = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -575,8 +541,12 @@ const SelectOptionsBulkDelivery = () => {
                        <CustomizeBar/>
  
       </div>
-   
+      ) : (
+                <div className='flex items-center justify-center h-[60vh]'>
+                  <p className='text-2xl font-medium'>Kindly select the Platter Again...<br/>Do not refresh the page while selecting platter</p>
+                </div>) }
+    </div>   
   )
 }
 
-export default SelectOptionsBulkDelivery
+export default SelectOptionsMenuC
