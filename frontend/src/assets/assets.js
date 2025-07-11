@@ -969,7 +969,6 @@ export const actualProducts = [
   {
     _id: "ek53j34k",
     name: "Short Menu",
-    
     menu:[
       "Chola Bhatura, Dahi Wada, Gulab Jamun and Veg Pulao",
       "Pav Bhaji, Tawa Pulao, Boondi Raita and Rasgulla",
@@ -1002,9 +1001,9 @@ export const actualProducts = [
       "Idli, Medu Wada, Sambar, Chutney, Tea, Coffee and Cookies",
       "Aloo Poha, Chana Rassa, Batata Wada, Tea, Coffee and Cookies",
       "Misal Pao, Dhokla, Chutney, Tea, Coffee and Cookies",
-      "Sprouts Usal, Chiwda, Sabudana Khichadi, Dahi Chutney, Tea, Coffee & Cookies",
+      "Sprouts Usal, Chiwda, Sabudana Khichadi, Dahi Chutney, Tea, Coffee, Cookies",
       "Upma, Chutney, Wada Pao, Lasan Chutney, Tea, Coffee and Cookies",
-      "Veg Sandwich, Mayo Dip. Veg Cutlet, Muffin, Tea, Coffee and Cookies",
+      "Veg Sandwich, Mayo Dip. Veg Cutlet, Muffin, Tea, Coffee, Cookies",
       "Packaged Bottled Water will be served",
     ],
     path:"https://img.freepik.com/free-photo/gourmet-bowl-with-healthy-rice-meat-vegetables-generated-by-ai_188544-14076.jpg",
@@ -1026,7 +1025,14 @@ export const actualProducts = [
     name: "Vegetarian",
     
     menu:[
-      "",
+      "Any Special Veg",
+      "Any Seasonal Veg",
+      "Any Daal Preparation",
+      "Any Rice Preparation",
+      "Biryani / Pulao",
+      "Chapati",
+      "Laccha Paratha",
+      "Dessert",
     ],
     path:"https://img.freepik.com/free-photo/gourmet-bowl-with-healthy-rice-meat-vegetables-generated-by-ai_188544-14076.jpg",
     badge: 'Best for Professional Events',  
@@ -1047,7 +1053,13 @@ export const actualProducts = [
     name: "Non-Vegetarian",
     
     menu:[
-      "",
+      "Any Chicken Curry",
+      "Any Mutton Curry",
+      "Chicken Biryani",
+      "Mutton Biryani",
+      "Chapati",
+      "Laccha Paratha",
+      "Dessert",
     ],
     path:"https://img.freepik.com/free-photo/gourmet-bowl-with-healthy-rice-meat-vegetables-generated-by-ai_188544-14076.jpg",
     badge: 'Best for Professional Events',  

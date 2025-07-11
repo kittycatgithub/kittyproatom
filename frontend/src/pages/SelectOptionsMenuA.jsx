@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import CustomizeBar from '../components/CustomizeBar'
 
-
-
 const SelectOptionsMenuA = () => {
 
     const {selectedPlatter, setSelectedPlatter , navigate} = useAppContext()
@@ -198,11 +196,11 @@ const SelectOptionsMenuA = () => {
     };
 
   return (
-    <div className='bg-[#EFF6FF]'>
+    <div>
      { Object.keys(selectedPlatter).length !== 0 ? (
-       <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-full mb-16'>
+       <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-full md:min-h-screen'>
              {selectedPlatter.keyword == "snacks" || selectedPlatter.keyword == "catering" && (
-             <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-4 md:space-y-6 md:py-10'>  
+             <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-7 pt-5 md:space-y-6 md:py-10'>  
              <div>
                 <button onClick={() => {setIsActive("SpecialVeggies")}} className={` rounded-md transition  justify-start text-start  ${isActive === "SpecialVeggies" ? " text-primary" : " text-black"}`}> Special Veggies </button>
                 {/* {selectedOptions.SpecialVeggies !== null ? <p className='text-xs text-gray-500'>{selectedOptions.SpecialVeggies}</p> : <p></p> } */}
@@ -245,7 +243,7 @@ const SelectOptionsMenuA = () => {
            
              </div>             
              )}
-             <div className='md:col-span-5 col-span-4 bg-grey-50  border-l border-gray-300'>
+             <div className='md:col-span-5 col-span-4 bg-grey-50  border-l border-gray-300 bg-[#EFF6FF]  pb-16'>
                  {isActive === "Sandwiches" && <div>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4">
@@ -500,7 +498,7 @@ const SelectOptionsMenuA = () => {
       <CustomizeBar/>
       </div>
      ) : (
-        <div className='flex items-center justify-center h-[60vh]'>
+        <div className='flex items-center pl-10 md:pl-0 justify-center h-screen md:h-[60vh]'>
                   <p className='text-2xl font-medium'>Kindly select the Platter Again...<br/>Do not refresh the page while selecting platter</p>
                 </div>
       )}

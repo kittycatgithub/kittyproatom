@@ -5,7 +5,7 @@ import CustomizeBar from '../components/CustomizeBar'
 const Veg = () => {
     const {selectedPlatter, setSelectedPlatter , navigate} = useAppContext()
 
-    console.log( selectedPlatter)
+    console.log("selectedPlatter", selectedPlatter)
 
     // console.log("select Platter" , selectedPlatter)
     const [selectedOptions, setSelectedOptions] = useState({
@@ -174,46 +174,46 @@ const Veg = () => {
 
 
   return (
-    <div className='bg-[#EFF6FF]'>
+    <div className='bg-[#EFF6FF] min-h-screen'>
       {
          Object.keys(selectedPlatter).length !== 0 ? 
-      (<div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-full mb-16'>
+      (<div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-full pb-24 md:pb-16'>
              {selectedPlatter.category == "bulk-delivery" && (
-             <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-4 md:space-y-6 md:py-10'>  
+             <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-7 md:space-y-6 md:py-10'>  
              <div>
-                <button onClick={() => {setIsActive("SpecialVeggies")}} className={` rounded-md transition  justify-start text-start  ${isActive === "SpecialVeggies" ? " text-primary" : " text-black"}`}> Special Veggies </button>
+                <button onClick={() => {setIsActive("SpecialVeggies")}} className={`transition pt-5  justify-start text-start  ${isActive === "SpecialVeggies" ? " text-primary" : " text-black"}`}> Special Veggies </button>
                 {/* {selectedOptions.SpecialVeggies !== null ? <p className='text-xs text-gray-500'>{selectedOptions.SpecialVeggies}</p> : <p></p> } */}
              </div>
              <div>
-                <button onClick={() => {setIsActive("SeasonalVeggies")}} className={` rounded-md transition  justify-start text-start  leading-4 ${isActive === "SeasonalVeggies" ? " text-primary" : " text-black"}`}> Seasonal Veggies </button>
+                <button onClick={() => {setIsActive("SeasonalVeggies")}} className={`transition  justify-start text-start  leading-4 ${isActive === "SeasonalVeggies" ? " text-primary" : " text-black"}`}> Seasonal Veggies </button>
                 {/* {selectedOptions.SeasonalVeggies !== null ? <p className='text-xs text-gray-500'>{selectedOptions.SeasonalVeggies}</p> : <p></p> } */}
              </div>
              <div>
-                <button onClick={() => {setIsActive("Daals")}} className={` rounded-md transition ${isActive === "Daals" ? " text-primary" : " text-black"}`}> Daals </button>
+                <button onClick={() => {setIsActive("Daals")}} className={`transition ${isActive === "Daals" ? " text-primary" : " text-black"}`}> Daals </button>
                 {/* {selectedOptions.Daals !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Daals}</p> : <p></p> } */}
              </div>
              <div>
-                <button onClick={() => {setIsActive("BasmatiRice")}} className={` rounded-md transition ${isActive === "BasmatiRice" ? " text-primary" : " text-black"}`}> BasmatiRice </button>
+                <button onClick={() => {setIsActive("BasmatiRice")}} className={`transition ${isActive === "BasmatiRice" ? " text-primary" : " text-black"}`}> BasmatiRice </button>
                 {/* {selectedOptions.BasmatiRice !== null ? <p className='text-xs text-gray-500'>{selectedOptions.BasmatiRice}</p> : <p></p> } */}
              </div>
              <div>
-                <button onClick={() => {setIsActive("Desserts")}} className={` rounded-md transition ${isActive === "Desserts" ? " text-primary" : " text-black"}`}> Desserts </button>
+                <button onClick={() => {setIsActive("Desserts")}} className={`transition ${isActive === "Desserts" ? " text-primary" : " text-black"}`}> Desserts </button>
                 {/* {selectedOptions.Desserts !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Desserts}</p> : <p></p> } */}
              </div>
              <div>
-                <button onClick={() => {setIsActive("Biryani")}} className={` rounded-md transition ${isActive === "Biryani" ? " text-primary" : " text-black"}`}> Biryani </button>
+                <button onClick={() => {setIsActive("Biryani")}} className={`transition ${isActive === "Biryani" ? " text-primary" : " text-black"}`}> Biryani </button>
                 {/* {selectedOptions.Biryani !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Biryani}</p> : <p></p> } */}
              </div>
              <div>
-                <button onClick={() => {setIsActive("Pulao")}} className={` rounded-md transition ${isActive === "Pulao" ? " text-primary" : " text-black"}`}> Pulao </button>
+                <button onClick={() => {setIsActive("Pulao")}} className={`transition ${isActive === "Pulao" ? " text-primary" : " text-black"}`}> Pulao </button>
                 {/* {selectedOptions.Pulao !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Pulao}</p> : <p></p> } */}
              </div>
              <div>
-                <button onClick={() => {setIsActive("Chapati")}} className={` rounded-md transition ${isActive === "Chapati" ? " text-primary" : " text-black"}`}> Chapati </button>
+                <button onClick={() => {setIsActive("Chapati")}} className={`transition ${isActive === "Chapati" ? " text-primary" : " text-black"}`}> Chapati </button>
                 {/* {selectedOptions.Chapati !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Chapati}</p> : <p></p> } */}
              </div>
              <div>
-                <button onClick={() => {setIsActive("LacchaParatha")}} className={` rounded-md transition ${isActive === "LacchaParatha" ? " text-primary" : " text-black"}`}> Laccha Paratha </button>
+                <button onClick={() => {setIsActive("LacchaParatha")}} className={`text-left leading-4  pb-5 transition  ${isActive === "LacchaParatha" ? " text-primary" : " text-black"}`}>Laccha Paratha </button>
                 {/* {selectedOptions.LacchaParatha !== null ? <p className='text-xs text-gray-500'>{selectedOptions.LacchaParatha}</p> : <p></p> } */}
              </div>
              </div>             
@@ -380,7 +380,7 @@ const Veg = () => {
       </div></div> } 
              </div>
         <CustomizeBar/>
-      </div> ) : (<div className='flex items-center justify-center h-[60vh]'>
+      </div> ) : (<div className='flex items-center pl-10 md:pl-0 justify-center h-screen md:h-[60vh]'>
                   <p className='text-2xl font-medium'>Kindly select the Platter Again...<br/>Do not refresh the page while selecting platter</p>
                 </div>)
       }

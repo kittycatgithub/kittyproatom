@@ -78,8 +78,8 @@ const App = () => {
       <Route path='/select-breakfast/:_id' element={<SelectOptionsBreakfast/>}/>
 
       {/* Bulk Delivery */}
-      <Route path='/veg/:_id' element={<Veg/>}/>
-      <Route path='/non-veg/:_id' element={<NonVeg/>}/>
+      <Route path='/select-veg/:_id' element={<Veg/>}/>
+      <Route path='/select-non-veg/:_id' element={<NonVeg/>}/>
 
       
       <Route path='/all-menu' element={<AllMenus/>}/>

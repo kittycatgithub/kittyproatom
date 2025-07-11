@@ -96,11 +96,16 @@ const SelectOptionsSnackBoxB = () => {
       };
     }
   });
-      //  console.log("Hello",selectedOptions)     
+       setSelectedPlatter(prev => ({
+  ...prev,
+  selectedOptions: selectedOptions
+}));    
     };
 
   return (
-      <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-screen  mb-16'>
+    <div>
+      { Object.keys(selectedPlatter).length !== 0 ? (
+        <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-screen  mb-16'>
              {selectedPlatter.keyword == "snacks" && (
              <div className='md:col-span-1 col-span-2 pl-4 text-lg space-y-10 py-10'> 
              <div>
@@ -112,6 +117,7 @@ const SelectOptionsSnackBoxB = () => {
                 {selectedOptions.Snacks && (
                   <p className="text-xs text-gray-500">
                     {[selectedOptions.Snacks[0].item1, selectedOptions.Snacks[1].item2].filter(Boolean).join(', ')}
+                    {console.log(selectedOptions)}
                   </p>
                 )}
 
@@ -128,7 +134,7 @@ const SelectOptionsSnackBoxB = () => {
              </div>
              </div>             
              )}
-             <div className='md:col-span-5 col-span-4 bg-grey-50  border-l border-gray-300'>
+             <div className='md:col-span-5 col-span-4 bg-grey-50  border-l border-gray-300 bg-[#EFF6FF]'>
                  {isActive === "Sandwiches" && <div>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4">
@@ -213,7 +219,13 @@ const SelectOptionsSnackBoxB = () => {
              </div>
                         <CustomizeBar/>
       </div>
-   
+       ) : (
+        <div className='flex items-center pl-10 md:pl-0 justify-center h-screen md:h-[60vh] bg-[#EFF6FF]'>
+                  <p className='text-2xl font-medium'>Kindly select the Platter Again...<br/>Do not refresh the page while selecting platter</p>
+                </div>
+       )
+      }
+      </div>
   )
 }
 

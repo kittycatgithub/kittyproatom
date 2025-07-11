@@ -20,7 +20,7 @@ export default function FillDetails () {
     const handleGuestChange = (delta) => {
     setGuests((prev) => Math.max(minGuests, Math.min(maxGuests, prev + delta)));
     };
-    const [guests, setGuests] = useState(129);
+    const [guests, setGuests] = useState(100);
     useEffect(() => {
   // console.log('Updated guests:', guests);
   handleFormChange('guests',guests)

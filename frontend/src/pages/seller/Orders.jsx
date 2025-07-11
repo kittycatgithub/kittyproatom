@@ -8,8 +8,6 @@ const Orders = () => {
     const {currency, axios} = useAppContext()
     const [orders, setOrders] = useState([])
 
-    const boxIcon = "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/e-commerce/boxIcon.svg"
-
     const fetchOrders = async () => {
         try {
             const { data } = await axios.get('/api/order/seller')
@@ -37,33 +35,46 @@ const Orders = () => {
                     <div className="flex gap-5 max-w-80">
                         {/* <img className="w-12 h-12 object-cover" src={assets.box_icon} alt="boxIcon" /> */}
                         <img className="w-12 h-12 object-cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjcOxOqdDh-zCFVk8opYwB8kh4X2wgih4rww&s" alt="boxIcon" />
-                        <div>
+                        <div className='text-black'>
                             {order.platters.map((item, index) => (
                                 <div key={index} className="flex flex-col">
                                     <p className="font-medium">
                                          {item.name} 
                                          
                                     </p>
-                                    <p className="font-medium">
+                                    <p>
                                          Guests : <span className="text-primary"> {item.details.guests}</span>
+                                    </p>
+                                    <p className="">
+                                         Price : <span className="text-primary">{currency} {order.platters[0].offerPrice}</span>
+                                    </p>
+                                    <p>
+                                         Total Amount : <span className="text-primary">{currency} {item.details.guests * order.platters[0].offerPrice}</span>
                                     </p>
                                 </div>
                             ))}
                         </div>
                     </div>
-
                     <div className="text-sm md:text-base text-black/60">
                         <p className='text-black/80'>{order.address.firstName} {order.address.lastName}</p>
-
                         <p>{order.address.street}, {order.address.city} </p>
-                        <p> {order.address.state}, {order.address.zipcode}, {order.address.country}</p>
+                        <p> {order.address.state}, {order.address.zipcode} {order.address.country} - {order.address.pincode}</p>
                         {/* <p> {order.address.state}, {order.address.pincode}, {order.address.country}</p> */}
                         <p></p>
                         <p>{order.address.phone}</p>
                     </div>
-
-                    <p className="font-medium text-lg my-auto">{currency}{order.amount}</p>
-
+                    {/* <div className="text-sm md:text-base text-black/60">
+                        <p>{order.platters[0].offerPrice}</p>
+                    </div> */}
+                    <div className=" text-lg my-auto">
+                        {Object.entries(order.platters[0].selectedOptions)
+                            .filter(([key, value]) => value !== null)
+                            .map(([key, value], index) => (
+                              <p key={index} className="text-sm">
+                                <span className='text-purple-800'>{key} : </span> {value}
+                              </p>
+                        ))}
+                    </div>
                     <div className="flex flex-col text-sm md:text-base text-black/60">
                         <p>Method: {order.paymentType}</p>
                         <p>Date: {new Date(order.createdAt).toLocaleDateString()}</p>

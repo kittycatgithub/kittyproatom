@@ -24,16 +24,18 @@ const BulkDelivery = () => {
       (prev)=> ({...prev,
                     _id: product._id,
                     name: product.name,
-                    // path: product.path,
+                    path: product.path,
                     category: product.category})
     )
     // console.log(product,"Updated Platter", selectedPlatter)
     // This useEffect will run every time selectedPlatter changes:
 
     if(product.name === "Vegetarian"){
-      navigate(`/veg/${product._id}`)
+      navigate(`/select-veg/${product._id}`)
+      scrollTo(0,0)
     } else {
-      navigate(`/non-veg/${product._id}`)
+      navigate(`/select-non-veg/${product._id}`)
+      scrollTo(0,0)
     }    
   }
   useEffect(() => {

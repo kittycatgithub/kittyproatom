@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import CustomizeBar from '../components/CustomizeBar'
 
-
-
 const SelectOptionsShortMenu = () => {
 
     const {selectedPlatter, setSelectedPlatter , navigate} = useAppContext()
@@ -106,13 +104,13 @@ const SelectOptionsShortMenu = () => {
     };
 
   return (
-     <div className='bg-[#EFF6FF]'>
+     <div className='h-screen'>
       { Object.keys(selectedPlatter).length !== 0 ? (
-         <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-full mb-16'>
+         <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto'>
              {selectedPlatter.keyword == "snacks" || selectedPlatter.keyword == "catering" && (
-             <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-4 md:space-y-6 md:py-10'>  
+             <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-8 md:space-y-6 md:py-10'>  
              <div>
-                <button onClick={() => {setIsActive("Menu1")}} className={` rounded-md transition  justify-start text-start  ${isActive === "Menu1" ? " text-primary" : " text-black"}`}> Menu1 </button>
+                <button onClick={() => {setIsActive("Menu1")}} className={`pt-5 rounded-md transition  justify-start text-start  ${isActive === "Menu1" ? " text-primary" : " text-black"}`}> Menu1 </button>
                 {/* {selectedOptions.Menu1 !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Menu1}</p> : <p></p> } */}
              </div>
              <div>
@@ -144,11 +142,11 @@ const SelectOptionsShortMenu = () => {
                 {/* {selectedOptions.Menu8 !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Menu8}</p> : <p></p> } */}
              </div>
              <div>
-                <button className="rounded-md transition text-black"> Bottled Water </button>
+                <button className=" pb-40 rounded-md transition text-black"> Bottled Water </button>
              </div>
              </div>             
              )}
-             <div className='md:col-span-5 col-span-4 bg-grey-50  border-l border-gray-300'>
+             <div className='md:col-span-5 col-span-4 bg-grey-50  border-l border-gray-300 bg-[#EFF6FF]'>
                  {isActive === "Sandwiches" && <div>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4">
@@ -379,8 +377,7 @@ const SelectOptionsShortMenu = () => {
     </div>
           </div>
         ))}
-      </div>
-                     
+      </div>             
                  </div> } 
                  {isActive === "Chinese" && <div>
                 {/* Card Grid */}
@@ -394,19 +391,16 @@ const SelectOptionsShortMenu = () => {
                 {selectedOptions.Chinese !== null && selectedOptions.Chinese ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
             </button>
-    </div>
+           </div>
           </div>
         ))}
       </div>
-                     
-                 </div> } 
-
-             </div>
-                       <CustomizeBar/>
- 
+      </div> } 
       </div>
+      <CustomizeBar/>
+       </div>
       ) : (
-                <div className='flex items-center justify-center h-[60vh]'>
+                <div className='flex items-center pl-10 md:pl-0 justify-center h-screen md:h-[60vh]'>
                   <p className='text-2xl font-medium'>Kindly select the Platter Again...<br/>Do not refresh the page while selecting platter</p>
                 </div>) }
     </div>

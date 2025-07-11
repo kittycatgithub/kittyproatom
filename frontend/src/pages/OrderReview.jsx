@@ -7,7 +7,7 @@ import { data } from "react-router-dom"
 const OrderReview = () => {
     const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, cart ,setCart , navigate, axios, user} = useAppContext()
     const [cartArray , setCartArray] = useState([])
-    const [addresses , setAddresses] = useState([]) 
+    const [addresses , setAddresses] = useState([])
 
     const [showAddress, setShowAddress] = useState(false)
     const [selectedAddress, setSelectedAddress] = useState(null)
@@ -21,14 +21,13 @@ const OrderReview = () => {
             tempArray.push(product)
         }
         setCartArray(tempArray)
-
     }
 
     // Get User Address
     const getUserAddress = async () => {
         try {
             const { data } = await axios.get('/api/address/get')
-            console.log(data)
+            // console.log(data)
             if(data.success){
                 setAddresses(data.addresses)
                 if(data.addresses.length > 0){
@@ -67,16 +66,64 @@ const handleResume = ( product ) =>{
 }
 
 // Place Order Function
+//  const placeOrder = async () => {
+//     try {
+//         if(!selectedAddress){
+//             return toast.error("Please Select Address")
+//         }
+        
+//         // Place Order with COD
+//         if(paymentOption === "COD"){
+//             console.log("Api Wala", cart)
+//             const {data} = await axios.post('/api/order/cod', {
+//                 userId: user._id,
+//                 platters:cart.map(item => ({
+//                     _id: item._id,
+//                     name: item.name,
+//                     path: item.path,
+//                     badge: item.badge,
+//                     category: item.category,
+//                     offerPrice: item.offerPrice,
+//                     details: item.details,
+//                     selectedOptions: item.selectedOptions
+//                 })),  address: selectedAddress._id
+//             })
+//              if(data.success){
+//                toast.success(data.message)
+//                setCart([])
+//                navigate('/my-orders')
+//              } else {
+//                  toast.error(`${data.message} Hello`)
+//              }
+//         }
+       
+//     } catch (error) {
+//         toast.error(error.message)
+//     }
+//  }
+// Place Order Function
  const placeOrder = async () => {
+    // Filter items that have data in 'details'
+const filteredCart = cart.filter(item => item.details && Object.keys(item.details).length !== 0);
     try {
-        if(!selectedAddress){
-            return toast.error("Please Select Address")
+    if (!selectedAddress) {
+        return toast.error("Please Select Address");
+    }
+
+    // Place Order with COD
+    if (paymentOption === "COD") {
+        const filteredCart = cart.filter(
+            item => item.details && Object.keys(item.details).length !== 0
+        );
+
+        if (filteredCart.length === 0) {
+            return toast.error("No items with valid details to place an order.");
         }
-        // Place Order with COD
-        if(paymentOption === "COD"){
-            const {data} = await axios.post('/api/order/cod', {
+
+        for (const item of filteredCart) {
+            const { data } = await axios.post('/api/order/cod', {
                 userId: user._id,
-                platters:cart.map(item => ({
+                platters: [{
                     _id: item._id,
                     name: item.name,
                     path: item.path,
@@ -85,20 +132,25 @@ const handleResume = ( product ) =>{
                     offerPrice: item.offerPrice,
                     details: item.details,
                     selectedOptions: item.selectedOptions
-                })),  address: selectedAddress._id
-            })
-             if(data.success){
-               toast.success(data.message)
-               setCart([])
-               navigate('/my-orders')
-             } else {
-                 toast.error(`${data.message} Hello`)
-             }
+                }],
+                address: selectedAddress._id
+            });
+
+            if (data.success) {
+                toast.success(data.message);
+            } else {
+                toast.error(`${data.message} Hello`);
+            }
         }
-       
-    } catch (error) {
-        toast.error(error.message)
+
+        // Clear cart and redirect after processing all
+        setCart([]);
+        navigate('/my-orders');
     }
+} catch (error) {
+    toast.error("Something went wrong while placing the order.");
+    console.error(error);
+}
  }
 
  useEffect( ()=> {
@@ -110,61 +162,104 @@ const handleResume = ( product ) =>{
 
     return  (
         <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
-            <div className='flex-1 max-w-4xl'>
+            <div className='flex-1 max-w-4xl lg:pr-1'>
                 <h1 className="text-3xl font-medium mb-6">
                     Order Review <span className="text-sm text-indigo-500">{cart.length} Items</span>
                 </h1>
 
-                <div className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 text-base font-medium pb-3">
+                {/* <div className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 text-base font-medium pb-3">
                     <p className="text-left">Product Details</p>
                     <p className="text-center">Edit</p>
                     <p className="text-center">Action</p>
-                </div>
-{/* {console.log(cart)} */}
+                </div> */}
+{console.log(cart)}
                 {cart.map((product, index) => (
-                   <div key={index}>
-                     { product.details.date  ? 
+                   <div key={index} className="">
+                     { product?.details?.date  ? 
                     //  { product.details  ? 
-                    (<div  className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 items-center text-sm md:text-base font-medium pt-3">
-                        <div className="flex items-center md:gap-6 gap-3">
-                            <div className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded">
+                    (<div  className=" text-gray-500 items-center text-sm md:text-base font-medium pt-3 border pl-1">
+                        <div className="flex flex-col lg:flex-row md:gap-6 gap-3">
+                            <div className="flex flex-row gap-6">
+                                <div className="cursor-pointer w-24 h-24 flex items-start justify-start border border-gray-300 rounded">
                                 <img className="max-w-full h-full object-cover" src={product.path} alt={product.name} />
                             </div>
-                            <div className="space-y-1">
-                                <p className="hidden md:block text-black text-xl">{product.name}</p>
-                                <p className="hidden md:block text-gray-600 text-xs">Date - {product.details.date}</p>
-                                <p className="hidden md:block text-gray-600 text-xs">Guests - {product.details.guests}</p>
-                                <p className="hidden md:block text-gray-600 text-xs">Time - {product.details.time}</p>
-                                <p className="hidden md:block text-gray-600 text-xs">
+                            <div className="space-y-1 text-gray-700 text-md">
+                                <p className="text-xl text-purple-700">{product.name}</p>
+                                <p>Occassion - {product.details.occasion}</p>
+                                <p>Date - {product.details.date}</p>
+                                <p>Guests - {product.details.guests}</p>
+                                <p>Time - {product.details.time}</p>
+                                <p>
                                  Total Price - {currency} {new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests)}
                                 </p>
-                                
-                                {/* <div className="font-normal text-gray-500/70">
-                                    <p>Size: <span>{product.size || "N/A"}</span></p>
-                                    <div className='flex items-center'>
-                                        <p>Qty:</p>
-                                        <select className='outline-none'>
-                                            {Array(5).fill('').map((_, index) => (
-                                                <option key={index} value={index + 1}>{index + 1}</option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                </div> */}
+                            </div>
+                            </div>
+                            <div className="space-y-1 text-gray-700 text-md">
+                                <h1 className="text-xl text-purple-700">Platter</h1>
+                                 { product?.category === "meal-thali-snack-boxes" ? (
+                            product.menu.map( (item, index) => 
+                            <p key={index}> {item} </p> )
+                        ) : ('')}
+                        <div>
+                            <h1 className="text-xl text-purple-700">Platter 3012</h1>
+                             {(product.category || product.keyword === "snacks") ? (
+  product.selectedOptions &&
+  Object.entries(product.selectedOptions).map(([key, value], index) => {
+    if (!value) return null;
+
+    if (typeof value === "string") {
+      return (
+        <p key={`${index}`} className="text-sm">
+          {key}: {value}
+        </p>
+      );
+    }
+
+    if (Array.isArray(value)) {
+      return value.map((item, subIndex) => {
+        const [subKey, subValue] = Object.entries(item)[0];
+        return (
+          <p key={`${index}-${subIndex}`} className="text-sm">
+            {key}: {subValue}
+          </p>
+        );
+      });
+    }
+
+    return null;
+  })
+) : null}
+
+                        </div>
+                       
+                            </div>
+                            <div>
+                                <button onClick={()=> handleRemoveFromCart(product._id)} className="cursor-pointer mx-auto flex flex-row text-red-600 border p-2"> Remove  
+                            <img src={assets.remove_icon} alt="remove" />
+                        </button>
                             </div>
                             
+                            {/* {
+                                Object.keys(product.selectedOptions).length !== 0 ? (
+                                    <div className="text-gray-700 text-md">
+                                        {product.selectedOptions && Object.entries(product.selectedOptions).map(([key, value], index) => 
+                                          value !== null && (
+                                            <p key={index} >
+                                              {key} - {value}
+                                            </p>
+                                          )
+                                        )}
+                                    </div>
+                                ) : (
+                                    <div></div>
+                                )
+                            } */}
+                            
                         </div>
-                        
                        
-                  <div className="flex justify-center">
+                  {/* <div className="flex justify-center">
   <img src={assets.refresh_icon} alt="Edit" />
-</div>    
-
-                        <button onClick={()=> handleRemoveFromCart(product._id)} className="cursor-pointer mx-auto">
-                            <img src={assets.remove_icon} alt="remove" />
-                            {/* <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="m12.5 7.5-5 5m0-5 5 5m5.833-2.5a8.333 8.333 0 1 1-16.667 0 8.333 8.333 0 0 1 16.667 0" stroke="#FF532E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg> */}
-                        </button>
+</div>     */}
                     </div>): ('')}
                     </div>
                 )

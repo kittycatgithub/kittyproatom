@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const FooterBar = () => {
   return (
@@ -6,7 +7,7 @@ const FooterBar = () => {
          <div
     className="flex h-14 justify-around border-t border-gray-200 bg-white shadow-lg"
   >
-    <div className="flex flex-col items-center justify-center text-gray-950">
+    <NavLink to={"/"} className="flex flex-col items-center justify-center text-gray-950">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -22,8 +23,8 @@ const FooterBar = () => {
         />
       </svg>
       <div className="text-sm">Home</div>
-    </div>
-    <div className="flex flex-col items-center justify-center text-gray-950">
+    </NavLink>
+    <NavLink to={"/"} className="flex flex-col items-center justify-center text-gray-950">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -39,13 +40,13 @@ const FooterBar = () => {
         />
       </svg>
       <div className="text-sm">Categories</div>
-    </div>
-    <div className="flex flex-col items-center justify-center text-gray-950">
+    </NavLink>
+    <NavLink to={"/cart"} className="flex flex-col items-center justify-center text-gray-950">
       <img src="https://www.svgrepo.com/show/440930/cart-add.svg" className='h-6.5' alt="" />
       
       <div className="text-sm">Cart</div>
-    </div>
-    <div className="flex flex-col items-center justify-center text-gray-950">
+    </NavLink>
+    <NavLink to={"/my-orders"} className="flex flex-col items-center justify-center text-gray-950">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -61,8 +62,8 @@ const FooterBar = () => {
         />
       </svg>
  
-      <div className="text-sm">Account</div>
-    </div>
+      <div className="text-sm">Orders</div>
+    </NavLink>
   </div>
   </div>
   )

@@ -46,74 +46,101 @@ const handleResume = ( product ) =>{
     navigate(`/fill-details/${product._id}`)
 }
 
-
-    return  (
-        <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
-            <div className='flex-1 max-w-4xl'>
-                <h1 className="text-3xl font-medium mb-6">
+return  (
+        <div className=" md:flex-row py-16 max-w-6xl w-full px-3 mx-auto">
+            <h1 className="text-3xl font-medium mb-6">
                     Shopping Cart <span className="text-sm text-indigo-500">{cart.length} Items</span>
                 </h1>
-
-                <div className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 text-base font-medium pb-3">
-                    <p className="text-left">Product Details</p>
-                    <p className="text-center">Status</p>
-                    <p className="text-center">Action</p>
-                </div>
+            <div className='grid lg:grid-cols-2 justify-between max-w-6xl space-y-3'>
+                
 {console.log(cart)}
                 {cart.map((product, index) => (
-                    <div key={index} className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 items-center text-sm md:text-base font-medium pt-3">
-                        <div className="flex items-center md:gap-6 gap-3">
+                    <div key={index} className="grid text-gray-700 border-1 border-gray-300 md:max-w-lg items-center text-sm md:text-base font-medium">
+                        <div className="flex md:gap-6 gap-3 justify-start p-2 items-start">
                             <div className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded">
                                 <img className="max-w-full h-full object-cover" src={product.path} alt={product.name} />
                             </div>
                             <div>
-                                <p className="hidden md:block text-black text-xl">{product.name}</p>
-                            {
-                                product.selectedOptions? (<div>
-                                     <p className="hidden md:block text-gray-700">Beverage - {product.selectedOptions.Beverage}</p>
-                                <p className="hidden md:block text-gray-700">Desserts - {product.selectedOptions.Desserts}</p>
-                                <p className="hidden md:block text-gray-700">Sandwiches - {product.selectedOptions.Sandwiches}</p>
-                                <p className="hidden md:block text-gray-700">Snacks - {product.selectedOptions.Snacks}</p>
-                               
-                                </div>):('')
-                            }
-                                {/* <div className="font-normal text-gray-500/70">
-                                    <p>Size: <span>{product.size || "N/A"}</span></p>
-                                    <div className='flex items-center'>
-                                        <p>Qty:</p>
-                                        <select className='outline-none'>
-                                            {Array(5).fill('').map((_, index) => (
-                                                <option key={index} value={index + 1}>{index + 1}</option>
-                                            ))}
-                                        </select>
-                                    </div>
-                                </div> */}
+                                <p className=" text-black text-xl">{product.name}</p>
+                                { product.category || product.keyword === "catering" ? 
+                                        (product.selectedOptions && Object.values(product.selectedOptions).map((item, index) => (
+                                  <p key={index} className="text-sm">{item}</p>
+                                )) ) : ('')
+                                }
+                                { product.category || product.keyword === "meal-thali-snack-boxes" ? 
+                                (product.menu && product.menu.map((item, index) => (
+                                  <p key={index} className="text-sm">{item}</p>
+                                ))) : ('')
+                                }
+                                {/* { product.category || product.keyword === "snacks" ? 
+                                        (product.selectedOptions && Object.values(product.selectedOptions).map((item, index) => (
+                                  <p key={index} className="text-sm">{item}</p>
+                                )) ) : ('')
+                                } */}
+                                {(product.category || product.keyword === "snacks") ? (
+  product.selectedOptions &&
+  Object.entries(product.selectedOptions).map(([key, value], index) => {
+    if (!value) return null;
+
+    if (typeof value === "string") {
+      return (
+        <p key={`${index}`} className="text-sm">
+          {key}: {value}
+        </p>
+      );
+    }
+
+    if (Array.isArray(value)) {
+      return value.map((item, subIndex) => {
+        const [subKey, subValue] = Object.entries(item)[0];
+        return (
+          <p key={`${index}-${subIndex}`} className="text-sm">
+            {key}: {subValue}
+          </p>
+        );
+      });
+    }
+
+    return null;
+  })
+) : null}
+
+                                { product.category  === "bulk-delivery" ? 
+                                        (product.selectedOptions && Object.values(product.selectedOptions).map((item, index) => (
+                                  <p key={index} className="text-sm">{item}</p>
+                                )) ) : ('')
+                                }
+                                 {/* {product.menu?.map( (item, index)=> 
+                                    <p key={index} className="text-sm"> {item}</p>
+                                  )} */}
+                                  
+                                {/* {product.selectedOptions && Object.values(product.selectedOptions).map((item, index) => (
+                                  <p key={index} className="text-sm">{item}</p>
+                                ))} */}
+
                             </div>
-                            
                         </div>
+                        <hr className="text-gray-300"/>
                         {/* <p className="text-center">${product.offerPrice * product.quantity}</p> */}
-                  <div className="">
-  <button onClick={ ()=> handleResume(product)  } className="text-lg bg-primary  px-6 py-1 rounded-full text-white shadow-xl shadow-gray-200 hover:shadow-sm">
+                  <div className="flex flex-row p-2 justify-around">
+  <button onClick={ ()=> handleResume(product)  } className="text-lg bg-primary p-1 rounded-full text-white shadow-xl shadow-gray-200 hover:shadow-sm">
     Resume 
   </button>
-</div>     
-  
-
-                        {/* <p className="text-center">${product.offerPrice * product.quantity}</p> */}
-                        <button onClick={()=> handleRemoveFromCart(product._id)} className="cursor-pointer mx-auto">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="m12.5 7.5-5 5m0-5 5 5m5.833-2.5a8.333 8.333 0 1 1-16.667 0 8.333 8.333 0 0 1 16.667 0" stroke="#FF532E" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+  {/* <p className="text-center">${product.offerPrice * product.quantity}</p> */}
+  <div className=" content-center">
+            <button onClick={()=> handleRemoveFromCart(product._id)} className="cursor-pointer mx-auto flex flex-row"> Remove
+                            <img src={assets.remove_icon} alt="remove" />
                         </button>
+  </div>
+                        
+                        </div>                             
                     </div>)
                 )}
-
-                <button onClick={()=>{navigate("/"); scrollTo(0,0)}} className="group cursor-pointer flex items-center mt-8 gap-2 text-indigo-500 font-medium">
+            </div>
+             <button onClick={()=>{navigate("/"); scrollTo(0,0)}} className="group cursor-pointer flex items-center mt-8 gap-2 text-indigo-500 font-medium">
                     <img className="group-hover:-translate-x-1 transition" src={assets.arrow_right_icon_colored} alt="arrow" />
                     Continue Shopping
                 </button>
-
-            </div>
 
             {/* <div className="max-w-[360px] w-full bg-gray-100/40 p-5 max-md:mt-16 border border-gray-300/70">
                 <h2 className="text-xl md:text-xl font-medium">Order Summary</h2>

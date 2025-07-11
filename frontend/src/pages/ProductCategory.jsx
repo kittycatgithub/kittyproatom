@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import { useParams } from 'react-router-dom'
 import { categories } from '../assets/assets'
@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 
 const ProductCategory = () => {
     const {products, navigate, currency, addToCart , cart, setCart, selectedPlatter, setSelectedPlatter} = useAppContext()
-
+    const [selectedOptions, setSelectedOptions] = useState({})
     const {category} = useParams()
     const searchCategory = categories.find( (item)=> item.path.toLowerCase() === category )
 
@@ -22,9 +22,24 @@ const ProductCategory = () => {
     return;
   }
 
-  setCart((prevCart) => [...prevCart, product]);
+   setCart((prevCart) => 
+    (Object.keys(prevCart).length !==0 ) ? ([...prevCart, {...product, selectedOptions}]) : (
+      [{ ...product, selectedOptions }]
+    )
+    )
+  //  setCart((prevCart) => 
+  //   (Object.keys(prevCart).length !==0 ) ? ([...prevCart, product, selectedOptions]) : (
+  //     [{ ...product, selectedOptions }]
+  //   )
+  //   )
   console.log(cart)
   toast.success("Added To Cart");
+  navigate(`/fill-details/${product._id}`)
+  
+  // setCart((prevCart) => 
+  //   [...prevCart, product, selectedOptions]);
+  // console.log(cart)
+  // toast.success("Added To Cart");
   // navigate("/fill-details")
 };
 
@@ -47,6 +62,7 @@ const handleRemoveFromCart = (productId) => {
       name: product.name,
       path: product.path,
       keyword: "snacks",
+      selectedOptions : selectedOptions
     };
     }
      if(product.category == "catering"){
@@ -159,7 +175,11 @@ const handleRemoveFromCart = (productId) => {
                               <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3z" />
                               <path d="M16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                             </svg>
-                            { cart.some((item) => item._id === product._id) ? (<div onClick={()=>navigate(`/fill-details/${product._id}`)}>Added</div>):(<div onClick={()=>navigate(`/fill-details/${product._id}`)}>Add To Cart</div>) }
+                            { cart.some((item) => item._id === product._id) ? (
+                              <div onClick={()=>navigate(`/fill-details/${product._id}`)}>Added</div>
+                              ):(
+                              <div onClick={()=>navigate(`/fill-details/${product._id}`)}>Add To Cart</div>
+                            ) }
                             
                             
             </button>
@@ -190,7 +210,7 @@ const handleRemoveFromCart = (productId) => {
                         }
                     </div>
             ): (
-                <div className='flex items-center justify-center h-[60vh]'>
+                <div className='flex items-center pl-10 md:pl-0 justify-center h-screen md:h-[60vh]'>
                   <p className='text-2xl font-medium'>No products found in this category.</p>
                 </div>
             )

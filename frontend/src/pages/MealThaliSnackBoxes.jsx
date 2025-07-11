@@ -34,7 +34,7 @@ const MealThaliSnackBoxes = () => {
 
   const handleProduct1 =  ( ) => {
   //  setSelectedPlatter( (prev) => ({...prev, name: product1.title})  ) 
-   setCart( (prev) => [...prev, selectedPlatter] )
+   setCart( (prev) => [...prev, selectedPlatter,] )
    toast.success("Added to Cart")
    console.log(selectedPlatter, cart)
   }
@@ -43,22 +43,19 @@ const MealThaliSnackBoxes = () => {
    console.log(selectedPlatter)
   //  navigate('/select-options');
   //  scrollTo(0,0)
-   
   }
   const handleProduct3 =  ( ) => {
    setSelectedPlatter( (prev) => ({...prev, name: product3.title, keyword:"snacks"})  ) 
    console.log(selectedPlatter)
    navigate('/select-options');
    scrollTo(0,0)
-
   }
   const handleProduct4 =  ( ) => {
    setSelectedPlatter( (prev) => ({...prev, name: product4.title, keyword:"snacks"})  ) 
    console.log(selectedPlatter)
    navigate('/select-optionsb')
-
+   scrollTo(0,0)
   }
-
   return (
     <div>
 <div className="max-w-full mx-auto bg-rose-100/30">

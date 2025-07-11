@@ -88,11 +88,11 @@ const NonVeg = () => {
     };
 
   return (
-     <div className='bg-[#EFF6FF]'>
+     <div className='bg-[#EFF6FF] min-h-screen '>
       { Object.keys(selectedPlatter).length !== 0 ? (
-         <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-full mb-16'>
+         <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-auto pb-16 md:pb-16'>
              {selectedPlatter.category == "bulk-delivery" && (
-             <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-4 md:space-y-6 md:py-10'>  
+             <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-7 md:space-y-6 pt-10 md:py-10'>  
              <div>  
                 <button onClick={() => {setIsActive("ChickenCurry")}} className={` rounded-md transition  justify-start text-start  ${isActive === "ChickenCurry" ? " text-primary" : " text-black"}`}> Chicken Curry </button>
                 {/* {selectedOptions.ChickenCurry !== null ? <p className='text-xs text-gray-500'>{selectedOptions.ChickenCurry}</p> : <p></p> } */}
@@ -115,7 +115,7 @@ const NonVeg = () => {
                 {/* {selectedOptions.Chapati !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Chapati}</p> : <p></p> } */}
              </div>
              <div>
-                <button onClick={() => {setIsActive("LacchaParatha")}} className={` rounded-md transition ${isActive === "LacchaParatha" ? " text-primary" : " text-black"}`}> Laccha Paratha </button>
+                <button onClick={() => {setIsActive("LacchaParatha")}} className={`leading-4 text-left rounded-md transition ${isActive === "LacchaParatha" ? " text-primary" : " text-black"}`}> Laccha Paratha </button>
                 {/* {selectedOptions.LacchaParatha !== null ? <p className='text-xs text-gray-500'>{selectedOptions.LacchaParatha}</p> : <p></p> } */}
              </div>
              <div>
@@ -249,7 +249,7 @@ const NonVeg = () => {
     <CustomizeBar/>
       </div>
       ) : (
-                <div className='flex items-center justify-center h-[60vh]'>
+                <div className='flex items-center pl-10 md:pl-0 justify-center h-screen md:h-[60vh]'>
                   <p className='text-2xl font-medium'>Kindly select the Platter Again...<br/>Do not refresh the page while selecting platter</p>
                 </div>) }
     </div>
