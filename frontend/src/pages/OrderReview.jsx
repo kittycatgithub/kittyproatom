@@ -63,6 +63,7 @@ const OrderReview = () => {
 const handleResume = ( product ) =>{
     // console.log(product._id)
     navigate(`/fill-details/${product._id}`)
+    scrollTo(0,0)
 }
 
 // Place Order Function
@@ -147,6 +148,7 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
         // Clear cart and redirect after processing all
         setCart([]);
         navigate('/my-orders');
+        scrollTo(0,0)
     }
 } catch (error) {
     toast.error("Something went wrong while placing the order.");

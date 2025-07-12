@@ -35,6 +35,7 @@ const ProductCategory = () => {
   console.log(cart)
   toast.success("Added To Cart");
   navigate(`/fill-details/${product._id}`)
+  scrollTo(0,0)
   
   // setCart((prevCart) => 
   //   [...prevCart, product, selectedOptions]);
@@ -176,9 +177,9 @@ const handleRemoveFromCart = (productId) => {
                               <path d="M16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                             </svg>
                             { cart.some((item) => item._id === product._id) ? (
-                              <div onClick={()=>navigate(`/fill-details/${product._id}`)}>Added</div>
+                              <div onClick={()=>{navigate(`/fill-details/${product._id}`); scrollTo(0,0)}}>Added</div>
                               ):(
-                              <div onClick={()=>navigate(`/fill-details/${product._id}`)}>Add To Cart</div>
+                              <div onClick={()=>{navigate(`/fill-details/${product._id}`); scrollTo(0,0)}}>Add To Cart</div>
                             ) }
                             
                             
