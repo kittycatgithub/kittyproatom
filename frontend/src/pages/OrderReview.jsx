@@ -131,7 +131,8 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
                     category: item.category,
                     offerPrice: item.offerPrice,
                     details: item.details,
-                    selectedOptions: item.selectedOptions
+                    selectedOptions: item.selectedOptions,
+                    menu: item.menu
                 }],
                 address: selectedAddress._id
             });
@@ -201,37 +202,33 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
                             <p key={index}> {item} </p> )
                         ) : ('')}
                         <div>
-                            <h1 className="text-xl text-purple-700">Platter 3012</h1>
+                            {/* <h1 className="text-xl text-purple-700">Platter 3012</h1> */}
                              {(product.category || product.keyword === "snacks") ? (
-  product.selectedOptions &&
-  Object.entries(product.selectedOptions).map(([key, value], index) => {
-    if (!value) return null;
-
-    if (typeof value === "string") {
-      return (
-        <p key={`${index}`} className="text-sm">
-          {key}: {value}
-        </p>
-      );
-    }
-
-    if (Array.isArray(value)) {
-      return value.map((item, subIndex) => {
-        const [subKey, subValue] = Object.entries(item)[0];
-        return (
-          <p key={`${index}-${subIndex}`} className="text-sm">
-            {key}: {subValue}
-          </p>
-        );
-      });
-    }
-
-    return null;
-  })
-) : null}
-
-                        </div>
-                       
+                                product.selectedOptions &&
+                                Object.entries(product.selectedOptions).map(([key, value], index) => {
+                                  if (!value) return null;                                
+                                  if (typeof value === "string") {
+                                    return (
+                                      <p key={`${index}`} className="text-sm">
+                                        {key}: {value}
+                                      </p>
+                                    );
+                                  }
+                                if (Array.isArray(value)) {
+                                      return value.map((item, subIndex) => {
+                                        const [subKey, subValue] = Object.entries(item)[0];
+                                        return (
+                                          <p key={`${index}-${subIndex}`} className="text-sm">
+                                            {key}: {subValue}
+                                          </p>
+                                        );
+                                      });
+                                    }
+                                
+                                    return null;
+                                  })
+                                ) : null}
+                        </div>                       
                             </div>
                             <div>
                                 <button onClick={()=> handleRemoveFromCart(product._id)} className="cursor-pointer mx-auto flex flex-row text-red-600 border p-2"> Remove  

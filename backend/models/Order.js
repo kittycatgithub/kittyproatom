@@ -13,7 +13,8 @@ const orderSchema = new mongoose.Schema({
         // guests: {type: Number, required: true},
         // menu: {type: Array,default: [], required: true},
        details: { type : Object, required: true},
-       selectedOptions: { type : Object, required: true}
+       selectedOptions: { type : Object, required: true},
+       menu: { type : Array, required: true}
         // product: {type: String, required: true, ref: 'product'},
         // quantity: {type: Number, required: true},
     }],
@@ -22,7 +23,7 @@ const orderSchema = new mongoose.Schema({
     status: {type: String, default: 'Order Placed'},
     paymentType: {type: String, required: true},
     isPaid: {type: Boolean, required: true, default: false},
-}, { timestamps: true })
+}, { timestamps: true, minimize: false })
 
 const Order = mongoose.models.order || mongoose.model('order', orderSchema)
 
