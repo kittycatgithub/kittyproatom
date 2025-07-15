@@ -32,7 +32,7 @@ const SelectOptionsBulkDelivery = () => {
             { name:"Mutter Paneer", img:"https://img.freepik.com/free-photo/top-view-delicious-soup-assortment_23-2148634458.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
             { name:"Paneer Passanda", img:"https://img.freepik.com/free-photo/top-view-delicious-soup-assortment_23-2148634458.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
             { name:"Paneer Do Pyaza", img:"https://img.freepik.com/free-photo/top-view-delicious-soup-assortment_23-2148634458.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
-            { name:"Paneer Adraki / Garlic", img:"https://img.freepik.com/free-photo/top-view-delicious-soup-assortment_23-2148634458.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
+            { name:"Paneer Adraki / Garlic", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgtTfqIdbhExB8jfDGXUEiUbzxQNG380WGMQ&s"},
             { name:"Paneer Saoji", img:"https://img.freepik.com/free-photo/top-view-delicious-soup-assortment_23-2148634458.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
             { name:"Paneer Bhurji", img:"https://img.freepik.com/free-photo/top-view-delicious-soup-assortment_23-2148634458.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
             { name:"Shahi Paneer", img:"https://img.freepik.com/free-photo/top-view-delicious-soup-assortment_23-2148634458.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},

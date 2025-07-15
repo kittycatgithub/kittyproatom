@@ -7,7 +7,7 @@ const FooterBar = () => {
          <div
     className="flex h-14 justify-around border-t border-gray-200 bg-white shadow-lg"
   >
-    <NavLink to={"/"} className="flex flex-col items-center justify-center text-gray-950">
+    <NavLink to={"/"} onClick={() => window.scrollTo(0, 0)} className="flex flex-col items-center justify-center text-gray-950">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -24,7 +24,7 @@ const FooterBar = () => {
       </svg>
       <div className="text-sm">Home</div>
     </NavLink>
-    <NavLink to={"/"} className="flex flex-col items-center justify-center text-gray-950">
+    <NavLink to={"/"} onClick={() => window.scrollTo(0, 0)} className="flex flex-col items-center justify-center text-gray-950">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -41,12 +41,14 @@ const FooterBar = () => {
       </svg>
       <div className="text-sm">Categories</div>
     </NavLink>
-    <NavLink to={"/cart"} className="flex flex-col items-center justify-center text-gray-950">
+    <NavLink to={"/cart"} onClick={() => window.scrollTo(0, 0)}
+       className="flex flex-col items-center justify-center text-gray-950">
       <img src="https://www.svgrepo.com/show/440930/cart-add.svg" className='h-6.5' alt="" />
       
       <div className="text-sm">Cart</div>
     </NavLink>
-    <NavLink to={"/my-orders"} className="flex flex-col items-center justify-center text-gray-950">
+    <NavLink to={"/my-orders"} onClick={() => window.scrollTo(0, 0)}
+      className="flex flex-col items-center justify-center text-gray-950">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
