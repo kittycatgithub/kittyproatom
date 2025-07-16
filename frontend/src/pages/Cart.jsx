@@ -55,7 +55,7 @@ return  (
                 
 {console.log(cart)}
                 {cart.map((product, index) => (
-                    <div key={index} className="grid text-gray-700 border-1 border-gray-300 md:max-w-lg items-center text-sm md:text-base font-medium">
+                    <div key={index} className="grid text-gray-700 border-1 border-gray-300 min-w-[340px]  md:max-w-lg items-center text-sm md:text-base font-medium">
                         <div className="flex md:gap-6 gap-3 justify-start p-2 items-start">
                             <div className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded">
                                 <img className="max-w-full h-full object-cover" src={product.path} alt={product.name} />

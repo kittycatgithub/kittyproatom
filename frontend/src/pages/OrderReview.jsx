@@ -212,7 +212,7 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
                                   if (typeof value === "string") {
                                     return (
                                       <p key={`${index}`} className="text-sm">
-                                        {key}: {value}
+                                        {key} -- {value}
                                       </p>
                                     );
                                   }

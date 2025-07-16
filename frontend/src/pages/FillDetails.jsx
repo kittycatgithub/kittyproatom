@@ -194,12 +194,12 @@ setCart((prev) => [
         <div>
           <label className="text-gray-600">Date</label>
           <div className="flex items-center border  rounded px-3 py-2 mt-1 shadow-sm">
-        {/* <Calendar className="w-5 h-5 mr-2 text-pink-500" /> */}
+        {/* <Calendar className="w-5 h-5 mr-2 text-orange-600" /> */}
          <button
         onClick={() => setShowModal(true)}
         className="flex items-center w-full text-left"
       >
-        <Calendar className="w-5 h-5 mr-2 text-pink-500" />
+        <Calendar className="w-5 h-5 mr-2 text-orange-600" />
         <span  className="text-gray-700 text-sm">
           {formattedDate || 'dd/mm/yyyy'}
         </span>
@@ -240,7 +240,7 @@ setCart((prev) => [
         <div>
           <label className="text-gray-600">Time</label>
           <div className="flex items-center border rounded px-1 py-2 mt-1">
-            <Clock className="w-5 h-5 mr-1 text-pink-500" />
+            <Clock className="w-5 h-5 mr-1 text-orange-600" />
        <button
         onClick={() => setShowModalTime(true)}
         className="rounded"
@@ -263,7 +263,7 @@ setCart((prev) => [
             <div className="flex border-b mb-4">
               <button
                 className={`flex-1 py-2 font-medium ${
-                  activeTab === 'morning' ? 'border-b-2 border-pink-500 text-pink-600' : 'text-gray-500'
+                  activeTab === 'morning' ? 'border-b-2 border-orange-600 text-orange-900' : 'text-gray-500'
                 }`}
                 onClick={() => setActiveTab('morning')}
               >
@@ -271,7 +271,7 @@ setCart((prev) => [
               </button>
               <button
                 className={`flex-1 py-2 font-medium ${
-                  activeTab === 'evening' ? 'border-b-2 border-pink-500 text-pink-600' : 'text-gray-500'
+                  activeTab === 'evening' ? 'border-b-2 border-orange-600 text-orange-900' : 'text-gray-500'
                 }`}
                 onClick={() => setActiveTab('evening')}
               >
@@ -284,7 +284,7 @@ setCart((prev) => [
                 <button
                   key={index}
                   onClick={() => handleSlotSelect(slot)}
-                  className="w-full border border-pink-500 text-pink-600 font-medium py-2 rounded hover:bg-pink-50"
+                  className="w-full border border-orange-600 text-orange-900 font-medium py-2 rounded hover:bg-orange-50"
                 >
                   {slot}
                 </button>
@@ -306,7 +306,7 @@ setCart((prev) => [
             {discount}% <span className="text-green-600">&#8595;</span>
           </div> */}
           {/* <div className="line-through text-sm text-gray-400">₹{originalPrice}</div> */}
-          <div className="text-lg text-purple-700 pl-1">₹{pricePerPlate}</div>
+          <div className="text-lg text-orange-700 pl-1">₹{pricePerPlate}</div>
         </div>
       </div>
 
@@ -319,19 +319,19 @@ setCart((prev) => [
             className="bg-gray-100 p-2 rounded-full"
             onClick={() => {setGuests(Math.max(minGuests, guests - 1)); handleFormChange('guests', guests-1)}}
           >
-            <Minus className="w-4 h-4 text-purple-700" />
+            <Minus className="w-4 h-4 text-orange-700" />
           </button>
           <input
             type="text"
             value={guests}
             readOnly
-            className="text-center w-20 py-1 rounded-lg border text-purple-700 font-bold"
+            className="text-center w-20 py-1 rounded-lg border text-orange-700 font-bold"
           />
           <button
-            className="bg-purple-100 p-2 rounded-full"
+            className="bg-orange-100 p-2 rounded-full"
             onClick={() => {setGuests(Math.min(maxGuests, guests + 1)); handleFormChange('guests', guests+1)}}
           >
-            <Plus className="w-4 h-4 text-purple-700" />
+            <Plus className="w-4 h-4 text-orange-700" />
           </button>
         </div>
         </div>
@@ -345,16 +345,16 @@ setCart((prev) => [
             value={guests}
             // onChange={(e) => {setGuests(parseInt(e.target.value));handleFormChange('guests', guests)}}
             onChange={(e) => setGuests(parseInt(e.target.value))}
-            className="w-full h-1 rounded-full bg-purple-300 accent-purple-600"
+            className="w-full h-1 rounded-full bg-orange-300 accent-orange-600"
           />
-          {/* <User className="absolute right-0 -top-4 text-purple-600 w-4 h-4 mt-5" /> */}
+          {/* <User className="absolute right-0 -top-4 text-orange-600 w-4 h-4 mt-5" /> */}
         </div>
         <div className="flex justify-between text-xs text-gray-500 mt-1">
           <span>10 (min)</span>
           <span>2000</span>
         </div>
 
-        <div className="text-xs text-purple-700 text-center mt-2">
+        <div className="text-xs text-orange-700 text-center mt-2">
           ✨ <strong>DYNAMIC PRICING</strong> more guests, more savings.
         </div>
       </div>
@@ -370,7 +370,7 @@ setCart((prev) => [
               </div>
             </div>
           </div>
-          <button className="text-pink-500 text-sm font-medium">Change</button>
+          <button className="text-orange-600 text-sm font-medium">Change</button>
         </div>
       </div> */}
       {/* <div className="mt-4">
@@ -384,7 +384,7 @@ setCart((prev) => [
     value={details.address || ""}
     onChange={(e) => handleFormChange('address', e.target.value) }
     placeholder="Enter your address"
-    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm"
+    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-orange-600 focus:border-orange-600 sm:text-sm"
   />
 </div> */}
 
@@ -397,7 +397,7 @@ setCart((prev) => [
       {/* Preferences Section */}
       {/* <div className="bg-white border rounded-xl p-4 mb-2 flex justify-between items-center shadow-sm">
         <div className="flex items-start gap-2">
-          <SlidersHorizontal className="text-purple-600 w-5 h-5 mt-1" />
+          <SlidersHorizontal className="text-orange-600 w-5 h-5 mt-1" />
           <div>
             <div className="font-medium text-sm text-gray-700">Set your preferences</div>
             <div className="text-xs text-gray-500">(optional) Spice level, veg count and more</div>
@@ -409,7 +409,7 @@ setCart((prev) => [
       {/* Doorstep Toggle */}
       {/* <div className="bg-white border rounded-xl p-4 mb-4 flex justify-between items-center shadow-sm">
         <div className="flex gap-2">
-          <Truck className="text-purple-600 w-5 h-5 mt-1" />
+          <Truck className="text-orange-600 w-5 h-5 mt-1" />
           <div>
             <div className="font-medium text-sm text-gray-700">DoorStep Service</div>
             <div className="text-xs text-gray-500">(Optional) Enable to get delivery to your door. Extra charges apply.</div>
@@ -417,7 +417,7 @@ setCart((prev) => [
         </div>
         <label className="inline-flex items-center cursor-pointer">
           <input type="checkbox" className="sr-only peer" />
-          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 rounded-full peer peer-checked:bg-purple-600"></div>
+          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-2 rounded-full peer peer-checked:bg-orange-600"></div>
         </label>
       </div> */}
 
