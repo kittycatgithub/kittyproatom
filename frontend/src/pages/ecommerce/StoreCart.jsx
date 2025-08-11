@@ -136,16 +136,16 @@ const StoreCart = () => {
 
                 {cartArray.map((product, index) => (
                     <div key={index} className="grid grid-cols-[2fr_1fr_1fr] text-black items-center text-sm md:text-base font-medium pt-3">
-                        <div className="flex items-center md:gap-6 gap-3">
+                        <div className="flex items-center md:gap-6 gap-2">
                             <div onClick={ ()=>{
                             //   navigate(`/menu/${product.category.toLowerCase()}`);
                               scrollTo(0,0)
                             } } className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded">
                                 {/* <img className="max-w-full h-full object-cover" src={`${import.meta.env.VITE_BACKEND_URL}/products/${product.image}` } alt={product.name} /> */}
-                                <img className="max-w-full h-full object-cover" src="https://madhurasrecipe.com/wp-content/uploads/2023/03/Patawarachi-Puranpoli-Featured.jpg" alt={product.name} />
+                                <img className="max-w-full h-full object-cover " src="https://madhurasrecipe.com/wp-content/uploads/2023/03/Patawarachi-Puranpoli-Featured.jpg" alt={product.name} />
                             </div>
                             <div>
-                                <p className="hidden md:block font-semibold">{product.name}</p>
+                                <p className="text-lg font-semibold">{product.name}</p>
                                 <div className="font-normal text-gray-black">
                                     {/* <p>Size: <span>{product.size || "N/A"}</span></p> */}
                                     <div className='flex items-center'>
@@ -156,7 +156,7 @@ const StoreCart = () => {
                                           value={storeCartItems[product._id]}
                                           onChange={e => updateStoreCartItem(product._id, e.target.value)}
                                           type="number"
-                                          className="w-20 border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                          className="w-10 md:w-20 border border-gray-300 rounded-md px-1 md:px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
                                         />
                                         {/* <select  className='outline-none'>
                                             {Array(cart[product._id] > 9 ? cart[product._id] : 9 ).fill('').map((_, index) => (
