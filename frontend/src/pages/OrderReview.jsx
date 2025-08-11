@@ -8,6 +8,7 @@ const OrderReview = () => {
     const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, cart ,setCart , navigate, axios, user} = useAppContext()
     const [cartArray , setCartArray] = useState([])
     const [addresses , setAddresses] = useState([])
+     const [note, setNote] = useState(" ");
 
     const [showAddress, setShowAddress] = useState(false)
     const [selectedAddress, setSelectedAddress] = useState(null)
@@ -135,7 +136,8 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
                     selectedOptions: item.selectedOptions,
                     menu: item.menu
                 }],
-                address: selectedAddress._id
+                address: selectedAddress._id,
+                note: note, 
             });
 
             if (data.success) {
@@ -163,6 +165,13 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
  }, [user] )
 
 
+
+const handleNote = (e) => {
+    e.preventDefault()
+  setNote(e.target.value);
+  console.log(note)
+};
+
     return  (
         <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
             <div className='flex-1 max-w-4xl lg:pr-1'>
@@ -177,17 +186,17 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
                 </div> */}
 {console.log(cart)}
                 {cart.map((product, index) => (
-                   <div key={index} className="">
+                   <div key={index} className="mb-3">
                      { product?.details?.date  ? 
                     //  { product.details  ? 
-                    (<div  className=" text-gray-500 items-center text-sm md:text-base font-medium pt-3 border pl-1">
+                    (<div  className=" text-gray-500 items-center text-sm md:text-base font-medium pt-3 border rounded-sm  pl-1 ">
                         <div className="flex flex-col lg:flex-row md:gap-6 gap-3">
                             <div className="flex flex-row gap-6">
                                 <div className="cursor-pointer w-24 h-24 flex items-start justify-start border border-gray-300 rounded">
                                 <img className="max-w-full h-full object-cover" src={product.path} alt={product.name} />
                             </div>
                             <div className="space-y-1 text-gray-700 text-md">
-                                <p className="text-xl text-purple-700">{product.name}</p>
+                                <p className="text-xl text-purple-700">Details</p>
                                 <p>Occassion - {product.details.occasion}</p>
                                 <p>Date - {product.details.date}</p>
                                 <p>Guests - {product.details.guests}</p>
@@ -197,22 +206,30 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
                                 </p>
                             </div>
                             </div>
-                            <div className="space-y-1 text-gray-700 text-md">
-                                <h1 className="text-xl text-purple-700">Platter</h1>
+                            <div className="space-y-1 text-gray-700 text-md  pl-2 md:pl-0">
+                                <h1 className="text-xl text-purple-700">{product.name}</h1>
                                  { product?.category === "meal-thali-snack-boxes" ? (
                             product.menu.map( (item, index) => 
                             <p key={index}> {item} </p> )
                         ) : ('')}
                         <div>
+                            <p className="text-xl text-purple-700">Selection</p>
                             {/* <h1 className="text-xl text-purple-700">Platter 3012</h1> */}
                              {(product.category || product.keyword === "snacks") ? (
                                 product.selectedOptions &&
                                 Object.entries(product.selectedOptions).map(([key, value], index) => {
                                   if (!value) return null;                                
+                                //   if (typeof value === "string") {
+                                //     return (
+                                //       <p key={`${index}`} className="text-sm">
+                                //         {key} -- {value}
+                                //       </p>
+                                //     );
+                                //   }
                                   if (typeof value === "string") {
                                     return (
-                                      <p key={`${index}`} className="text-sm">
-                                        {key} -- {value}
+                                      <p key={`${index}`} className="text-md">
+                                         {value}
                                       </p>
                                     );
                                   }
@@ -232,8 +249,21 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
                                 ) : null}
                         </div>                       
                             </div>
-                            <div>
-                                <button onClick={()=> handleRemoveFromCart(product._id)} className="cursor-pointer mx-auto flex flex-row text-red-600 border p-2"> Remove  
+                            <div className="pb-2">
+                                <div className="px-2 w-full">
+                                <div>
+                                    <label for="additionalNote" className="leading-7 text-lg text-purple-700">Additional Note</label>
+                                    <textarea value={note}
+                                              onChange={handleNote}
+                                              id="additionalNote" 
+                                              name="additionalNote" 
+                                              rows="6"
+                                              className="w-full font-normal rounded border border-gray-300 focus:border-blue-100 
+                                              focus:ring-1 focus:ring-blue-200 outline-none text-gray-900 py-0 px-2 
+                                              transition-colors duration-200 ease-in-out resize-none"></textarea>
+                                </div>
+                            </div>
+                                <button onClick={()=> handleRemoveFromCart(product._id)} className="cursor-pointer mx-auto flex flex-row text-red-600 border p-2 rounded-sm"> Remove  
                             <img src={assets.remove_icon} alt="remove" />
                         </button>
                             </div>

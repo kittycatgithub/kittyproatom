@@ -3,7 +3,7 @@ import Order from "../models/Order.js";
 // Place Order COD : /api/order/cod
 export const placeOrderCOD = async ( req, res ) => {
     try {
-        const { userId, platters, address } = req.body;
+        const { userId, platters, address, note } = req.body;
         if(!address || platters.length === 0){
             return res.json({ success: false, message: "Invalid Data" })
         } 
@@ -18,6 +18,7 @@ export const placeOrderCOD = async ( req, res ) => {
             userId,
             platters,
             address,
+            note,
             paymentType: "COD",
         })
         // amount,

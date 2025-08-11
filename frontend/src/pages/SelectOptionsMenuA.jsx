@@ -15,6 +15,7 @@ const SelectOptionsMenuA = () => {
       Savouries: null,      
       Desserts: null,
       Salads: null,
+      AdditionalOptions: null,
       PapadAchar: "Papad & Achar",
       BottledWater: "BottledWater"
     })
@@ -178,6 +179,20 @@ const SelectOptionsMenuA = () => {
             {name:"Mexican Salad", img:"https://veganheaven.org/wp-content/uploads/2020/05/Mexican-Salad-9.jpg"}, 
             {name:"Cheese Macaroni Salad", img:"https://www.eatingonadime.com/wp-content/uploads/2023/01/EasyMacaroniSalad-Square-Pic.jpg"}, 
             {name:"Corn Potato Salad", img:"https://www.peanutblossom.com/wp-content/uploads/2015/06/frenchpotatosalad-17.jpg"}]
+    },
+    {   name:"AdditionalOptions",
+        value: [{name:"Chaat Station", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy7hh_qeNemM83ninycYHcskgIBLlnrdzCeg&s"}, 
+            {name:"Chinese Station", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBE5WJsIwy_ILxk5qS8UTHcJRfosDEmIaohg&s"}, 
+            {name:"Live South Indian Station", img:"https://hemamagesh.com/wp-content/uploads/2019/07/South-Indian-breakfast.jpg"}, 
+            {name:"Welcome Drink Station", img:"https://i.pinimg.com/222x/04/62/8d/04628db52d5c27c26b5bdf61b76b3714.jpg"}, 
+            {name:"Live Egg Station", img:"https://hips.hearstapps.com/hmg-prod/images/breakfast-for-dinner-naan-best-egg-recipes-66c7aedec1268.png"}, 
+            {name:"Coffee / Masala Milk Station", img:"https://madhurasrecipe.com/wp-content/uploads/2023/10/Masala-Doodh-Featured-Image-585x585.jpg"}, 
+            {name:"Additional Starter", img:"https://images.immediate.co.uk/production/volatile/sites/30/2020/10/Buffalo-cauliflower-7825216.jpg"}, 
+            {name:"VIP Setting", img:"https://i.pinimg.com/236x/1e/2d/ba/1e2dba7e13cbe5c8aa86aa95bc7728e0.jpg"},
+            {name:"Roomali Roti Counter", img:"https://www.cookwithkushi.com/wp-content/uploads/2016/10/rumali_roti_roomali_roti_recipe.jpg"},
+            {name:"Tandoori Roti / Naan Counter", img:"https://sinfullyspicy.com/wp-content/uploads/2024/05/1200-by-1200-images.jpg"},
+            {name:"Tambul", img:"https://img-global.cpcdn.com/recipes/61270455d8104404/680x781cq80/%E0%A4%A4%E0%A4%AC%E0%A4%B2-tambul-recipe-in-marathi-%E0%A4%B0%E0%A4%B8%E0%A4%AA-%E0%A4%9A-%E0%A4%AE%E0%A4%96%E0%A4%AF-%E0%A4%AB%E0%A4%9F.jpg"},
+            ]
     }    
     ]
 
@@ -232,6 +247,11 @@ const SelectOptionsMenuA = () => {
              </div>
              <div>
                 <button onClick={() => {setIsActive("Salads")}} className={` rounded-md transition ${isActive === "Salads" ? " text-primary" : " text-black"}`}> Salads </button>
+                {/* {selectedOptions.Salads !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Salads}</p> : <p></p> } */}
+
+             </div>
+             <div>
+                <button onClick={() => {setIsActive("AdditionalOptions")}} className={` rounded-md transition ${isActive === "AdditionalOptions" ? " text-primary text-left" : " text-black text-left"}`}> Additional Options </button>
                 {/* {selectedOptions.Salads !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Salads}</p> : <p></p> } */}
 
              </div>
@@ -434,6 +454,24 @@ const SelectOptionsMenuA = () => {
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
                 {selectedOptions.Salads !== null && selectedOptions.Salads ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
+            </button>
+    </div>
+          </div>
+        ))}
+      </div>
+                     
+                 </div> } 
+                 {isActive === "AdditionalOptions" && <div>
+                {/* Card Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
+        {activeSnack?.value.map((snackItem, index) => (
+          <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
+            <div className='group'>
+            <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
+                {selectedOptions.AdditionalOptions !== null && selectedOptions.AdditionalOptions ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
             </button>
     </div>

@@ -34,7 +34,7 @@ const {navigate} = useAppContext()
 
   return (<>
     <div className="w-full h-full bg-rose-100/30 dark:bg-rose-100/30">
-<img className='lg:hidden w-full h-full' src="https://static.wixstatic.com/media/45b4de_7b0d160ebba44cd4866eacebef80dfd3~mv2.jpg/v1/fill/w_324,h_140,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/baron%20final%20Logo.jpg"/>
+<img className='lg:hidden w-full h-full' src="./assets/baron final Logo.avif"/>
     <div className="w-full h-full flex flex-col justify-center items-center py-10 px-6">
         <p className="pb-2 text-lg lg:lg:text-2xl text-rose-600 font-semibold">Category</p>
         <h2 className="text-3xl lg:text-5xl text-center font-serif font-semibold mb-10">Choose Your Best Food</h2>
@@ -71,7 +71,8 @@ const {navigate} = useAppContext()
         </div>
         </div>
         <div className='group cursor-pointer' onClick={()=> 
-          {navigate("/categories/bulk-delivery");
+          // {navigate("/categories/bulk-delivery");
+          {navigate("/select-non-veg/ek56j67k");
           // {navigate("/all-menu/bulk-delivery");
            scrollTo(0,0)}
           }>
@@ -86,7 +87,7 @@ const {navigate} = useAppContext()
         </div>
         <div className='group cursor-pointer' onClick={()=> {
           // navigate("/categories/frozen-products");
-          navigate("/all-menu/frozen-products");
+          navigate("/store/");
           scrollTo(0,0)
           }}>
         <div className="flex flex-col rounded-lg shadow-lg bg-white dark:bg-[#262525]  group-hover:scale-108 transition">
@@ -104,7 +105,7 @@ const {navigate} = useAppContext()
 </div>
 <OurClients/>
 {/* <BestSeller/> */}
-<BottomBanner/>
+{/* <BottomBanner/> */}
 <div className='block lg:hidden'><FooterBar/></div>
   </>
   )

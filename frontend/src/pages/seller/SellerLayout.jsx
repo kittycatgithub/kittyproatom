@@ -12,6 +12,7 @@ const SellerLayout = () => {
         { name: "Add Product", path: "/seller", icon: assets.add_icon },
         { name: "Product List", path: "/seller/product-list", icon: assets.product_list_icon },
         { name: "Orders", path: "/seller/orders", icon: assets.order_icon },
+        { name: "Product Orders", path: "/seller/productorders", icon: assets.order_icon },
     ];
 
     const logout = async () => {
@@ -33,7 +34,7 @@ const SellerLayout = () => {
         <>
             <div className="flex items-center justify-between px-4 md:px-8 border-b border-gray-300 py-3 bg-white">
                 <Link to="/">
-                    <img className="cursor-pointer w-24 md:w-24" src='https://static.wixstatic.com/media/45b4de_7b0d160ebba44cd4866eacebef80dfd3~mv2.jpg/v1/fill/w_203,h_87,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/baron%20final%20Logo.jpg' alt="logo"/>
+                    {/* <img className="cursor-pointer w-24 md:w-24" src='https://static.wixstatic.com/media/45b4de_7b0d160ebba44cd4866eacebef80dfd3~mv2.jpg/v1/fill/w_203,h_87,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/baron%20final%20Logo.jpg' alt="logo"/> */}
                     {/* <img className="cursor-pointer w-34 md:w-38" src={assets.logo} alt="logo"/> */}
                 </Link>
                 <div className="flex items-center gap-5 text-gray-500">

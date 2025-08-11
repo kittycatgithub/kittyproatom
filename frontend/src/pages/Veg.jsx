@@ -13,8 +13,6 @@ const Veg = () => {
       SeasonalVeggies: null,
       Daals: null,
       BasmatiRice : null,
-      Biryani:null,
-      Pulao:null,
       Chapati: null,
       LacchaParatha: null,
       Desserts: null    
@@ -136,16 +134,6 @@ const Veg = () => {
 {name:"Fruit Tart",img:"https://richanddelish.com/wp-content/uploads/2023/05/mini-fruit-tarts-2.jpg"},
          ]
     },
-    {       name:"Biryani",     
-        value: [
-          {name:"Biryani",img:"https://static.toiimg.com/thumb/53098310.cms?imgsize=579584&width=800&height=800"},
-         ]
-    },
-    {       name:"Pulao",
-        value: [
-          {name:"Pulao",img:"https://easyindiancookbook.com/wp-content/uploads/2022/03/coconut-milk-pulao-instant-pot-5.jpg"},
-         ]
-    },
     {       name:"Chapati",
         value: [
           {name:"Chapati",img:"https://www.tasteofhome.com/wp-content/uploads/2024/12/Chapati-Breads_EXPS_FT24_136906_JR_1213_2.jpg"},
@@ -200,14 +188,6 @@ const Veg = () => {
              <div>
                 <button onClick={() => {setIsActive("Desserts")}} className={`transition ${isActive === "Desserts" ? " text-primary" : " text-black"}`}> Desserts </button>
                 {/* {selectedOptions.Desserts !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Desserts}</p> : <p></p> } */}
-             </div>
-             <div>
-                <button onClick={() => {setIsActive("Biryani")}} className={`transition ${isActive === "Biryani" ? " text-primary" : " text-black"}`}> Biryani </button>
-                {/* {selectedOptions.Biryani !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Biryani}</p> : <p></p> } */}
-             </div>
-             <div>
-                <button onClick={() => {setIsActive("Pulao")}} className={`transition ${isActive === "Pulao" ? " text-primary" : " text-black"}`}> Pulao </button>
-                {/* {selectedOptions.Pulao !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Pulao}</p> : <p></p> } */}
              </div>
              <div>
                 <button onClick={() => {setIsActive("Chapati")}} className={`transition ${isActive === "Chapati" ? " text-primary" : " text-black"}`}> Chapati </button>
@@ -323,34 +303,7 @@ const Veg = () => {
             </button> </div> </div>
         ))}
       </div></div> }   
-                 {isActive === "Biryani" && <div>
-                {/* Card Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
-        {activeVeg?.value.map((snackItem, index) => (
-          <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
-            <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
-            <div className='group'>
-            <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.Biryani !== null && selectedOptions.Biryani ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button> </div> </div>
-        ))}
-      </div></div> }  
-                 {isActive === "Pulao" && <div>
-                {/* Card Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
-        {activeVeg?.value.map((snackItem, index) => (
-          <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
-            <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
-            <div className='group'>
-            <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.Pulao !== null && selectedOptions.Pulao ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button> </div> </div>
-        ))}
-      </div></div> }  
+                 
                  {isActive === "Chapati" && <div>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">

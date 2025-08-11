@@ -10,9 +10,10 @@ const orderSchema = new mongoose.Schema({
         offerPrice: {type: Number, required: true}, 
         details: { type : Object, required: true},
         selectedOptions: { type : Object, required: true},
-        menu: { type : Array, required: true}
+        menu: { type : Array, required: true},
     }],
     address: {type: String, required: true, ref:'address'},
+    note: {type: String, required: true},
     status: {type: String, default: 'Order Placed'},
     paymentType: {type: String, required: true},
     isPaid: {type: Boolean, required: true, default: false},

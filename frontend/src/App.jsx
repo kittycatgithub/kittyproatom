@@ -36,20 +36,28 @@ import SelectOptionsShortMenu from './pages/SelectOptionsShortMenu'
 import SelectOptionsBreakfast from './pages/SelectOptionsBreakfast'
 import Veg from './pages/Veg'
 import NonVeg from './pages/NonVeg'
+import Contact from './pages/Contact'
+import NavbarStore from './components/ecommerce/NavbarStore'
+import Store from './pages/ecommerce/Store'
+import StoreCart from './pages/ecommerce/StoreCart'
+import ProductOrders from './pages/seller/ProductOrders'
 
 const App = () => {
 
   const isSellerPath = useLocation().pathname.includes("seller")
   const isSelectPath = useLocation().pathname.includes("select")
+  const isStorePath = useLocation().pathname.includes("store")
   const {showUserLogin, isSeller} = useAppContext()
 
 
 
   return (<div className='text-default min-h-screen text-gray-700 bg-white'>
   {/* This Navbar will be displayed in all pages */}
-    {isSellerPath || isSelectPath ? null : <Navbar/> }
+    {isSellerPath || isSelectPath || isStorePath ? null : <Navbar/> }
         {/* {!isSellerPath && !isSelectPath && <Navbar/> } */}
 
+    { isStorePath && <NavbarStore/> }
+    
     {showUserLogin ? <Login/> : null}
 
     <Toaster />
@@ -60,6 +68,9 @@ const App = () => {
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/cart' element={<Cart/>}/>
+      <Route path='/storecart' element={<StoreCart/>}/>
+      <Route path='/contact' element={<Contact/>}/>
+      <Route path='/store' element={<Store/>}/>
       <Route path='/fill-details/:_id' element={<FillDetails/>}/>
       <Route path='/order-review' element={<OrderReview/>}/>
       {/* <Route path='/order-review/:_id' element={<OrderReview/>}/> */}
@@ -91,6 +102,7 @@ const App = () => {
         <Route path='dashboard' element={ <Dashboard/> } />
         <Route path='product-list' element={ <ProductList/> } />
         <Route path='orders' element={ <Orders/> } />
+        <Route path='productorders' element={ <ProductOrders/> } />
       </Route>
       {/* <Route path='/services' element={<Services/>}/> */}
       {/* <Route path='/contact' element={<Contact/>}/> */}

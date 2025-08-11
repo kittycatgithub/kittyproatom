@@ -1050,7 +1050,7 @@ export const actualProducts = [
   },
   {
     _id: "ek56j67k",
-    name: "Non-Vegetarian",
+    name: "Bulk Delivery",
     
     menu:[
       "Any Chicken Curry",
@@ -1470,6 +1470,122 @@ export const actualProducts = [
   //   inStock: true,
   // },
 ];
+
+export const saleProducts = [
+  {
+    _id: "bk04d32w",
+    name: "Pooran Poli",
+    category: "Pooran Poli",
+    price: 45,
+    offerPrice: 35,
+    image: [whole_wheat_bread_image],
+    description: [
+      "Healthy and nutritious",
+      "Made with whole wheat flour",
+      "Ideal for sandwiches and toast",
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "bk05e33v",
+    name: "Khowa Roti",
+    category: "Khowa Roti",
+    price: 100,
+    offerPrice: 40,
+    image: [vanilla_muffins_image],
+    description: [
+      "Soft and fluffy",
+      "Perfect for a quick snack",
+      "Made with real vanilla",
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "in01f25u",
+    name: "Aloo Paratha",
+    category: "Aloo Paratha",
+
+    price: 55,
+    offerPrice: 25,
+    image: [maggi_image],
+    description: [
+      "Instant and easy to cook",
+      "Delicious taste",
+      "Popular among kids and adults",
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "in02g26t",
+    name: "Mix Veg Paratha",
+    category: "Mix Veg Paratha",
+    price: 45,
+    offerPrice: 30,
+    image: [top_ramen_image],
+    description: [
+      "Quick and easy to prepare",
+      "Spicy and flavorful",
+      "Loved by college students and families",
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "in03h27s",
+    name: "Paneer Paratha",
+    category: "Paneer Paratha",
+    price: 35,
+    offerPrice: 35,
+    image: [knorr_soup_image],
+    description: [
+      "Convenient for on-the-go",
+      "Healthy and nutritious",
+      "Variety of flavors",
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "in04i28r",
+    name: "Laccha",
+    category: "Laccha",
+    price: 50,
+    offerPrice: 18,
+    image: [yippee_image],
+    description: [
+      "Non-fried noodles for healthier choice",
+      "Tasty and filling",
+      "Convenient for busy schedules",
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "in05j29q",
+    name: "Methi Paratha",
+    category: "Methi Paratha",
+    price: 40,
+    offerPrice: 12,
+    image: [maggi_oats_image],
+    description: [
+      "Healthy alternative with oats",
+      "Good for digestion",
+      "Perfect for breakfast or snacks",
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+]
 
 export const dummyAddress = [
   {

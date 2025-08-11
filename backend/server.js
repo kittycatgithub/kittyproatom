@@ -11,9 +11,10 @@ import cartRouter from './routes/cartRoute.js'
 import addressRouter from './routes/addressRoute.js'
 import orderRouter from './routes/orderRoute.js'
 import selectedRouter from './routes/selectedRoute.js'
+import storecartRouter from './routes/storecartRoute.js'
 
 const app = express() //created app using Express Package
-const port = process.env.PORT || 4000 
+const port = process.env.PORT || 4000
 
 await connectDB()
 
@@ -29,6 +30,7 @@ app.get('/', ( req, res )=> res.send("API is Working") )        // Creating Rout
 app.use('/api/user', userRouter)
 app.use('/api/seller', sellerRouter)
 app.use('/api/cart', cartRouter)
+app.use('/api/storecart', storecartRouter)
 app.use('/api/address', addressRouter)
 app.use('/api/order', orderRouter)
 app.use('/api/platter', selectedRouter) //Router for selectedPlatter

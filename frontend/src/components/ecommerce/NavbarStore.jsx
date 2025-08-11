@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import { assets } from '../assets/assets'
-import { useAppContext } from '../context/AppContext'
+import { assets } from '../../assets/assets'
+import { useAppContext } from '../../context/AppContext'
 import toast from 'react-hot-toast'
 
-const Navbar = () => {
+const NavbarStore = () => {
 
     const [open, setOpen] = React.useState(false)
-    const {user, setUser, setShowUserLogin, navigate, setSearchQuery, searchQuery, getCartCount, cart, axios} = useAppContext()
+    const {user, setUser, setShowUserLogin, navigate, setSearchQuery, searchQuery, getCartCount, cart, getStoreCartCount, axios} = useAppContext()
 
     const logout = async () => {
         try {
@@ -54,14 +54,15 @@ const Navbar = () => {
                     <img  src={assets.search_icon} alt='search' className='w-4 h-4'/>
                 </div> */}
 
-                <div onClick={()=>navigate('/cart')} className="relative cursor-pointer">
+                <div onClick={()=>navigate('/storecart')} className="relative cursor-pointer">
                     {/* <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M.583.583h2.333l1.564 7.81a1.17 1.17 0 0 0 1.166.94h5.67a1.17 1.17 0 0 0 1.167-.94l.933-4.893H3.5m2.333 8.75a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0m6.417 0a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
                     </svg> */}
                     <img  src={assets.nav_cart_icon} alt='cart' className='w-6 opacity-80'/>
 
                     {/* <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">{getCartCount()}</button> */}
-                    <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">{cart.length}</button>
+                    <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">{getStoreCartCount()}</button>
+                    {/* <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">{cart.length}</button> */}
                 </div>
 
             {!user ? (<button onClick={()=> setShowUserLogin(true)} className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition text-white rounded-full">
@@ -80,14 +81,14 @@ const Navbar = () => {
             
 <div className="flex items-center gap-6 sm:hidden">
 
-    <div onClick={()=>navigate('/cart')} className="relative cursor-pointer">
+    <div onClick={()=>navigate('/storecart')} className="relative cursor-pointer">
                     {/* <svg width="18" height="18" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M.583.583h2.333l1.564 7.81a1.17 1.17 0 0 0 1.166.94h5.67a1.17 1.17 0 0 0 1.167-.94l.933-4.893H3.5m2.333 8.75a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0m6.417 0a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
                     </svg> */}
                     <img  src={assets.nav_cart_icon} alt='cart' className='w-6 opacity-80'/>
 
-                    {/* <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">{getCartCount()}</button> */}
-                    <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">{cart.length}</button>
+                    <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">{getStoreCartCount()}</button>
+                    {/* <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">{cart.length}</button> */}
                 </div>
                 <button onClick={() => open ? setOpen(false) : setOpen(true)} aria-label="Menu" className="sm:hidden">
                 {/* Menu Icon SVG */}
@@ -150,4 +151,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default NavbarStore

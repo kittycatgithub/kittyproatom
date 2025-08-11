@@ -8,6 +8,8 @@ import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css';
 import { actualProducts } from "../assets/assets";
 import toast from "react-hot-toast";
+import { addDays } from "date-fns"; // for date calculation
+
 
 export default function FillDetails () {
     const {products, cart, setCart,  navigate} = useAppContext()
@@ -26,7 +28,7 @@ export default function FillDetails () {
   handleFormChange('guests',guests)
 }, [guests]);
 
-    const minGuests = 10;
+    const minGuests = 15;
     const maxGuests = 2000;
     const originalPrice = 249;
 
@@ -45,10 +47,28 @@ export default function FillDetails () {
   const getPricePerPlate = () => {
 
     if (filteredProduct[0].name == "Working Meal"){
-      if (guests <=2000) return 170
+     
+      if (guests <= 50) return 170
+      if (guests > 50 && guests <= 100) return (170 - (170 * 0.05)); // 5% discount
+      if ( guests > 100) return (170 - (170 * 0.10)); // 10% discount
     }
     if (filteredProduct[0].name == "Special Meal"){
-      if (guests <=2000) return 210
+      // if (guests <=2000) return 210
+      if (guests <= 50) return 210
+      if (guests > 50 && guests <= 100) return (210 - (210 * 0.05)); // 5% discount
+      if ( guests > 100) return (210 - (210 * 0.10)); // 10% discount
+    }
+    if (filteredProduct[0].name == "Snack Box A"){
+      // if (guests <=2000) return 210
+      if (guests <= 50) return 95
+      if (guests > 50 && guests <= 100) return (95 - (95 * 0.05)); // 5% discount
+      if ( guests > 100) return (95 - (95 * 0.10)); // 10% discount
+    }
+    if (filteredProduct[0].name == "Snack Box B"){
+      // if (guests <=2000) return 210
+      if (guests <= 50) return 120
+      if (guests > 50 && guests <= 100) return (120 - (120 * 0.05)); // 5% discount
+      if ( guests > 100) return (120 - (120 * 0.10)); // 10% discount
     }
 
     // if (guests >= 130) return 160;
@@ -78,8 +98,17 @@ export default function FillDetails () {
   const [activeTab, setActiveTab] = useState('morning');
   const [selectedSlot, setSelectedSlot] = useState('');
 
-  const morningSlots = ['7:30 AM - 8:30 AM', '8:30 AM - 9:30 AM', '9:30 AM - 10:30 AM'];
-  const eveningSlots = ['3:30 PM - 4:30 PM', '4:30 PM - 5:30 PM', '5:30 PM - 6:30 PM'];
+  const morningSlots = ['8:30 AM - 9:30 AM', '9:30 AM - 10:30 AM', '10:30 AM - 11:30 AM'];
+  const afternoonSlots = ['12:30 PM - 1:30 PM', '1:30 PM - 2:30 PM', '2:30 PM - 3:30 PM'];
+  const eveningSlots = ['4:30 PM - 5:30 PM', '5:30 PM - 6:30 PM','6:30 PM - 7:30 PM'];
+
+  // Choose slots based on activeTab
+const slots =
+  activeTab === "morning"
+    ? morningSlots
+    : activeTab === "afternoon"
+    ? afternoonSlots
+    : eveningSlots;
 
   const handleSlotSelect = (slot) => {
     setSelectedSlot(slot);
@@ -152,6 +181,11 @@ setCart((prev) => [
 //     // navigate(`/order-review/${_id}`)
     
    }
+  const now = new Date();
+const hours = now.getHours();
+
+// If before 6PM → 1 day ahead, else → 2 days ahead
+const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
 
   return (
     <div className="p-4 max-w-md mx-auto bg-white min-h-screen">
@@ -172,6 +206,8 @@ setCart((prev) => [
       <div className="mb-4">
         <label className="text-gray-600">Choose Your Occasion (Optional)</label>
         <select value={details.occasion || ""} onChange={(e) => handleFormChange('occasion', e.target.value)} className="w-full border rounded px-3 py-2 mt-1">
+          <option value="" >Select</option>
+          <option value="Travel" >Travel</option>
           <option value="Engagement" >Engagement</option>
           <option value="Workshops">Workshops</option>
           <option value="House Warming">House Warming</option>
@@ -195,7 +231,7 @@ setCart((prev) => [
           <label className="text-gray-600">Date</label>
           <div className="flex items-center border  rounded px-3 py-2 mt-1 shadow-sm">
         {/* <Calendar className="w-5 h-5 mr-2 text-orange-600" /> */}
-         <button
+         {/* <button
         onClick={() => setShowModal(true)}
         className="flex items-center w-full text-left"
       >
@@ -203,8 +239,16 @@ setCart((prev) => [
         <span  className="text-gray-700 text-sm">
           {formattedDate || 'dd/mm/yyyy'}
         </span>
-      </button>
-
+      </button> */}
+      <button
+  onClick={() => setShowModal(true)}
+  className="flex items-center w-full text-left"
+>
+  <Calendar className="w-5 h-5 mr-2 text-orange-600" />
+  <span className="text-gray-700 text-sm">
+    {formattedDate || 'dd/mm/yyyy'}
+  </span>
+</button>
       {/* {formattedDate && (
         <p className="mt-3 text-green-600">
           Selected Date: <strong>{formattedDate}</strong>
@@ -212,7 +256,7 @@ setCart((prev) => [
       )} */}
 
       {/* Modal */}
-      {showModal && (
+      {/* {showModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 shadow-lg">
             <h2 className="text-lg  mb-4">Pick a date</h2>
@@ -232,7 +276,29 @@ setCart((prev) => [
             </div>
           </div>
         </div>
-      )}
+      )} */}
+      {showModal && (
+  <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+    <div className="bg-white rounded-lg p-6 shadow-lg">
+      <h2 className="text-lg mb-4">Pick a date</h2>
+      <DatePicker
+        selected={selectedDate}
+        onChange={handleDateChange}
+        dateFormat="dd/MM/yyyy"
+        inline
+        minDate={minSelectableDate} // dynamically set
+      />
+      <div className="text-right mt-4">
+        <button
+          onClick={() => setShowModal(false)}
+          className="text-sm text-red-500 hover:underline"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
       </div>   
     </div>
 
@@ -267,7 +333,15 @@ setCart((prev) => [
                 }`}
                 onClick={() => setActiveTab('morning')}
               >
-                Morning Slot
+                Morning
+              </button>
+              <button
+                className={`flex-1 py-2 font-medium ${
+                  activeTab === 'afternoon' ? 'border-b-2 border-orange-600 text-orange-900' : 'text-gray-500'
+                }`}
+                onClick={() => setActiveTab('afternoon')}
+              >
+                Afternoon
               </button>
               <button
                 className={`flex-1 py-2 font-medium ${
@@ -275,11 +349,11 @@ setCart((prev) => [
                 }`}
                 onClick={() => setActiveTab('evening')}
               >
-                Evening Slot
+                Evening
               </button>
             </div>
 
-            <div className="grid gap-3">
+            {/* <div className="grid gap-3">
               {(activeTab === 'morning' ? morningSlots : eveningSlots).map((slot, index) => (
                 <button
                   key={index}
@@ -289,7 +363,18 @@ setCart((prev) => [
                   {slot}
                 </button>
               ))}
-            </div>
+            </div> */}
+            <div className="grid gap-3">
+  {slots.map((slot, index) => (
+    <button
+      key={index}
+      onClick={() => handleSlotSelect(slot)}
+      className="w-full border border-orange-600 text-orange-900 font-medium py-2 rounded hover:bg-orange-50"
+    >
+      {slot}
+    </button>
+  ))}
+</div>
           </div>
         </div>
       )}
@@ -350,7 +435,7 @@ setCart((prev) => [
           {/* <User className="absolute right-0 -top-4 text-orange-600 w-4 h-4 mt-5" /> */}
         </div>
         <div className="flex justify-between text-xs text-gray-500 mt-1">
-          <span>10 (min)</span>
+          <span>15 (min)</span>
           <span>2000</span>
         </div>
 

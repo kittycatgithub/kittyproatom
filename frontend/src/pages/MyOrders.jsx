@@ -53,7 +53,7 @@ const MyOrders = () => {
                   </div>
                   <div className='ml-4 text-gray-800'>
                     {console.log(item)}
-                    <h2 className='text-xl font-medium '>{item.name}</h2>
+                    <h2 className='text-xl font-medium '>Details</h2>
                     <p>Occassion : {item.details.occasion || ""}</p>
                     <p>Guests : {item.details.guests || "1"}</p>
                   <p>Status : {order.status || "Order Placed"}</p>
@@ -64,13 +64,22 @@ const MyOrders = () => {
                   </div>
                 </div>
                 <div className='flex flex-col justify-center md:ml-8 mb-4 md:mb-0 text-gray-800'>
-                   <h2 className='text-xl font-medium '>Platter</h2>
-                    { Object.keys(item?.selectedOptions).length !== 0 ? (
+                   <h2 className='text-xl font-medium '>{item.name}</h2>
+                    {/* { Object.keys(item?.selectedOptions).length !== 0 ? (
                       Object.entries(item.selectedOptions)
                         .filter(([key, value]) => value !== null)
                         .map(([key, value], index) => (
                           <p key={index}>
                             <span className='text-purple-800'>{key} : </span> {value}
+                          </p>
+                      ))
+                    ) : (null)}  */}
+                    { Object.keys(item?.selectedOptions).length !== 0 ? (
+                      Object.entries(item.selectedOptions)
+                        .filter(([key, value]) => value !== null)
+                        .map(([key, value], index) => (
+                          <p key={index}>
+                            {value}
                           </p>
                       ))
                     ) : (null)} 

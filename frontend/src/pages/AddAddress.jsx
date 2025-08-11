@@ -50,7 +50,6 @@ const AddAddress = () => {
             if(data.success){
                 toast.success(data.message)
                 // navigate('/cart')
-                navigate('/order-review')
             } else {
                 toast.error(data.message)
             }
@@ -99,9 +98,20 @@ const AddAddress = () => {
                     hover:bg-primary-dull transition cursor-pointer uppercase
                     '>
                         Save Address</button>
+                    
                 </form>
+                <div className='grid grid-cols-2'> 
+                        <button onClick={()=>navigate('/store')} className='w-1/2 mt-6 bg-button text-white py-3 
+                    hover:bg-button-dull transition cursor-pointer uppercase
+                    '>
+                        Go To Store</button>
+                        <button onClick={()=>navigate('/')} className='w-1/2 mt-6 bg-button text-white py-3 
+                    hover:bg-primary-dull transition cursor-pointer uppercase
+                    '>
+                        Go To Home</button></div>
             </div>
             <img className='md:mr-16 mb-16 md:mt-0' src={assets.add_address_iamge} alt="Add Address" />
+            
         </div>
     </div>
   )
