@@ -18,7 +18,6 @@ const NonVeg = () => {
       BasmatiRice: null,
       NonVegCurry:null,
       NonVegRice:null,
-      Starters: null,
       Rotis:null,
       Desserts: null,
       Savouries: null,
