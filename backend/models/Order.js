@@ -10,6 +10,7 @@ const orderSchema = new mongoose.Schema({
         offerPrice: {type: Number, required: true}, 
         details: { type : Object, required: true},
         selectedOptions: { type : Object, required: true},
+        productDetails: { type : Object},
         menu: { type : Array, required: true},
     }],
     address: {type: String, required: true, ref:'address'},

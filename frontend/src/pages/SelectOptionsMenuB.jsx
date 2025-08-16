@@ -16,10 +16,11 @@ const SelectOptionsMenuB = () => {
       SeasonalVeggies: null,
       Daals: null,
       BasmatiRice: null,
-      Rotis: null,     
+      Rotis: [{item1:null},{item2:null}],     
       Savouries: null, 
       Desserts: null,          
       Salads: null,
+      AdditionalOptions: null,
       PapadAchar: "Papad & Achar",
       BottledWater: "BottledWater"
     })    
@@ -223,22 +224,78 @@ const SelectOptionsMenuB = () => {
             {name:"Khus Sharbat", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6XBhoX5Q7wBckCGPHrFJkFDGJ-shyW82ayA&s"}, 
             {name:"Kokam Sharbat", img:"https://m.media-amazon.com/images/I/61zcbdBuJTL._UF1000,1000_QL80_.jpg"}, 
             {name:"Sole Kadhi", img:"https://www.vegrecipesofindia.com/wp-content/uploads/2012/03/sol-kadhi-recipe-1.jpg"}]
-    },           
+    },   
+    {   name:"AdditionalOptions",
+        value: [{name:"Chaat Station", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy7hh_qeNemM83ninycYHcskgIBLlnrdzCeg&s"}, 
+            {name:"Chinese Station", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBE5WJsIwy_ILxk5qS8UTHcJRfosDEmIaohg&s"}, 
+            {name:"Live South Indian Station", img:"https://hemamagesh.com/wp-content/uploads/2019/07/South-Indian-breakfast.jpg"}, 
+            {name:"Welcome Drink Station", img:"https://i.pinimg.com/222x/04/62/8d/04628db52d5c27c26b5bdf61b76b3714.jpg"}, 
+            {name:"Live Egg Station", img:"https://hips.hearstapps.com/hmg-prod/images/breakfast-for-dinner-naan-best-egg-recipes-66c7aedec1268.png"}, 
+            {name:"Coffee / Masala Milk Station", img:"https://madhurasrecipe.com/wp-content/uploads/2023/10/Masala-Doodh-Featured-Image-585x585.jpg"}, 
+            {name:"Additional Starter", img:"https://images.immediate.co.uk/production/volatile/sites/30/2020/10/Buffalo-cauliflower-7825216.jpg"}, 
+            {name:"VIP Setting", img:"https://i.pinimg.com/236x/1e/2d/ba/1e2dba7e13cbe5c8aa86aa95bc7728e0.jpg"},
+            {name:"Roomali Roti Counter", img:"https://www.cookwithkushi.com/wp-content/uploads/2016/10/rumali_roti_roomali_roti_recipe.jpg"},
+            {name:"Tandoori Roti / Naan Counter", img:"https://sinfullyspicy.com/wp-content/uploads/2024/05/1200-by-1200-images.jpg"},
+            {name:"Tambul", img:"https://img-global.cpcdn.com/recipes/61270455d8104404/680x781cq80/%E0%A4%A4%E0%A4%AC%E0%A4%B2-tambul-recipe-in-marathi-%E0%A4%B0%E0%A4%B8%E0%A4%AA-%E0%A4%9A-%E0%A4%AE%E0%A4%96%E0%A4%AF-%E0%A4%AB%E0%A4%9F.jpg"},
+            ]
+    }          
     ]
 
     const [isActive, setIsActive] = useState("SpecialVeggies")
       const activeSnack = snacks.find(item => item.name === isActive);
     //   console.log(activeSnack)
 
-    const handleSelectedOptions = ( category, itemName ) =>{
-      setSelectedOptions( (prev)=> {  
-      const updated = {...prev, [category]: itemName};
-      console.log("selected options:", updated);
-      return updated;
-      } )
-      setSelectedPlatter( (prev)=> ({ ...prev, selectedOptions: selectedOptions })  )
-      //  console.log("Hello",selectedOptions)
-    };
+    // const handleSelectedOptions = ( category, itemName ) =>{
+    //   setSelectedOptions( (prev)=> {  
+    //   const updated = {...prev, [category]: itemName};
+    //   console.log("selected options:", updated);
+    //   return updated;
+    //   } )
+    //   setSelectedPlatter( (prev)=> ({ ...prev, selectedOptions: selectedOptions })  )
+    //   //  console.log("Hello",selectedOptions)
+    // };
+
+    const handleSelectedOptions = (category, itemName) => {
+  setSelectedOptions((prev) => {
+    const updated = { ...prev };
+
+    if (category === "Rotis") {
+      const rotis = [...prev.Rotis];
+
+      // Check if already selected
+      if (rotis.some((r) => Object.values(r)[0] === itemName)) {
+        // Deselect if clicked again
+        const newRotis = rotis.map((r) =>
+          Object.values(r)[0] === itemName ? { [Object.keys(r)[0]]: null } : r
+        );
+        updated.Rotis = newRotis;
+      } else {
+        // Find first empty slot
+        const emptyIndex = rotis.findIndex((r) => Object.values(r)[0] === null);
+
+        if (emptyIndex !== -1) {
+          rotis[emptyIndex] = { [`item${emptyIndex + 1}`]: itemName };
+        } else {
+          // Replace first slot if both are filled
+          rotis[0] = { item1: itemName };
+        }
+
+        updated.Rotis = rotis;
+      }
+    } else {
+      updated[category] = itemName;
+    }
+
+    console.log("selected options:", updated);
+    return updated;
+  });
+   setSelectedPlatter(prev => ({
+  ...prev,
+  selectedOptions: selectedOptions
+}));    
+};
+
+    
 
   return (
     <div className='bg-[#EFF6FF]'>
@@ -293,6 +350,9 @@ const SelectOptionsMenuB = () => {
                 {/* {selectedOptions.WelcomeDrinks !== null ? <p className='text-xs text-gray-500'>{selectedOptions.WelcomeDrinks}</p> : <p></p> } */}
              </div>
              <div>
+                <button onClick={() => {setIsActive("AdditionalOptions")}} className={` rounded-md transition ${isActive === "AdditionalOptions" ? " text-primary text-left" : " text-black text-left"}`}> Additional Options </button>
+            </div>
+             <div>
                 <button className="rounded-md transition text-black"> Papad & Achar </button>
              </div>
              <div>
@@ -306,7 +366,7 @@ const SelectOptionsMenuB = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
              <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -323,7 +383,7 @@ const SelectOptionsMenuB = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -341,7 +401,7 @@ const SelectOptionsMenuB = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -359,7 +419,7 @@ const SelectOptionsMenuB = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -372,12 +432,11 @@ const SelectOptionsMenuB = () => {
       </div>
                      
                  </div> } 
-                 {isActive === "Rotis" && <div>
-                {/* Card Grid */}
+                 {/* {isActive === "Rotis" && <div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -387,15 +446,55 @@ const SelectOptionsMenuB = () => {
     </div>
           </div>
         ))}
-      </div>
-                     
-                 </div> } 
+      </div>  </div> }  */}
+      {isActive === "Rotis" && (
+  <div>
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4">
+      {activeSnack?.value.map((snackItem, index) => {
+        const isSelected = selectedOptions.Rotis.some(
+          (r) => Object.values(r)[0] === snackItem.name
+        );
+
+        return (
+          <div
+            key={index}
+            className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center justify-between"
+          >
+            <img
+              src={snackItem.img}
+              alt={snackItem.name}
+              className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3"
+            />
+            <div className="text-black text-md md:text-lg text-center">
+              {snackItem.name}
+            </div>
+
+            <button
+              onClick={() => handleSelectedOptions("Rotis", snackItem.name)}
+            >
+              {isSelected ? (
+                <div className="bg-primary text-white mt-3 px-4 py-1 border-2 border-primary rounded-lg">
+                  Selected
+                </div>
+              ) : (
+                <div className="mt-3 px-4 py-1 border-2 border-primary text-primary rounded-lg hover:bg-primary hover:text-white">
+                  Select
+                </div>
+              )}
+            </button>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+)}
+
                  {isActive === "Daals" && <div>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -413,7 +512,7 @@ const SelectOptionsMenuB = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -431,7 +530,7 @@ const SelectOptionsMenuB = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -449,7 +548,7 @@ const SelectOptionsMenuB = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -467,7 +566,7 @@ const SelectOptionsMenuB = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -485,7 +584,7 @@ const SelectOptionsMenuB = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -503,7 +602,7 @@ const SelectOptionsMenuB = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -521,7 +620,7 @@ const SelectOptionsMenuB = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
@@ -534,12 +633,28 @@ const SelectOptionsMenuB = () => {
       </div>
                      
                  </div> } 
+                  {isActive === "AdditionalOptions" && <div>
+                {/* Card Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
+        {activeSnack?.value.map((snackItem, index) => (
+          <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
+            <div className='group'>
+            <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
+                {selectedOptions.AdditionalOptions !== null && selectedOptions.AdditionalOptions ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
+            </button>
+    </div>
+          </div>
+        ))}
+      </div></div> }
                  {isActive === "Chinese" && <div>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>

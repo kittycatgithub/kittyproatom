@@ -13,7 +13,6 @@ const MyOrders = () => {
       if(data.success){
         setMyOrders(data.orders)
         console.log(data.orders)
-        console.log("first")
       }
     } catch (error) {
       console.log(error)
@@ -34,13 +33,13 @@ const MyOrders = () => {
              <div className='w-16 h-0.5 bg-primary rounded-full'>
              </div>
         </div>
-       {myOrders.map(
+       {/* {myOrders.map(
          (order, index)=>(
           <div key={index} className='border border-gray-300 rounded-lg mb-10 p-4 py-5 max-w-5xl'>
             <p className='flex justify-between md:items-center text-gray-600 md:font-medium max-md:flex-col'>
               <span>OrderId : {order._id}</span>
               <span>Payment : {order.paymentType}</span>
-              {/* <span>Total Amount : {currency} {order.amount}</span> */}
+              <span>Total Amount : {currency} {order.amount}</span>
             </p>
             {order.platters.map( (item, index)=>(
               <div key={index} className={`relative bg-white text-gray-500/70 
@@ -48,7 +47,7 @@ const MyOrders = () => {
               border-gray-300 flex flex-col md:flex-row md:items-start justify-between py-4 md:gap-3 w-full max-w-4xl`}>
                 <div className='flex items-center mb-4 md:mb-0'>
                   <div className='bg-primary/10 p-1 rounded-lg'>
-                    {/* <img src={item.product.image[0]} alt="" className='w-16 h-16' /> */}
+                    <img src={item.product.image[0]} alt="" className='w-16 h-16' />
                     <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjcOxOqdDh-zCFVk8opYwB8kh4X2wgih4rww&s' alt="" className='w-16 h-16' />
                   </div>
                   <div className='ml-4 text-gray-800'>
@@ -65,7 +64,7 @@ const MyOrders = () => {
                 </div>
                 <div className='flex flex-col justify-center md:ml-8 mb-4 md:mb-0 text-gray-800'>
                    <h2 className='text-xl font-medium '>{item.name}</h2>
-                    {/* { Object.keys(item?.selectedOptions).length !== 0 ? (
+                    { Object.keys(item?.selectedOptions).length !== 0 ? (
                       Object.entries(item.selectedOptions)
                         .filter(([key, value]) => value !== null)
                         .map(([key, value], index) => (
@@ -73,7 +72,7 @@ const MyOrders = () => {
                             <span className='text-purple-800'>{key} : </span> {value}
                           </p>
                       ))
-                    ) : (null)}  */}
+                    ) : (null)} 
                     { Object.keys(item?.selectedOptions).length !== 0 ? (
                       Object.entries(item.selectedOptions)
                         .filter(([key, value]) => value !== null)
@@ -88,16 +87,16 @@ const MyOrders = () => {
                           <p key={index}> {item} </p>
                       ))
                     ) : (null)} 
-                  {/* <p>Guests : {item.details.guests || "1"}</p>
+                  <p>Guests : {item.details.guests || "1"}</p>
                   <p>Status : {order.status || "Order Placed"}</p>
-                  <p>Date : {new Date(order.createdAt).toLocaleDateString()}</p> */}
+                  <p>Date : {new Date(order.createdAt).toLocaleDateString()}</p>
                 </div>
                 <div className="text-sm md:text-base text-black/60">
                         <p className='text-black/80'>{order.address.firstName} {order.address.lastName}</p>
 
                         <p>{order.address.street}, {order.address.city} </p>
                         <p> {order.address.state}, {order.address.zipcode} {order.address.country} - {order.address.pincode}</p>
-                        {/* <p> {order.address.state}, {order.address.pincode}, {order.address.country}</p> */}
+                        <p> {order.address.state}, {order.address.pincode}, {order.address.country}</p>
                         <p></p>
                         <p>{order.address.phone}</p>
                     </div>
@@ -105,7 +104,164 @@ const MyOrders = () => {
             ) )}
           </div>
          )
-       )}
+       )} */}
+       {myOrders.map((order, index) => (
+  <div key={index} className="border border-gray-300 rounded-lg mb-10 p-4 py-5 max-w-6xl">
+    <p className="flex justify-between md:items-center text-gray-600 md:font-medium max-md:flex-col">
+      <span>OrderId : {order._id}</span>
+      <span>Payment : {order.paymentType}</span>
+    </p>
+
+    {order.platters.map((item, index) => (
+      <div
+        key={index}
+        className={`relative bg-white text-gray-500/70 
+          ${order.platters.length !== index + 1 && "border-b"} 
+          border-gray-300 flex flex-col md:flex-row md:items-start justify-between py-4 md:gap-3 w-full max-w-4xl`}
+      >
+        <div className="flex items-center mb-4 md:mb-0">
+          <div className="bg-primary/10 p-1 rounded-lg">
+            <img
+              src={item.path || "https://via.placeholder.com/100"}
+              alt={item.name}
+              className="w-16 h-16"
+            />
+          </div>
+          <div className="ml-4 text-gray-800">
+            <h2 className="text-xl font-medium ">Details</h2>
+            <p>Occassion : {item?.details?.occasion || ""}</p>
+            <p>Guests : {item?.details?.guests || "1"}</p>
+            <p>Status : {order.status || "Order Placed"}</p>
+            <p>Date : {new Date(order.createdAt).toLocaleDateString()}</p>
+            <p className="text-gray-900 text-lg font-medium">
+              Amount : {currency} {item?.offerPrice * (item?.details?.guests || 1)}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col justify-center md:ml-8 mb-4 md:mb-0 text-gray-800 ">
+          <h2 className="text-xl font-medium ">{item.name}</h2>
+
+          {/* ✅ Handle selectedOptions safely */}
+          {/* {item.selectedOptions && typeof item.selectedOptions === "object" ? (
+            Array.isArray(item.selectedOptions) ? (
+              // case: array of objects [{item1: "..."}, {item2: "..."}]
+              item.selectedOptions.map((opt, idx) =>
+                Object.entries(opt).map(([k, v]) => (
+                  <p key={k + idx}>
+                    <span className="text-purple-800">{k}:</span> {v}
+                  </p>
+                ))
+              )
+            ) : (
+              // case: normal object {key: value}
+              Object.entries(item.selectedOptions)
+                .filter(([_, value]) => value)
+                .map(([key, value], idx) => (
+                  <p key={key + idx} className=' max-w-sm w-sm'>
+                    <span className="text-purple-800">{key} ⟶ </span>{" "}
+                    {Array.isArray(value) ? value.join(", ") : value}
+                  </p>
+                ))
+            )
+          ) : null} */}
+{item.category === "bulk-delivery" ? (
+  <div>
+    {item.productDetails &&
+      Object.entries(item.productDetails).map(([name, detail], idx) => (
+        <p key={idx} className="text-sm">
+          <span className="font-medium"> {name} </span> ⟶ {detail.qty} {detail.unit}
+        </p>
+      ))}
+
+    {/* <h3 className="font-semibold text-lg text-purple-800 mt-4 mb-2">Platters</h3>
+    <ul className="list-disc list-inside text-sm">
+      {item.menu?.map((platter, idx) => (
+        <li key={idx}>{platter}</li>
+      ))}
+    </ul> */}
+  </div>
+) : (
+  <div>
+    {item.selectedOptions && typeof item.selectedOptions === "object"  ? (
+      Object.entries(item.selectedOptions)
+        .filter(([_, value]) => value !== null)
+        .map(([key, value], idx) => {
+          let displayValue = "";
+
+          if (Array.isArray(value)) {
+            displayValue = value
+              .filter((v) => v !== null)
+              .map((v) => {
+                if (typeof v === "object" && v !== null) {
+                  return Object.values(v).join(", ");
+                }
+                return v;
+              })
+              .join(", ");
+          } else if (typeof value === "object") {
+            displayValue = Object.values(value).join(", ");
+          } else {
+            displayValue = value;
+          }
+
+          return (
+            <p key={key + idx}>
+              <span className="text-purple-800">{key}:</span> {displayValue}
+            </p>
+          );
+        })
+    ) : typeof item.selectedOptions === "string" ? (
+      <p>{item.selectedOptions}</p>
+    ) : null}
+
+    {/* Show menu only for NON bulk-delivery */}
+    {item.menu && (
+      <div>
+        <h3 className="font-semibold text-lg text-purple-800 mt-4 mb-2">Menu</h3>
+        <ul className="list-disc list-inside text-sm">
+          {item.menu.map((menuItem, idx) => (
+            <li key={idx}>{menuItem}</li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </div>
+)}
+
+          {/* ✅ Fallback: show menu if no selectedOptions
+          {(!item.selectedOptions || Object.keys(item.selectedOptions).length === 0) &&
+            item?.menu?.length > 0 &&
+            item.menu.map((menuItem, idx) => <p key={idx}>{menuItem}</p>)} */}
+            {/* ✅ Fallback: show menu if no selectedOptions (except bulk-delivery) */}
+{item.category !== "bulk-delivery" &&
+  (!item.selectedOptions || Object.keys(item.selectedOptions).length === 0) &&
+  item?.menu?.length > 0 &&
+  item.menu.map((menuItem, idx) => (
+    <p key={idx}>{menuItem}</p>
+  ))
+}
+
+        </div>
+
+        <div className="text-sm md:text-base text-black/60">
+          <p className="text-black/80">
+            {order.address.firstName} {order.address.lastName}
+          </p>
+          <p>
+            {order.address.street}, {order.address.city}
+          </p>
+          <p>
+            {order.address.state}, {order.address.zipcode}{" "}
+            {order.address.country} - {order.address.pincode}
+          </p>
+          <p>{order.address.phone}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+))}
+
     </div>
   )
 }

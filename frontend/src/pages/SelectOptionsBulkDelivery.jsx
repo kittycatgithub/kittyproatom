@@ -256,6 +256,7 @@ const SelectOptionsBulkDelivery = () => {
       return updated;
       } )
       //  console.log("Hello",selectedOptions)
+
     };
 
   return (

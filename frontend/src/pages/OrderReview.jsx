@@ -8,7 +8,7 @@ const OrderReview = () => {
     const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, cart ,setCart , navigate, axios, user} = useAppContext()
     const [cartArray , setCartArray] = useState([])
     const [addresses , setAddresses] = useState([])
-     const [note, setNote] = useState(" ");
+    const [notes, setNotes] = useState({});
 
     const [showAddress, setShowAddress] = useState(false)
     const [selectedAddress, setSelectedAddress] = useState(null)
@@ -134,10 +134,12 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
                     offerPrice: item.offerPrice,
                     details: item.details,
                     selectedOptions: item.selectedOptions,
+                    productDetails: item.productDetails || {},
                     menu: item.menu
                 }],
                 address: selectedAddress._id,
-                note: note, 
+                note: notes[item._id] || "", // 🔥 pick note for this product only
+
             });
 
             if (data.success) {
@@ -166,17 +168,24 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
 
 
 
-const handleNote = (e) => {
-    e.preventDefault()
-  setNote(e.target.value);
-  console.log(note)
+// const handleNote = (e) => {
+//     e.preventDefault()
+//   setNote(e.target.value);
+//   console.log(note)
+// };
+
+const handleNoteChange = (productId, value) => {
+  setNotes(prev => ({
+    ...prev,
+    [productId]: value
+  }));
 };
 
     return  (
-        <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
-            <div className='flex-1 max-w-4xl lg:pr-1'>
+        <div className="flex flex-col md:flex-row py-16 max-w-full px-6 mx-auto w-fit gap-3">
+            <div className='flex-1 max-w-5xl lg:pr-1'>
                 <h1 className="text-3xl font-medium mb-6">
-                    Order Review <span className="text-sm text-indigo-500">{cart.length} Items</span>
+                    Order Review <span className="text-sm text-purple-800">{cart.length} Items</span>
                 </h1>
 
                 {/* <div className="grid grid-cols-[2fr_1fr_1fr] text-gray-500 text-base font-medium pb-3">
@@ -190,13 +199,13 @@ const handleNote = (e) => {
                      { product?.details?.date  ? 
                     //  { product.details  ? 
                     (<div  className=" text-gray-500 items-center text-sm md:text-base font-medium pt-3 border rounded-sm  pl-1 ">
-                        <div className="flex flex-col lg:flex-row md:gap-6 gap-3">
+                        <div className="flex flex-col lg:flex-row md:gap-6 gap-3 md:justify-around">
                             <div className="flex flex-row gap-6">
                                 <div className="cursor-pointer w-24 h-24 flex items-start justify-start border border-gray-300 rounded">
                                 <img className="max-w-full h-full object-cover" src={product.path} alt={product.name} />
                             </div>
-                            <div className="space-y-1 text-gray-700 text-md">
-                                <p className="text-xl text-purple-700">Details</p>
+                            <div className="space-y-1 text-gray-700 text-sm">
+                                <p className="text-xl text-purple-800">Details</p>
                                 <p>Occassion - {product.details.occasion}</p>
                                 <p>Date - {product.details.date}</p>
                                 <p>Guests - {product.details.guests}</p>
@@ -206,61 +215,93 @@ const handleNote = (e) => {
                                 </p>
                             </div>
                             </div>
-                            <div className="space-y-1 text-gray-700 text-md  pl-2 md:pl-0">
-                                <h1 className="text-xl text-purple-700">{product.name}</h1>
+                            <div className="space-y-1 text-gray-700 text-sm  pl-2 md:pl-0">
+                                <h1 className="text-xl text-purple-800">{product.name}</h1>
                                  { product?.category === "meal-thali-snack-boxes" ? (
                             product.menu.map( (item, index) => 
                             <p key={index}> {item} </p> )
                         ) : ('')}
                         <div>
-                            <p className="text-xl text-purple-700">Selection</p>
-                            {/* <h1 className="text-xl text-purple-700">Platter 3012</h1> */}
+                           { (product.keyword === "snacks") ? (<p className="text-xl text-purple-800">Selection</p>) : ("")}
                              {(product.category || product.keyword === "snacks") ? (
                                 product.selectedOptions &&
                                 Object.entries(product.selectedOptions).map(([key, value], index) => {
                                   if (!value) return null;                                
-                                //   if (typeof value === "string") {
-                                //     return (
-                                //       <p key={`${index}`} className="text-sm">
-                                //         {key} -- {value}
-                                //       </p>
-                                //     );
-                                //   }
                                   if (typeof value === "string") {
                                     return (
-                                      <p key={`${index}`} className="text-md">
-                                         {value}
+                                      <p key={`${index}`} className="text-sm">
+                                        {key} ⟶  {value}
                                       </p>
                                     );
                                   }
-                                if (Array.isArray(value)) {
-                                      return value.map((item, subIndex) => {
-                                        const [subKey, subValue] = Object.entries(item)[0];
-                                        return (
-                                          <p key={`${index}-${subIndex}`} className="text-sm">
-                                            {key}: {subValue}
-                                          </p>
-                                        );
-                                      });
-                                    }
+                                //   if (typeof value === "string") {
+                                //     return (
+                                //       <p key={`${index}`} className="text-md">
+                                //          {value}
+                                //       </p>
+                                //     );
+                                //   }
+                                // if (Array.isArray(value)) {
+                                //       return value.map((item, subIndex) => {
+                                //         const [subKey, subValue] = Object.entries(item)[0];
+                                //         return (
+                                //           <p key={`${index}-${subIndex}`} className="text-sm">
+                                //             {key}: {subValue}
+                                //           </p>
+                                //         );
+                                //       });
+                                //     }
                                 
                                     return null;
                                   })
                                 ) : null}
+
+                               {product.category === "bulk-delivery"  ? (
+                                  Object.entries(product.productDetails || {}).map(([key, value], index) => (
+                                    <p key={index} className="text-sm">
+                                      {key} ⟶ {value.qty} {value.unit}
+                                    </p>
+                                  ))
+                                ) : null}
+                                {product.name === "Breakfast" && product.selectedOptions ? (
+  Object.entries(product.selectedOptions).map(([key, value], index) => {
+    if (!value || value.length === 0) return null;
+
+    return (
+      <p key={index} className="text-sm">
+        {key} ⟶ {value.join(", ")}
+      </p>
+    );
+  })
+) : null}
+                                {product.name === "Short Menu" && product.selectedOptions ? (
+  Object.entries(product.selectedOptions).map(([key, value], index) => {
+    if (!value || value.length === 0) return null;
+
+    return (
+      <p key={index} className="text-sm">
+        {key} ⟶ {value.join(", ")}
+      </p>
+    );
+  })
+) : null}
+
                         </div>                       
                             </div>
                             <div className="pb-2">
                                 <div className="px-2 w-full">
                                 <div>
-                                    <label for="additionalNote" className="leading-7 text-lg text-purple-700">Additional Note</label>
-                                    <textarea value={note}
-                                              onChange={handleNote}
-                                              id="additionalNote" 
-                                              name="additionalNote" 
-                                              rows="6"
-                                              className="w-full font-normal rounded border border-gray-300 focus:border-blue-100 
-                                              focus:ring-1 focus:ring-blue-200 outline-none text-gray-900 py-0 px-2 
-                                              transition-colors duration-200 ease-in-out resize-none"></textarea>
+                                    <label htmlFor={`additionalNote-${product._id}`} className="leading-7 text-lg text-purple-800">Additional Note</label>
+                                     <textarea
+                                        value={notes[product._id] || ""}
+                                        onChange={(e) => handleNoteChange(product._id, e.target.value)}
+                                        id={`additionalNote-${product._id}`}
+                                        name="additionalNote"
+                                        rows="6"
+                                        className="w-full font-normal rounded border border-gray-300 focus:border-blue-100 
+                                                   focus:ring-1 focus:ring-blue-200 outline-none text-gray-900 py-0 px-2 
+                                                   transition-colors duration-200 ease-in-out resize-none"
+                                      ></textarea>
                                 </div>
                             </div>
                                 <button onClick={()=> handleRemoveFromCart(product._id)} className="cursor-pointer mx-auto flex flex-row text-red-600 border p-2 rounded-sm"> Remove  

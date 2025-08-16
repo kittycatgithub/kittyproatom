@@ -252,9 +252,7 @@ const SelectOptionsMenuA = () => {
              </div>
              <div>
                 <button onClick={() => {setIsActive("AdditionalOptions")}} className={` rounded-md transition ${isActive === "AdditionalOptions" ? " text-primary text-left" : " text-black text-left"}`}> Additional Options </button>
-                {/* {selectedOptions.Salads !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Salads}</p> : <p></p> } */}
-
-             </div>
+            </div>
              <div>
                 <button className="rounded-md transition text-black"> Papad & Achar </button>
              </div>

@@ -107,7 +107,7 @@ const Navbar = () => {
              {/* Home,Services,Contact Us,Feedback */}
                 <NavLink to='/' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Home</NavLink>
                 <NavLink to='/about' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">About</NavLink>
-                <NavLink to='/services' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Services</NavLink>
+                {/* <NavLink to='/services' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Services</NavLink> */}
                 {
                    user && 
                     <NavLink to='/my-orders' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">My Orders</NavLink>

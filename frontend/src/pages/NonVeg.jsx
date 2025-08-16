@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { useAppContext } from '../context/AppContext'
-import CustomizeBar from '../components/CustomizeBar'
+import CustomizeBarBulk from '../components/CustomizeBarBulk'
 
 const NonVeg = () => {
 
     const {selectedPlatter, setSelectedPlatter , navigate} = useAppContext()
     useEffect(()=> {
-      setSelectedPlatter({_id: 'ek56j67k', name: 'Non-Vegetarian', path: 'https://img.freepik.com/free-photo/gourmet-bowl-wi…-meat-vegetables-generated-by-ai_188544-14076.jpg', category: 'bulk-delivery'})
+      // setSelectedPlatter({_id: 'ek56j67k', name: 'Non-Vegetarian', path: 'https://img.freepik.com/free-photo/gourmet-bowl-wi…-meat-vegetables-generated-by-ai_188544-14076.jpg', category: 'bulk-delivery'})
+      setSelectedPlatter({_id: 'ek56j67k', name: 'Bulk Delivery', path: 'https://img.freepik.com/free-photo/gourmet-bowl-wi…-meat-vegetables-generated-by-ai_188544-14076.jpg', category: 'bulk-delivery'})
     }, [])
     // console.log("select Platter" , selectedPlatter)
     const [selectedOptions, setSelectedOptions] = useState({
-        Soups: null,
-      Starters: null,
-      SpecialVeggies: null,
-      SeasonalVeggies: null,
-      Daals: null, 
-      BasmatiRice: null,
-      NonVegCurry:null,
-      NonVegRice:null,
-      Rotis:null,
-      Desserts: null,
-      Savouries: null,
-      Salads: null,
+        Soups: [],
+      Starters: [],
+      SpecialVeggies: [],
+      SeasonalVeggies: [],
+      Daals: [], 
+      BasmatiRice: [],
+      NonVegCurry:[],
+      NonVegRice:[],
+      Rotis:[],
+      Desserts: [],
+      Savouries: [],
+      Salads: [],
     })
     const snacks = [ 
      {   name:"Soups",
@@ -215,19 +216,38 @@ const NonVeg = () => {
     }, 
     ]
 
-    const [isActive, setIsActive] = useState("NonVegCurry")
+    const [isActive, setIsActive] = useState("Soups")
       const activeSnack = snacks.find(item => item.name === isActive);
     //   console.log(activeSnack)
 
-    const handleSelectedOptions = ( category, itemName ) =>{
-      setSelectedOptions( (prev)=> {  
-      const updated = {...prev, [category]: itemName};
-      console.log("selected options:", updated);
-      return updated;
-      } )
-      setSelectedPlatter( (prev)=> ({ ...prev, selectedOptions: selectedOptions })  )
-      //  console.log("Hello",selectedOptions)
-    };
+    // const handleSelectedOptions = ( category, itemName ) =>{
+    //   setSelectedOptions( (prev)=> {  
+    //   const updated = {...prev, [category]: itemName};
+    //   console.log("selected options:", updated);
+    //   return updated;
+    //   } )
+    //   setSelectedPlatter( (prev)=> ({ ...prev, selectedOptions: selectedOptions })  )
+    //   //  console.log("Hello",selectedOptions)
+    // };
+    const handleSelectedOptions = (category, itemName) => {
+  setSelectedOptions(prev => {
+    const alreadySelected = prev[category]?.includes(itemName);
+    let updatedCategoryItems;
+
+    if (alreadySelected) {
+      // remove if already selected
+      updatedCategoryItems = prev[category].filter(item => item !== itemName);
+    } else {
+      // add new selection
+      updatedCategoryItems = [...prev[category], itemName];
+    }
+
+    const updated = { ...prev, [category]: updatedCategoryItems };
+    console.log("selected options:", updated);
+    return updated;
+  });
+};
+
 
   return (
      <div className='bg-[#EFF6FF] min-h-screen '>
@@ -247,40 +267,30 @@ const NonVeg = () => {
              </div>
              <div>
                 <button onClick={() => {setIsActive("SeasonalVeggies")}} className={` rounded-md transition  justify-start text-start  leading-4 ${isActive === "SeasonalVeggies" ? " text-primary" : " text-black"}`}> Seasonal Veg </button>
-                {/* {selectedOptions.SeasonalVeggies !== null ? <p className='text-xs text-gray-500'>{selectedOptions.SeasonalVeggies}</p> : <p></p> } */}
              </div>
              <div>
                 <button onClick={() => {setIsActive("Daals")}} className={` rounded-md transition ${isActive === "Daals" ? " text-primary" : " text-black"}`}> Daals </button>
-                {/* {selectedOptions.Daals !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Daals}</p> : <p></p> } */}
              </div>
              <div>
                 <button onClick={() => {setIsActive("BasmatiRice")}} className={` rounded-md transition ${isActive === "BasmatiRice" ? " text-primary" : " text-black"}`}> BasmatiRice </button>
-                {/* {selectedOptions.BasmatiRice !== null ? <p className='text-xs text-gray-500'>{selectedOptions.BasmatiRice}</p> : <p></p> } */}
              </div>
              <div>  
                 <button onClick={() => {setIsActive("NonVegCurry")}} className={` rounded-md transition  justify-start text-start  ${isActive === "NonVegCurry" ? " text-primary" : " text-black"}`}> Non Veg Curry </button>
-                {/* {selectedOptions.NonVegCurry !== null ? <p className='text-xs text-gray-500'>{selectedOptions.NonVegCurry}</p> : <p></p> } */}
              </div>
              <div>
                 <button onClick={() => {setIsActive("NonVegRice")}} className={` rounded-md transition ${isActive === "NonVegRice" ? " text-primary" : " text-black"}`}> Non Veg Rice </button>
-                {/* {selectedOptions.NonVegRice !== null ? <p className='text-xs text-gray-500'>{selectedOptions.NonVegRice}</p> : <p></p> } */}
              </div>
              <div>
                 <button onClick={() => {setIsActive("Rotis")}} className={` rounded-md transition ${isActive === "Rotis" ? " text-primary" : " text-black"}`}> Rotis </button>
-                {/* {selectedOptions.Rotis !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Rotis}</p> : <p></p> } */}
              </div>
              <div>
                 <button onClick={() => {setIsActive("Desserts")}} className={` rounded-md transition ${isActive === "Desserts" ? " text-primary" : " text-black"}`}> Desserts </button>
-                {/* {selectedOptions.Desserts !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Desserts}</p> : <p></p> } */}
              </div>
              <div>
                 <button onClick={() => {setIsActive("Savouries")}} className={` rounded-md transition ${isActive === "Savouries" ? " text-primary" : " text-black"}`}> Savouries </button>
-                {/* {selectedOptions.Savouries !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Savouries}</p> : <p></p> } */}
              </div>
              <div>
                 <button onClick={() => {setIsActive("Salads")}} className={` rounded-md transition ${isActive === "Salads" ? " text-primary" : " text-black"}`}> Salads </button>
-                {/* {selectedOptions.Salads !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Salads}</p> : <p></p> } */}
-
              </div>
              </div>             
              )} 
@@ -290,13 +300,15 @@ const NonVeg = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.Soups !== null && selectedOptions.Soups ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button>
+                {selectedOptions.Soups?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )}
+</button>
     </div>
           </div>
         ))}
@@ -308,13 +320,15 @@ const NonVeg = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.SpecialVeggies !== null && selectedOptions.SpecialVeggies ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button>
+                {selectedOptions.SpecialVeggies?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )}
+                </button>
     </div>
           </div>
         ))}
@@ -326,13 +340,15 @@ const NonVeg = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.SeasonalVeggies !== null && selectedOptions.SeasonalVeggies ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button>
+               {selectedOptions.SeasonalVeggies?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )}
+           </button>
     </div>
           </div>
         ))}
@@ -344,12 +360,16 @@ const NonVeg = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.Daals !== null && selectedOptions.Daals ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
+                {/* {selectedOptions.Daals !== null && selectedOptions.Daals ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>} */}
+           {selectedOptions.Daals?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )}
             </button>
     </div>
           </div>
@@ -362,13 +382,14 @@ const NonVeg = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.BasmatiRice !== null && selectedOptions.BasmatiRice ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button>
+               {selectedOptions.BasmatiRice?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )} </button>
     </div>
           </div>
         ))}
@@ -385,9 +406,11 @@ const NonVeg = () => {
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
              <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.NonVegCurry !== null && selectedOptions.NonVegCurry ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button>
+               {selectedOptions.NonVegCurry?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )}
+               </button>
     </div>
           </div>
         ))}
@@ -401,9 +424,11 @@ const NonVeg = () => {
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
              <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.NonVegRice !== null && selectedOptions.NonVegRice ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button>
+               {selectedOptions.NonVegRice?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )}
+                 </button>
     </div>
           </div>
         ))}
@@ -417,9 +442,11 @@ const NonVeg = () => {
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.Desserts !== null && selectedOptions.Desserts ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button>
+               {selectedOptions.Desserts?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )}
+               </button>
     </div>
           </div>
         ))}
@@ -429,13 +456,14 @@ const NonVeg = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.Starters !== null && selectedOptions.Starters ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button>
+               {selectedOptions.Starters?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )} </button>
     </div>
           </div>
         ))}
@@ -452,9 +480,10 @@ const NonVeg = () => {
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.Rotis !== null && selectedOptions.Rotis ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button>
+               {selectedOptions.Rotis?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )}  </button>
     </div>
           </div>
         ))}
@@ -464,13 +493,15 @@ const NonVeg = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.Savouries !== null && selectedOptions.Savouries ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button>
+                {selectedOptions.Savouries?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )}
+                 </button>
     </div></div>
         ))}
       </div></div> } 
@@ -479,13 +510,14 @@ const NonVeg = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
-            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
-                {selectedOptions.Salads !== null && selectedOptions.Salads ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
-                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
-            </button>
+                {selectedOptions.Salads?.includes(snackItem.name) ? (
+                  <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary rounded-lg cursor-pointer'>  Selected </div>
+                ) : (  <div className='mt-3 px-5 py-1 border-2 border-primary text-primary rounded-lg cursor-pointer'> Select</div>  
+                )} </button>
     </div>
           </div>
         ))}
@@ -494,7 +526,7 @@ const NonVeg = () => {
                  </div> } 
                 
     </div>
-    <CustomizeBar/>
+    <CustomizeBarBulk selectedOptions={selectedOptions}/>
       </div>
       ) : (
                 <div className='flex items-center pl-10 md:pl-0 justify-center h-screen md:h-[60vh]'>

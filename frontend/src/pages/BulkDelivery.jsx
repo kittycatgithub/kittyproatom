@@ -13,7 +13,8 @@ const BulkDelivery = () => {
     if(product.name == "Vegetarian" ){
       product1 = product
     }
-    if(product.name == "Non-Vegetarian" ){
+    // if(product.name == "Non-Vegetarian" ){
+    if(product.name == "Bulk Delivery" ){
       product2 = product
     }
   } )

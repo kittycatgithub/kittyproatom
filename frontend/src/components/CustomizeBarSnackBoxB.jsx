@@ -3,9 +3,9 @@ import { useAppContext } from '../context/AppContext'
 import toast from 'react-hot-toast'
 import { useParams } from 'react-router-dom'
 
-const CustomizeBar = (selectedOptions) => {
+const CustomizeBarSnackBoxB = (selectedOptions) => {
 
-  const {cart, setCart, selectedPlatter, setSelectedPlatter, navigate} = useAppContext()
+  const {cart, setCart, selectedPlatter, navigate} = useAppContext()
   const {_id} = useParams()
   console.log(_id)
 
@@ -30,8 +30,8 @@ const CustomizeBar = (selectedOptions) => {
     const updatedCart = [...prev, selectedPlatter];
     toast.success("Added To Cart");
     console.log("Success", updatedCart);
-    navigate(`/fill-details/${_id}`)
-    setSelectedPlatter({})
+        navigate(`/fill-details/${_id}`)
+
     return updatedCart;
   });
 };
@@ -62,7 +62,7 @@ const CustomizeBar = (selectedOptions) => {
     <div className="flex flex-col items-center justify-center text-gray-950">
       
       <button 
-      onClick={()=>handleCart(_id)}
+      // onClick={()=>handleCart(_id)}
       className="flex flex-row gap-2 items-center w-fit cursor-pointer px-4 py-2 bg-primary hover:bg-primary-dull transition text-white rounded-full"
     >
       <img
@@ -70,7 +70,7 @@ const CustomizeBar = (selectedOptions) => {
         className="h-6.5"
         alt="Add to cart"
       />
-      <span>Add To Cart</span>
+      <span>Select All Options To Continue</span>
     </button>
     </div>
   </div>
@@ -78,4 +78,4 @@ const CustomizeBar = (selectedOptions) => {
   )
 }
 
-export default CustomizeBar
+export default CustomizeBarSnackBoxB

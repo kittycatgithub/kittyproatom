@@ -72,7 +72,8 @@ const {navigate} = useAppContext()
         </div>
         <div className='group cursor-pointer' onClick={()=> 
           // {navigate("/categories/bulk-delivery");
-          {navigate("/select-non-veg/ek56j67k");
+          // {navigate("/select-non-veg/ek56j67k");
+          {navigate("/select-bulk/ek56j67k");
           // {navigate("/all-menu/bulk-delivery");
            scrollTo(0,0)}
           }>

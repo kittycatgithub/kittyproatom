@@ -22,7 +22,6 @@ const Cart = () => {
         setCartArray(tempArray)
 
     }
-
     useEffect( ()=>{
         if(products.length > 0 && cartItems ) {
             getCart()
@@ -40,34 +39,81 @@ const Cart = () => {
 };
 
 // Resume Button Logic
-
 const handleResume = ( product ) =>{
     console.log(product._id)
     navigate(`/fill-details/${product._id}`)
 }
-
 return  (
         <div className=" md:flex-row py-16 max-w-6xl w-full px-3 mx-auto">
             <h1 className="text-3xl font-medium mb-6">
                     Shopping Cart <span className="text-sm text-indigo-500">{cart.length} Items</span>
                 </h1>
             <div className='grid lg:grid-cols-2 justify-between max-w-6xl space-y-3'>
-                
+
 {console.log(cart)}
                 {cart.map((product, index) => (
-                    <div key={index} className="grid text-gray-700 border-1 border-gray-300 min-w-[340px]  md:max-w-lg items-center text-sm md:text-base font-medium">
+                    <div key={index} className="grid text-gray-700 border-1 border-gray-300 min-w-[340px]  md:max-w-lg items-center text-sm md:text-base font-normal">
                         <div className="flex md:gap-6 gap-3 justify-start p-2 items-start">
                             <div className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded">
                                 <img className="max-w-full h-full object-cover" src={product.path} alt={product.name} />
                             </div>
                             <div>
                                 <p className=" text-black text-xl">{product.name}</p>
-                                { product.category || product.keyword === "catering" ? 
+                                {/* { product.category || product.keyword === "catering" ? 
                                         (product.selectedOptions && Object.values(product.selectedOptions).map((item, index) => (
-                                  <p key={index} className="text-sm">{item}</p>
+                                  <p key={index} className="text-sm"> :  {item}</p>
                                 )) ) : ('')
-                                }
-                                { product.category || product.keyword === "meal-thali-snack-boxes" ? 
+                                } */}
+                                {/* { product.category || product.keyword === "catering" ? 
+                                        Object.entries(product.selectedOptions)
+                                        .map(([key, value]) => (
+                                          <p key={key} className="justify-around text-justify content-between">
+                                            {key.replace(/([A-Z])/g, ' $1').trim()} ⟶ { value}
+                                          </p>
+                                        )) : ('')
+                                } */}
+     {product.category || product.keyword === "catering" ? 
+  Object.entries(
+    product.name === "Short Menu" || "Breakfast"
+      ? Object.fromEntries(
+          Object.entries(product.selectedOptions).filter(([_, value]) => value !== null)
+        )
+      : product.selectedOptions
+  ).map(([key, value]) => {
+    let displayValue = "";
+
+    if (Array.isArray(value)) {
+      // If array of objects, extract readable names
+      displayValue = value
+        .map(item => {
+          if (typeof item === "string") return item;
+          if (typeof item === "object" && item !== null) {
+            return Object.values(item).join(", "); // Join object values
+          }
+          return "";
+        })
+        .join(", ");
+    } 
+    else if (typeof value === "string") {
+      displayValue = value;
+    } 
+    else {
+      displayValue = "";
+    }
+
+    return (
+      <p key={key} className="justify-around text-justify content-between">
+        {key.replace(/([A-Z])/g, ' $1').trim()} ⟶ {displayValue || "None"}
+      </p>
+    );
+  })
+  : null
+}
+
+{(
+  (product.category === "meal-thali-snack-boxes" || product.keyword === "meal-thali-snack-boxes") &&
+  (product.name !== "Snack Box A" && product.name !== "Snack Box B")
+                                ) ? 
                                 (product.menu && product.menu.map((item, index) => (
                                   <p key={index} className="text-sm">{item}</p>
                                 ))) : ('')
@@ -77,7 +123,7 @@ return  (
                                   <p key={index} className="text-sm">{item}</p>
                                 )) ) : ('')
                                 } */}
-                                {(product.category || product.keyword === "snacks") ? (
+                                {/* {(product.category || product.keyword === "snacks") ? (
   product.selectedOptions &&
   Object.entries(product.selectedOptions).map(([key, value], index) => {
     if (!value) return null;
@@ -85,31 +131,40 @@ return  (
     if (typeof value === "string") {
       return (
         <p key={`${index}`} className="text-sm">
-          {key}: {value}
+          {key} ⟶ {value}
         </p>
       );
     }
-
     if (Array.isArray(value)) {
       return value.map((item, subIndex) => {
         const [subKey, subValue] = Object.entries(item)[0];
         return (
           <p key={`${index}-${subIndex}`} className="text-sm">
-            {key}: {subValue}
+            {key} ⟶ {subValue}
           </p>
         );
       });
     }
-
     return null;
   })
-) : null}
+) : null} */}
 
-                                { product.category  === "bulk-delivery" ? 
+                                {/* { product.category  === "bulk-delivery" ? 
                                         (product.selectedOptions && Object.values(product.selectedOptions).map((item, index) => (
                                   <p key={index} className="text-sm">{item}</p>
                                 )) ) : ('')
-                                }
+                                } */}
+                                {product.category === "bulk-delivery" ? (
+  product.productDetails &&
+  Object.entries(product.productDetails).map(([key, value], index) => {
+    const [categoryName, itemName] = key.split(":");
+    return (
+      <p key={index} className="text-sm">
+        {categoryName} ⟶  {itemName} — {value.qty} {value.unit}
+      </p>
+    );
+  })
+) : null}
                                  {/* {product.menu?.map( (item, index)=> 
                                     <p key={index} className="text-sm"> {item}</p>
                                   )} */}

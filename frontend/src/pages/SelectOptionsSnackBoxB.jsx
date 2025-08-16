@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import CustomizeBar from '../components/CustomizeBar'
+import CustomizeBarSnackBoxB from '../components/CustomizeBarSnackBoxB'
 
 
 
@@ -101,6 +102,11 @@ const SelectOptionsSnackBoxB = () => {
   selectedOptions: selectedOptions
 }));    
     };
+
+    const isTwoSnacksSelected = () => {
+      const [item1, item2] = selectedOptions.Snacks;
+      return Boolean(item1.item1 && item2.item2);
+   };
 
   return (
     <div>
@@ -217,7 +223,8 @@ const SelectOptionsSnackBoxB = () => {
                      
                  </div> }           
              </div>
-                        <CustomizeBar/>
+            {isTwoSnacksSelected() ? <CustomizeBar /> : <CustomizeBarSnackBoxB/>}
+                        
       </div>
        ) : (
         <div className='flex items-center pl-10 md:pl-0 justify-center h-screen md:h-[60vh] bg-[#EFF6FF]'>

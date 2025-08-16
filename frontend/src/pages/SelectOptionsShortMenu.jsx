@@ -16,9 +16,8 @@ const SelectOptionsShortMenu = () => {
       Menu6: null, 
       Menu7: null,
       Menu8: null,
-      BottledWater: "BottledWater"
+      AdditionalOptions: null,
     })
-    
 
     const snacks = [   
     {   name:"Menu1",
@@ -87,7 +86,21 @@ const SelectOptionsShortMenu = () => {
             {name:"French Fries", img:"https://thecozycook.com/wp-content/uploads/2018/10/Homemade-French-Fry-Recipe--500x500.jpg"},
             {name:"Chocolate Mousse", img:"https://www.recipetineats.com/tachyon/2018/09/Chocolate-Mousse_9.jpg?resize=500%2C500"},
           ]
-    }
+    },
+    {   name:"AdditionalOptions",
+        value: [{name:"Chaat Station", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy7hh_qeNemM83ninycYHcskgIBLlnrdzCeg&s"}, 
+            {name:"Chinese Station", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBE5WJsIwy_ILxk5qS8UTHcJRfosDEmIaohg&s"}, 
+            {name:"Live South Indian Station", img:"https://hemamagesh.com/wp-content/uploads/2019/07/South-Indian-breakfast.jpg"}, 
+            {name:"Welcome Drink Station", img:"https://i.pinimg.com/222x/04/62/8d/04628db52d5c27c26b5bdf61b76b3714.jpg"}, 
+            {name:"Live Egg Station", img:"https://hips.hearstapps.com/hmg-prod/images/breakfast-for-dinner-naan-best-egg-recipes-66c7aedec1268.png"}, 
+            {name:"Coffee / Masala Milk Station", img:"https://madhurasrecipe.com/wp-content/uploads/2023/10/Masala-Doodh-Featured-Image-585x585.jpg"}, 
+            {name:"Additional Starter", img:"https://images.immediate.co.uk/production/volatile/sites/30/2020/10/Buffalo-cauliflower-7825216.jpg"}, 
+            {name:"VIP Setting", img:"https://i.pinimg.com/236x/1e/2d/ba/1e2dba7e13cbe5c8aa86aa95bc7728e0.jpg"},
+            {name:"Roomali Roti Counter", img:"https://www.cookwithkushi.com/wp-content/uploads/2016/10/rumali_roti_roomali_roti_recipe.jpg"},
+            {name:"Tandoori Roti / Naan Counter", img:"https://sinfullyspicy.com/wp-content/uploads/2024/05/1200-by-1200-images.jpg"},
+            {name:"Tambul", img:"https://img-global.cpcdn.com/recipes/61270455d8104404/680x781cq80/%E0%A4%A4%E0%A4%AC%E0%A4%B2-tambul-recipe-in-marathi-%E0%A4%B0%E0%A4%B8%E0%A4%AA-%E0%A4%9A-%E0%A4%AE%E0%A4%96%E0%A4%AF-%E0%A4%AB%E0%A4%9F.jpg"},
+            ]
+    }  
     ]
 
     const [isActive, setIsActive] = useState("Menu1")
@@ -109,142 +122,104 @@ const SelectOptionsShortMenu = () => {
       console.log(selectedMenu)
       if( isActive === "Menu1" ){
         setSelectedOptions( {
-          Menu1: null,
+          Menu1: [ "Chola Bhatura", "Dahi Wada", "Gulab Jamun", "Veg Pulao", "BottledWater"],
       Menu2: null,
       Menu3: null,
       Menu4: null,
       Menu5: null,
       Menu6: null, 
       Menu7: null,
-      Menu8: null, 
-      BottledWater: "BottledWater",
-      CholaBhatura:"Chola Bhatura", 
-        DahiWada:"Dahi Wada",
-        GulabJamun:"Gulab Jamun",
-        VegPulao:"Veg Pulao"
+      Menu8: null,
       } )
       }      
       if( isActive === "Menu2" ){
           setSelectedOptions( {
-          PavBhaji:"Pav Bhaji", 
-          TawaPulao:"Tawa Pulao",
-          BoondiRaita:"Boondi Raita",
-          Rasgulla:"Rasgulla",
-          Menu1: null,
-      Menu2: null,
+      Menu2: ["Pav Bhaji", "Tawa Pulao", "Boondi Raita", "Rasgulla", "BottledWater"],
+      Menu1: null,
+      
       Menu3: null,
       Menu4: null,
       Menu5: null,
       Menu6: null, 
       Menu7: null,
       Menu8: null,
-      BottledWater: "BottledWater",
       }) 
       }      
-      if( isActive === "Menu3" ){
-         
+      if( isActive === "Menu3" ){         
         setSelectedOptions( {
-        MasalaDosa:"Masala Dosa",
-        Sambar:"Sambar",
-        Chutney:"Chutney",
-        CurdRice:"Curd Rice",
-        GheekaSheera:"Ghee ka Sheera",
-        Menu1: null,
+      Menu3: ["Masala Dosa", "Sambar", "Chutney", "Curd Rice", "Ghee ka Sheera", "BottledWater"],
+      Menu1: null,
       Menu2: null,
-      Menu3: null,
+      
       Menu4: null,
       Menu5: null,
       Menu6: null, 
       Menu7: null,
       Menu8: null,
-      BottledWater: "BottledWater",
       })
       }      
       if( isActive === "Menu4" ){
         setSelectedOptions( {
-        VegNoodles:"Veg Noodles",
-        VegManchurian:"Veg Manchurian",
-        VegFriedRice:"Veg Fried Rice",
-        Icecream:"Ice-cream",
-        Menu1: null,
+      Menu4: [ "Veg Noodles", "Veg Manchurian", "Veg Fried Rice", "Ice-cream", "BottledWater"],
+      Menu1: null,
       Menu2: null,
       Menu3: null,
-      Menu4: null,
-      Menu5: null,
-      Menu6: null, 
-      Menu7: null,
-      Menu8: null, 
-      BottledWater: "BottledWater", 
-      }) 
-      } 
-      if( isActive === "Menu5" ){
-        setSelectedOptions( {
-        StuffedParatha:"Stuffed Paratha",
-        VegBiryani:"Veg Biryani",
-        Raita:"Raita",
-        Chamcham:"Chamcham",
-        Menu1: null,
-      Menu2: null,
-      Menu3: null,
-      Menu4: null,
+      
       Menu5: null,
       Menu6: null, 
       Menu7: null,
       Menu8: null,
-      BottledWater: "BottledWater",
+      }) 
+      } 
+      if( isActive === "Menu5" ){
+        setSelectedOptions( {       
+      Menu5: ["Stuffed Paratha", "Veg Biryani", "Raita","Chamcham", "BottledWater"],
+      Menu1: null,
+      Menu2: null,
+      Menu3: null,
+      Menu4: null,
+      
+      Menu6: null, 
+      Menu7: null,
+      Menu8: null,
       }) 
       }     
       if( isActive === "Menu6" ){
         setSelectedOptions( {
-        BainganBharta:"Baingan Bharta",
-        Bhakri:"Bhakri",
-        GolaBhaat:"Gola Bhaat",
-        Kadhi:"Kadhi",
-        Jalebi:"Jalebi",
-        Menu1: null,
+      Menu6: ["Baingan Bharta", "Bhakri", "Gola Bhaat", "Kadhi", "Jalebi", "BottledWater"],
+      Menu1: null,
       Menu2: null,
       Menu3: null,
       Menu4: null,
       Menu5: null,
-      Menu6: null, 
+      
       Menu7: null,
-      Menu8: null,
-      BottledWater: "BottledWater",
+      Menu8: null, 
       }) 
       }   
       if( isActive === "Menu7" ){
         setSelectedOptions( {
-        PaaniPoorie:"Paani Poorie",
-        PaapdiChaat:"Paapdi Chaat",
-        RagdaPattis:"Ragda Pattis",
-        ShahiTukada:"Shahi Tukada",
-        Menu1: null,
+      Menu7: ["Paani Poorie", "Paapdi Chaat", "Ragda Pattis", "Shahi Tukada", "BottledWater"],
+      Menu1: null,
       Menu2: null,
       Menu3: null,
       Menu4: null,
       Menu5: null,
       Menu6: null, 
-      Menu7: null,
+      
       Menu8: null,
-      BottledWater: "BottledWater",
       }) 
       }   
       if( isActive === "Menu8" ){
         setSelectedOptions( {
-        MiniBurger:"Mini Burger",
-        Pizza:"Pizza",
-        Pasta:"Pasta",
-        FrenchFries:"French Fries",
-        ChocolateMousse:"Chocolate Mousse",
-        Menu1: null,
+      Menu8: ["Mini Burger","Pizza","Pasta","French Fries","Chocolate Mousse", "BottledWater"],
+      Menu1: null,
       Menu2: null,
       Menu3: null,
       Menu4: null,
       Menu5: null,
       Menu6: null, 
       Menu7: null,
-      Menu8: null,
-      BottledWater: "BottledWater",
       }) 
       }   
       toast.success(`${isActive} is Selected`)
@@ -270,15 +245,12 @@ const SelectOptionsShortMenu = () => {
              <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-8 md:space-y-6 md:py-10'>  
              <div>
                 <button onClick={() => {setIsActive("Menu1")}} className={`pt-5 rounded-md transition  justify-start text-start  ${isActive === "Menu1" ? " text-primary" : " text-black"}`}> Menu1 </button>
-                {/* {selectedOptions.Menu1 !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Menu1}</p> : <p></p> } */}
              </div>
              <div>
                 <button onClick={() => {setIsActive("Menu2")}} className={` rounded-md transition  justify-start text-start  leading-4 ${isActive === "Menu2" ? " text-primary" : " text-black"}`}> Menu2 </button>
-                {/* {selectedOptions.Menu2 !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Menu2}</p> : <p></p> } */}
              </div>
              <div>
                 <button onClick={() => {setIsActive("Menu3")}} className={` rounded-md transition ${isActive === "Menu3" ? " text-primary" : " text-black"}`}> Menu3 </button>
-                {/* {selectedOptions.Menu3 !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Menu3}</p> : <p></p> } */}
              </div>
              <div>
                 <button onClick={() => {setIsActive("Menu4")}} className={` rounded-md transition ${isActive === "Menu4" ? " text-primary" : " text-black"}`}> Menu4 </button>
@@ -300,6 +272,9 @@ const SelectOptionsShortMenu = () => {
                 <button onClick={() => {setIsActive("Menu8")}} className={` rounded-md transition ${isActive === "Menu8" ? " text-primary" : " text-black"}`}> Menu8 </button>
                 {/* {selectedOptions.Menu8 !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Menu8}</p> : <p></p> } */}
              </div>
+             <div>
+                <button onClick={() => {setIsActive("AdditionalOptions")}} className={` rounded-md transition ${isActive === "AdditionalOptions" ? " text-primary text-left" : " text-black text-left"}`}> Additional Options </button>
+            </div>
              <div>
                 <button className=" pb-40 rounded-md transition text-black"> Bottled Water </button>
              </div>
@@ -340,7 +315,7 @@ const SelectOptionsShortMenu = () => {
         ))}
       </div><div className='mx-auto w-fit'>
         <button onClick={ ()=> handleSelectedOptions(isActive )}>
-                {selectedOptions.BainganBharta !== null && selectedOptions.BainganBharta ==  "Baingan Bharta" ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+                {selectedOptions.Menu6 !== null ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected Menu 6</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select Menu 6</div>}
         </button> 
       </div>     
@@ -363,7 +338,7 @@ const SelectOptionsShortMenu = () => {
       </div>
       <div className='mx-auto w-fit'>
         <button onClick={ ()=> handleSelectedOptions(isActive )}>
-                {selectedOptions.CholaBhatura !== null && selectedOptions.CholaBhatura ==  "Chola Bhatura" ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+                {selectedOptions.Menu1 !== null ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected Menu 1</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select Menu 1</div>}
         </button> 
       </div>       
@@ -385,8 +360,8 @@ const SelectOptionsShortMenu = () => {
         ))}
       </div> 
       <div className='mx-auto w-fit'>
-        <button onClick={ ()=> handleSelectedOptions(isActive )}>
-                {selectedOptions.PavBhaji !== null && selectedOptions.PavBhaji ==  "Pav Bhaji" ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+         <button onClick={ ()=> handleSelectedOptions(isActive )}>
+                {selectedOptions.Menu2 !== null ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected Menu 2</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select Menu 2</div>}
         </button> 
       </div>  
@@ -409,7 +384,7 @@ const SelectOptionsShortMenu = () => {
       </div>
       <div className='mx-auto w-fit'>
         <button onClick={ ()=> handleSelectedOptions(isActive )}>
-                {selectedOptions.MasalaDosa !== null && selectedOptions.MasalaDosa ==  "Masala Dosa" ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+                {selectedOptions.Menu3 !== null ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected Menu 3</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select Menu 3</div>}
         </button> 
       </div>
@@ -431,8 +406,8 @@ const SelectOptionsShortMenu = () => {
         ))}
       </div>
       <div className='mx-auto w-fit'>
-        <button onClick={ ()=> handleSelectedOptions(isActive )}>
-                {selectedOptions.VegNoodles !== null && selectedOptions.VegNoodles ==  "Veg Noodles" ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+         <button onClick={ ()=> handleSelectedOptions(isActive )}>
+                {selectedOptions.Menu4 !== null ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected Menu 4</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select Menu 4</div>}
         </button> 
       </div></div> } 
@@ -452,8 +427,8 @@ const SelectOptionsShortMenu = () => {
           </div>
         ))}
       </div><div className='mx-auto w-fit'>
-        <button onClick={ ()=> handleSelectedOptions(isActive )}>
-                {selectedOptions.StuffedParatha !== null && selectedOptions.StuffedParatha ==  "Stuffed Paratha" ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+         <button onClick={ ()=> handleSelectedOptions(isActive )}>
+                {selectedOptions.Menu5 !== null ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected Menu 5</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select Menu 5</div>}
         </button> 
       </div></div> } 
@@ -473,11 +448,29 @@ const SelectOptionsShortMenu = () => {
           </div>
         ))}
       </div><div className='mx-auto w-fit'>
-        <button onClick={ ()=> handleSelectedOptions(isActive )}>
-                {selectedOptions.PaaniPoorie !== null && selectedOptions.PaaniPoorie ==  "Paani Poorie" ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+         <button onClick={ ()=> handleSelectedOptions(isActive )}>
+                {selectedOptions.Menu7 !== null ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected Menu 7</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select Menu 7</div>}
         </button> 
       </div></div> } 
+       {isActive === "AdditionalOptions" && <div>
+                {/* Card Grid */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
+        {activeSnack?.value.map((snackItem, index) => (
+          <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
+            <img src={snackItem.img} alt={snackItem.name} class="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
+            <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
+            <div className='group'>
+            <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
+                {selectedOptions.AdditionalOptions !== null && selectedOptions.AdditionalOptions ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+                className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
+            </button>
+    </div>
+          </div>
+        ))}
+      </div>
+                     
+                 </div> }
                  {isActive === "Menu8" && <div>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
@@ -494,8 +487,8 @@ const SelectOptionsShortMenu = () => {
           </div>
         ))}
       </div><div className='mx-auto w-fit'>
-        <button onClick={ ()=> handleSelectedOptions(isActive )}>
-                {selectedOptions.MiniBurger !== null && selectedOptions.MiniBurger ==  "Mini Burger" ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
+         <button onClick={ ()=> handleSelectedOptions(isActive )}>
+                {selectedOptions.Menu8 !== null ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected Menu 8</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select Menu 8</div>}
         </button> 
       </div></div> } 
