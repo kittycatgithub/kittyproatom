@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import CustomizeBar from '../components/CustomizeBar'
+import { useEffect } from 'react'
 
 
 
@@ -289,12 +290,14 @@ const SelectOptionsMenuB = () => {
     console.log("selected options:", updated);
     return updated;
   });
-   setSelectedPlatter(prev => ({
-  ...prev,
-  selectedOptions: selectedOptions
-}));    
+//    setSelectedPlatter(prev => ({
+//   ...prev,
+//   selectedOptions: selectedOptions
+// }));    
 };
-
+ useEffect(() => {
+      setSelectedPlatter(prev => ({ ...prev, selectedOptions }));
+    }, [selectedOptions]);
     
 
   return (

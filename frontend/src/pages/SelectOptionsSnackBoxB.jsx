@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import CustomizeBar from '../components/CustomizeBar'
 import CustomizeBarSnackBoxB from '../components/CustomizeBarSnackBoxB'
+import { useEffect } from 'react'
 
 
 
 const SelectOptionsSnackBoxB = () => {
 
     const {selectedPlatter, setSelectedPlatter , navigate} = useAppContext()
-    // console.log("select Platter" , selectedPlatter)
     const [selectedOptions, setSelectedOptions] = useState({
       Sandwiches: null,
       Snacks: [{item1:null},{item2:null}],
@@ -46,62 +46,100 @@ const SelectOptionsSnackBoxB = () => {
       const activeSnack = snacks.find(item => item.name === isActive);
     //   console.log(activeSnack)
 
-    const [snackList, setSnackList] = useState([{item1:null},{item2:null}]);
+//     const handleSelectedOptions = ( category, itemName ) =>{
+//       category !== "Snacks" ? 
+//        ( setSelectedOptions( (prev)=> {  
+//       const updated = {...prev, [category]: itemName};
+//       console.log("selected options:", updated);
+//       return updated;
+//       } )) : 
+//       setSelectedOptions((prev) => {
+//     if (category === "Snacks") {
+//       const [item1, item2] = prev.Snacks;
 
+//       // Get current values
+//       const val1 = Object.values(item1)[0];
+//       const val2 = Object.values(item2)[0];
 
-    const handleSelectedOptions = ( category, itemName ) =>{
-      category !== "Snacks" ? 
-       ( setSelectedOptions( (prev)=> {  
-      const updated = {...prev, [category]: itemName};
-      console.log("selected options:", updated);
-      return updated;
-      } )) : 
-      setSelectedOptions((prev) => {
+//       // If already selected → deselect
+//       if (val1 === itemName) {
+//         return {
+//           ...prev,
+//           Snacks: [{ item1: null }, item2],
+//         };
+//       } else if (val2 === itemName) {
+//         return {
+//           ...prev,
+//           Snacks: [item1, { item2: null }],
+//         };
+//       }
+
+//       // If there's an empty slot → add
+//       if (!val1) {
+//         return {
+//           ...prev,
+//           Snacks: [{ item1: itemName }, item2],
+//         };
+//       } else if (!val2) {
+//         return {
+//           ...prev,
+//           Snacks: [item1, { item2: itemName }],
+//         };
+//       }
+
+//       // If both filled, replace the first one
+//       return {
+//         ...prev,
+//         Snacks: [{ item1: itemName }, item2],
+//       };
+//     }
+//   });
+//        setSelectedPlatter(prev => ({
+//   ...prev,
+//   selectedOptions: selectedOptions
+// }));    
+//     };
+const handleSelectedOptions = (category, itemName) => {
+  setSelectedOptions(prev => {
+    let updated;
+
     if (category === "Snacks") {
-      const [item1, item2] = prev.Snacks;
+      // Ensure safe defaults
+      const [item1Obj = { item1: null }, item2Obj = { item2: null }] =
+        prev.Snacks ?? [{ item1: null }, { item2: null }];
 
-      // Get current values
-      const val1 = Object.values(item1)[0];
-      const val2 = Object.values(item2)[0];
+      const val1 = Object.values(item1Obj)[0];
+      const val2 = Object.values(item2Obj)[0];
 
-      // If already selected → deselect
       if (val1 === itemName) {
-        return {
-          ...prev,
-          Snacks: [{ item1: null }, item2],
-        };
+        updated = { ...prev, Snacks: [{ item1: null }, item2Obj] };
       } else if (val2 === itemName) {
-        return {
-          ...prev,
-          Snacks: [item1, { item2: null }],
-        };
-      }
-
-      // If there's an empty slot → add
-      if (!val1) {
-        return {
-          ...prev,
-          Snacks: [{ item1: itemName }, item2],
-        };
+        updated = { ...prev, Snacks: [item1Obj, { item2: null }] };
+      } else if (!val1) {
+        updated = { ...prev, Snacks: [{ item1: itemName }, item2Obj] };
       } else if (!val2) {
-        return {
-          ...prev,
-          Snacks: [item1, { item2: itemName }],
-        };
+        updated = { ...prev, Snacks: [item1Obj, { item2: itemName }] };
+      } else {
+        // both filled → replace the first
+        updated = { ...prev, Snacks: [{ item1: itemName }, item2Obj] };
       }
-
-      // If both filled, replace the first one
-      return {
-        ...prev,
-        Snacks: [{ item1: itemName }, item2],
-      };
+    } else {
+      updated = { ...prev, [category]: itemName };
     }
+
+    // Use the same updated object for platter to avoid stale values
+    setSelectedPlatter(prevPlatter => ({
+      ...prevPlatter,
+      selectedOptions: updated,
+    }));
+
+    return updated;
   });
-       setSelectedPlatter(prev => ({
-  ...prev,
-  selectedOptions: selectedOptions
-}));    
-    };
+};
+
+    useEffect(() => {
+  setSelectedPlatter(prev => ({ ...prev, selectedOptions }));
+}, [selectedOptions]);
 
     const isTwoSnacksSelected = () => {
       const [item1, item2] = selectedOptions.Snacks;

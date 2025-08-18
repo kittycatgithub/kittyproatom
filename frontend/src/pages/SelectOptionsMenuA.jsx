@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import CustomizeBar from '../components/CustomizeBar'
+import { useEffect } from 'react'
 
 const SelectOptionsMenuA = () => {
 
@@ -207,9 +208,14 @@ const SelectOptionsMenuA = () => {
       return updated;
       }
      )
-     setSelectedPlatter( (prev)=> ({ ...prev, selectedOptions: selectedOptions })  )
+    //  setSelectedPlatter( (prev)=> ({ ...prev, selectedOptions: selectedOptions })  )
       //  console.log("Hello",selectedOptions)
     };
+
+        useEffect(() => {
+      setSelectedPlatter(prev => ({ ...prev, selectedOptions }));
+    }, [selectedOptions]);
+    
 
   return (
     <div>

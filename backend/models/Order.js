@@ -14,7 +14,7 @@ const orderSchema = new mongoose.Schema({
         menu: { type : Array, required: true},
     }],
     address: {type: String, required: true, ref:'address'},
-    note: {type: String, required: true},
+    note: {type: String, required: false, default: "none", minimize: false},
     status: {type: String, default: 'Order Placed'},
     paymentType: {type: String, required: true},
     isPaid: {type: Boolean, required: true, default: false},

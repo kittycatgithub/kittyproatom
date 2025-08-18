@@ -20,7 +20,6 @@ const Cart = () => {
             tempArray.push(product)
         }
         setCartArray(tempArray)
-
     }
     useEffect( ()=>{
         if(products.length > 0 && cartItems ) {
@@ -49,7 +48,6 @@ return  (
                     Shopping Cart <span className="text-sm text-indigo-500">{cart.length} Items</span>
                 </h1>
             <div className='grid lg:grid-cols-2 justify-between max-w-6xl space-y-3'>
-
 {console.log(cart)}
                 {cart.map((product, index) => (
                     <div key={index} className="grid text-gray-700 border-1 border-gray-300 min-w-[340px]  md:max-w-lg items-center text-sm md:text-base font-normal">
@@ -59,20 +57,7 @@ return  (
                             </div>
                             <div>
                                 <p className=" text-black text-xl">{product.name}</p>
-                                {/* { product.category || product.keyword === "catering" ? 
-                                        (product.selectedOptions && Object.values(product.selectedOptions).map((item, index) => (
-                                  <p key={index} className="text-sm"> :  {item}</p>
-                                )) ) : ('')
-                                } */}
-                                {/* { product.category || product.keyword === "catering" ? 
-                                        Object.entries(product.selectedOptions)
-                                        .map(([key, value]) => (
-                                          <p key={key} className="justify-around text-justify content-between">
-                                            {key.replace(/([A-Z])/g, ' $1').trim()} ⟶ { value}
-                                          </p>
-                                        )) : ('')
-                                } */}
-     {product.category || product.keyword === "catering" ? 
+     {/* {product.category || product.keyword === "catering" ? 
   Object.entries(
     product.name === "Short Menu" || "Breakfast"
       ? Object.fromEntries(
@@ -108,6 +93,46 @@ return  (
     );
   })
   : null
+} */}
+{product.category || product.keyword === "catering" ? 
+  Object.entries(
+    product.name === "Short Menu" || product.name === "Breakfast"
+      ? Object.fromEntries(
+          Object.entries(product.selectedOptions).filter(([_, value]) => value !== null)
+        )
+      : product.selectedOptions
+  ).map(([key, value]) => {
+    let displayValue = "null"; // default fallback
+
+    if (Array.isArray(value)) {
+      // If array of objects or strings
+      const arrValues = value
+        .map(item => {
+          if (typeof item === "string" && item.trim() !== "") return item;
+          if (typeof item === "object" && item !== null) {
+            const joined = Object.values(item).filter(Boolean).join(", ");
+            return joined || null;
+          }
+          return null;
+        })
+        .filter(Boolean);
+
+      displayValue = arrValues.length > 0 ? arrValues.join(", ") : "null";
+    } 
+    else if (typeof value === "string") {
+      displayValue = value.trim() !== "" ? value : "null";
+    } 
+    else if (value !== null && value !== undefined) {
+      displayValue = String(value);
+    }
+
+    return (
+      <p key={key} className="justify-around text-justify content-between">
+        {key.replace(/([A-Z])/g, ' $1').trim()} ⟶ {displayValue}
+      </p>
+    );
+  })
+  : null
 }
 
 {(
@@ -118,6 +143,22 @@ return  (
                                   <p key={index} className="text-sm">{item}</p>
                                 ))) : ('')
                                 }
+          {(product.name === "Snack Box A" || product.name === "Snack Box B") &&
+  product.selectedOptions &&
+  Object.entries(product.selectedOptions).map(([key, value], index) => (
+    <div key={index} className="text-sm">
+      <span>{key} ⟶ </span>{" "}
+      {Array.isArray(value)
+        ? value.map((v, i) => (
+            <span key={i}>
+              {Object.values(v).join(", ")}
+              {i < value.length - 1 ? ", " : ""}
+            </span>
+          ))
+        : value || "N/A"}
+    </div>
+  ))}
+
                                 {/* { product.category || product.keyword === "snacks" ? 
                                         (product.selectedOptions && Object.values(product.selectedOptions).map((item, index) => (
                                   <p key={index} className="text-sm">{item}</p>
@@ -164,16 +205,7 @@ return  (
       </p>
     );
   })
-) : null}
-                                 {/* {product.menu?.map( (item, index)=> 
-                                    <p key={index} className="text-sm"> {item}</p>
-                                  )} */}
-                                  
-                                {/* {product.selectedOptions && Object.values(product.selectedOptions).map((item, index) => (
-                                  <p key={index} className="text-sm">{item}</p>
-                                ))} */}
-
-                            </div>
+) : null}</div>
                         </div>
                         <hr className="text-gray-300"/>
                         {/* <p className="text-center">${product.offerPrice * product.quantity}</p> */}
@@ -186,9 +218,7 @@ return  (
             <button onClick={()=> handleRemoveFromCart(product._id)} className="cursor-pointer mx-auto flex flex-row"> Remove
                             <img src={assets.remove_icon} alt="remove" />
                         </button>
-  </div>
-                        
-                        </div>                             
+  </div></div>                             
                     </div>)
                 )}
             </div>
@@ -196,59 +226,6 @@ return  (
                     <img className="group-hover:-translate-x-1 transition" src={assets.arrow_right_icon_colored} alt="arrow" />
                     Continue Shopping
                 </button>
-
-            {/* <div className="max-w-[360px] w-full bg-gray-100/40 p-5 max-md:mt-16 border border-gray-300/70">
-                <h2 className="text-xl md:text-xl font-medium">Order Summary</h2>
-                <hr className="border-gray-300 my-5" />
-
-                <div className="mb-6">
-                    <p className="text-sm font-medium uppercase">Delivery Address</p>
-                    <div className="relative flex justify-between items-start mt-2">
-                        <p className="text-gray-500">No address found</p>
-                        <button onClick={() => setShowAddress(!showAddress)} className="text-indigo-500 hover:underline cursor-pointer">
-                            Change
-                        </button>
-                        {showAddress && (
-                            <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full">
-                                <p onClick={() => setShowAddress(false)} className="text-gray-500 p-2 hover:bg-gray-100">
-                                    New York, USA
-                                </p>
-                                <p onClick={() => setShowAddress(false)} className="text-indigo-500 text-center cursor-pointer p-2 hover:bg-indigo-500/10">
-                                    Add address
-                                </p>
-                            </div>
-                        )}
-                    </div>
-
-                    <p className="text-sm font-medium uppercase mt-6">Payment Method</p>
-
-                    <select className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none">
-                        <option value="COD">Cash On Delivery</option>
-                        <option value="Online">Online Payment</option>
-                    </select>
-                </div>
-
-                <hr className="border-gray-300" />
-
-                <div className="text-gray-500 mt-4 space-y-2">
-                    <p className="flex justify-between">
-                        <span>Price</span><span>$20</span>
-                    </p>
-                    <p className="flex justify-between">
-                        <span>Shipping Fee</span><span className="text-green-600">Free</span>
-                    </p>
-                    <p className="flex justify-between">
-                        <span>Tax (2%)</span><span>$20</span>
-                    </p>
-                    <p className="flex justify-between text-lg font-medium mt-3">
-                        <span>Total Amount:</span><span>$20</span>
-                    </p>
-                </div>
-
-                <button className="w-full py-3 mt-6 cursor-pointer bg-indigo-500 text-white font-medium hover:bg-indigo-600 transition">
-                    Place Order
-                </button>
-            </div> */}
         </div>
     )
 }
