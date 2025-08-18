@@ -61,7 +61,8 @@ const MyOrders = () => {
             <p>Status : {order.status || "Order Placed"}</p>
             <p>Date : {new Date(order.createdAt).toLocaleDateString("en-GB")}</p>
             <p className="text-gray-900 text-lg font-medium">
-              Amount : {currency} {item?.offerPrice * (item?.details?.guests || 1)}
+              {/* Amount : {currency} {item?.offerPrice * (item?.details?.guests || 1)} */}
+              Amount : {currency} {item?.offerPrice}
             </p>
           </div>
         </div>
@@ -198,6 +199,7 @@ const MyOrders = () => {
             {order.address.country} - {order.address.pincode}
           </p>
           <p>{order.address.phone}</p>
+          <div><h2 className=" text-purple-900 font-semibold pt-2"> Additional Note   </h2><p>{order.note ? (order.note ): ("null")}  </p></div>
         </div>
       </div>
     ))}

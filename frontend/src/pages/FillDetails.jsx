@@ -22,7 +22,7 @@ export default function FillDetails () {
     const handleGuestChange = (delta) => {
     setGuests((prev) => Math.max(minGuests, Math.min(maxGuests, prev + delta)));
     };
-    const [guests, setGuests] = useState(100);
+    const [guests, setGuests] = useState(15);
     useEffect(() => {
   // console.log('Updated guests:', guests);
   handleFormChange('guests',guests)
@@ -69,6 +69,28 @@ export default function FillDetails () {
       if (guests <= 50) return 120
       if (guests > 50 && guests <= 100) return (120 - (120 * 0.05)); // 5% discount
       if ( guests > 100) return (120 - (120 * 0.10)); // 10% discount
+    }
+
+    // No Discounts given to other Categories i.e. Catering And Bulk Delivery
+    if (filteredProduct[0].name == "Menu A"){
+      // if (guests <=2000) return 210
+       return 430  
+    }
+    if (filteredProduct[0].name == "Menu B"){
+      // if (guests <=2000) return 210
+       return 540   
+    }
+    if (filteredProduct[0].name == "Menu C"){
+      // if (guests <=2000) return 210
+       return 670   
+    }
+    if (filteredProduct[0].name == "Short Menu"){
+      // if (guests <=2000) return 210
+       return 380   
+    }
+    if (filteredProduct[0].name == "Breakfast"){
+      // if (guests <=2000) return 210
+       return 190   
     }
 
     // if (guests >= 130) return 160;

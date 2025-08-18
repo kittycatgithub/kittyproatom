@@ -149,10 +149,10 @@ const CustomizeBarBulk = ({ selectedOptions }) => {
                     }
                   >
                     <option value="">Unit</option>
-                    <option value="pcs">pcs</option>
+                    {/* <option value="pcs">pcs</option>     */}
                     <option value="kg">kg</option>
                     <option value="g">g</option>
-                    <option value="ltr">ltr</option>
+                    {/* <option value="ltr">ltr</option> */}
                   </select>
                 </div>
               );

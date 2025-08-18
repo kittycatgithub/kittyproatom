@@ -15,9 +15,9 @@ const ProductCard = ({product}) => {
               className="w-full h-60 object-cover rounded mb-2"
             />
             <h3 className="font-semibold text-lg">{product.name}</h3>
-            <p className="text-sm text-gray-600 mt-1">
+            {/* <p className="text-sm text-gray-600 mt-1">
               6 Veggie Blockbusters in 1 Epic Pan Pizza...
-            </p>
+            </p> */}
             <div className="flex justify-between items-center mt-3">
               <span className="font-bold text-green-600">{currency} {product.price}.00</span>
               <div onClick={ (e)=> { e.stopPropagation() } } className="text-black">
