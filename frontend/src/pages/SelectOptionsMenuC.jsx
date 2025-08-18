@@ -286,7 +286,8 @@ const SelectOptionsMenuC = () => {
 
   return (
     <div>
-      { Object.keys(selectedPlatter).length !== 0 ? (
+      {/* { Object.keys(selectedPlatter).length !== 0 ? ( */}
+      { selectedPlatter._id ? (
         <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-full'>
              {selectedPlatter.keyword == "snacks" || selectedPlatter.keyword == "catering" && (
              <div className='md:col-span-1 col-span-2 p-1 text-md md:text-lg space-y-5.5 md:space-y-6 md:py-10'>  
@@ -738,7 +739,7 @@ const SelectOptionsMenuC = () => {
  
       </div>
       ) : (
-                <div className='flex items-center pl-10 md:pl-0 justify-center h-screen md:h-[60vh] bg-[#EFF6FF]'>
+                 <div className='flex items-center pl-10 md:pl-0 justify-center h-screen bg-[#EFF6FF]'>
                   <p className='text-2xl font-medium'>Kindly select the Platter Again...<br/>Do not refresh the page while selecting platter</p>
                 </div>) }
     </div>   

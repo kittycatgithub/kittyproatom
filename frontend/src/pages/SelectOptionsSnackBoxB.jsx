@@ -145,10 +145,12 @@ const handleSelectedOptions = (category, itemName) => {
       const [item1, item2] = selectedOptions.Snacks;
       return Boolean(item1.item1 && item2.item2);
    };
+   console.log(selectedPlatter, "selectedPlatter")
 
   return (
     <div>
-      { Object.keys(selectedPlatter).length !== 0 ? (
+      {/* { Object.keys(selectedPlatter).length !== 0 ? ( */}
+      { selectedPlatter._id ? (
         <div className='grid grid-cols-6 lg:max-w-7xl justify-between mx-auto h-screen  mb-16'>
              {selectedPlatter.keyword == "snacks" && (
              <div className='md:col-span-1 col-span-2 pl-4 text-lg space-y-10 py-10'> 
@@ -161,7 +163,7 @@ const handleSelectedOptions = (category, itemName) => {
                 {selectedOptions.Snacks && (
                   <p className="text-xs text-gray-500">
                     {[selectedOptions.Snacks[0].item1, selectedOptions.Snacks[1].item2].filter(Boolean).join(', ')}
-                    {console.log(selectedOptions)}
+                    {/* {console.log(selectedOptions)} */}
                   </p>
                 )}
 
