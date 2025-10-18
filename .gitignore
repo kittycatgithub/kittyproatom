@@ -2,11 +2,13 @@
 node_modules/
 backend/node_modules/
 frontend/node_modules/
+Cache.txt
 
 # Environment variables
 .env
 backend/.env
 frontend/.env
+Cache.txt
 
 # Build files
 frontend/build/
