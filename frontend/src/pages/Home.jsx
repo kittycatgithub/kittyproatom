@@ -36,7 +36,7 @@ const {navigate} = useAppContext()
     <div className="w-full h-full bg-rose-100/30 dark:bg-rose-100/30">
 <img className='lg:hidden w-full h-full' src="./baronfinalLogo.jpg"/>
     <div className="w-full h-full flex flex-col justify-center items-center py-10 px-6">
-        <p className="pb-2 text-lg lg:lg:text-2xl text-rose-600 font-semibold">Category</p>
+        <p className="pb-2 text-lg lg:lg:text-2xl text-orange-500 font-semibold">Category</p>
         <h2 className="text-3xl lg:text-5xl text-center font-serif font-semibold mb-10">Choose Your Best Food</h2>
 
         <div className="grid lg:grid-cols-4 xl:grid-cols-4 grid-cols-2 gap-6 flex-wrap lg:flex-nowrap justify-center items-center mb-4">      

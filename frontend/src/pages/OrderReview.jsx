@@ -256,7 +256,7 @@ console.log(totalAmount, "totalAmount")
                                  Price - {currency} {new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests)}
                                 </p>
                                 <p>
-                                 Total Price with 5% GST - {currency}{new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests + product.details.totalPrice * product.details.guests*0.05)}
+                                 Final Price with 5% GST - {currency}{new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests + product.details.totalPrice * product.details.guests*0.05)}
                                 </p>
                             </div>
                             </div>

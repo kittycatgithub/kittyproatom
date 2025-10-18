@@ -41,6 +41,7 @@ import NavbarStore from './components/ecommerce/NavbarStore'
 import Store from './pages/ecommerce/Store'
 import StoreCart from './pages/ecommerce/StoreCart'
 import ProductOrders from './pages/seller/ProductOrders'
+import HospitalFoodService from './pages/HospitalFoodService'
 
 const App = () => {
 
@@ -87,6 +88,7 @@ const App = () => {
       <Route path='/select-menu-c/:_id' element={<SelectOptionsMenuC/>}/>
       <Route path='/select-short-menu/:_id' element={<SelectOptionsShortMenu/>}/>
       <Route path='/select-breakfast/:_id' element={<SelectOptionsBreakfast/>}/>
+      <Route path='/hospital-and-corporate-food-service' element={<HospitalFoodService/>}/>
 
       {/* Bulk Delivery */}
       <Route path='/select-veg/:_id' element={<Veg/>}/>

@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { assets } from '../assets/assets'
 import { useAppContext } from '../context/AppContext'
 import toast from 'react-hot-toast'
+import { HashLink } from "react-router-hash-link";
+
 
 const Navbar = () => {
 
@@ -37,8 +39,8 @@ const Navbar = () => {
     <nav className=" flex items-center justify-between z-35 px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
 
             <NavLink to='/' onClick={()=>setOpen(false)}>
-            <h1 className='text-xl font-semibold text-gray-600 lg:hidden'>Baron Kitchen</h1>
-                <img className="h-9 hidden" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoColored.svg" alt="logo" />
+            <h1 className='text-3xl font-semibold text-gray-600'>Baron Kitchen</h1>
+                {/* <img className="h-9" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoColored.svg" alt="logo" /> */}
             </NavLink>
 
             {/* Desktop Menu */}
@@ -46,6 +48,10 @@ const Navbar = () => {
             {/* Home,Services,Contact Us,Feedback */}
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/about'>About</NavLink>
+                {/* <NavLink to='/about#services'>Services</NavLink> */}
+                <HashLink smooth to="/about#services">
+  Services
+</HashLink>
                 <NavLink to='/contact'>Contact</NavLink>
                 {/* <NavLink to='#'>Feedback</NavLink> */}
 
@@ -107,6 +113,8 @@ const Navbar = () => {
              {/* Home,Services,Contact Us,Feedback */}
                 <NavLink to='/' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Home</NavLink>
                 <NavLink to='/about' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">About</NavLink>
+                {/* <NavLink to='/about#services' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Services</NavLink> */}
+                <HashLink smooth to="/about#services" onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Services</HashLink>
                 {/* <NavLink to='/services' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Services</NavLink> */}
                 {
                    user && 

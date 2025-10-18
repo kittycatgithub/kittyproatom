@@ -33,7 +33,7 @@ export default function BerryFreshHero() {
 <div>
     <section className="min-h-screen pb-16 md:pb-0 pt-6 md:pt-0 px-6 md:px-12 flex flex-col lg:flex-row items-center justify-center max-w-7xl mx-auto gap-12">
         <div className="lg:w-1/2 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal leading-tight">
                Baron Kitchen
             </h1>
             
@@ -53,10 +53,10 @@ In short Baron Kitchen is All About Food
                 </p>
             
             <div className="flex flex-row gap-4">
-                <NavLink to={"/"} className="px-4 md:px-8 py-3 bg-berry-red text-white bg-primary rounded-lg hover:bg-berry-red/90 transition-all transform hover:-translate-y-1 shadow-lg">
+                <NavLink to={"/"} onClick={()=> scrollTo(0,0)} className="px-4 md:px-8 py-3 bg-berry-red text-white bg-primary rounded-lg hover:bg-berry-red/90 transition-all transform hover:-translate-y-1 shadow-lg">
                     View Categories
                 </NavLink>
-                <NavLink to={"/contact"} className="px-8 py-3 border border-berry-red text-berry-red rounded-lg hover:bg-berry-red/10 transition-all transform hover:-translate-y-1">
+                <NavLink to={"/contact"} onClick={()=> scrollTo(0,0)} className="px-8 py-3 border border-berry-red text-berry-red rounded-lg hover:bg-berry-red/10 transition-all transform hover:-translate-y-1">
                     Contact Us
                 </NavLink>
             </div>

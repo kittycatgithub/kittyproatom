@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <>
     <div className="relative w-full h-[20vh] md:h-[50vh] min-h-[20vh]">
-     <img src="https://static.wixstatic.com/media/45b4de_9938f336732b4ad6ba409f1259dd335a~mv2.jpg/v1/fill/w_1901,h_638,fp_0.50_0.50,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/45b4de_9938f336732b4ad6ba409f1259dd335a~mv2.jpg" alt="Background Image" className="object-cover object-center w-full h-full" />
+     <img src="./top-img.avif" alt="Background Image" className="object-cover object-center w-full h-full" />
 
   <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center px-4 text-center">
     <motion.h1 
@@ -36,7 +36,7 @@ const Contact = () => {
         </p>
         <div className="space-y-6">
           <div className="flex items-start">
-            <svg className="h-6 w-6 text-primary mt-1 mr-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none"
+            <svg className="h-6 w-6 text-amber-400 mt-1 mr-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none"
               viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                 d="M12 11c1.656 0 3-1.343 3-3s-1.344-3-3-3-3 1.343-3 3 1.344 3 3 3zm0 1c-2.667 0-8 1.333-8 4v2h16v-2c0-2.667-5.333-4-8-4z" />
@@ -74,6 +74,17 @@ const Contact = () => {
               <h3 className="font-bold text-lg mb-1">Email</h3>
               <p className="text-gray-700">kuldeepprajapati2111@gmail.com</p>
             </div> */}
+          </div>
+          <div className="flex items-start">
+            <svg className="h-6 w-6 text-amber-400 mt-1 mr-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                d="M16 12l-4-4-4 4m8 0v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4m0-4a2 2 0 012-2h8a2 2 0 012 2v4z" />
+            </svg>
+            <div>
+              <h3 className="font-bold text-lg mb-1">Email</h3>
+              <p className="text-gray-700">manager@baronkitchen.com</p>
+            </div>
           </div>
         </div>
 
@@ -123,7 +134,7 @@ const Contact = () => {
   </div>
 </section>
     </div>
-    <section class="text-gray-800 body-font bg-blue-50 px-2 md:px-0">
+    <section class="text-gray-800 body-font bg-blue-50/50 px-2 md:px-0">
     <form action="https://fabform.io/f/xxxxx" method="post">
 
     <div class=" flex flex-col md:flex-row lg:max-w-7xl w-full py-12 md:py-12 mx-auto section"

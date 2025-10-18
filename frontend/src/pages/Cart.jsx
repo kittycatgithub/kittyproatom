@@ -207,9 +207,9 @@ return  (
   })
 ) : null}</div>
                         </div>
-                        <hr className="text-gray-300"/>
+                        {/* <hr className="text-gray-300"/> */}
                         {/* <p className="text-center">${product.offerPrice * product.quantity}</p> */}
-                  <div className="flex flex-row p-2 justify-around">
+                  <div className="flex flex-row p-2 justify-around border-t border-gray-300">
   <button onClick={ ()=> handleResume(product)  } className="text-lg bg-primary p-1 rounded-full text-white shadow-xl shadow-gray-200 hover:shadow-sm">
     Resume 
   </button>
