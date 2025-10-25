@@ -19,7 +19,7 @@ const port = process.env.PORT || 4000
 await connectDB()
 
 // Allow multiple origins
-const allowedOrigins = ['https://147.93.27.50','http://localhost:5173', 'https://www.baronkitchen.com', 'https://riyabawane.site', 'http://riyabawane.site', "http://www.riyabawane.site",  'https://www.riyabawane.site', 'http://www.riyabawane.site']
+const allowedOrigins = ['https://72.60.219.19', 'http://72.60.219.19','http://localhost:5173', 'https://www.baronkitchen.com', 'https://baronkitchen.com', 'https://api.baronkitchen.com']
 
 // Middleware configuration
 app.use(express.json()) // all requests coming to server, will be parsed into JSON format using json method

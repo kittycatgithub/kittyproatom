@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
+
 *{
     font-family: "Outfit", sans-serif;
 }
@@ -10,6 +11,7 @@
     --color-primary-dull: #E37C19;
     --color-button: #ff4c24;
     --color-button-hover:#F7B60D;
+    --color-price: #EC0026;
 }
 /* Hide scrollbar for Webkit browsers */
 .no-scrollbar::-webkit-scrollbar {
@@ -21,3 +23,11 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

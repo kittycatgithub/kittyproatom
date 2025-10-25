@@ -146,17 +146,20 @@ const handleRemoveFromCart = (productId) => {
                                 className="w-full  lg:h-72 xl:h-72 h-48 object-cover transition-transform duration-700 ease-in-out transform hover:scale-110"
                               />
                               <div className="absolute top-3 left-0 bg-gradient-to-r from-purple-600 to-pink-600  text-white px-3 py-1.5 rounded-r-full text-xs tracking-wider">
-                                {product.badge}
+                                {product.badge} 
                               </div>
                             </div>
                     
                             <div className="px-6 py-3">
                               <div className="text-indigo-600 text-lg font-semibold tracking-wide mb-2">{product.name}</div>
                               {/* <h2 className="text-md text-gray-900 leading-tight mb-1 px-1">{product.name}</h2> */}
-                              <hr className='border-t border-gray-200'/>
+                              {product.category !== 'catering' && <div>
+                                  <hr className='border-t border-gray-200'/>
                               <ul className='list-disc pl-4 text-gray-600 pt-1'>
                                 {product.menu.map( (menu, index)=> <li key={index}>{menu}</li> )}
                               </ul>
+                                </div>}
+                              
                               <hr className='border-t border-gray-200 mt-2'/>
                                {/* Price & CTA */}
                               <div className="mt-2 flex flex-wrap lg:flex-nowrap gap-4">

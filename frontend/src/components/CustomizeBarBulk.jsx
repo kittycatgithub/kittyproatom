@@ -22,6 +22,22 @@ const CustomizeBarBulk = ({ selectedOptions }) => {
       toast.error("Please select at least one product before proceeding.");
       return;
     }
+    // Build defaults for all selected items (but don't overwrite existing qty/unit)
+    const defaults = { ...productDetails };
+    Object.entries(selectedOptions || {}).forEach(([category, items]) => {
+      items.forEach((item) => {
+        const key = `${category}:${item}`;
+        defaults[key] = {
+          ...(defaults[key] || {}),
+          // default unit to 'kg' only if not already set
+          unit: defaults[key]?.unit || "kg",
+          // keep qty as-is (do not default qty unless you want to)
+          qty: defaults[key]?.qty ?? "",
+        };
+      });
+    });
+
+    setProductDetails(defaults);
     setShowModal(true);
   };
 
@@ -142,16 +158,16 @@ const CustomizeBarBulk = ({ selectedOptions }) => {
                   {/* Unit */}
                   <select
                     className="border p-2 rounded w-16"
-                    value={productDetails[key]?.unit || ""}
+                    value={productDetails[key]?.unit || "kg"}
                     required
                     onChange={(e) =>
                       handleInputChange(category, item, "unit", e.target.value)
                     }
                   >
-                    <option value="">Unit</option>
+                    {/* <option value="">Unit</option> */}
                     {/* <option value="pcs">pcs</option>     */}
                     <option value="kg">kg</option>
-                    <option value="g">g</option>
+                    {/* <option value="g">g</option> */}
                     {/* <option value="ltr">ltr</option> */}
                   </select>
                 </div>
