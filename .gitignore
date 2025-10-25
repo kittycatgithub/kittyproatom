@@ -8,6 +8,7 @@ Cache.txt
 .env
 backend/.env
 frontend/.env
+frontend/dist
 Cache.txt
 
 # Build files
