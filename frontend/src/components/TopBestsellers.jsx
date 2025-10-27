@@ -98,7 +98,7 @@ const TopBestsellers = () => {
               </Swiper>
 
               {/* Badge */}
-              <div className="absolute z-50 top-0 left-3 bg-yellow-400 text-xs font-medium rounded-b-md px-2 py-1 shadow-md flex items-center gap-1">
+              <div className="absolute z-1 top-0 left-3 bg-yellow-400 text-xs font-medium rounded-b-md px-2 py-1 shadow-md flex items-center gap-1">
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2L14.5 7L20 7.5L15.5 11L17 16L12 13.5L7 16L8.5 11L4 7.5L9.5 7L12 2Z" />
                 </svg>

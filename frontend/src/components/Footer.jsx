@@ -7,8 +7,8 @@ const Footer = () => {
             {/* <!--Grid--> */}
             <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-4 gap-0 lg:gap-0 max-w-xs mx-auto sm:max-w-2xl md:max-w-3xl lg:max-w-full">
                 <div className="col-span-full lg:col-span-1 mb-10 lg:mb-0">
-                    <a href="https://pagedone.io/"  className="flex justify-center lg:justify-start">
-                        {/* <img className='h-24' src='https://static.wixstatic.com/media/45b4de_7b0d160ebba44cd4866eacebef80dfd3~mv2.jpg/v1/fill/w_324,h_140,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/baron%20final%20Logo.jpg'/> */}
+                    <a href="/"  className="flex justify-center lg:justify-start">
+                        <img className='h-24' src='./baronfinalLogo.jpg'/>
                     </a>
                     <p className="py-8 text-lg lg:text-md text-gray-500 lg:max-w-xs text-center lg:text-left">Trusted by more than 100 companies & 5 million customers. Follow us on social media.</p>
                     <div className=" w-full h-auto py-8 flex items-center justify-center gap-4 flex-wrap">
@@ -79,8 +79,10 @@ const Footer = () => {
                         <li className="mb-3"><a href="/all-menu/meal-thali-snack-boxes"  className="text-gray-800 hover:text-gray-900">Meal Thali</a></li>
                         <li className="mb-3"><a href="/all-menu/meal-thali-snack-boxes"  className="text-gray-800 hover:text-gray-900">Snack Boxes</a></li>
                         <li className="mb-3"><a href="/all-menu/catering"  className=" text-gray-800 hover:text-gray-900">Catering</a></li>
-                        <li className="mb-3"><a href="/categories/bulk-delivery"  className=" text-gray-800 hover:text-gray-900">Bulk Delivery</a></li>
-                        <li><a href="/all-menu/frozen-products"  className=" text-gray-800 hover:text-gray-900">Frozen Products</a></li>
+                        {/* <li className="mb-3"><a href="/categories/bulk-delivery"  className=" text-gray-800 hover:text-gray-900">Bulk Delivery</a></li> */}
+                        <li className="mb-3"><a href="/select-bulk/ek56j67k"  className=" text-gray-800 hover:text-gray-900">Bulk Delivery</a></li>
+                        {/* <li><a href="/all-menu/frozen-products"  className=" text-gray-800 hover:text-gray-900">Frozen Products</a></li> */}
+                        <li><a href="/store"  className=" text-gray-800 hover:text-gray-900">Frozen Products</a></li>
                     </ul>
                    
                 </div>  
@@ -200,7 +202,7 @@ const Footer = () => {
             <div className="py-7 border-t border-gray-200">
                 <div className="flex items-center justify-center flex-col lg:justify-between lg:flex-row">
                     <span className="text-sm text-gray-500 ">©<a href="https://www.baronkitchen.com/">Baron Kitchen</a> 2025, All rights reserved.</span>
-                    <span className="text-sm text-gray-500 pt-4"><a href="">Designed & Developed By HostCloudRCS</a></span>
+                    <span className="text-sm text-gray-500 pt-4"><a href="https://www.instagram.com/hostcloudrcs" target='_blank'>Designed & Developed By HostCloudRCS</a></span>
                     {/* <ul className="flex items-center gap-9 mt-4 lg:mt-0">
                         <li><a href="javascript:;"  className="text-sm text-gray-500">Terms</a></li>
                         <li><a href="javascript:;"  className="text-sm text-gray-500">Privacy</a></li>
