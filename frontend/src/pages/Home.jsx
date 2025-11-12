@@ -5,6 +5,7 @@ import BottomBanner from '../components/BottomBanner';
 import FooterBar from '../components/FooterBar';
 import OurClients from '../components/OurClients';
 import TopBestsellers from '../components/TopBestsellers';
+import TestimonialCarousel from '../components/TestimonialCarousel';
 
 const Home = () => {
 
@@ -36,7 +37,7 @@ const {navigate} = useAppContext()
   return (<>
   
     <div className="w-full h-full bg-rose-100/30 dark:bg-rose-100/30">
-<img className='lg:hidden w-full h-full' src="./baronfinalLogo.jpg"/>
+{/* <img className='lg:hidden w-full h-full' src="./baronfinalLogo.jpg"/> */}
 
     <div className="w-full h-full justify-center items-center py-10">
 
@@ -101,6 +102,7 @@ const {navigate} = useAppContext()
     </div>
 </div>
 <OurClients/>
+<TestimonialCarousel/>
 {/* <BestSeller/> */}
 {/* <BottomBanner/> */}
 <div className='block lg:hidden'><FooterBar/></div>

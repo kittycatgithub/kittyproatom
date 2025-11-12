@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import { dummyOrders } from '../assets/assets'
+import { Link } from 'react-router-dom'
 
 const MyOrders = () => {
 
@@ -26,11 +27,25 @@ const MyOrders = () => {
 
   return (
     <div className='mt-16 pb-16 max-w-7xl mx-auto'>
-        <div className='flex flex-col items-end w-max mb-8 px-4 lg:px-0 '>
+      <div className='flex flex-row justify-between lg:pr-32'>
+            <div className='flex flex-col items-end w-max mb-8 px-4 lg:px-0'>
              <p className='text-2xl font-medium uppercase'>My Orders</p>
              <div className='w-16 h-0.5 bg-primary rounded-full'>
              </div>
         </div>
+         <div className="relative">
+        <Link
+            to={'/'}
+            className="relative px-4 py-1 rounded-full overflow-hidden group border-2 border-primary text-primary-dull hover:text-white inline-block"
+          >
+            <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition duration-300"></span>
+            <span className="relative z-10 group-hover:text-white">
+              Continue Shopping
+            </span>
+          </Link>
+    </div>  
+      </div>
+        
 
        {myOrders.map((order, index) => (
   <div key={index} className="border border-gray-300 rounded-lg mb-10 p-4 py-5 max-w-6xl">
@@ -56,7 +71,7 @@ const MyOrders = () => {
           </div>
           <div className="ml-4 text-gray-800 w-[200px]">
             <h2 className="text-xl font-medium ">Details</h2>
-            <p>Occassion : {item?.details?.occasion || ""}</p>
+            <p>Occassion : {item?.details?.occasion || "Not Selected"}</p>
             <p>Guests : {item?.details?.guests || "1"}</p>
             <p>Status : {order.status || "Order Placed"}</p>
             <p>Date : {new Date(order.createdAt).toLocaleDateString("en-GB")}</p>
@@ -192,11 +207,10 @@ const MyOrders = () => {
             {order.address.firstName} {order.address.lastName}
           </p>
           <p>
-            {order.address.street}, {order.address.city}
+            {order.address.address}, {order.address.city}
           </p>
           <p>
-            {order.address.state}, {order.address.zipcode}{" "}
-            {order.address.country} - {order.address.pincode}
+            {order.address.state}, India
           </p>
           <p>{order.address.phone}</p>
           <div><h2 className=" text-purple-900 font-semibold pt-2"> Additional Note   </h2><p>{order.note ? (order.note ): ("null")}  </p></div>

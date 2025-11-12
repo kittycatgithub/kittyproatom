@@ -783,7 +783,7 @@ export const actualProducts = [
     path:"https://static.vecteezy.com/system/resources/thumbnails/042/600/495/small_2x/ai-generated-a-still-life-of-a-street-food-cart-with-snacks-such-as-samosas-pakoras-and-chaat-free-photo.jpg",
     badge: 'Best for Professional Events',    
     category: "meal-thali-snack-boxes",
-   unit:"/guest",
+   unit:"/thali",
     offerPrice: 170,
     image: [potato_image_1, potato_image_2, potato_image_3, potato_image_4],
     menu: [
@@ -807,7 +807,7 @@ export const actualProducts = [
     path:"https://img.freepik.com/free-photo/gourmet-bowl-with-healthy-rice-meat-vegetables-generated-by-ai_188544-14076.jpg",
     badge: 'Best for Professional Events',    
     category: "meal-thali-snack-boxes",
-    unit:"/guest",
+    unit:"/thali",
     offerPrice: 210,
     image: [tomato_image],
     menu: [
@@ -831,7 +831,7 @@ export const actualProducts = [
     path:"https://media.istockphoto.com/id/1319728998/photo/sandwich-with-lettuce-tomatoes-chicken-cheese-sorrel-and-a-cup-of-coffee-on-wooden-cutting.jpg?s=612x612&w=0&k=20&c=V0YMnDMKCQRlhJz8ipX4pJSju_Ss8ztFcMGSe_MWW_Y=",
     badge: 'Best for Professional Events',  
     category: "meal-thali-snack-boxes",
-    unit:"/pack",
+    unit:"/snack box",
     offerPrice: 95,
     image: [carrot_image],
     menu: [
@@ -854,7 +854,7 @@ export const actualProducts = [
     path:"https://media.istockphoto.com/id/611107852/photo/sandwich-and-orange-juice.jpg?s=612x612&w=0&k=20&c=cjBUC7odIT51xz3GlDTUTV5IqlVYrm8D1SFvRGK-HyU=",
     badge: 'Best for Professional Events',  
     category: "meal-thali-snack-boxes",
-    unit:"/pack",
+    unit:"/snack box",
     price: 18,
     offerPrice: 120,
     image: [spinach_image_1],

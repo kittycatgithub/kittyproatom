@@ -61,7 +61,13 @@ const App = () => {
     
     {showUserLogin ? <Login/> : null}
 
-    <Toaster />
+    <Toaster toastOptions={{
+          // Default styles for all toasts
+          style: {
+          //  padding: '12px 16px',
+              fontSize: '20px', 
+          },
+         }}/>
     
   {/* Routing Goes Here inside single div*/}
   <div className={`${isSellerPath} ? "px-0" : "px-0"`}>

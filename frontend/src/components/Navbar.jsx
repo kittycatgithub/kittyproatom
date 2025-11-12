@@ -39,7 +39,8 @@ const Navbar = () => {
     <nav className=" flex items-center justify-between z-35 px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
 
             <NavLink to='/' onClick={()=>setOpen(false)}>
-            <h1 className='text-3xl font-semibold text-gray-600'>Baron Kitchen</h1>
+            <img className='w-24 h-full' src="./baronfinalLogo.jpg"/>
+            <h1 className='text-xs text-center'>All About Food</h1>
                 {/* <img className="h-9" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoColored.svg" alt="logo" /> */}
             </NavLink>
 

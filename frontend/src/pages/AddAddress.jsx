@@ -25,12 +25,12 @@ const AddAddress = () => {
         firstName: '',
         lastName: '',
         email: '',
-        street: '',
-        city: '',
-        state: '',
-        pincode: '',
-        country: '',
-        phone: '',
+        address: '',
+        city: 'Nagpur',
+        state: 'Maharashtra',
+        // pincode: '',
+        // country: '',
+        // phone: '',
     })
 
     const handleChange = async (e) => {
@@ -49,7 +49,7 @@ const AddAddress = () => {
 
             if(data.success){
                 toast.success(data.message)
-                // navigate('/cart')
+                navigate('/order-review')
             } else {
                 toast.error(data.message)
             }
@@ -78,18 +78,21 @@ const AddAddress = () => {
 
                     <InputField handleChange={handleChange} address={address} name='email' type="email" placeholder="Email Address"/>
 
-                    <InputField handleChange={handleChange} address={address} name='street' type="text" placeholder="Street"/>
+                    <InputField handleChange={handleChange} address={address} name='address' type="text" placeholder="Address"/>
 
                     <div className='grid grid-cols-2 gap-4'>
-                        <InputField handleChange={handleChange} address={address} name='city'  type="text" placeholder="City"/>
-
-                        <InputField handleChange={handleChange} address={address} name='state' type="text" placeholder="State"/>
+                        <input handleChange={handleChange} address={address} name='city' value='Nagpur'  type="text" placeholder="City" readOnly
+                        className='border border-gray-300 rounded p-2'/>
+                        
+                        {/* <InputField handleChange={handleChange} address={address} name='state' type="text" placeholder="State"/> */}
+                        <input handleChange={handleChange} address={address} name='state' value='Maharashtra'  type="text" placeholder="City" readOnly
+                        className='border border-gray-300 rounded p-2'/>
                     </div>
 
                     <div className='grid grid-cols-2 gap-4'>
-                        <InputField handleChange={handleChange} address={address} name='pincode'  type="number" placeholder="Pincode"/>
+                        {/* <InputField handleChange={handleChange} address={address} name='pincode'  type="number" placeholder="Pincode"/> */}
 
-                        <InputField handleChange={handleChange} address={address} name='country' type="text" placeholder="Country"/>
+                        {/* <InputField handleChange={handleChange} address={address} name='country' type="text" placeholder="Country"/> */}
                     </div>
 
                     <InputField handleChange={handleChange} address={address} name='phone' type="text" placeholder="Phone Number"/>
@@ -101,14 +104,14 @@ const AddAddress = () => {
                     
                 </form>
                 <div className='grid grid-cols-2'> 
-                        <button onClick={()=>navigate('/store')} className='w-1/2 mt-6 bg-button text-white py-3 
+                        {/* <button onClick={()=>navigate('/store')} className='w-1/2 mt-6 bg-button text-white py-3 
                     hover:bg-button-dull transition cursor-pointer uppercase
                     '>
-                        Go To Store</button>
-                        <button onClick={()=>navigate('/')} className='w-1/2 mt-6 bg-button text-white py-3 
-                    hover:bg-primary-dull transition cursor-pointer uppercase
+                        Go To Store</button> */}
+                        <button onClick={()=>navigate('/order-review')} className='w-full mt-6 bg-button text-white py-2 
+                    hover:bg-primary transition cursor-pointer uppercase rounded-full
                     '>
-                        Go To Home</button></div>
+                        Go To Order Review</button></div>
             </div>
             <img className='md:mr-16 mb-16 md:mt-0' src={assets.add_address_iamge} alt="Add Address" />
             

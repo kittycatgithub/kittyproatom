@@ -2,13 +2,13 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const cards = [
   {
     title: "Meal Thali & Snack Boxes",
     desc: "Classic delight with 100% real mozzarella cheese.",
-    price: "₹109",
+    price: "₹95",
     link: "/all-menu/meal-thali-snack-boxes",
     images: [
       "https://media.istockphoto.com/id/1158623408/photo/indian-hindu-veg-thali-food-platter-selective-focus.jpg?s=612x612&w=0&k=20&c=MOm3sfIfL22URV6juSCxpA3yfr4O63yJUV5vitufR7Y=",
@@ -52,6 +52,9 @@ const cards = [
 ];
 
 const TopBestsellers = () => {
+
+  const navigate = useNavigate()
+
   return (
     // <div className="bg-gradient-to-b from-yellow-50 via-yellow-50 to-yellow-100">
     <div>
@@ -72,7 +75,9 @@ const TopBestsellers = () => {
         {cards.map((item, index) => (
           <div
             key={index}
-            className="min-w-[290px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-lg shadow-lg overflow-hidden relative group"
+            // className="min-w-[290px] sm:min-w-[320px] md:min-w-[360px] bg-white rounded-lg shadow-lg overflow-hidden relative group"
+            className="min-w-[290px] sm:min-w-[320px] md:min-w-[290px] bg-white rounded-lg shadow-lg overflow-hidden relative group"
+            onClick={() => navigate(`${item.link}`)}
           >
             {/* Image Carousel */}
             <div className="relative h-48 md:h-56 lg:h-64">

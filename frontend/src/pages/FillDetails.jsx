@@ -16,21 +16,33 @@ export default function FillDetails () {
     const {_id} = useParams()
     
     const filteredProduct = actualProducts.filter( (product)=> product._id.toLowerCase() === _id )
-    // console.log("filteredProduct", filteredProduct)
+    console.log("filteredProduct", filteredProduct[0]?.name)
     console.log("cart", cart)
+    // let minGuests = 15;
+    let maxGuests = 2000;
+    const originalPrice = 249;
+
+    const [minGuests, setMinGuests] = useState(5)
+       const [guests, setGuests] = useState(5); 
+    
+    useEffect( ()=> {
+        if( filteredProduct[0]?.name === 'Snack Box A' || filteredProduct[0]?.name === 'Snack Box B') {
+          console.log('if code executed',  filteredProduct[0]?.name)
+          setMinGuests(10)
+          setGuests(10)
+        }
+    },[] )
+       useEffect(() => {
+      handleFormChange('guests',guests)
+    }, [guests]);
+
+    
 
     const handleGuestChange = (delta) => {
     setGuests((prev) => Math.max(minGuests, Math.min(maxGuests, prev + delta)));
     };
-    const [guests, setGuests] = useState(15);
-    useEffect(() => {
-  // console.log('Updated guests:', guests);
-  handleFormChange('guests',guests)
-}, [guests]);
+ 
 
-    const minGuests = 15;
-    const maxGuests = 2000;
-    const originalPrice = 249;
 
   // Occasion Logic
   const [occassion, setOccassion] = useState( "" ) 
@@ -148,7 +160,9 @@ const slots =
 
    const handleSubmit = () => {
     const missingFields = Object.entries(details).filter(
-      ([key, value]) => value === null || value === ""
+      // ([key, value]) => value === null || value === ""
+      ([key, value]) => 
+        (key !== "occasion") && (value === null || value === "")
     );
 
     if (missingFields.length > 0) {
@@ -214,7 +228,6 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
       {/* Header */}
       <div className=" text-center justify-center mb-4">
         <h2 className="text-xl font-semibold">Fill Details</h2><br/>
-        <p>All fields are mandatory*</p>
       </div>
 
       {/* Service Title */}
@@ -222,7 +235,7 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
         <div className="text-lg font-medium">
           📦 {filteredProduct[0].name}
         </div>
-        <button className="text-gray-500 text-sm">Edit ✏️</button>
+        {/* <button className="text-gray-500 text-sm">Edit ✏️</button> */}
       </div>
    {/* Occasion */}
       <div className="mb-4">
@@ -404,19 +417,6 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
         
         </div>
       </div>
-{/* Price Per Plate */}
-      <div className="bg-white flex border rounded-xl p-4 mb-4 shadow-sm">
-        <div className="text-sm font-medium content-center text-gray-500">Price Per Plate :</div>
-        <div className="gap-4">
-        {/* <div className="flex items-center justify-between gap-4"> */}
-          {/* <div className="text-sm text-green-600 font-semibold">
-            {discount}% <span className="text-green-600">&#8595;</span>
-          </div> */}
-          {/* <div className="line-through text-sm text-gray-400">₹{originalPrice}</div> */}
-          <div className="text-lg text-orange-700 pl-1">₹{pricePerPlate}</div>
-        </div>
-      </div>
-
       {/* Guest Selector */}
       <div className="bg-white  border rounded-xl p-4 mb-2 shadow-sm">
         <div className="grid grid-cols-2">
@@ -431,7 +431,8 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
           <input
             type="text"
             value={guests}
-            readOnly
+            // readOnly
+            onChange={ (e)=> setGuests(e.target.value) }
             className="text-center w-20 py-1 rounded-lg border text-orange-700 font-bold"
           />
           <button
@@ -457,12 +458,24 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
           {/* <User className="absolute right-0 -top-4 text-orange-600 w-4 h-4 mt-5" /> */}
         </div>
         <div className="flex justify-between text-xs text-gray-500 mt-1">
-          <span>15 (min)</span>
+          <span>{minGuests} (min)</span>
           <span>2000</span>
         </div>
 
         <div className="text-xs text-orange-700 text-center mt-2">
           ✨ <strong>DYNAMIC PRICING</strong> more guests, more savings.
+        </div>
+      </div>
+      {/* Price Per Plate */}
+      <div className="bg-white flex border rounded-xl p-4 mb-4 shadow-sm">
+        <div className="text-sm font-medium content-center text-gray-500">Price Per Plate :</div>
+        <div className="gap-4">
+        {/* <div className="flex items-center justify-between gap-4"> */}
+          {/* <div className="text-sm text-green-600 font-semibold">
+            {discount}% <span className="text-green-600">&#8595;</span>
+          </div> */}
+          {/* <div className="line-through text-sm text-gray-400">₹{originalPrice}</div> */}
+          <div className="text-lg text-orange-700 pl-1">₹{pricePerPlate}</div>
         </div>
       </div>
       {/* Address */}

@@ -91,7 +91,7 @@ export const AppContextProvider = ({children})=>{
             if(data.success){
                 setUser(data.user)
                 setCart(data.user.cart)  // Setting Cart Data here
-                console.log(data.user)
+                // console.log(data.user)
                 setStoreCartItems(data.user.storeCartItems)
             }
         } catch (error) {

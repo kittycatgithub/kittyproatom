@@ -248,16 +248,20 @@ console.log(totalAmount, "totalAmount")
                             </div>
                             <div className="space-y-1 text-gray-700 text-sm">
                                 <p className="text-xl text-purple-800">Details</p>
-                                <p>Occassion - {product.details.occasion}</p>
+                                <p>Occasion - {product.details.occasion === null ? (
+                                  <span>Not Selected</span>
+                                ) : (
+                                  product.details.occasion
+                                )}</p>
                                 <p>Date - {product.details.date}</p>
                                 <p>Guests - {product.details.guests}</p>
                                 <p>Time - {product.details.time}</p>
                                 <p>
                                  Price - {currency} {new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests)}
                                 </p>
-                                <p>
+                                {/* <p>
                                  Final Price with 5% GST - {currency}{new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests + product.details.totalPrice * product.details.guests*0.05)}
-                                </p>
+                                </p> */}
                             </div>
                             </div>
                             <div className="space-y-1 text-gray-700 text-sm  pl-2 md:pl-0">
@@ -389,16 +393,18 @@ console.log(totalAmount, "totalAmount")
                     <p className="text-sm font-medium uppercase">Delivery Address</p>
                     <div className="relative flex justify-between items-start mt-2">
                         {/* <p className="text-gray-500">No address found</p> */}
-                        <p className="text-gray-500">{ selectedAddress ? `${selectedAddress.street}, ${selectedAddress.city}, ${selectedAddress.state}, ${selectedAddress.country} - ${selectedAddress.pincode} ` : "No address found"  }</p>
+                        <p className="text-red-500">{ selectedAddress ? `${selectedAddress.address}, ${selectedAddress.city}, ${selectedAddress.state} ` : "Login / Register To Add Address"  }</p>
 
-
-                        <button onClick={() => setShowAddress(!showAddress)} className="text-indigo-500 hover:underline cursor-pointer">
+                        { user && 
+                            <button onClick={() => setShowAddress(!showAddress)} className="text-indigo-500 hover:underline cursor-pointer">
                             Change
-                        </button>
+                            </button>
+                        }
+                        
                         {showAddress && (
                             <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full">
                                 { addresses.map( (address, index)=> (<p key={index} onClick={() => {setShowAddress(false); setSelectedAddress(address)}} className="text-gray-500 p-2 hover:bg-gray-100">
-                                    {address.street},{address.city},{address.state},{address.country} - {address.pincode}
+                                    {address.address}, {address.city}, {address.state}, India
                                 </p>) ) }
                                 <p onClick={() => {setShowAddress(false); navigate(`/add-address`); scrollTo(0,0)}} className="text-indigo-500 text-center cursor-pointer p-2 hover:bg-indigo-500/10">
                                     Add address
@@ -435,7 +441,20 @@ console.log(totalAmount, "totalAmount")
   <p className="flex justify-between">
     <span>Price</span>
 <span>
-  {currency}{(price + price * 0.05).toFixed(2)}
+  {currency}{(price).toFixed(2)}
+</span>    {/* <span>
+  {currency}
+  {new Intl.NumberFormat("en-IN", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(price)}
+</span> */}
+  </p>
+  <p className="flex justify-between">
+    <span>5% GST</span>
+
+<span>
+  {currency}{(price * 0.05).toFixed(2)}
 </span>    {/* <span>
   {currency}
   {new Intl.NumberFormat("en-IN", {
@@ -465,11 +484,18 @@ console.log(totalAmount, "totalAmount")
 </span>
   </p>
 </div>
-
-                <button onClick={placeOrder} className="w-full py-3 mt-6 cursor-pointer bg-indigo-500 text-white font-medium hover:bg-indigo-600 transition">
-                    Place Order 
-                    {/* Proceed To Checkout  */}
-                </button>
+                {
+                  user ? (
+                    <button onClick={placeOrder} className="w-full py-3 mt-6 cursor-pointer bg-primary text-white font-medium hover:bg-primary-dull transition">
+                        Place Order / Ask For Quotation
+                    </button>
+                  ) : (
+                    <button onClick={() => toast.error('Login To Continue')} className="w-full py-3 mt-6 cursor-pointer bg-primary text-white font-medium hover:bg-primary-dull transition">
+                        Login To Place Order 
+                    </button>
+                  )
+                }
+                
             </div>
         </div>
     )
