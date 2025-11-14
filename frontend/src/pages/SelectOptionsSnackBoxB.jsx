@@ -3,12 +3,13 @@ import { useAppContext } from '../context/AppContext'
 import CustomizeBar from '../components/CustomizeBar'
 import CustomizeBarSnackBoxB from '../components/CustomizeBarSnackBoxB'
 import { useEffect } from 'react'
+import { actualProducts } from '../assets/assets'
 
 
 
 const SelectOptionsSnackBoxB = () => {
 
-    const {selectedPlatter, setSelectedPlatter , navigate} = useAppContext()
+    const {selectedPlatter, setSelectedPlatter , navigate, currency} = useAppContext()
     const [selectedOptions, setSelectedOptions] = useState({
       Sandwiches: null,
       Snacks: [{item1:null},{item2:null}],
@@ -145,7 +146,9 @@ const handleSelectedOptions = (category, itemName) => {
       const [item1, item2] = selectedOptions.Snacks;
       return Boolean(item1.item1 && item2.item2);
    };
-   console.log(selectedPlatter, "selectedPlatter")
+  //  console.log(selectedPlatter, "selectedPlatter")
+
+   const productDetail = actualProducts.filter( (product)=> product._id === 'gd49g56h' )
 
   return (
     <div>
@@ -156,27 +159,28 @@ const handleSelectedOptions = (category, itemName) => {
              <div className='md:col-span-1 col-span-2 pl-4 text-lg space-y-10 py-10'> 
              <div>
                 <button onClick={() => {setIsActive("Sandwiches")}} className={` rounded-md transition ${isActive === "Sandwiches" ? " text-primary" : " text-black"}`}> Sandwiches </button>
-                 {selectedOptions.Sandwiches !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Sandwiches}</p> : <p></p> }
+                 {/* {selectedOptions.Sandwiches !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Sandwiches}</p> : <p></p> } */}
+                 <p className='text-xs text-gray-500'>{selectedOptions.Sandwiches !==null ? <span>1</span> : <span>0</span>}/1</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Snacks")}} className={` rounded-md transition ${isActive === "Snacks" ? " text-primary" : " text-black"}`}> Snacks </button>
                 {selectedOptions.Snacks && (
                   <p className="text-xs text-gray-500">
-                    {[selectedOptions.Snacks[0].item1, selectedOptions.Snacks[1].item2].filter(Boolean).join(', ')}
+                    {/* {[selectedOptions.Snacks[0].item1, selectedOptions.Snacks[1].item2].filter(Boolean).join(', ')} */}
+                    {[selectedOptions.Snacks[0].item1, selectedOptions.Snacks[1].item2].filter(Boolean).length}/2
                     {/* {console.log(selectedOptions)} */}
                   </p>
                 )}
-
              </div>
              <div>
                 <button onClick={() => {setIsActive("Beverage")}} className={` rounded-md transition ${isActive === "Beverage" ? " text-primary" : " text-black"}`}> Beverage </button>
-                {selectedOptions.Beverage !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Beverage}</p> : <p></p> }
-
+                {/* {selectedOptions.Beverage !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Beverage}</p> : <p></p> } */}
+                <p className='text-xs text-gray-500'>{selectedOptions.Beverage !==null ? <span>1</span> : <span>0</span>}/1</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Desserts")}} className={` rounded-md transition ${isActive === "Desserts" ? " text-primary" : " text-black"}`}> Desserts </button>
-                {selectedOptions.Desserts !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Desserts}</p> : <p></p> }
-
+                {/* {selectedOptions.Desserts !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Desserts}</p> : <p></p> } */}
+                  <p className='text-xs text-gray-500'>{selectedOptions.Desserts !==null ? <span>1</span> : <span>0</span>}/1</p>       
              </div>
              </div>             
              )}
@@ -193,11 +197,10 @@ const handleSelectedOptions = (category, itemName) => {
                 {selectedOptions.Sandwiches !== null && selectedOptions.Sandwiches ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
             </button>
-    </div>
+          </div>
           </div>
         ))}
-      </div>
-                     
+      </div>                     
                  </div> }
                  {isActive === "Snacks" && <div>
                 {/* Card Grid */}
@@ -259,9 +262,40 @@ const handleSelectedOptions = (category, itemName) => {
     </div>
           </div>
         ))}
-      </div>
-                     
-                 </div> }           
+      </div>                     
+                 </div> } 
+                 <hr className='border-t border-themegray/40'/>
+                 <div  className=" flex  items-start p-1 lg:p-4 pb-16 lg:pb-18 justify-start font-sans antialiased text-gray-900">
+                          <div className="w-full max-w-xs bg-white rounded-2xl shadow overflow-hidden transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1">
+                            {/* <div className="relative lg:h-60 xl:h-65 h-40 overflow-hidden bg-gray-100">
+                              <img
+                                src={productDetail[0]?.path}  
+                                alt="Wireless Headphones"
+                                className="w-full lg:h-72 xl:h-72 h-44 object-cover transition-transform duration-700 ease-in-out transform hover:scale-110"
+                              />                            
+                            </div>                     */}
+                            <div className="px-3 lg:px-6 py-3">
+                              <div className="text-indigo-600 font-semibold tracking-wide mb-2">{productDetail[0]?.name}</div>
+                              {/* <h2 className="text-md text-gray-900 leading-tight mb-1 px-1">{product.name}</h2> */}
+                              {productDetail[0]?.category !== 'catering' && <div>
+                                  <hr className='border-t border-gray-200'/>
+                              <ul className='list-disc text-xs pl-4 text-themegray pt-1'>
+                                {productDetail[0]?.menu.map( (menu, index)=> <li key={index}>{menu}</li> )}
+                              </ul>
+                                </div>}                              
+                              <hr className='border-t border-gray-200 mt-2'/>
+                               {/* Price & CTA */}
+                              <div className="mt-2 flex flex-wrap lg:flex-nowrap gap-4">
+                      <div className="w-full flex justify-between items-center">
+                        <div className="text-xl w-3/6 text-gray-900">
+                          {currency} {productDetail[0]?.offerPrice} <span className="text-gray-500 text-xs">{productDetail[0]?.unit}</span>
+                        </div>    
+                </div>
+              </div>  
+                        <p className='text-xs'>{productDetail[0]?.description}</p>        
+          </div>
+                          </div>
+                              </div>            
              </div>
             {isTwoSnacksSelected() ? <CustomizeBar /> : <CustomizeBarSnackBoxB/>}
                         

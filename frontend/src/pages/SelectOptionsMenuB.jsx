@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import CustomizeBar from '../components/CustomizeBar'
 import { useEffect } from 'react'
+import { actualProducts } from '../assets/assets'
 
 
 
-const SelectOptionsMenuB = () => {
+const SelectOptionsMenuB = () => { 
 
-    const {selectedPlatter, setSelectedPlatter , navigate} = useAppContext()
+    const {selectedPlatter, setSelectedPlatter , navigate, currency} = useAppContext()
     // console.log("select Platter" , selectedPlatter)
     const [selectedOptions, setSelectedOptions] = useState({
       Soups: null,
@@ -299,7 +300,8 @@ const SelectOptionsMenuB = () => {
       setSelectedPlatter(prev => ({ ...prev, selectedOptions }));
     }, [selectedOptions]);
     
-
+   const productDetail = actualProducts.filter( (product)=> product._id === 'ek51j12k' )
+  
   return (
     <div className='bg-[#EFF6FF]'>
       {/* { Object.keys(selectedPlatter).length !== 0 ? (  */}
@@ -671,7 +673,38 @@ const SelectOptionsMenuB = () => {
       </div>
                      
                  </div> } 
-
+<hr className='border-t border-themegray/40'/>
+                 <div  className=" flex  items-start p-1 lg:p-4 pb-16 lg:pb-18 justify-start font-sans antialiased text-gray-900">
+                          <div className="w-full max-w-md bg-white rounded-2xl shadow overflow-hidden transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1">
+                            {/* <div className="relative lg:h-60 xl:h-65 h-40 overflow-hidden bg-gray-100">
+                              <img
+                                src={productDetail[0]?.path}  
+                                alt="Wireless Headphones"
+                                className="w-full lg:h-72 xl:h-72 h-44 object-cover transition-transform duration-700 ease-in-out transform hover:scale-110"
+                              />                            
+                            </div>                     */}
+                            <div className="px-3 lg:px-6 py-3">
+                              <div className="text-indigo-600 font-semibold tracking-wide mb-2">{productDetail[0]?.name}</div>
+                              {/* <h2 className="text-md text-gray-900 leading-tight mb-1 px-1">{product.name}</h2> */}
+                             <div>
+                                  <hr className='border-t border-gray-200'/>
+                              <ul className='list-disc text-xs pl-2 lg:pl-4 text-themegray pt-1'>
+                                {productDetail[0]?.menu.map( (menu, index)=> <li key={index}>{menu}</li> )}
+                              </ul>
+                                </div>                             
+                              <hr className='border-t border-gray-200 mt-2'/>
+                               {/* Price & CTA */}
+                              <div className="mt-2 flex flex-wrap lg:flex-nowrap gap-4">
+                      <div className="w-full flex justify-between items-center">
+                        <div className="text-xl w-3/6 text-gray-900">
+                          {currency} {productDetail[0]?.offerPrice} <span className="text-gray-500 text-xs">{productDetail[0]?.unit}</span>
+                        </div>    
+                </div>
+              </div>  
+                        <p className='text-xs'>{productDetail[0]?.description}</p>        
+          </div>
+                          </div>
+                              </div>  
              </div>
                        <CustomizeBar/>
  

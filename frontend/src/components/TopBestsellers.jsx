@@ -17,17 +17,6 @@ const cards = [
     ],
   },
   {
-    title: "Catering",
-    desc: "Delightful combination of onion, capsicum, tomato & grilled mushroom.",
-    price: "₹259",
-    link: "/all-menu/catering",
-    images: [
-      "https://media.istockphoto.com/id/1249206724/photo/banquet-catering-buffet-food.jpg?s=612x612&w=0&k=20&c=EDQZDZDQYeWT0UYasMivgDXwEa-QWPWEQn62szACVVM=",
-      "https://media.istockphoto.com/id/498472863/photo/final-touch-for-tasty-canapes.jpg?s=612x612&w=0&k=20&c=tsZMzSOGZEZhOAsooi_tSX0oJ4vhbH3vMwXYlu28wd0=",
-      "https://media.istockphoto.com/id/2174502255/photo/assorted-appetizers-and-gourmet-sliders-displayed-at-a-catered-event-in-an-elegant-venue.jpg?s=612x612&w=0&k=20&c=rDHGZtWr7hG4SvKkx4SVhYSVmEcUuVHzvZSboYLt79E=",
-    ],
-  },
-  {
     title: "Bulk Delivery",
     desc: "Flavorful trio of juicy paneer, crisp capsicum with spicy red paprika.",
     price: "₹259",
@@ -49,6 +38,17 @@ const cards = [
       "https://media.istockphoto.com/id/497634049/photo/pre-packaged-ready-to-eat-food.jpg?s=612x612&w=0&k=20&c=DvMDKkHR8CrSXmj5CxZaW4z2zK6EfMQ36JLcv4CCp2Q=",
     ],
   },
+  {
+    title: "Catering",
+    desc: "Delightful combination of onion, capsicum, tomato & grilled mushroom.",
+    price: "₹259",
+    link: "/all-menu/catering",
+    images: [
+      "https://media.istockphoto.com/id/1249206724/photo/banquet-catering-buffet-food.jpg?s=612x612&w=0&k=20&c=EDQZDZDQYeWT0UYasMivgDXwEa-QWPWEQn62szACVVM=",
+      "https://media.istockphoto.com/id/498472863/photo/final-touch-for-tasty-canapes.jpg?s=612x612&w=0&k=20&c=tsZMzSOGZEZhOAsooi_tSX0oJ4vhbH3vMwXYlu28wd0=",
+      "https://media.istockphoto.com/id/2174502255/photo/assorted-appetizers-and-gourmet-sliders-displayed-at-a-catered-event-in-an-elegant-venue.jpg?s=612x612&w=0&k=20&c=rDHGZtWr7hG4SvKkx4SVhYSVmEcUuVHzvZSboYLt79E=",
+    ],
+  },
 ];
 
 const TopBestsellers = () => {
@@ -59,17 +59,6 @@ const TopBestsellers = () => {
     // <div className="bg-gradient-to-b from-yellow-50 via-yellow-50 to-yellow-100">
     <div>
       <div className="max-w-7xl mx-auto w-full  py-10">
-      {/* Header */}
-      {/* <div className="text-center mb-8">
-        <div className="flex justify-center items-center gap-3">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="gold">
-            <path d="M12 2L14.5 7L20 7.5L15.5 11L17 16L12 13.5L7 16L8.5 11L4 7.5L9.5 7L12 2Z" />
-          </svg>
-          <h2 className="text-3xl font-bold text-yellow-800">Top 10 Bestsellers</h2>
-        </div>
-        <p className="text-yellow-700 mt-2">📍 In Your Locality</p>
-      </div> */}
-
       {/* Cards Container */}
       <div className="flex gap-6 overflow-x-auto px-4 pb-6 scrollbar">
         {cards.map((item, index) => (
@@ -109,13 +98,11 @@ const TopBestsellers = () => {
                 </svg>
                 Baron's TOP Menu
               </div>
-
               {/* Customise Button */}
               {/* <button className="absolute z-50 right-3 bottom-3 bg-black/60 text-white text-sm px-3 py-1.5 rounded-md hover:bg-black/70">
                 Customise ➤
               </button> */}
             </div>
-
             {/* Card Text */}
             <div className="px-4 pb-4 pt-3">
               <div className="flex items-center gap-2 mb-1">
@@ -124,9 +111,6 @@ const TopBestsellers = () => {
                 </div> */}
                 <h3 className="text-lg font-semibold">{item.title}</h3>
               </div>
-
-              {/* <p className="text-sm text-gray-600">{item.desc}</p> */}
-
               <div className="mt-3 flex items-end justify-between">
                 <div>
                   <div className="text-xl font-semibold">{item.price} <span className="font-normal text-sm">onwards</span></div>
@@ -134,10 +118,16 @@ const TopBestsellers = () => {
                     Regular | New Hand Tossed
                   </div> */}
                 </div>
-
-                <Link to={item.link} onClick={()=> scrollTo(0,0)} className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-md shadow-md">
-                  Customize
-                </Link>
+                { item.title !== 'Catering' ? (
+                  <Link to={item.link} onClick={()=> scrollTo(0,0)} className="bg-red-600 hover:bg-red-700 text-white font-semibold px-2 py-2 rounded-md shadow-md">
+                    Place Order
+                  </Link>
+                ):(
+                  <Link to={item.link} onClick={()=> scrollTo(0,0)} className="bg-red-600 hover:bg-red-700 text-white font-semibold px-2 py-2 rounded-md shadow-md">
+                    Ask For Quotation
+                  </Link>
+                ) }
+                
               </div>
             </div>
           </div>

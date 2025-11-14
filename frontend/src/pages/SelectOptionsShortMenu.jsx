@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import CustomizeBar from '../components/CustomizeBar'
 import toast from 'react-hot-toast'
+import { actualProducts } from '../assets/assets'
 
 const SelectOptionsShortMenu = () => {
 
-    const {selectedPlatter, setSelectedPlatter , navigate} = useAppContext()
+    const {selectedPlatter, setSelectedPlatter , navigate, currency} = useAppContext()
     // console.log("select Platter" , selectedPlatter)
     const [selectedOptions, setSelectedOptions] = useState({
       Menu1: null,
@@ -222,6 +223,8 @@ const SelectOptionsShortMenu = () => {
       
 }, [selectedOptions]);
 
+  const productDetail = actualProducts.filter( (product)=> product._id === 'ek53j34k' )
+
   return (
      <div className='h-screen '>
     {  console.log(selectedPlatter)}
@@ -281,7 +284,7 @@ const SelectOptionsShortMenu = () => {
         ))}
       </div>
                  </div> }
-                 {isActive === "Menu6" && <div>
+                 {isActive === "Menu6" && <div className='pb-4'>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
@@ -303,7 +306,7 @@ const SelectOptionsShortMenu = () => {
         </button> 
       </div>     
     </div> } 
-                 {isActive === "Menu1" && <div>
+                 {isActive === "Menu1" && <div className='pb-4'>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
@@ -326,7 +329,7 @@ const SelectOptionsShortMenu = () => {
         </button> 
       </div>       
                  </div> } 
-                 {isActive === "Menu2" && <div>
+                 {isActive === "Menu2" && <div className='pb-4'>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
@@ -349,7 +352,7 @@ const SelectOptionsShortMenu = () => {
         </button> 
       </div>  
      </div> } 
-                 {isActive === "Menu3" && <div>
+                 {isActive === "Menu3" && <div className='pb-4'>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
@@ -372,7 +375,7 @@ const SelectOptionsShortMenu = () => {
         </button> 
       </div>
       </div> } 
-                 {isActive === "Menu4" && <div>
+                 {isActive === "Menu4" && <div className='pb-4'>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
@@ -394,7 +397,7 @@ const SelectOptionsShortMenu = () => {
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select Menu 4</div>}
         </button> 
       </div></div> } 
-                 {isActive === "Menu5" && <div>
+                 {isActive === "Menu5" && <div className='pb-4'>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
@@ -415,7 +418,7 @@ const SelectOptionsShortMenu = () => {
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select Menu 5</div>}
         </button> 
       </div></div> } 
-                 {isActive === "Menu7" && <div>
+                 {isActive === "Menu7" && <div className='pb-4'>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
@@ -436,7 +439,7 @@ const SelectOptionsShortMenu = () => {
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select Menu 7</div>}
         </button> 
       </div></div> }
-       {isActive === "Menu8" && <div>
+       {isActive === "Menu8" && <div className='pb-4'>
                 {/* Card Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
@@ -545,6 +548,38 @@ const SelectOptionsShortMenu = () => {
         ))}
       </div>
       </div> } 
+      <hr className='border-t border-themegray/40'/>
+                 <div  className=" flex  items-start p-1 lg:p-4 pb-16 lg:pb-18 justify-start font-sans antialiased text-gray-900">
+                          <div className="w-full max-w-md bg-white rounded-2xl shadow overflow-hidden transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1">
+                            {/* <div className="relative lg:h-60 xl:h-65 h-40 overflow-hidden bg-gray-100">
+                              <img
+                                src={productDetail[0]?.path}  
+                                alt="Wireless Headphones"
+                                className="w-full lg:h-72 xl:h-72 h-44 object-cover transition-transform duration-700 ease-in-out transform hover:scale-110"
+                              />                            
+                            </div>                     */}
+                            <div className="px-3 lg:px-6 py-3">
+                              <div className="text-indigo-600 font-semibold tracking-wide mb-2">{productDetail[0]?.name}</div>
+                              {/* <h2 className="text-md text-gray-900 leading-tight mb-1 px-1">{product.name}</h2> */}
+                             <div>
+                                  <hr className='border-t border-gray-200'/>
+                              <ul className='list-disc text-xs pl-2 lg:pl-4 text-themegray pt-1'>
+                                {productDetail[0]?.menu.map( (menu, index)=> <li key={index}>{menu}</li> )}
+                              </ul>
+                                </div>                             
+                              <hr className='border-t border-gray-200 mt-2'/>
+                               {/* Price & CTA */}
+                              <div className="mt-2 flex flex-wrap lg:flex-nowrap gap-4">
+                      <div className="w-full flex justify-between items-center">
+                        <div className="text-xl w-3/6 text-gray-900">
+                          {currency} {productDetail[0]?.offerPrice} <span className="text-gray-500 text-xs">{productDetail[0]?.unit}</span>
+                        </div>    
+                </div>
+              </div>  
+                        <p className='text-xs'>{productDetail[0]?.description}</p>        
+          </div>
+                          </div>
+                              </div>  
       </div>
       <CustomizeBar/>
        </div>

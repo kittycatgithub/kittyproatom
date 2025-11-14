@@ -12,6 +12,7 @@
     --color-button: #ff4c24;
     --color-button-hover:#F7B60D;
     --color-price: #EC0026;
+    --color-themegray: #292929
 }
 /* Hide scrollbar for Webkit browsers */
 .no-scrollbar::-webkit-scrollbar {

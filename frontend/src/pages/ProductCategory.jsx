@@ -116,19 +116,16 @@ const handleRemoveFromCart = (productId) => {
        <div className='flex flex-col items-end w-max mx-auto '>
                     <p className='text-2xl font-medium  mt-10 '>{searchCategory.text}</p>                   
                     <div className='w-16 h-0.5 mb-5 bg-primary rounded-full'></div>
-                   
                 </div>
         {
             searchCategory && (<div>
                {searchCategory.text == "Catering" ?(<div className=' mx-auto w-fit px-3'>These are Dynamic Prices, and price will reduce as Number of Platter increases.
                       </div> ):( <div></div> )}
-            </div>
-               
+            </div>          
             )
         }
         {
-            filteredProducts.length > 0 ? (
-               
+            filteredProducts.length > 0 ? (               
                     <div  className='grid md:grid-cols-2 items-start  mx-auto max-w-6xl'>
                          {
                           filteredProducts.map( (product) => 

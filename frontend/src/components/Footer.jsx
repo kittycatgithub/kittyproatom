@@ -149,7 +149,7 @@ const Footer = () => {
   </li>
 
   {/* Address */}
-  <li className="mb-6 flex items-start space-x-1">
+  <li className="mb-3 flex items-start space-x-1">
     <span>
       <img
         src="https://www.svgrepo.com/show/513150/location-pin.svg"
@@ -160,15 +160,28 @@ const Footer = () => {
     <address className="not-italic text-gray-600 hover:text-gray-900">
       BARON INTEGRATED SERVICES PVT. LTD
       <br />
-      44, Chandra Nagar, Near Omkar Nagar Square
+      44, Chandra Nagar, Near Omkar Nagar Sq.
       <br />
       Manewada, Nagpur, Maharashtra - 440027
     </address>
   </li>
+  <li className="flex items-start space-x-1">
+    <span>
+      <img
+        src="https://www.svgrepo.com/show/513150/location-pin.svg"
+        className="h-4 mt-1"
+        alt="Location icon"
+      />
+    </span>
+    <address className="not-italic text-gray-600 hover:text-gray-900">
+      Baron Kitchen Processing Unit
+      <br />
+      <p className="text-gray-600 hover:text-gray-900">Plot No 8 B-2 Sector 21, MIHAN,<br/>near Mahindra Bloomdale,<br/>Nagpur, Maharashtra 441108</p>
+    </address>
+  </li>
 </ul>
-
-                </div>       
-            </div>
+        </div>       
+        </div>
         </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-5">
             {/* <!--Grid--> */}
@@ -178,13 +191,13 @@ const Footer = () => {
             <hr className='border-t border-gray-200'/>
 
                     <h4 className="text-lg text-gray-900 font-medium mb-2  pt-2">Contact Us</h4>
-                    <ul className="text-sm  transition-all duration-500">
+                    <ul className="text-sm  transition-all duration-500 text-gray-700">
                         {/* <li className="mb-6"><a href="javascript:;"  className="text-gray-600 hover:text-gray-900">manager@baronkitchen.com</a></li>
                         <li className="mb-6"><a href="javascript:;"  className=" text-gray-600 hover:text-gray-900">+91 9822990025 | +91 9975094003</a></li> */}
                         <li className="mb-3">
     <a
       href="mailto:manager@baronkitchen.com"
-      className="text-gray-600 hover:text-gray-900"
+      className=" hover:text-gray-900"
     >
       manager@baronkitchen.com
     </a>
@@ -192,20 +205,25 @@ const Footer = () => {
   <li className="mb-2 flex flex-row gap-2 justify-center">
     <a
       href="tel:+919822990025"
-      className="text-gray-600 hover:text-gray-900 block"
+      className=" hover:text-gray-900 block"
     >
       +91 9822990025
     </a> 
     ,
     <a
       href="tel:+919975094003"
-      className="text-gray-600 hover:text-gray-900 block"
+      className=" hover:text-gray-900 block"
     >
       +91 9975094003
     </a>
   </li>
-                        <li className="mb-2"><a href=""  className=" text-gray-600 hover:text-gray-900">BARON INTEGRATED SERVICES PVT. LTD</a></li>
-                        <li><a href=""  className=" text-gray-600 hover:text-gray-900">44, Chandra Nagar, Near Omkar Nagar Square<br/>Manewada, Nagpur, Maharashtra - 440027</a></li>
+                        <li className="mb-2"><a href=""  className=" hover:text-gray-900">BARON INTEGRATED SERVICES PVT. LTD</a></li>
+                        <li><a href=""  className=" hover:text-gray-900">44, Chandra Nagar, Near Omkar Nagar Square<br/>Manewada, Nagpur, Maharashtra - 440027</a></li>
+                        <li className="my-2"><a href=""  className=" hover:text-gray-900">Baron Kitchen Processing Unit</a></li>
+                        <li><a href=""  className=" hover:text-gray-900">
+                            <p>Plot No 8 B-2 Sector 21, MIHAN,<br/>near Mahindra Bloomdale,<br/>Nagpur, Maharashtra 441108</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>    
             </div>

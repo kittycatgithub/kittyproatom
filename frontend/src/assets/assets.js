@@ -826,7 +826,7 @@ export const actualProducts = [
     inStock: true,
   },
   {
-    _id: "gd48g45h",
+    _id: "gd48g45h", 
     name: "Snack Box A",
     path:"https://media.istockphoto.com/id/1319728998/photo/sandwich-with-lettuce-tomatoes-chicken-cheese-sorrel-and-a-cup-of-coffee-on-wooden-cutting.jpg?s=612x612&w=0&k=20&c=V0YMnDMKCQRlhJz8ipX4pJSju_Ss8ztFcMGSe_MWW_Y=",
     badge: 'Best for Professional Events',  
@@ -900,7 +900,7 @@ export const actualProducts = [
     updatedAt: "2025-03-25T07:18:13.103Z",
     inStock: true,
   },{
-    _id: "ek54j45k",
+    _id: "ek54j45r",
     name: "High Tea",
     
     menu:[

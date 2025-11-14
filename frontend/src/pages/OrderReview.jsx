@@ -154,7 +154,7 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
             });
 
             if (data.success) {
-                toast.success(data.message);
+                toast.success(data.message, { duration: 3000 });
             } else {
                 toast.error(`${data.message} Hello`);
             }
@@ -393,14 +393,17 @@ console.log(totalAmount, "totalAmount")
                     <p className="text-sm font-medium uppercase">Delivery Address</p>
                     <div className="relative flex justify-between items-start mt-2">
                         {/* <p className="text-gray-500">No address found</p> */}
-                        <p className="text-red-500">{ selectedAddress ? `${selectedAddress.address}, ${selectedAddress.city}, ${selectedAddress.state} ` : "Login / Register To Add Address"  }</p>
+                        {/* <p className="text-red-500">{ selectedAddress ? `${selectedAddress.address}, ${selectedAddress.city}, ${selectedAddress.state} ` : "Login / Register To Add Address"  }</p> */}
 
+                        { user ? 
+                            (<p className="text-indigo-500">{ selectedAddress ? `${selectedAddress.address}, ${selectedAddress.city}, ${selectedAddress.state} ` : 'No address found'  }</p>) : 
+                            (<p className="text-red-500">Login / Register To Add Address</p>)  
+                        }
                         { user && 
                             <button onClick={() => setShowAddress(!showAddress)} className="text-indigo-500 hover:underline cursor-pointer">
-                            Change
+                            Add Address
                             </button>
-                        }
-                        
+                        }                        
                         {showAddress && (
                             <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full">
                                 { addresses.map( (address, index)=> (<p key={index} onClick={() => {setShowAddress(false); setSelectedAddress(address)}} className="text-gray-500 p-2 hover:bg-gray-100">

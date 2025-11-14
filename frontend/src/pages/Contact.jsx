@@ -42,9 +42,19 @@ const Contact = () => {
                 d="M12 11c1.656 0 3-1.343 3-3s-1.344-3-3-3-3 1.343-3 3 1.344 3 3 3zm0 1c-2.667 0-8 1.333-8 4v2h16v-2c0-2.667-5.333-4-8-4z" />
             </svg>
             <div>
-              <h3 className="font-bold text-lg mb-1">Location</h3>
-              <p className="text-gray-700">Chandra Nagar Lane Number 2, <br/>Bhagwan Nagar, Chandranagar, <br/>Rameshwari, Nagpur, Maharashtra - 440027, India
-</p>
+              <h3 className="font-bold text-lg mb-1">Office</h3>
+              <p className="text-gray-700">Chandra Nagar Lane Number 2, <br/>Bhagwan Nagar, Chandranagar, <br/>Rameshwari, Nagpur, Maharashtra - 440027, India</p>
+            </div>
+          </div>
+          <div className="flex items-start">
+            <svg className="h-6 w-6 text-amber-400 mt-1 mr-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                d="M12 11c1.656 0 3-1.343 3-3s-1.344-3-3-3-3 1.343-3 3 1.344 3 3 3zm0 1c-2.667 0-8 1.333-8 4v2h16v-2c0-2.667-5.333-4-8-4z" />
+            </svg>
+            <div>
+              <h3 className="font-bold text-lg mb-1">Baron Kitchen Processing Unit</h3>
+              <p className="text-gray-700">Plot No 8 B-2 Sector 21, MIHAN,<br/>near Mahindra Bloomdale,<br/>Nagpur, Maharashtra 441108</p>
             </div>
           </div>
 

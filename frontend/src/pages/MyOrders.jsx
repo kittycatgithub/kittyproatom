@@ -33,7 +33,7 @@ const MyOrders = () => {
              <div className='w-16 h-0.5 bg-primary rounded-full'>
              </div>
         </div>
-         <div className="relative">
+         <div className="relative pr-4 lg:pr-0">
         <Link
             to={'/'}
             className="relative px-4 py-1 rounded-full overflow-hidden group border-2 border-primary text-primary-dull hover:text-white inline-block"
@@ -48,9 +48,9 @@ const MyOrders = () => {
         
 
        {myOrders.map((order, index) => (
-  <div key={index} className="border border-gray-300 rounded-lg mb-10 p-4 py-5 max-w-6xl">
+  <div key={index} className="border border-gray-300 rounded-lg mb-10 p-4 py-5 max-w-6xl shadow-xl hover:shadow">
     <p className="flex justify-between md:items-center text-gray-600 md:font-medium max-md:flex-col">
-      <span>OrderId : {order._id}</span>
+      <span>OrderId : {order.orderId}</span>
       <span>Payment : {order.paymentType}</span>
     </p>
 
@@ -95,6 +95,9 @@ const MyOrders = () => {
   </div>
 ) : (
   <div>
+    {item?.name === 'Snack Box A'  && <p className='text-purple-800'>Tissue paper and Sauce Pouches</p>} 
+    {item?.name === 'Snack Box B' && <p className='text-purple-800'>Tissue paper and Sauce Pouches</p>} 
+    
     {/* {item.selectedOptions && typeof item.selectedOptions === "object"  ? (
       Object.entries(item.selectedOptions)
         .filter(([_, value]) => value !== null)
@@ -125,7 +128,7 @@ const MyOrders = () => {
     ) : typeof item.selectedOptions === "string" ? (
       <p>{item.selectedOptions}</p>
     ) : null} */}
-
+    
     {item.selectedOptions && typeof item.selectedOptions === "object" ? (
   Object.entries(item.selectedOptions)
     // skip null, undefined, empty arrays, and empty objects
@@ -213,12 +216,27 @@ const MyOrders = () => {
             {order.address.state}, India
           </p>
           <p>{order.address.phone}</p>
-          <div><h2 className=" text-purple-900 font-semibold pt-2"> Additional Note   </h2><p>{order.note ? (order.note ): ("null")}  </p></div>
+          <div><h2 className=" text-purple-900 font-semibold pt-2"> Additional Note   </h2><p>{order.note ? (order.note ): ("Not Mentioned")}  </p></div>
         </div>
       </div>
     ))}
+    <div className='flex justify-between'>
+      <div></div>
+      <div className=''>
+        <Link
+            to={'tel:+919822990025'}
+            className="relative px-4 py-1 rounded-full overflow-hidden group border-2 border-primary text-primary-dull hover:text-white inline-block"
+          >
+            <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition duration-300"></span>
+            <span className="relative z-10 group-hover:text-white">
+              Call Us
+            </span>
+          </Link>
+    </div>  
+    </div>
   </div>
 ))}
+
     </div>
   )
 }

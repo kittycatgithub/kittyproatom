@@ -175,7 +175,7 @@ const StoreCart = () => {
                     </div>)
                 )}
                 <button onClick={ ()=> {
-                  navigate('/all-menu');
+                  navigate('/');
                   scrollTo(0,0)
                 } } className="group cursor-pointer flex items-center mt-8 gap-2 text-button font-medium">
                     <img className="group-hover:-translate-x-1 transition" src={assets.arrow_right_icon_colored} alt="arrow" />

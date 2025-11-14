@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import CustomizeBar from '../components/CustomizeBar'
+import { actualProducts } from '../assets/assets'
 
 
 
 const SelectOptions = () => {
 
-    const {selectedPlatter, setSelectedPlatter , navigate} = useAppContext()
+    const {selectedPlatter, setSelectedPlatter , navigate, currency} = useAppContext()
     // console.log("select Platter" , selectedPlatter)
     const [selectedOptions, setSelectedOptions] = useState({
       Sandwiches: null,
@@ -63,6 +64,9 @@ const SelectOptions = () => {
   });
 };
 
+  const productDetail = actualProducts.filter( (product)=> product._id === 'gd48g45h' )
+  console.log(productDetail)
+
   return (
       <div>
         { Object.keys(selectedPlatter).length !== 0 ? ( 
@@ -71,29 +75,30 @@ const SelectOptions = () => {
              <div className='md:col-span-1 col-span-2 pl-4 text-lg space-y-10 py-10'>  
              <div>
                 <button onClick={() => {setIsActive("Sandwiches")}} className={` rounded-md transition ${isActive === "Sandwiches" ? " text-primary" : " text-black"}`}> Sandwiches </button>
-                 {selectedOptions.Sandwiches !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Sandwiches}</p> : <p></p> }
+                 {/* {selectedOptions.Sandwiches !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Sandwiches}</p> : <p></p> } */}
+                 <p className='text-xs text-gray-500'>{selectedOptions.Sandwiches !==null ? <span>1</span> : <span>0</span>}/1</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Snacks")}} className={` rounded-md transition ${isActive === "Snacks" ? " text-primary" : " text-black"}`}> Snacks </button>
-                {selectedOptions.Snacks !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Snacks}</p> : <p></p> }
-
+                {/* {selectedOptions.Snacks !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Snacks}</p> : <p></p> } */}
+                <p className='text-xs text-gray-500'>{selectedOptions.Snacks !==null ? <span>1</span> : <span>0</span>}/1</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Beverage")}} className={` rounded-md transition ${isActive === "Beverage" ? " text-primary" : " text-black"}`}> Beverage </button>
-                {selectedOptions.Beverage !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Beverage}</p> : <p></p> }
-
+                {/* {selectedOptions.Beverage !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Beverage}</p> : <p></p> } */}
+                <p className='text-xs text-gray-500'>{selectedOptions.Beverage !==null ? <span>1</span> : <span>0</span>}/1</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Desserts")}} className={` rounded-md transition ${isActive === "Desserts" ? " text-primary" : " text-black"}`}> Desserts </button>
-                {selectedOptions.Desserts !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Desserts}</p> : <p></p> }
-
+                {/* {selectedOptions.Desserts !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Desserts}</p> : <p></p> } */}
+                <p className='text-xs text-gray-500'>{selectedOptions.Desserts !==null ? <span>1</span> : <span>0</span>}/1</p>
              </div>
              </div>             
              )}
              <div className='md:col-span-5 col-span-4 bg-grey-50  border-l border-gray-300 bg-[#EFF6FF]'>
                  {isActive === "Sandwiches" && <div>
                 {/* Card Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 py-4">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
             <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
@@ -161,7 +166,39 @@ const SelectOptions = () => {
           </div>
         ))}
       </div>
-                 </div> }           
+      </div> }   
+      <hr className='border-t border-themegray/40'/>
+                 <div  className=" flex  items-start p-1 lg:p-4 pb-16 lg:pb-18 justify-start font-sans antialiased text-gray-900">
+                          <div className="w-full max-w-xs bg-white rounded-2xl shadow overflow-hidden transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1">
+                            {/* <div className="relative lg:h-60 xl:h-65 h-40 overflow-hidden bg-gray-100">
+                              <img
+                                src={productDetail[0]?.path}  
+                                alt="Wireless Headphones"
+                                className="w-full lg:h-72 xl:h-72 h-44 object-cover transition-transform duration-700 ease-in-out transform hover:scale-110"
+                              />                            
+                            </div>                     */}
+                            <div className="px-3 lg:px-6 py-3">
+                              <div className="text-indigo-600 font-semibold tracking-wide mb-2">{productDetail[0]?.name}</div>
+                              {/* <h2 className="text-md text-gray-900 leading-tight mb-1 px-1">{product.name}</h2> */}
+                              {productDetail[0]?.category !== 'catering' && <div>
+                                  <hr className='border-t border-gray-200'/>
+                              <ul className='list-disc text-xs pl-4 text-themegray pt-1'>
+                                {productDetail[0]?.menu.map( (menu, index)=> <li key={index}>{menu}</li> )}
+                              </ul>
+                                </div>}                              
+                              <hr className='border-t border-gray-200 mt-2'/>
+                               {/* Price & CTA */}
+                              <div className="mt-2 flex flex-wrap lg:flex-nowrap gap-4">
+                      <div className="w-full flex justify-between items-center">
+                        <div className="text-xl w-3/6 text-gray-900">
+                          {currency} {productDetail[0]?.offerPrice} <span className="text-gray-500 text-xs">{productDetail[0]?.unit}</span>
+                        </div>    
+                </div>
+              </div>  
+                        <p className='text-xs'>{productDetail[0]?.description}</p>        
+          </div>
+                          </div>
+                              </div>        
              </div>
             <CustomizeBar selectedOptions={selectedOptions}/>
       </div>

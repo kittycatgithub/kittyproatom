@@ -239,7 +239,7 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
       </div>
    {/* Occasion */}
       <div className="mb-4">
-        <label className="text-gray-600">Choose Your Occasion (Optional)</label>
+        <label className="text-gray-600">Choose Your Occasion</label>
         <select value={details.occasion || ""} onChange={(e) => handleFormChange('occasion', e.target.value)} className="w-full border rounded px-3 py-2 mt-1">
           <option value="" >Select</option>
           <option value="Travel" >Travel</option>
@@ -263,7 +263,7 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
        {/* Date and Time */}
       <div className="grid grid-cols-2 gap-0.5 md:gap-4 mb-4">
         <div>
-          <label className="text-gray-600">Date</label>
+          <label className="text-gray-600">Date<span className="text-red-500">*</span></label>
           <div className="flex items-center border  rounded px-3 py-2 mt-1 shadow-sm">
         {/* <Calendar className="w-5 h-5 mr-2 text-orange-600" /> */}
          {/* <button
@@ -339,7 +339,7 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
 
   {/* Select TimeSlot Component */}   
         <div>
-          <label className="text-gray-600">Time</label>
+          <label className="text-gray-600">Time<span className="text-red-500">*</span></label>
           <div className="flex items-center border rounded px-1 py-2 mt-1">
             <Clock className="w-5 h-5 mr-1 text-orange-600" />
        <button
@@ -413,14 +413,13 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
           </div>
         </div>
       )}
-          </div>
-        
+          </div>        
         </div>
       </div>
       {/* Guest Selector */}
       <div className="bg-white  border rounded-xl p-4 mb-2 shadow-sm">
         <div className="grid grid-cols-2">
-             <div className="text-sm font-medium text-gray-700 content-center mb-2">Total Guests</div>
+             <div className="text-sm font-medium text-gray-700 content-center mb-2">Total Guests<span className="text-red-500">*</span></div>
         <div className="flex flex-row items-center justify-between mb-2">
           <button
             className="bg-gray-100 p-2 rounded-full"
