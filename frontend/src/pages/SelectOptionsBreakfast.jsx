@@ -367,7 +367,7 @@ const SelectOptionsBreakfast = () => {
       </div></div> }
       <hr className='border-t border-themegray/40'/>
                  <div  className=" flex  items-start p-1 lg:p-4 pb-16 lg:pb-18 justify-start font-sans antialiased text-gray-900">
-                          <div className="w-full max-w-md bg-white rounded-2xl shadow overflow-hidden transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1">
+                          <div className="w-full max-w-xl bg-white rounded-2xl shadow overflow-hidden transition-all duration-300 transform hover:shadow-xl hover:-translate-y-1">
                             {/* <div className="relative lg:h-60 xl:h-65 h-40 overflow-hidden bg-gray-100">
                               <img
                                 src={productDetail[0]?.path}  

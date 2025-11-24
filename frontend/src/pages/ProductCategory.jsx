@@ -3,6 +3,7 @@ import { useAppContext } from '../context/AppContext'
 import { useParams } from 'react-router-dom'
 import { categories } from '../assets/assets'
 import toast from 'react-hot-toast'
+import FooterBar from '../components/FooterBar'
 
 const ProductCategory = () => {
     const {products, navigate, currency, addToCart , cart, setCart, selectedPlatter, setSelectedPlatter} = useAppContext()
@@ -203,6 +204,7 @@ const handleRemoveFromCart = (productId) => {
                 </div>
               </div>  
                         <p className='text-xs'>{product.description}</p>
+                        <p className='text-xs'>{product?.minOrder}</p>
         
           </div>
                           </div>
@@ -217,6 +219,7 @@ const handleRemoveFromCart = (productId) => {
             )
         }
     </div>
+    <div className='block lg:hidden'><FooterBar/></div>
     </div>
   )
 }

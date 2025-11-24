@@ -14,6 +14,8 @@ const orderSchema = new mongoose.Schema({
         productDetails: { type : Object},
         menu: { type : Array, required: true},
     }],
+    items: { type : Array, required: true, default: []},
+    storeamount: { type : Number, required: true, default: 0},
     address: {type: String, required: true, ref:'address'},
     note: {type: String, required: false, default: "none", minimize: false},
     status: {type: String, default: 'Order Placed'},

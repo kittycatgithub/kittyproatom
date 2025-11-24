@@ -1,8 +1,86 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from "framer-motion";
+import FooterBar from '../components/FooterBar';
+import toast from 'react-hot-toast';
+import { useAppContext } from '../context/AppContext';
 
 
 const Contact = () => {
+
+  const {axios} = useAppContext()
+
+  const [ formData1, setFormData1 ] = useState({
+    name1 : '',
+    email1 : '',
+    email2 : '',
+    mobile1 : '',
+    mobile2 : '',
+    message1 : '',
+  })
+  const [ formData2, setFormData2 ] = useState({
+    name2 : '',
+    email3 : '',
+    email4 : '',
+    mobile3 : '',
+    mobile4 : '',
+    message2 : '',
+  })
+
+  const handleChangeFeedBack = (e) => {
+    const {name, value} = e.target // e.target contains value of name attribute ex: name="name1" & value of tag
+    setFormData1({
+      ...formData1,
+      [name]: value
+    })
+  }
+
+  const handleChangeContact = (e) => {
+      const { name, value } = e.target // e.target contains value of name attribute & value of tag
+      setFormData2({
+        ...formData2, 
+        [name]:value       // value of attribute is extracted using []
+      })
+  }
+
+  const handleSubmitFeedback = async (e) => {
+    e.preventDefault(); // ⛔ stops the page refresh
+
+    const {data} = await axios.post('/api/user/feedback', formData1)
+    if(data.success){
+      console.log(data.message)
+      toast.success( data.message, {duration:3000} )
+      setFormData1({
+        name1 : '',
+        email1 : '',
+        email2 : '',
+        mobile1 : '',
+        mobile2 : '',
+        message1 : '',
+      })
+    } else {
+      toast.error(data.message)
+    }    
+  }
+
+  const handleSubmitContact = async (e) => {
+    e.preventDefault(); // ⛔ stops the page refresh
+    const {data} = await axios.post('/api/user/contact', formData2)
+      console.log("Response:", data)   // ← check this
+    if(data.success){
+      toast.success( data.message, {duration:3000} )
+      setFormData2({
+        name2 : '',
+        email3 : '',
+        email4 : '',
+        mobile3 : '',
+        mobile4 : '',
+        message2 : '',
+      })
+    } else {
+      toast.error(data.message)
+    }
+  }
+
   return (
     <>
     <div className="relative w-full h-[20vh] md:h-[50vh] min-h-[20vh]">
@@ -124,15 +202,15 @@ const Contact = () => {
         <h3 className="text-2xl font-bold mb-6">Send Us a Message</h3>
         <form className="space-y-6">
           <div>
-            <label for="name" className="block text-sm font-medium mb-1">Your Name</label>
+            <label htmlFor="name" className="block text-sm font-medium mb-1">Your Name</label>
             <input type="text" id="name" className="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Enter your name" />
           </div>
           <div>
-            <label for="email" className="block text-sm font-medium mb-1">Email Address</label>
+            <label htmlFor="email" className="block text-sm font-medium mb-1">Email Address</label>
             <input type="email" id="email" className="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Enter your email" />
           </div>
           <div>
-            <label for="message" className="block text-sm font-medium mb-1">Message</label>
+            <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
             <textarea id="message" className="w-full px-4 py-3 rounded-lg bg-gray-700 border border-gray-600 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Your message here..."></textarea>
           </div>
           <button type="submit" className="w-full bg-amber-500 hover:bg-primary text-black font-bold py-3 px-6 rounded-lg transition-colors">
@@ -144,16 +222,14 @@ const Contact = () => {
   </div>
 </section>
     </div>
-    <section class="text-gray-800 body-font bg-blue-50/50 px-2 md:px-0">
-    <form action="https://fabform.io/f/xxxxx" method="post">
-
-    <div class=" flex flex-col md:flex-row lg:max-w-7xl w-full py-12 md:py-12 mx-auto section"
+    <section className="text-gray-800 body-font bg-blue-50/50 px-2 md:px-0">
+    <div className=" flex flex-col md:flex-row lg:max-w-7xl w-full py-12 md:py-12 mx-auto section"
         id="contact-form">
-        <div class=" w-full">
+        <div className=" w-full">
              <h2 className="text-3xl font-bold mb-6">
           Give Us Your <span className="text-primary">Feedback</span>
         </h2>
-            <p class=" text-xl text-gray-900">
+            <p className=" text-xl text-gray-900">
                 We’d love to hear what you thought about us. It helps us to serve you better.  
                 <br/>
                 <br/>
@@ -162,93 +238,81 @@ const Contact = () => {
 
             </p>
          
-            <span class="inline-flex mt-6 justify-center sm:justify-start">
+            <span className="inline-flex mt-6 justify-center sm:justify-start">
              
                
             </span>
         </div>
-        <div class=" w-full mt-10 md:mt-0 md:pl-28">
+        <div className=" w-full mt-10 md:mt-0 md:pl-28">
             <h2 className="text-3xl font-bold mb-6">
           Feedback Form 
         </h2>
-            <h1 class="text-4xl text-gray-800 sm:text-4xl font-bold title-font mb-4"></h1>
-            <form action="send-contact.php" method="post" id="submit-contact-form">
-                <div class="p-2 w-full">
-                    <div class="relative">
-                        <label for="name" class="leading-7 py-4 text-lg text-gray-900">Your Name</label>
-                        <input type="text" id="name" name="name" required=""
-                            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 leading-8 transition-colors duration-200 ease-in-out "/>
+            <h1 className="text-4xl text-gray-800 sm:text-4xl font-bold title-font mb-4"></h1>
+            <form onSubmit={ (e)=> handleSubmitFeedback(e) }>
+                <div className="p-2 w-full">
+                    <div className="relative">
+                        <label htmlFor="name1" className="leading-7 py-4 text-lg text-gray-900">Your Name</label>
+                        <input type="text" id="name1" value={formData1.name1} name="name1" required="" onChange={handleChangeFeedBack}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 leading-8 transition-colors duration-200 ease-in-out "/>
+                    </div>
+                </div>                
+                <div className="p-2 w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="relative">
+                        <label htmlFor="email1" className="leading-7 py-4 text-lg text-gray-900">Primary Email</label>
+                        <input type="email" id="email1" value={formData1.email1} name="email1" required onChange={handleChangeFeedBack}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
+                                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
+                                   leading-8 transition-colors duration-200 ease-in-out" />
+                    </div>
+                    <div className="relative">
+                        <label htmlFor="email2" className="leading-7 py-4 text-lg text-gray-900">Secondary Email</label>
+                        <input type="email" id="email2" value={formData1.email2} name="email2" required onChange={handleChangeFeedBack}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
+                                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
+                                   leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
                 </div>
-                {/* <div class="p-2 w-full">
-                    <div class="relative">
-                        <label for="email" class="leading-7 py-4 text-lg text-gray-900">Your Email</label>
-                        <input type="email" id="email" name="email" required=""
-                            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 leading-8 transition-colors duration-200 ease-in-out "/>
+                <div className="p-2 w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="relative">
+                        <label htmlFor="mobile1" className="leading-7 py-4 text-lg text-gray-900">Primary Mobile</label>
+                        <input type="tel" id="mobile1" value={formData1.mobile1} name="mobile1" pattern="[0-9]{10}" required onChange={handleChangeFeedBack}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
+                                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
+                                   leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
-                </div> */}
-<div class="p-2 w-full grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="relative">
-        <label for="email1" class="leading-7 py-4 text-lg text-gray-900">Primary Email</label>
-        <input type="email" id="email1" name="email1" required
-            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
-                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
-                   leading-8 transition-colors duration-200 ease-in-out" />
-    </div>
-    <div class="relative">
-        <label for="email2" class="leading-7 py-4 text-lg text-gray-900">Secondary Email</label>
-        <input type="email" id="email2" name="email2" required
-            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
-                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
-                   leading-8 transition-colors duration-200 ease-in-out" />
-    </div>
-</div>
-
-<div class="p-2 w-full grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="relative">
-        <label for="mobile1" class="leading-7 py-4 text-lg text-gray-900">Primary Mobile</label>
-        <input type="tel" id="mobile1" name="mobile1" pattern="[0-9]{10}" required
-            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
-                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
-                   leading-8 transition-colors duration-200 ease-in-out" />
-    </div>
-    <div class="relative">
-        <label for="mobile2" class="leading-7 py-4 text-lg text-gray-900">Secondary Mobile</label>
-        <input type="tel" id="mobile2" name="mobile2" pattern="[0-9]{10}" required
-            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
-                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
-                   leading-8 transition-colors duration-200 ease-in-out" />
-    </div>
-</div>
-
-                <div class="p-2 w-full">
-                    <div class="relative">
-                        <label for="message" class="leading-7 py-4 text-lg text-gray-900">Your Message</label>
-                        <textarea id="message" name="message" required=""
-                            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-900 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out "></textarea>
+                    <div className="relative">
+                        <label htmlFor="mobile2" className="leading-7 py-4 text-lg text-gray-900">Secondary Mobile</label>
+                        <input type="tel" id="mobile2" value={formData1.mobile2} name="mobile2" pattern="[0-9]{10}" required onChange={handleChangeFeedBack}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
+                                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
+                                   leading-8 transition-colors duration-200 ease-in-out" />
+                   </div>
+                </div>
+                <div className="p-2 w-full">
+                    <div className="relative">
+                        <label htmlFor="message1" value={formData1.message1} className="leading-7 py-4 text-lg text-gray-900">Your Message</label>
+                        <textarea id="message1" name="message1" required="" onChange={handleChangeFeedBack}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-900 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out "></textarea>
                     </div>
                 </div>
-                <div class="p-2 w-full">
+                <div className="p-2 w-full">
                     <button type="submit"
-                        class="flex text-white bg-gray-900 border-0 py-4 px-6 focus:outline-none hover:bg-blue-900 rounded text-xl font-bold shadow-lg mx-0 flex-col text-center g-recaptcha">
+                        className="flex text-white bg-gray-900 border-0 py-4 px-6 focus:outline-none hover:bg-blue-900 rounded text-xl font-bold shadow-lg mx-0 flex-col text-center g-recaptcha">
                         Send Message ✉
                     </button>
                 </div>
             </form>
         </div>
     </div>
-    </form>
 </section>
-<section class="text-gray-600 body-font px-2 md:px-0">
-    <form action="https://fabform.io/f/xxxxx" method="post">
-
-    <div class="text-gray-900 flex flex-col md:flex-row lg:max-w-7xl w-full py-12 md:py-12 mx-auto section"
+<section className="text-gray-600 body-font px-2 md:px-0">
+    <div className="text-gray-900 flex flex-col md:flex-row lg:max-w-7xl w-full py-12 md:py-12 mx-auto section"
         id="contact-form">
-        <div class=" w-full">
+        <div className=" w-full">
             <h2 className="text-3xl font-bold mb-6">
           Get In Touch <span className="text-primary">With Us</span>
         </h2>
-            <p class=" text-xl">
+            <p className=" text-xl">
                 We’re just a message away. Whether you have questions, suggestions, or business inquiries — we’d love to connect with you.  
                 <br/>
                 <br/>
@@ -256,83 +320,74 @@ const Contact = () => {
 
             </p>
          
-            <span class="inline-flex mt-6 justify-center sm:justify-start">
+            <span className="inline-flex mt-6 justify-center sm:justify-start">
              
                
             </span>
         </div>
-        <div class=" w-full mt-10 md:mt-0 md:pl-28">
-            <h1 class="text-4xl text-gray-800 sm:text-4xl font-bold title-font mb-4"></h1>
+        <div className=" w-full mt-10 md:mt-0 md:pl-28">
+            <h1 className="text-4xl text-gray-800 sm:text-4xl font-bold title-font mb-4"></h1>
             <h2 className="text-3xl font-bold mb-6">
           Contact Form
         </h2>
-            <form action="send-contact.php" method="post" id="submit-contact-form">
-                <div class="p-2 w-full">
-                    <div class="relative">
-                        <label for="name" class="leading-7 py-4 text-lg text-gray-900">Your Name</label>
-                        <input type="text" id="name" name="name" required=""
-                            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 leading-8 transition-colors duration-200 ease-in-out "/>
+            <form onSubmit={ (e)=> handleSubmitContact(e) }>
+                <div className="p-2 w-full">
+                    <div className="relative">
+                        <label htmlFor="name2" className="leading-7 py-4 text-lg text-gray-900">Your Name</label>
+                        <input type="text" id="name2" value={formData2.name2} name="name2" required="" onChange={handleChangeContact}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 leading-8 transition-colors duration-200 ease-in-out "/>
                     </div>
                 </div>
-                {/* <div class="p-2 w-full">
-                    <div class="relative">
-                        <label for="email" class="leading-7 py-4 text-lg text-gray-900">Your Email</label>
-                        <input type="email" id="email" name="email" required=""
-                            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 leading-8 transition-colors duration-200 ease-in-out "/>
+                <div className="p-2 w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="relative">
+                        <label htmlFor="email3" className="leading-7 py-4 text-lg text-gray-900">Primary Email</label>
+                        <input type="email" id="email3" value={formData2.email3} name="email3" required onChange={handleChangeContact}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
+                                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
+                                   leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
-                </div> */}
-<div class="p-2 w-full grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="relative">
-        <label for="email1" class="leading-7 py-4 text-lg text-gray-900">Primary Email</label>
-        <input type="email" id="email1" name="email1" required
-            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
-                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
-                   leading-8 transition-colors duration-200 ease-in-out" />
-    </div>
-    <div class="relative">
-        <label for="email2" class="leading-7 py-4 text-lg text-gray-900">Secondary Email</label>
-        <input type="email" id="email2" name="email2" required
-            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
-                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
-                   leading-8 transition-colors duration-200 ease-in-out" />
-    </div>
-</div>
-
-<div class="p-2 w-full grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="relative">
-        <label for="mobile1" class="leading-7 py-4 text-lg text-gray-900">Primary Mobile</label>
-        <input type="tel" id="mobile1" name="mobile1" pattern="[0-9]{10}" required
-            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
-                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
-                   leading-8 transition-colors duration-200 ease-in-out" />
-    </div>
-    <div class="relative">
-        <label for="mobile2" class="leading-7 py-4 text-lg text-gray-900">Secondary Mobile</label>
-        <input type="tel" id="mobile2" name="mobile2" pattern="[0-9]{10}" required
-            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
-                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
-                   leading-8 transition-colors duration-200 ease-in-out" />
-    </div>
-</div>
-
-                <div class="p-2 w-full">
-                    <div class="relative">
-                        <label for="message" class="leading-7 py-4 text-lg text-gray-900">Your Message</label>
-                        <textarea id="message" name="message" required=""
-                            class="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-900 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out "></textarea>
+                    <div className="relative">
+                        <label htmlFor="email4" className="leading-7 py-4 text-lg text-gray-900">Secondary Email</label>
+                        <input type="email" id="email4" value={formData2.email4} name="email4" required onChange={handleChangeContact}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
+                                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
+                                   leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
                 </div>
-                <div class="p-2 w-full">
+                <div className="p-2 w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="relative">
+                        <label htmlFor="mobile3" className="leading-7 py-4 text-lg text-gray-900">Primary Mobile</label>
+                        <input type="tel" id="mobile3" value={formData2.mobile3} name="mobile3" pattern="[0-9]{10}" required onChange={handleChangeContact}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
+                                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
+                                   leading-8 transition-colors duration-200 ease-in-out" />
+                    </div>
+                    <div className="relative">
+                        <label htmlFor="mobile4" className="leading-7 py-4 text-lg text-gray-900">Secondary Mobile</label>
+                        <input type="tel" id="mobile4" value={formData2.mobile4} name="mobile4" pattern="[0-9]{10}" required onChange={handleChangeContact}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
+                                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
+                                   leading-8 transition-colors duration-200 ease-in-out" />
+                    </div>
+                </div>
+                <div className="p-2 w-full">
+                    <div className="relative">
+                        <label htmlFor="message2" className="leading-7 py-4 text-lg text-gray-900">Your Message</label>
+                        <textarea id="message2" value={formData2.message2} name="message2" required="" onChange={handleChangeContact}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-900 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out "></textarea>
+                    </div>
+                </div>
+                <div className="p-2 w-full">
                     <button type="submit"
-                        class="flex text-white bg-gray-900 border-0 py-4 px-6 focus:outline-none hover:bg-blue-900 rounded text-xl font-bold shadow-lg mx-0 flex-col text-center g-recaptcha">
+                        className="flex text-white bg-gray-900 border-0 py-4 px-6 focus:outline-none hover:bg-blue-900 rounded text-xl font-bold shadow-lg mx-0 flex-col text-center g-recaptcha">
                         Send Message ✉
                     </button>
                 </div>
             </form>
         </div>
     </div>
-    </form>
 </section>
+<div className='block lg:hidden'><FooterBar/></div>
     </>
   )
 }

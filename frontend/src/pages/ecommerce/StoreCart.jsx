@@ -6,7 +6,7 @@ import { assets } from "../../assets/assets"
 
 const StoreCart = () => {
     const { products, storeProducts, currency, storeCartItems, removeFromStoreCart, getStoreCartCount, 
-      updateStoreCartItem, navigate, getCartAmount, axios, user, setStoreCartItems } = useAppContext()
+      updateStoreCartItem, navigate, getCartAmount, axios, user, setStoreCartItems, setShowUserLogin } = useAppContext()
       const [cartArray, setCartArray] = useState([])
       const [addresses, setAddresses] = useState([])
       const [showAddress, setShowAddress] = useState(false)
@@ -51,18 +51,48 @@ const StoreCart = () => {
             if(!selectedAddress){
                return toast.error("Please Select Address")
             }
+            console.log(cartArray.map( item => ({product: item._id, quantity: item.quantity})), 'cartArray')
+            console.log('first')
+            let finalPrice = totalAmount + 50
+            // Razorpay payment Gateway code starts
+            // This code is responsible to open payment gateway window
+                const { data } = await axios.post("/api/order/razorpay/init", {
+                userId: user._id,
+                amount: finalPrice
+                });
+
+                await new Promise(resolve => {
+
+                const options = {
+                    key: data.key,
+                    amount: data.order.amount,
+                    currency: "INR",
+                    name: "Baron Kitchen",
+                    order_id: data.order.id,
+                
+                handler: function (response) {
+                    toast.success("Payment Successful!");
+                    resolve();  // continue
+                    }
+                };
+                
+                const rzp = new window.Razorpay(options);
+                rzp.open();
+                });
+            // Razorpay Payment Gateway Code Ends
+                
             // Place Order with Razorpay
             if( paymentOption === "Online" ){
-                const {data} = await axios.post('/api/order/cod', {
+                const {data} = await axios.post('/api/order/store', {
                     userId: user._id,
                     items: cartArray.map( item => ({product: item._id, quantity: item.quantity})),
-                    address: selectedAddress._id
+                    address: selectedAddress._id,
+                    storeamount: finalPrice
                 })
                 if( data.success ){
-                    // window.location.replace(data.url)
-                    // console.log(data)
-                    initPay(data.order, user._id, cartArray, selectedAddress )
                     toast.success(data.message)
+                    setCartArray([])
+                    navigate('/my-orders')
                 } else {
                     toast.error(data.message)
                 }
@@ -72,54 +102,19 @@ const StoreCart = () => {
             toast.error(error.message)
         }
       }
-      const initPay = (order, userId, cartArray, selectedAddress)=> {
-            const amountInPaise = order.amount * 100; // 49900
-            const options = {
-                key: import.meta.env.VITE_RAZORPAY_KEY_ID,
-                // amount: order.amount,
-                amount: amountInPaise,
-                // currency: 'INR',
-                currency: order.currency,
-                name: "Order Payment",
-                description: "Order Payment",
-                order_id: order.id,
-                receipt: order.receipt,
-                handler: async (response)=> {
-                    // console.log(response)
-                    try {
-                    const payload = {
-                    userId,
-                    items: cartArray.map(item => ({
-                        product: item._id,
-                        quantity: item.quantity
-                    })),
-                    address: selectedAddress._id,
-                    razorpay_order_id: response.razorpay_order_id,
-                    razorpay_payment_id: response.razorpay_payment_id,
-                    razorpay_signature: response.razorpay_signature
-                };
-
-                const { data } = await axios.post('/api/order/verifyRazorpay', payload);
-                if (data.success) {
-                    setStoreCartItems({})
-                    navigate('/my-orders');
-                } else {
-                    toast.error(data.message);
-                }
-            } catch (error) {
-                console.log(error);
-                toast.error(error.message);
-            }}
-            }
-            const rzp = new window.Razorpay(options)
-            rzp.open()
-      }
     
       useEffect( ()=> {
         if( user ){
             getUserAddress()
         }
       }, [user] )
+
+      let totalAmount = 0
+      cartArray.forEach( (item)=> {
+        totalAmount = totalAmount + item?.price* item?.quantity
+          console.log(totalAmount)
+        }
+      )
 
     return products.length > 0 && storeCartItems ? (
         <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
@@ -133,7 +128,7 @@ const StoreCart = () => {
                     <p className="text-center">Subtotal</p>
                     <p className="text-center">Action</p>
                 </div>
-
+                { console.log(cartArray) }
                 {cartArray.map((product, index) => (
                     <div key={index} className="grid grid-cols-[2fr_1fr_1fr] text-black items-center text-sm md:text-base font-medium pt-3">
                         <div className="flex items-center md:gap-6 gap-2">
@@ -156,6 +151,7 @@ const StoreCart = () => {
                                           value={storeCartItems[product._id]}
                                           onChange={e => updateStoreCartItem(product._id, e.target.value)}
                                           type="number"
+                                          min="1"
                                           className="w-10 md:w-20 border border-gray-300 rounded-md px-1 md:px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
                                         />
                                         {/* <select  className='outline-none'>
@@ -188,10 +184,15 @@ const StoreCart = () => {
                 <div className="mb-6">
                     <p className="text-sm font-medium uppercase">Delivery Address</p>
                     <div className="relative flex justify-between items-start mt-2">
-                        <p className="text-gray-500">{ selectedAddress ? `${selectedAddress.street}, ${selectedAddress.city}, ${selectedAddress.state}, ${selectedAddress.country} - ${selectedAddress.pincode}` : "No address found" }</p>
-                        <button onClick={() => setShowAddress(!showAddress)} className="text-button hover:underline cursor-pointer">
-                            Change
-                        </button>
+                         { user ? 
+                            (<p className="text-gray-500">{ selectedAddress ? `${selectedAddress.address}, ${selectedAddress.city}, ${selectedAddress.state}, India` : "No address found" }</p>) : 
+                            (<p className="text-red-500">Login / Register To Add Address</p>)  
+                        }
+                        { user && 
+                            <button onClick={() => setShowAddress(!showAddress)} className="text-indigo-500 hover:underline cursor-pointer">
+                            Add Address
+                            </button>
+                        }   
                         {showAddress && (
                             <div className="absolute top-12 py-1 bg-white border border-gray-300 text-sm w-full">
                                {addresses.map( (address, index)=> (
@@ -200,7 +201,7 @@ const StoreCart = () => {
                                   setShowAddress(false);
 
                                 }} className="text-gray-500 p-2 hover:bg-gray-100">
-                                    {address.street}, {address.city}, {address.state}, {address.country}
+                                    {address.address}, {address.city}, {address.state}
                                 </p>
                                ) ) }
                                 <p onClick={() => {
@@ -226,7 +227,8 @@ const StoreCart = () => {
 
                 <div className="text-gray-800 mt-4 space-y-2">
                     <p className="flex justify-between">
-                        <span>Price</span><span>{currency} {getCartAmount()}</span>
+                        {/* <span>Price</span><span>{currency} {getCartAmount()}</span> */}
+                        <span>Price</span><span>{currency} {totalAmount}</span>
                     </p>
                     {/* <p className="flex justify-between">
                         <span>Shipping Fee</span><span className="text-green-600">Free</span>
@@ -239,13 +241,24 @@ const StoreCart = () => {
                     </p> */}
                     <p className="flex justify-between text-lg font-medium mt-3">
                         <span>Total Amount:</span><span>
-                          {currency} { getCartAmount() + 50 }</span>
+                          {currency} { totalAmount + 50 }</span>
                     </p>
                 </div>
-
-                <button onClick={placeOrder} className="w-full py-3 mt-6 cursor-pointer bg-green-500 text-white font-medium hover:bg-green-700 transition">
+                {/* <button onClick={placeOrder} className="w-full py-3 mt-6 cursor-pointer bg-green-500 text-white font-medium hover:bg-green-700 transition">
                     Proceed To CheckOut
-                </button>
+                </button> */}
+                {
+                  user ? (
+                    <button onClick={placeOrder} className="w-full py-3 mt-6 cursor-pointer bg-primary text-white font-medium hover:bg-primary-dull transition">
+                        Place Order
+                    </button>
+                  ) : (
+                    // <button onClick={() => toast.error('Login To Continue')} className="w-full py-3 mt-6 cursor-pointer bg-primary text-white font-medium hover:bg-primary-dull transition">
+                    <button onClick={()=> setShowUserLogin(true)} className="w-full py-3 mt-6 cursor-pointer bg-primary text-white font-medium hover:bg-primary-dull transition">
+                        Login To Place Order 
+                    </button>
+                  )
+                }     
             </div>
         </div>
     ): null

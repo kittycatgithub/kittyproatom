@@ -3,6 +3,7 @@ import ProductCard from '../components/ProductCard';
 import { useAppContext } from '../context/AppContext';
 import { actualProducts, categories } from '../assets/assets';
 import toast from 'react-hot-toast';
+import FooterBar from '../components/FooterBar';
 
 const MealThaliSnackBoxes = () => {
 
@@ -219,9 +220,9 @@ const MealThaliSnackBoxes = () => {
         </div>
       </div>
     </div>
+</div> 
 </div>
- 
-</div>
+<div className='block lg:hidden'><FooterBar/></div>
 </div>
   )
 }

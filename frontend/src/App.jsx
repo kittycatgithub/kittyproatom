@@ -98,12 +98,10 @@ const App = () => {
 
       {/* Bulk Delivery */}
       <Route path='/select-veg/:_id' element={<Veg/>}/>
-      <Route path='/select-bulk/:_id' element={<NonVeg/>}/>
-
-      
+      <Route path='/select-bulk/:_id' element={<NonVeg/>}/>      
       <Route path='/all-menu' element={<AllMenus/>}/>
       <Route path='/all-menu/:category' element={<ProductCategory />}/>
-        <Route path='/add-address' element={<AddAddress />}/>
+      <Route path='/add-address' element={<AddAddress />}/>
       <Route path='/my-orders' element={<MyOrders />}/>
       <Route path='/seller' element={ isSeller ? <SellerLayout/> : <SellerLogin/> }>
         <Route index element={ <AddProduct/> } />

@@ -162,7 +162,7 @@ const SelectOptions = () => {
                 {selectedOptions.Desserts !== null && selectedOptions.Desserts ==  snackItem.name ? <div className='bg-primary text-white mt-3 px-2 py-1 border-2 border-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Selected</div>:<div 
                 className='mt-3 px-5 py-1 border-2 border-primary  text-primary group-hover:bg-primary group-hover:text-white rounded-lg cursor-pointer'>Select</div>}
             </button>
-    </div>
+      </div>
           </div>
         ))}
       </div>
@@ -205,11 +205,10 @@ const SelectOptions = () => {
         ) : (
           <div className='flex items-center pl-10 md:pl-0 justify-center h-screen md:h-[60vh] bg-[#EFF6FF]'>
                   <p className='text-2xl font-medium'>Kindly select the Platter Again...<br/>Do not refresh the page while selecting platter</p>
-                </div>
+          </div>
         )
         }
       </div>
-   
   )
 }
 

@@ -3,7 +3,7 @@ import { useAppContext } from "../context/AppContext";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
-const CustomizeBarBulk = ({ selectedOptions }) => {
+const CustomizeBarBulk = ({ selectedOptions, setSelectedOptions  }) => {
   const { cart, setCart, selectedPlatter, setSelectedPlatter, navigate } = useAppContext();
   const { _id } = useParams();
 
@@ -15,6 +15,7 @@ const CustomizeBarBulk = ({ selectedOptions }) => {
   (items) => Array.isArray(items) && items.length > 0
 );
 
+console.log(selectedOptions)
 
   // Proceed button
   const handleProceed = () => {
@@ -36,7 +37,6 @@ const CustomizeBarBulk = ({ selectedOptions }) => {
         };
       });
     });
-
     setProductDetails(defaults);
     setShowModal(true);
   };
@@ -100,6 +100,29 @@ const CustomizeBarBulk = ({ selectedOptions }) => {
     navigate(`/fill-details/${_id}`);
   };
 
+  // Remove one item from selectedOptions and productDetails
+const handleRemoveItem = (category, item) => {
+  // Remove item from the selected list
+  const updated = { ...selectedOptions };
+
+  updated[category] = updated[category].filter((i) => i !== item);
+
+  // If category empty → keep it empty (your requirement)
+  // so we do NOT delete the category
+
+  // Remove productDetails for this item
+  const key = `${category}:${item}`;
+  const newDetails = { ...productDetails };
+  delete newDetails[key];
+
+  setProductDetails(newDetails);
+  setSelectedOptions(updated);
+  // console.log(newDetails)
+  if( Object.keys(newDetails).length === 0 ){
+    setShowModal(false)
+  }
+};
+
   return (
     <>
       {/* Bottom Bar */}
@@ -137,7 +160,7 @@ const CustomizeBarBulk = ({ selectedOptions }) => {
               return (
                 <div
                   key={idx}
-                  className="grid grid-cols-[1fr_auto_auto] gap-3 items-center mb-2 border border-gray-400 rounded p-3 bg-gray-50"
+                  className="grid grid-cols-[1fr_auto_auto_auto] gap-3 items-center mb-2 border border-gray-400 rounded p-3 bg-gray-50"
                 >
                   {/* Product Name */}
                   <span className="text-gray-800 font-medium">{item}</span>
@@ -157,7 +180,7 @@ const CustomizeBarBulk = ({ selectedOptions }) => {
 
                   {/* Unit */}
                   <select
-                    className="border p-2 rounded w-16"
+                    className="border px-0.5 py-2 rounded w-11"
                     value={productDetails[key]?.unit || "kg"}
                     required
                     onChange={(e) =>
@@ -170,6 +193,13 @@ const CustomizeBarBulk = ({ selectedOptions }) => {
                     {/* <option value="g">g</option> */}
                     {/* <option value="ltr">ltr</option> */}
                   </select>
+                  {/* ❌ Remove Button */}
+  <button
+    className="text-sm"
+    onClick={() => handleRemoveItem(category, item)}
+  >
+    ❌
+  </button>
                 </div>
               );
             })}
@@ -195,7 +225,6 @@ const CustomizeBarBulk = ({ selectedOptions }) => {
     </div>
   </div>
 )}
-
     </>
   );
 };

@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className="col-span-full lg:col-span-1 mb-10 lg:mb-0">
                   <div className='w-fit mx-auto'>
                     <Link href="/"  className="flex justify-center lg:justify-start">
-                        <img className='h-24' src='./baronfinalLogo.jpg'/>                        
+                        <img className='h-24' src='/baronfinalLogo.jpg'/>                        
                     </Link>
                     <h1 className='text-md text-center pt-2'>All About Food</h1>
                   </div>
@@ -75,12 +75,8 @@ const Footer = () => {
                     <ul className="text-lg lg:text-md   transition-all duration-500">
                         <li><a href="/"  className="text-gray-800 hover:text-gray-900">Home</a></li>
                         <li><a href="/about"  className="text-gray-800 hover:text-gray-900">About Us</a></li>
-                        <li className=""><a href="/contact"  className=" text-gray-800 hover:text-gray-900">Contact</a></li>
-                        <li>
-                          <HashLink smooth to="/about#services">
-                          Services
-                        </HashLink>
-                          </li>
+                        <li><HashLink smooth to="/about#services">Services</HashLink></li>
+                        <li className=""><a href="/contact"  className=" text-gray-800 hover:text-gray-900">Contact Us</a></li>
                    </ul>
                 </div>
                 {/* <!--End Col--> */}
@@ -89,13 +85,12 @@ const Footer = () => {
                     <ul className="text-lg lg:text-md  transition-all duration-500">
                         <li><a href="/all-menu/meal-thali-snack-boxes"  className="text-gray-800 hover:text-gray-900">Meal Thali & Snack Boxes</a></li>
                         {/* <li><a href="/all-menu/meal-thali-snack-boxes"  className="text-gray-800 hover:text-gray-900">Snack Boxes</a></li> */}
+                        <li><a href="/select-bulk/ek56j67k"  className=" text-gray-800 hover:text-gray-900">Bulk Delivery</a></li>
+                        <li><a href="/store"  className=" text-gray-800 hover:text-gray-900">Frozen Products</a></li>
                         <li><a href="/all-menu/catering"  className=" text-gray-800 hover:text-gray-900">Catering</a></li>
                         {/* <li><a href="/categories/bulk-delivery"  className=" text-gray-800 hover:text-gray-900">Bulk Delivery</a></li> */}
-                        <li><a href="/select-bulk/ek56j67k"  className=" text-gray-800 hover:text-gray-900">Bulk Delivery</a></li>
                         {/* <li><a href="/all-menu/frozen-products"  className=" text-gray-800 hover:text-gray-900">Frozen Products</a></li> */}
-                        <li><a href="/store"  className=" text-gray-800 hover:text-gray-900">Frozen Products</a></li>
-                    </ul>
-                   
+                </ul>                   
                 </div>  
                       {/* <!--End Col--> */}
                 <div className=" hidden text-center sm:block sm:text-left">
@@ -217,9 +212,9 @@ const Footer = () => {
       +91 9975094003
     </a>
   </li>
-                        <li className="mb-2"><a href=""  className=" hover:text-gray-900">BARON INTEGRATED SERVICES PVT. LTD</a></li>
+                        <li><a href=""  className="text-gray-800 font-semibold hover:text-gray-900">BARON INTEGRATED SERVICES PVT. LTD</a></li>
                         <li><a href=""  className=" hover:text-gray-900">44, Chandra Nagar, Near Omkar Nagar Square<br/>Manewada, Nagpur, Maharashtra - 440027</a></li>
-                        <li className="my-2"><a href=""  className=" hover:text-gray-900">Baron Kitchen Processing Unit</a></li>
+                        <li className="mt-2"><a href=""  className="text-gray-800 font-semibold hover:text-gray-900">BARON KITCHEN PROCESSING UNIT</a></li>
                         <li><a href=""  className=" hover:text-gray-900">
                             <p>Plot No 8 B-2 Sector 21, MIHAN,<br/>near Mahindra Bloomdale,<br/>Nagpur, Maharashtra 441108</p>
                             </a>

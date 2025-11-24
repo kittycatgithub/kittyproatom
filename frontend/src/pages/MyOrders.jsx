@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useAppContext } from '../context/AppContext'
 import { dummyOrders } from '../assets/assets'
 import { Link } from 'react-router-dom'
+import FooterBar from '../components/FooterBar'
+import InvoiceTemplate from '../components/InvoiceTemplate'
+import { useReactToPrint } from "react-to-print";
+import { saleProducts } from '../assets/assets'
 
 const MyOrders = () => {
 
@@ -24,6 +28,14 @@ const MyOrders = () => {
       fetchMyOrders()
     }
   }, [user] )
+
+    const componentRef = useRef();  
+
+    const handleInvoice = useReactToPrint({
+      contentRef: componentRef,  // NEW REQUIREMENT
+      documentTitle: "Invoice",
+    });
+
 
   return (
     <div className='mt-16 pb-16 max-w-7xl mx-auto'>
@@ -52,6 +64,7 @@ const MyOrders = () => {
     <p className="flex justify-between md:items-center text-gray-600 md:font-medium max-md:flex-col">
       <span>OrderId : {order.orderId}</span>
       <span>Payment : {order.paymentType}</span>
+      <span className='text-red-400'>Status : {order.status || "Order Placed"}</span>
     </p>
 
     {order.platters.map((item, index) => (
@@ -73,9 +86,9 @@ const MyOrders = () => {
             <h2 className="text-xl font-medium ">Details</h2>
             <p>Occassion : {item?.details?.occasion || "Not Selected"}</p>
             <p>Guests : {item?.details?.guests || "1"}</p>
-            <p>Status : {order.status || "Order Placed"}</p>
+            {/* <p>Status : {order.status || "Order Placed"}</p> */}
             <p>Date : {new Date(order.createdAt).toLocaleDateString("en-GB")}</p>
-            <p className="text-gray-900 text-lg font-medium">
+            <p className="text-gray-900 text-md font-medium">
               {/* Amount : {currency} {item?.offerPrice * (item?.details?.guests || 1)} */}
               Amount : {currency} {item?.offerPrice}
             </p>
@@ -220,8 +233,74 @@ const MyOrders = () => {
         </div>
       </div>
     ))}
+    {order.platters.length === 0 && 
+      <div
+        className={`relative bg-white text-gray-500/70 
+          border-gray-300 flex flex-col md:flex-row md:items-start justify-between py-4 md:gap-3 w-full max-w-4xl`}
+      >
+        <div className="flex items-center mb-4 md:mb-0">
+          <div className="bg-primary/10 p-1 rounded-lg">
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/042/600/495/small_2x/ai-generated-a-still-life-of-a-street-food-cart-with-snacks-such-as-samosas-pakoras-and-chaat-free-photo.jpg"
+              alt='item'
+              className="w-16 h-16"
+            />
+          </div>
+          <div className="ml-4 text-gray-800 w-[200px]">
+            <h2 className="text-xl font-medium ">Details</h2>
+            {/* <p>Occassion : {order?.details?.occasion || "Not Selected"}</p> */}
+            {/* <p>Guests : {order?.details?.guests || "1"}</p> */}
+            {/* <p>Status : {order.status || "Order Placed"}</p> */}
+            {/* <p>Date : {new Date(order.createdAt).toLocaleDateString("en-GB")}</p> */}
+            {order?.items?.map((item, index) => {
+            const matchedProduct = saleProducts.find(p => p._id === item.product);
+
+            return (
+              <div key={index}>
+                <div>
+                  {matchedProduct?.name} : <span>{item.quantity} Qty</span>
+                </div>
+              </div>
+            );
+          })}
+          <p className="text-gray-900 text-md font-medium">
+              Amount : {currency} {order?.storeamount}
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-col justify-center md:ml-8 mb-4 md:mb-0 text-gray-800 ">
+          <h2 className="text-xl font-medium ">{order.name}</h2>
+        </div>
+        <div className="text-sm md:text-base text-black/60">
+          <p className="text-black/80">
+            {order.address.firstName} {order.address.lastName}
+          </p>
+          <p>
+            {order.address.address}, {order.address.city}
+          </p>
+          <p>
+            {order.address.state}, India
+          </p>
+          <p>{order.address.phone}</p>
+          <div><h2 className=" text-purple-900 font-semibold pt-2"> Additional Note   </h2><p>{order.note ? (order.note ): ("Not Mentioned")}  </p></div>
+        </div>
+      </div>
+    }
     <div className='flex justify-between'>
-      <div></div>
+      <div className=''>
+        <Link onClick={(e) => { e.preventDefault(); handleInvoice(order); }}
+            className="relative px-4 py-1 rounded-full overflow-hidden group border-2 border-primary text-primary-dull hover:text-white inline-block"
+          >
+            <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition duration-300"></span>
+            <span className="relative z-10 group-hover:text-white">
+              Generate Invoice
+            </span>
+          </Link>
+          {/* Hidden invoice layout */}
+      <div style={{ display: "none" }}>
+        {/* <InvoiceTemplate ref={componentRef} order={order} /> */}
+      </div>
+    </div>  
       <div className=''>
         <Link
             to={'tel:+919822990025'}
@@ -236,7 +315,7 @@ const MyOrders = () => {
     </div>
   </div>
 ))}
-
+<div className='block lg:hidden'><FooterBar/></div>
     </div>
   )
 }

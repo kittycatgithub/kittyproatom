@@ -3,6 +3,7 @@ import MainBanner from '../components/MainBanner'
 import BerryFreshHero from '../components/BerryFreshHero'
 import OurServices from '../components/OurServices'
 import { motion } from "framer-motion";
+import FooterBar from '../components/FooterBar';
 
 const About = () => {
   return (
@@ -119,7 +120,7 @@ Good People, Good Food that's what we are.
         </div>
       </div>
     </section>
-
+    <div className='block lg:hidden'><FooterBar/></div>
     </div>
   )
 }

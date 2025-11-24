@@ -20,7 +20,8 @@ const cards = [
     title: "Bulk Delivery",
     desc: "Flavorful trio of juicy paneer, crisp capsicum with spicy red paprika.",
     price: "₹259",
-    link:"/select-bulk/ek56j67k",
+    link:"/",
+    // link:"/select-bulk/ek56j67k",
     images: [
       "https://media.istockphoto.com/id/639389404/photo/authentic-indian-food.jpg?s=612x612&w=0&k=20&c=gbfAu17L1gtHmuo5biByhfCefAtYUtGQpyxMmi9_Mus=",
       "https://media.istockphoto.com/id/2185257273/photo/indian-curry-tikka-masala-chicken-lamb-mutton-rogan-josh-with-rice-and-naan-bread-dark.jpg?s=612x612&w=0&k=20&c=-yHrDXUjpBv0RkD8hP2IQbiW-RNE8L1sQCpv-l09yAA=",

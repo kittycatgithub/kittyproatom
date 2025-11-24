@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useAppContext } from "../context/AppContext"
 import { assets, dummyAddress } from "../assets/assets"
 import toast from "react-hot-toast"
+import FooterBar from "../components/FooterBar"
 
 const Cart = () => {
     const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, cart ,setCart , navigate} = useAppContext()
@@ -226,6 +227,7 @@ return  (
                     <img className="group-hover:-translate-x-1 transition" src={assets.arrow_right_icon_colored} alt="arrow" />
                     Continue Shopping
                 </button>
+                <div className='block lg:hidden'><FooterBar/></div>
         </div>
     )
 }

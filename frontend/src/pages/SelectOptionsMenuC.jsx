@@ -21,7 +21,7 @@ const SelectOptionsMenuC = () => {
       Savouries: null,
   Desserts: [null, null],       // 2 items
   Salads: [null, null],         // 2 items
-      AdditionalOptions: null,
+      // AdditionalOptions: null,
       PapadAchar: "Papad & Achar",
       BottledWater: "BottledWater"
     })
@@ -215,20 +215,20 @@ const SelectOptionsMenuC = () => {
             {name:"Cheese Macaroni Salad", img:"https://www.eatingonadime.com/wp-content/uploads/2023/01/EasyMacaroniSalad-Square-Pic.jpg"}, 
             {name:"Corn Potato Salad", img:"https://www.peanutblossom.com/wp-content/uploads/2015/06/frenchpotatosalad-17.jpg"}]
     },      
-    {   name:"AdditionalOptions",
-        value: [{name:"Chaat Station", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy7hh_qeNemM83ninycYHcskgIBLlnrdzCeg&s"}, 
-            {name:"Chinese Station", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBE5WJsIwy_ILxk5qS8UTHcJRfosDEmIaohg&s"}, 
-            {name:"Live South Indian Station", img:"https://hemamagesh.com/wp-content/uploads/2019/07/South-Indian-breakfast.jpg"}, 
-            {name:"Welcome Drink Station", img:"https://i.pinimg.com/222x/04/62/8d/04628db52d5c27c26b5bdf61b76b3714.jpg"}, 
-            {name:"Live Egg Station", img:"https://hips.hearstapps.com/hmg-prod/images/breakfast-for-dinner-naan-best-egg-recipes-66c7aedec1268.png"}, 
-            {name:"Coffee / Masala Milk Station", img:"https://madhurasrecipe.com/wp-content/uploads/2023/10/Masala-Doodh-Featured-Image-585x585.jpg"}, 
-            {name:"Additional Starter", img:"https://images.immediate.co.uk/production/volatile/sites/30/2020/10/Buffalo-cauliflower-7825216.jpg"}, 
-            {name:"VIP Setting", img:"https://i.pinimg.com/236x/1e/2d/ba/1e2dba7e13cbe5c8aa86aa95bc7728e0.jpg"},
-            {name:"Roomali Roti Counter", img:"https://www.cookwithkushi.com/wp-content/uploads/2016/10/rumali_roti_roomali_roti_recipe.jpg"},
-            {name:"Tandoori Roti / Naan Counter", img:"https://sinfullyspicy.com/wp-content/uploads/2024/05/1200-by-1200-images.jpg"},
-            {name:"Tambul", img:"https://img-global.cpcdn.com/recipes/61270455d8104404/680x781cq80/%E0%A4%A4%E0%A4%AC%E0%A4%B2-tambul-recipe-in-marathi-%E0%A4%B0%E0%A4%B8%E0%A4%AA-%E0%A4%9A-%E0%A4%AE%E0%A4%96%E0%A4%AF-%E0%A4%AB%E0%A4%9F.jpg"},
-            ]
-    }  
+    // {   name:"AdditionalOptions",
+    //     value: [{name:"Chaat Station", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy7hh_qeNemM83ninycYHcskgIBLlnrdzCeg&s"}, 
+    //         {name:"Chinese Station", img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBE5WJsIwy_ILxk5qS8UTHcJRfosDEmIaohg&s"}, 
+    //         {name:"Live South Indian Station", img:"https://hemamagesh.com/wp-content/uploads/2019/07/South-Indian-breakfast.jpg"}, 
+    //         {name:"Welcome Drink Station", img:"https://i.pinimg.com/222x/04/62/8d/04628db52d5c27c26b5bdf61b76b3714.jpg"}, 
+    //         {name:"Live Egg Station", img:"https://hips.hearstapps.com/hmg-prod/images/breakfast-for-dinner-naan-best-egg-recipes-66c7aedec1268.png"}, 
+    //         {name:"Coffee / Masala Milk Station", img:"https://madhurasrecipe.com/wp-content/uploads/2023/10/Masala-Doodh-Featured-Image-585x585.jpg"}, 
+    //         {name:"Additional Starter", img:"https://images.immediate.co.uk/production/volatile/sites/30/2020/10/Buffalo-cauliflower-7825216.jpg"}, 
+    //         {name:"VIP Setting", img:"https://i.pinimg.com/236x/1e/2d/ba/1e2dba7e13cbe5c8aa86aa95bc7728e0.jpg"},
+    //         {name:"Roomali Roti Counter", img:"https://www.cookwithkushi.com/wp-content/uploads/2016/10/rumali_roti_roomali_roti_recipe.jpg"},
+    //         {name:"Tandoori Roti / Naan Counter", img:"https://sinfullyspicy.com/wp-content/uploads/2024/05/1200-by-1200-images.jpg"},
+    //         {name:"Tambul", img:"https://img-global.cpcdn.com/recipes/61270455d8104404/680x781cq80/%E0%A4%A4%E0%A4%AC%E0%A4%B2-tambul-recipe-in-marathi-%E0%A4%B0%E0%A4%B8%E0%A4%AA-%E0%A4%9A-%E0%A4%AE%E0%A4%96%E0%A4%AF-%E0%A4%AB%E0%A4%9F.jpg"},
+    //         ]
+    // }  
     ]
 
     const [isActive, setIsActive] = useState("SpecialVeggies")
@@ -244,6 +244,36 @@ const SelectOptionsMenuC = () => {
     //   setSelectedPlatter( (prev)=> ({ ...prev, selectedOptions: selectedOptions })  )
     //   //  console.log("Hello",selectedOptions)
     // };
+
+    const [starterCount, setStarterCount] = useState(0)
+    const [seasonalCount, setSeasonalCount] = useState(0)
+    const [rotiCount, setRotiCount] = useState(0)
+    const [dessertCount, setDessertCount] = useState(0)
+    const [saladCount, setSaladCount] = useState(0)
+
+
+    const countStarter = (newOptions) => {
+      let count = newOptions?.Starters?.filter( (item)=> item !== null ).length
+      return count
+    }
+    const countSeasonal = (newOptions) => {
+      let count = newOptions?.SeasonalVeggies?.filter( (item)=> item !== null ).length
+      console.log(count, 'countSeasonal')
+      return count
+    }
+    const countRoti = (newOptions) => {
+      let count = newOptions?.Rotis?.filter( (item)=> item !== null ).length
+      return count
+    }
+    const countDessert = (newOptions) => {
+      let count = newOptions?.Desserts?.filter( (item)=> item !== null ).length
+      return count
+    }
+    const countSalad = (newOptions) => {
+      let count = newOptions?.Salads?.filter( (item)=> item !== null ).length
+      return count
+    }
+
     const handleSelectedOptions = (category, itemName) => {
   setSelectedOptions((prev) => {
     const updated = { ...prev };
@@ -271,8 +301,21 @@ const SelectOptionsMenuC = () => {
       // Single-select category
       updated[category] = prev[category] === itemName ? null : itemName;
     }
+  
 
     console.log("selected options:", updated);
+
+    let starter = countStarter(updated)
+    setStarterCount(starter)
+    let seasonal = countSeasonal(updated)
+    setSeasonalCount(seasonal)
+    let roti = countRoti(updated)
+    setRotiCount(roti)
+    let dessert = countDessert(updated)
+    setDessertCount(dessert)
+    let salad = countSalad(updated)
+    setSaladCount(salad)
+
     return updated;
   });
 //    setSelectedPlatter(prev => ({
@@ -296,53 +339,63 @@ const SelectOptionsMenuC = () => {
              <div>
                 <button onClick={() => {setIsActive("Soups")}} className={` rounded-md transition ${isActive === "Soups" ? " text-primary" : " text-black"}`}> Soups </button>
                 {/* {selectedOptions.Soups !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Soups}</p> : <p></p> } */}
+                <p className='text-xs text-gray-700'>{selectedOptions?.Soups !==null ? <span>1</span> : <span>0</span>}/1</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("SpecialVeggies")}} className={`pt-5 md:pt-0 rounded-md transition  justify-start text-start  ${isActive === "SpecialVeggies" ? " text-primary" : " text-black"}`}> Special Veggies </button>
                 {/* {selectedOptions.SpecialVeggies !== null ? <p className='text-xs text-gray-500'>{selectedOptions.SpecialVeggies}</p> : <p></p> } */}
+                <p className='text-xs text-gray-700'>{selectedOptions?.SpecialVeggies !==null ? <span>1</span> : <span>0</span>}/1</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("SeasonalVeggies")}} className={` rounded-md transition  justify-start text-start  leading-4 ${isActive === "SeasonalVeggies" ? " text-primary" : " text-black"}`}> Seasonal Veggies </button>
                 {/* {selectedOptions.SeasonalVeggies !== null ? <p className='text-xs text-gray-500'>{selectedOptions.SeasonalVeggies}</p> : <p></p> } */}
+                <p className='text-xs text-gray-700'>{seasonalCount}/2</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Rotis")}} className={` rounded-md transition ${isActive === "Rotis" ? " text-primary" : " text-black"}`}> Rotis </button>
                 {/* {selectedOptions.Rotis !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Rotis}</p> : <p></p> } */}
+                <p className='text-xs text-gray-700'>{rotiCount}/2</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Daals")}} className={` rounded-md transition ${isActive === "Daals" ? " text-primary" : " text-black"}`}> Daals </button>
                 {/* {selectedOptions.Daals !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Daals}</p> : <p></p> } */}
+                <p className='text-xs text-gray-700'>{selectedOptions?.Daals !==null ? <span>1</span> : <span>0</span>}/1</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("BasmatiRice")}} className={` rounded-md transition ${isActive === "BasmatiRice" ? " text-primary" : " text-black"}`}> BasmatiRice </button>
                 {/* {selectedOptions.BasmatiRice !== null ? <p className='text-xs text-gray-500'>{selectedOptions.BasmatiRice}</p> : <p></p> } */}
+                <p className='text-xs text-gray-700'>{selectedOptions?.BasmatiRice !==null ? <span>1</span> : <span>0</span>}/1</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Desserts")}} className={` rounded-md transition ${isActive === "Desserts" ? " text-primary" : " text-black"}`}> Desserts </button>
                 {/* {selectedOptions.Desserts !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Desserts}</p> : <p></p> } */}
+                <p className='text-xs text-gray-700'>{dessertCount}/2</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Savouries")}} className={` rounded-md transition ${isActive === "Savouries" ? " text-primary" : " text-black"}`}> Savouries </button>
                 {/* {selectedOptions.Savouries !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Savouries}</p> : <p></p> } */}
+                <p className='text-xs text-gray-700'>{selectedOptions?.Savouries !==null ? <span>1</span> : <span>0</span>}/1</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Starters")}} className={` rounded-md transition ${isActive === "Starters" ? " text-primary" : " text-black"}`}> Starters </button>
                 {/* {selectedOptions.Starters !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Starters}</p> : <p></p> } */}
-
+                <p className='text-xs text-gray-700'>{starterCount}/2</p>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Salads")}} className={` rounded-md transition ${isActive === "Salads" ? " text-primary" : " text-black"}`}> Salads </button>
                 {/* {selectedOptions.Salads !== null ? <p className='text-xs text-gray-500'>{selectedOptions.Salads}</p> : <p></p> } */}
-
+                <p className='text-xs text-gray-700'>{saladCount}/2</p>
              </div>
-             <div>
+             {/* <div>
                 <button onClick={() => {setIsActive("AdditionalOptions")}} className={` rounded-md transition ${isActive === "AdditionalOptions" ? " text-primary text-left" : " text-black text-left"}`}> Additional Options </button>
-            </div>
+            </div> */}
              <div>
                 <button className="rounded-md transition text-black"> Papad & Achar </button>
+                <p className='text-xs text-gray-700'>Complementary</p>
              </div>
              <div>
                 <button className="rounded-md transition text-black"> Bottled Water </button>
+                <p className='text-xs text-gray-700'>Complementary</p>
              </div>
              </div>             
              )}
@@ -624,8 +677,7 @@ const SelectOptionsMenuC = () => {
     </div>
   </div>
 )}
- {isActive === "AdditionalOptions" && <div>
-                {/* Card Grid */}
+ {/* {isActive === "AdditionalOptions" && <div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 md:gap-2 p-1 md:p-4 ">
         {activeSnack?.value.map((snackItem, index) => (
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
@@ -641,7 +693,7 @@ const SelectOptionsMenuC = () => {
         ))}
       </div>
                      
-                 </div> }
+                 </div> } */}
   {isActive === "Salads" && (
   <div>
     {/* Card Grid */}

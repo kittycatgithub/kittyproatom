@@ -7,18 +7,43 @@ const CustomizeBar = (selectedOptions) => {
 
   const {cart, setCart, selectedPlatter, setSelectedPlatter, navigate} = useAppContext()
   const {_id} = useParams()
-  console.log(_id)
+  // console.log(_id)
 
   // const handleCart = () => {
-
   //   setCart( (prev)=>
   //     [...prev, selectedPlatter]
   //    )
   //    toast.success("Added To Cart")
   //   console.log("Success" , cart)
   // }
+  // console.log((Object?.values(selectedPlatter?.selectedOptions)?.filter( (item)=> item !== null ).length !== 0), 'Hello')
+
+ const isAllFilled = (options) => {
+  return Object.values(options).every((val) => {
+
+    // ❌ Case 1: null value (NOT filled)
+    if (val === null) return false;
+
+    // ❌ Case 2: array with null values
+    if (Array.isArray(val)) {
+      return val.every(item => item !== null && item !== "");
+    }
+
+    // ❌ Case 3: empty string
+    if (val === "") return false;
+
+    // ✔ Case 4: valid string or non-empty value
+    return true;
+  });
+};
+
+
+
   const handleCart = (_id) => {
-  setCart((prev) => {
+    // console.log(Object.values(selectedPlatter.selectedOptions)?.filter( (item)=> item !== null ).length !== 0)
+
+    if( (Object?.values(selectedPlatter?.selectedOptions)?.filter( (item)=> item !== null ).length !== 0) && (selectedPlatter.name === 'Short Menu' || selectedPlatter.name === 'Breakfast' )  ){
+        setCart((prev) => {
     const alreadyInCart = prev.some((item) => item._id === selectedPlatter._id);
 
     if (alreadyInCart) {
@@ -26,16 +51,57 @@ const CustomizeBar = (selectedOptions) => {
       navigate(`/fill-details/${_id}`)
       return prev;
     }
-
     const updatedCart = [...prev, selectedPlatter];
     toast.success("Added To Cart");
-    console.log("Success", updatedCart);
+    // console.log("Success", updatedCart);
     navigate(`/fill-details/${_id}`)
     setSelectedPlatter({})
     return updatedCart;
   });
+    } else {
+          if( (Object?.values(selectedPlatter?.selectedOptions)?.filter( (item)=> item !== null ).length > 2) && selectedPlatter.name === 'Menu A'  ){
+            setCart((prev) => {
+            const alreadyInCart = prev.some((item) => item._id === selectedPlatter._id);
+            
+        if (alreadyInCart) {
+          toast.error("Already in Cart");
+          navigate(`/fill-details/${_id}`)
+          return prev;
+        }
+        const updatedCart = [...prev, selectedPlatter];
+        toast.success("Added To Cart");
+        // console.log("Success", updatedCart);
+        navigate(`/fill-details/${_id}`)
+        setSelectedPlatter({})
+        return updatedCart;
+        });
+        }else {
+          if (isAllFilled(selectedPlatter?.selectedOptions)) {
+  setCart((prev) => {
+    const alreadyInCart = prev.some((item) => item._id === selectedPlatter._id);
+
+    if (alreadyInCart) {
+      toast.error("Already in Cart");
+      navigate(`/fill-details/${_id}`);
+      return prev;
+    }
+
+    const updatedCart = [...prev, selectedPlatter];
+    toast.success("Added To Cart");
+    // console.log("Success", updatedCart);
+    navigate(`/fill-details/${_id}`);
+    setSelectedPlatter({});
+    return updatedCart;
+  });
+          } else {
+            toast.error('Kindly Select Required Platter')
+          }
+          }
+        }   
 };
-  console.log("cart",cart)
+  // console.log("cart",cart)
+  // console.log("selectedOptions",selectedOptions)
+  // console.log("selectedPlatter",selectedPlatter)
 
   return (
         <div className="fixed bottom-0 left-0 w-full z-50 shadow-md">

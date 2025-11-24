@@ -3,16 +3,16 @@ import { useAppContext } from "../context/AppContext"
 import { assets, dummyAddress } from "../assets/assets"
 import toast from "react-hot-toast"
 import { data } from "react-router-dom"
+import FooterBar from "../components/FooterBar"
 
 const OrderReview = () => {
-    const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, cart ,setCart , navigate, axios, user} = useAppContext()
+    const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, cart ,setCart , navigate, axios, user, setShowUserLogin} = useAppContext()
     const [cartArray , setCartArray] = useState([])
     const [addresses , setAddresses] = useState([])
     const [notes, setNotes] = useState({});
-
     const [showAddress, setShowAddress] = useState(false)
     const [selectedAddress, setSelectedAddress] = useState(null)
-    const [paymentOption, setPaymentOption] = useState("COD")
+    const [paymentOption, setPaymentOption] = useState("Full Payment")
 
     const getCart = ()=> {
         let tempArray = []
@@ -103,20 +103,147 @@ const handleResume = ( product ) =>{
 //         toast.error(error.message)
 //     }
 //  }
+
 // Place Order Function
  const placeOrder = async () => {
     // Filter items that have data in 'details'
-const filteredCart = cart.filter(item => item.details && Object.keys(item.details).length !== 0);
+    // const filteredCart = cart.filter(item => item.details && Object.keys(item.details).length !== 0);
     try {
     if (!selectedAddress) {
         return toast.error("Please Select Address");
     }
-
     // Place Order with COD
     if (paymentOption === "COD") {
         const filteredCart = cart.filter(
             item => item.details && Object.keys(item.details).length !== 0
         );
+        console.log(filteredCart, 'filteredCart')
+
+        if (filteredCart.length === 0) {
+            return toast.error("No items with valid details to place an order.");
+        }
+        
+        for (const item of filteredCart) {
+            // ✅ Inline price calculation
+        const deliveryCharge = 100;
+        // let gst = (item.offerPrice * item.details.guests * 5) / 100;
+        let gst = (item?.details?.totalPrice * item.details.guests * 5) / 100;
+        const finalPrice = (item?.details?.totalPrice * item.details.guests) + deliveryCharge + gst;
+        // const finalPrice = (item.offerPrice * item.details.guests) + deliveryCharge + gst;
+    
+        // console.log(item.offerPrice, "item.offerPrice")
+        // console.log(item.details.guests, "item.details.guests")
+        // console.log(deliveryCharge, "deliveryCharge")
+        // console.log(gst, "gst")
+        // console.log(finalPrice, "finalPrice")
+
+            const { data } = await axios.post('/api/order/cod', {
+                userId: user._id,
+                platters: [{
+                    _id: item._id,
+                    name: item.name,
+                    path: item.path,
+                    badge: item.badge,
+                    category: item.category,
+                    offerPrice: finalPrice,
+                    details: item.details,
+                    selectedOptions: item.selectedOptions,
+                    productDetails: item.productDetails || {},
+                    menu: item.menu
+                }],
+                address: selectedAddress._id,
+                note: notes[item._id] || "", // 🔥 pick note for this product only
+            });
+            if (data.success) {
+                toast.success(data.message, { duration: 3000 });
+            } else {
+                toast.error(`${data.message}`);
+            }
+        }
+
+        // Clear cart and redirect after processing all
+        setCart([]);
+        navigate('/my-orders');
+        scrollTo(0,0)
+    }
+
+    if (paymentOption === "Full Payment") {
+        const filteredCart = cart.filter(  item => item.details && Object.keys(item.details).length !== 0  );
+        console.log(filteredCart, 'filteredCart')
+
+        if (filteredCart.length === 0) {
+            return toast.error("No items with valid details to place an order.");
+        }
+// Razorpay payment Gateway code starts
+        const { data } = await axios.post("/api/order/razorpay/init", {
+          userId: user._id,
+          amount: totalAmount
+        });
+
+        await new Promise(resolve => {
+
+          const options = {
+            key: data.key,
+            amount: data.order.amount,
+            currency: "INR",
+            name: "Your Company",
+            order_id: data.order.id,
+          
+           handler: function (response) {
+              toast.success("Payment Successful!");
+              resolve();  // continue
+            }
+          };
+        
+          const rzp = new window.Razorpay(options);
+          rzp.open();
+        });
+// Razorpay Payment Gateway Code Ends
+        
+        for (const item of filteredCart) {
+            // ✅ Inline price calculation
+            const deliveryCharge = 100;
+            // let gst = (item.offerPrice * item.details.guests * 5) / 100;
+            let gst = (item?.details?.totalPrice * item.details.guests * 5) / 100;
+            const finalPrice = (item?.details?.totalPrice * item.details.guests) + deliveryCharge + gst;
+            // const finalPrice = (item.offerPrice * item.details.guests) + deliveryCharge + gst;
+
+            // ---- CREATE RAZORPAY ORDER ----
+            const { data } = await axios.post('/api/order/razorpay/confirm', {
+                userId: user._id,
+                platters: [{
+                    _id: item._id,
+                    name: item.name,
+                    path: item.path,
+                    badge: item.badge,
+                    category: item.category,
+                    offerPrice: finalPrice,
+                    details: item.details,
+                    selectedOptions: item.selectedOptions,
+                    productDetails: item.productDetails || {},
+                    menu: item.menu
+                }],
+                address: selectedAddress._id,
+                note: notes[item._id] || "", // 🔥 pick note for this product only
+            });
+            if (data.success) {
+                console.log(data?.order, 'Razorpay API Response')
+                toast.success(data.message, { duration: 3000 });
+            } else {
+                toast.error(`${data.message}`);
+            }
+      }
+
+        // Clear cart and redirect after processing all
+        setCart([]);
+        navigate('/my-orders');
+        scrollTo(0,0)
+    }
+    if (paymentOption === "Half Payment") {
+        const filteredCart = cart.filter(
+            item => item.details && Object.keys(item.details).length !== 0
+        );
+        console.log(filteredCart, 'filteredCart')
 
         if (filteredCart.length === 0) {
             return toast.error("No items with valid details to place an order.");
@@ -125,8 +252,10 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
         for (const item of filteredCart) {
             // ✅ Inline price calculation
     const deliveryCharge = 100;
-    let gst = (item.offerPrice * item.details.guests * 5) / 100;
-    const finalPrice = (item.offerPrice * item.details.guests) + deliveryCharge + gst;
+    // let gst = (item.offerPrice * item.details.guests * 5) / 100;
+    let gst = (item?.details?.totalPrice * item.details.guests * 5) / 100;
+    const finalPrice = (item?.details?.totalPrice * item.details.guests) + deliveryCharge + gst;
+    // const finalPrice = (item.offerPrice * item.details.guests) + deliveryCharge + gst;
     
     // console.log(item.offerPrice, "item.offerPrice")
     // console.log(item.details.guests, "item.details.guests")
@@ -150,13 +279,12 @@ const filteredCart = cart.filter(item => item.details && Object.keys(item.detail
                 }],
                 address: selectedAddress._id,
                 note: notes[item._id] || "", // 🔥 pick note for this product only
-
             });
 
             if (data.success) {
                 toast.success(data.message, { duration: 3000 });
             } else {
-                toast.error(`${data.message} Hello`);
+                toast.error(`${data.message}`);
             }
         }
 
@@ -259,9 +387,12 @@ console.log(totalAmount, "totalAmount")
                                 <p>
                                  Price - {currency} {new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests)}
                                 </p>
-                                {/* <p>
-                                 Final Price with 5% GST - {currency}{new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests + product.details.totalPrice * product.details.guests*0.05)}
-                                </p> */}
+                                <p>
+                                 5% GST - {currency}{new Intl.NumberFormat('en-IN').format( product.details.totalPrice * product.details.guests*0.05)}
+                                </p>
+                                <p>
+                                 Shipping Fee - {currency}{shipping}
+                                </p>
                             </div>
                             </div>
                             <div className="space-y-1 text-gray-700 text-sm  pl-2 md:pl-0">
@@ -418,9 +549,9 @@ console.log(totalAmount, "totalAmount")
                     <p className="text-sm font-medium uppercase mt-6">Payment Method</p>
 
                     <select onChange={ (e)=> setPaymentOption(e.target.value) } className="w-full border border-gray-300 bg-white px-3 py-2 mt-2 outline-none">
-                        <option value="COD">Cash On Delivery</option>
-                        <option value="Half Payment">Half Payment</option>
                         <option value="Full Payment">Full Payment</option>
+                        {/* <option value="Half Payment">Half Payment</option> */}
+                        <option value="COD">Cash On Delivery</option>
                     </select>
                 </div>
 
@@ -441,36 +572,37 @@ console.log(totalAmount, "totalAmount")
                     </p>
                 </div> */}
                 <div className="text-gray-800 mt-4 space-y-2">
-  <p className="flex justify-between">
+  {/* <p className="flex justify-between">
     <span>Price</span>
 <span>
   {currency}{(price).toFixed(2)}
-</span>    {/* <span>
+</span>    */}
+ {/* <span>
   {currency}
   {new Intl.NumberFormat("en-IN", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   }).format(price)}
 </span> */}
-  </p>
-  <p className="flex justify-between">
+  {/* </p> */}
+  {/* <p className="flex justify-between">
     <span>5% GST</span>
 
 <span>
   {currency}{(price * 0.05).toFixed(2)}
-</span>    {/* <span>
+</span>    */}
+ {/* <span>
   {currency}
   {new Intl.NumberFormat("en-IN", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
   }).format(price)}
 </span> */}
-  </p>
-  <p className="flex justify-between">
+  {/* </p> */}
+  {/* <p className="flex justify-between">
     <span>Shipping Fee</span>
-    {/* <span className="text-green-700">{currency}{shipping * cart.length}</span> */}
     <span className="text-green-700">{currency}{shipping * cart.filter(product => product?.details?.date).length}</span>
-  </p>
+  </p> */}
   {/* <p className="flex justify-between">
     <span>GST 5%</span>
     <span className="text-green-700">{currency}{gst.toFixed(2)}</span>
@@ -493,13 +625,14 @@ console.log(totalAmount, "totalAmount")
                         Place Order / Ask For Quotation
                     </button>
                   ) : (
-                    <button onClick={() => toast.error('Login To Continue')} className="w-full py-3 mt-6 cursor-pointer bg-primary text-white font-medium hover:bg-primary-dull transition">
+                    // <button onClick={() => toast.error('Login To Continue')} className="w-full py-3 mt-6 cursor-pointer bg-primary text-white font-medium hover:bg-primary-dull transition">
+                    <button onClick={()=> setShowUserLogin(true)} className="w-full py-3 mt-6 cursor-pointer bg-primary text-white font-medium hover:bg-primary-dull transition">
                         Login To Place Order 
                     </button>
                   )
-                }
-                
+                }                
             </div>
+            <div className='block lg:hidden'><FooterBar/></div>
         </div>
     )
 }

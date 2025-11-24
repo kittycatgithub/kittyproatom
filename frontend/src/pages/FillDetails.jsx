@@ -27,9 +27,19 @@ export default function FillDetails () {
     
     useEffect( ()=> {
         if( filteredProduct[0]?.name === 'Snack Box A' || filteredProduct[0]?.name === 'Snack Box B') {
-          console.log('if code executed',  filteredProduct[0]?.name)
+          // console.log('if code executed',  filteredProduct[0]?.name)
           setMinGuests(10)
           setGuests(10)
+        }
+        if( filteredProduct[0]?.name === 'Breakfast' || filteredProduct[0]?.name === 'Short Menu'|| filteredProduct[0]?.name === 'Menu A'|| filteredProduct[0]?.name === 'Menu B'|| filteredProduct[0]?.name === 'Menu C') {
+          // console.log('if code executed',  filteredProduct[0]?.name)
+          setMinGuests(15)
+          setGuests(15)
+        }
+        if( filteredProduct[0]?.name === 'Bulk Delivery') {
+          // console.log('if code executed',  filteredProduct[0]?.name)
+          setMinGuests(1)
+          setGuests(1)
         }
     },[] )
        useEffect(() => {
@@ -41,25 +51,11 @@ export default function FillDetails () {
     const handleGuestChange = (delta) => {
     setGuests((prev) => Math.max(minGuests, Math.min(maxGuests, prev + delta)));
     };
- 
-
-
-  // Occasion Logic
-  const [occassion, setOccassion] = useState( "" ) 
-  const [details, setDetails] = useState({
-    occasion:  null,
-    date: null,
-    time: null,
-    guests: null,
-    totalPrice: filteredProduct[0].offerPrice,
-    // address:null
-  }) 
-    
+      
   // Dynamic pricing logic (example: simple discount by guest count)
   const getPricePerPlate = () => {
 
-    if (filteredProduct[0].name == "Working Meal"){
-     
+    if (filteredProduct[0].name == "Working Meal"){     
       if (guests <= 50) return 170
       if (guests > 50 && guests <= 100) return (170 - (170 * 0.05)); // 5% discount
       if ( guests > 100) return (170 - (170 * 0.10)); // 10% discount
@@ -85,33 +81,66 @@ export default function FillDetails () {
 
     // No Discounts given to other Categories i.e. Catering And Bulk Delivery
     if (filteredProduct[0].name == "Menu A"){
-      // if (guests <=2000) return 210
-       return 430  
+      if ( guests >= 15 && guests <= 24 ) return 430
+      if ( guests >= 25 && guests <= 49 ) return 400
+      if ( guests >= 50 && guests <= 100 ) return 360
+      if ( guests > 100 ) return 340
+      // return 430  
     }
     if (filteredProduct[0].name == "Menu B"){
-      // if (guests <=2000) return 210
-       return 540   
+      if ( guests >= 15 && guests <= 24 ) return 540
+      if ( guests >= 25 && guests <= 49 ) return 510
+      if ( guests >= 50 && guests <= 100 ) return 470
+      if ( guests > 100 ) return 450
+      // return 540   
     }
     if (filteredProduct[0].name == "Menu C"){
-      // if (guests <=2000) return 210
-       return 670   
+      if ( guests >= 15 && guests <= 24 ) return 670
+      if ( guests >= 25 && guests <= 49 ) return 640
+      if ( guests >= 50 && guests <= 100 ) return 600
+      if ( guests > 100 ) return 580
+      // return 670   
     }
     if (filteredProduct[0].name == "Short Menu"){
-      // if (guests <=2000) return 210
-       return 380   
+      if ( guests >= 15 && guests <= 24 ) return 380
+      if ( guests >= 25 && guests <= 49 ) return 350
+      if ( guests >= 50 && guests <= 100 ) return 310
+      if ( guests > 100 ) return 290
+      // return 380   
     }
     if (filteredProduct[0].name == "Breakfast"){
-      // if (guests <=2000) return 210
-       return 190   
+      console.log('condition executed')
+      if ( guests >= 15 && guests <= 24 ) return 190
+      if ( guests >= 25 && guests <= 49 ) return 170
+      if ( guests >= 50 ) return 150
+      // return 190   
     }
 
     // if (guests >= 130) return 160;
     // if (guests >= 100) return 170;
-    return originalPrice;
+    // return originalPrice;
+    return 0;
   };
-
-  const pricePerPlate = getPricePerPlate();
+  
+  let pricePerPlate = getPricePerPlate();
   const discount = (((originalPrice - pricePerPlate) / originalPrice) * 100).toFixed(2);
+
+  // Occasion Logic
+  const [occassion, setOccassion] = useState( "" ) 
+  const [details, setDetails] = useState({
+    occasion:  null,
+    date: null,
+    time: null,
+    guests: null,
+    totalPrice: pricePerPlate,
+    // totalPrice: filteredProduct[0].offerPrice,
+    // address:null
+  }) 
+
+    useEffect( ()=>{
+    let updatedPrice = getPricePerPlate()
+    setDetails( (prev)=> ({ ...prev, totalPrice: updatedPrice }) )
+  },[details.guests] )
 
 // Date Format Component
   const [selectedDate, setSelectedDate] = useState(null);
@@ -417,7 +446,9 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
         </div>
       </div>
       {/* Guest Selector */}
-      <div className="bg-white  border rounded-xl p-4 mb-2 shadow-sm">
+      {
+        filteredProduct[0]?.name !== 'Bulk Delivery' && 
+        <div className="bg-white  border rounded-xl p-4 mb-2 shadow-sm">
         <div className="grid grid-cols-2">
              <div className="text-sm font-medium text-gray-700 content-center mb-2">Total Guests<span className="text-red-500">*</span></div>
         <div className="flex flex-row items-center justify-between mb-2">
@@ -465,8 +496,10 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
           ✨ <strong>DYNAMIC PRICING</strong> more guests, more savings.
         </div>
       </div>
-      {/* Price Per Plate */}
-      <div className="bg-white flex border rounded-xl p-4 mb-4 shadow-sm">
+      }
+      {
+        filteredProduct[0]?.name !== 'Bulk Delivery' && 
+          <div className="bg-white flex border rounded-xl p-4 mb-4 shadow-sm">
         <div className="text-sm font-medium content-center text-gray-500">Price Per Plate :</div>
         <div className="gap-4">
         {/* <div className="flex items-center justify-between gap-4"> */}
@@ -477,6 +510,10 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
           <div className="text-lg text-orange-700 pl-1">₹{pricePerPlate}</div>
         </div>
       </div>
+      }
+      
+      {/* Price Per Plate */}
+      
       {/* Address */}
       {/* <div className="bg-white border rounded-xl p-4 mb-2 shadow-sm">
         <div className="flex justify-between items-start">

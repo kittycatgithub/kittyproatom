@@ -6,6 +6,8 @@ import User from "../models/User.js";
 import bcrypt from 'bcryptjs'
 import jwt from "jsonwebtoken";
 import { response } from "express";
+import {google} from 'googleapis'
+import nodemailer from 'nodemailer'
 
 // User Registration Api Controller Function
 // Register User : /api/user/register
@@ -20,11 +22,11 @@ export const register = async (req, res) => {
         if(existingUser){
             return res.json({success: false, message:"User Already Exists"})
         }
-        const hashedPassword = await bcrypt.hash(password, 10) 
+        const hashedPassword = await bcrypt.hash(password, 10) // 10 = salt rounds
         const user = await User.create({name, email, password: hashedPassword })
 
         // After user creation, send token (validity 10 days) in response
-        const token = jwt .sign({id: user._id}, process.env.JWT_SECRET, {expiresIn: '10d'})
+        const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {expiresIn: '10d'})
 
         res.cookie('token', token, {
             httpOnly: true, // Prevent Javascript to access cookie
@@ -73,6 +75,159 @@ export const login = async ( req, res ) => {
         res.json({success: false, message: error.message})       
     }
 }
+// export const feedback = async (req, res) => {
+//   try {
+//     const { name1, email1, email2, mobile1, mobile2, message1 } = req.body;
+
+//     const oauth2Client = new google.auth.OAuth2(
+//       process.env.GOOGLE_CLIENT_ID,
+//       process.env.GOOGLE_CLIENT_SECRET,
+//       "https://developers.google.com/oauthplayground" 
+//     );
+
+//     oauth2Client.setCredentials({
+//       refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+//     });
+
+//     const accessToken = await oauth2Client.getAccessToken();
+
+//     let transporter = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: {
+//         type: "OAuth2",
+//         user: process.env.GMAIL_USER,
+//         clientId: process.env.GOOGLE_CLIENT_ID,
+//         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//         refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
+//         accessToken: accessToken.token,
+//       },
+//     });
+
+//     await transporter.sendMail({
+//       from: `"Feedback" <${process.env.GMAIL_USER}>`,
+//       to: process.env.GMAIL_USER,
+//       subject: "Feedback Received",
+//       text: message1,
+//       html: `<b>${message1}</b>`,
+//     });
+
+//     res.json({ success: true, message: "Email sent successfully" });
+
+//   } catch (err) {
+//     console.log(err);
+//     res.json({ success: false, message: err.message });
+//   }
+// };
+
+// export const contact = async (req, res) => {
+//   try {
+//     const { name2, email3, email4, mobile3, mobile4, message2 } = req.body;
+
+//     const oauth2Client = new google.auth.OAuth2(
+//       process.env.GOOGLE_CLIENT_ID,
+//       process.env.GOOGLE_CLIENT_SECRET,
+//       "https://developers.google.com/oauthplayground" 
+//     );
+
+//     oauth2Client.setCredentials({
+//       refresh_token: process.env.GOOGLE_REFRESH_TOKEN,
+//     });
+
+//     const accessToken = await oauth2Client.getAccessToken();
+
+//     let transporter = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: {
+//         type: "OAuth2",
+//         user: process.env.GMAIL_USER,
+//         clientId: process.env.GOOGLE_CLIENT_ID,
+//         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//         refreshToken: process.env.GOOGLE_REFRESH_TOKEN,
+//         accessToken: accessToken.token,
+//       },
+//     });
+
+//     await transporter.sendMail({
+//       from: `"Feedback" <${process.env.GMAIL_USER}>`,
+//       to: process.env.GMAIL_USER,
+//       subject: "Feedback Received",
+//       text: message2,
+//       html: `<b>${message2}</b>`,
+//     });
+
+//     res.json({ success: true, message: "Email sent successfully" });
+
+//   } catch (err) {
+//     console.log(err);
+//     res.json({ success: false, message: err.message });
+//   }
+// };
+
+const smtpTransporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
+
+export const feedback = async (req, res) => {
+  try {
+    const { name1, email1, email2, mobile1, mobile2, message1 } = req.body;
+
+    await smtpTransporter.sendMail({
+      from: `"Feedback" <${process.env.GMAIL_USER}>`,
+      to: process.env.GMAIL_USER,
+      subject: "Feedback Received",
+      html: `
+        <h3>New Feedback</h3>
+        <p><strong>Name:</strong> ${name1}</p>
+        <p><strong>Email 1:</strong> ${email1}</p>
+        <p><strong>Email 2:</strong> ${email2}</p>
+        <p><strong>Mobile 1:</strong> ${mobile1}</p>
+        <p><strong>Mobile 2:</strong> ${mobile2}</p>
+        <p><strong>Message:</strong> ${message1}</p>
+      `,
+    });
+
+    res.json({ success: true, message: "Feedback sent successfully" });
+
+  } catch (err) {
+    console.log(err);
+    res.json({ success: false, message: err.message });
+  }
+};
+
+export const contact = async (req, res) => {
+  try {
+    const { name2, email3, email4, mobile3, mobile4, message2 } = req.body;
+
+    await smtpTransporter.sendMail({
+      from: `"Contact Request" <${process.env.GMAIL_USER}>`,
+      to: process.env.GMAIL_USER,
+      subject: "Contact Request Received",
+      html: `
+        <h3>New Contact Request</h3>
+        <p><strong>Name:</strong> ${name2}</p>
+        <p><strong>Email 1:</strong> ${email3}</p>
+        <p><strong>Email 2:</strong> ${email4}</p>
+        <p><strong>Mobile 1:</strong> ${mobile3}</p>
+        <p><strong>Mobile 2:</strong> ${mobile4}</p>
+        <p><strong>Message:</strong> ${message2}</p>
+      `,
+    });
+
+    res.json({ success: true, message: "Contact message sent successfully" });
+
+  } catch (err) {
+    console.log(err);
+    res.json({ success: false, message: err.message });
+  }
+};
+
+
 
 // Check Auth : /api/user/is-auth
 export const isAuth = async (req, res) => {
@@ -90,8 +245,8 @@ export const isAuth = async (req, res) => {
 export const logout = async ( req, res ) => {
     try {
         res.clearCookie('token',{
-            // httpOnly: true, 
-            secure: process.env.NODE_ENV === 'production',
+            // httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', //Browser will block the cookie on localhost (because localhost is HTTP, not HTTPS).
             sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
         })
         return res.json({success: true, message: "Logged Out"})
