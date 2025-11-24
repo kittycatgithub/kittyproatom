@@ -13,3 +13,4 @@ Cache.txt
 # Build or distribution folders
 frontend/build/
 frontend/dist/
+backend/.env
