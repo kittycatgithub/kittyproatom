@@ -805,7 +805,7 @@ export const actualProducts = [
   {
     _id: "gd47g34h",
     name: "Special Meal",
-    path:"https://img.freepik.com/free-photo/gourmet-bowl-with-healthy-rice-meat-vegetables-generated-by-ai_188544-14076.jpg",
+    path:"/categories/meal-snack/special-img1.jpg",
     badge: 'Best for Professional Events',    
     category: "meal-thali-snack-boxes",
     unit:"/thali",

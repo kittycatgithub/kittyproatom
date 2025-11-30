@@ -11,9 +11,12 @@ const cards = [
     price: "₹95",
     link: "/all-menu/meal-thali-snack-boxes",
     images: [
-      "https://media.istockphoto.com/id/1158623408/photo/indian-hindu-veg-thali-food-platter-selective-focus.jpg?s=612x612&w=0&k=20&c=MOm3sfIfL22URV6juSCxpA3yfr4O63yJUV5vitufR7Y=",
-      "https://media.istockphoto.com/id/174973324/photo/non-vegetarian-indian-thali.jpg?s=612x612&w=0&k=20&c=Z9hP8XVJ3KZaBlOutIEiOshPY7rzZdkoEAVabusE15o=",
-      "https://media.istockphoto.com/id/515894660/photo/indian-vegetarian-thali-indian-thali-parcel-indian-take-home-food.jpg?s=612x612&w=0&k=20&c=VTfjgDM-BqjIvPkQJ29UUB-vrU-MDXWpgRhPcEwmsOY=",
+      "/categories/tha-img1.jpeg",
+      "/categories/sna-img1.jpeg",
+      "/categories/tha-img2.jpeg",
+      // "https://media.istockphoto.com/id/1158623408/photo/indian-hindu-veg-thali-food-platter-selective-focus.jpg?s=612x612&w=0&k=20&c=MOm3sfIfL22URV6juSCxpA3yfr4O63yJUV5vitufR7Y=",
+      // "https://media.istockphoto.com/id/174973324/photo/non-vegetarian-indian-thali.jpg?s=612x612&w=0&k=20&c=Z9hP8XVJ3KZaBlOutIEiOshPY7rzZdkoEAVabusE15o=",
+      // "https://media.istockphoto.com/id/515894660/photo/indian-vegetarian-thali-indian-thali-parcel-indian-take-home-food.jpg?s=612x612&w=0&k=20&c=VTfjgDM-BqjIvPkQJ29UUB-vrU-MDXWpgRhPcEwmsOY=",
     ],
   },
   {
@@ -23,9 +26,12 @@ const cards = [
     link:"/",
     // link:"/select-bulk/ek56j67k",
     images: [
-      "https://media.istockphoto.com/id/639389404/photo/authentic-indian-food.jpg?s=612x612&w=0&k=20&c=gbfAu17L1gtHmuo5biByhfCefAtYUtGQpyxMmi9_Mus=",
-      "https://media.istockphoto.com/id/2185257273/photo/indian-curry-tikka-masala-chicken-lamb-mutton-rogan-josh-with-rice-and-naan-bread-dark.jpg?s=612x612&w=0&k=20&c=-yHrDXUjpBv0RkD8hP2IQbiW-RNE8L1sQCpv-l09yAA=",
-      "https://media.istockphoto.com/id/1453499717/photo/chicken-biryani-or-biriyani-served-in-plate-isolated-on-table-top-view-indian-spicy-food.jpg?s=612x612&w=0&k=20&c=tBMCVZt7CW0KRBqkRg-MDySzxMiQqzUamGU9IHnH13Q=",
+      "/categories/bulk/bulk-img1.jpeg",
+      "/categories/bulk/bulk-img2.jpg",
+      "/categories/bulk/bulk-img3.jpeg",
+      // "https://media.istockphoto.com/id/639389404/photo/authentic-indian-food.jpg?s=612x612&w=0&k=20&c=gbfAu17L1gtHmuo5biByhfCefAtYUtGQpyxMmi9_Mus=",
+      // "https://media.istockphoto.com/id/2185257273/photo/indian-curry-tikka-masala-chicken-lamb-mutton-rogan-josh-with-rice-and-naan-bread-dark.jpg?s=612x612&w=0&k=20&c=-yHrDXUjpBv0RkD8hP2IQbiW-RNE8L1sQCpv-l09yAA=",
+      // "https://media.istockphoto.com/id/1453499717/photo/chicken-biryani-or-biriyani-served-in-plate-isolated-on-table-top-view-indian-spicy-food.jpg?s=612x612&w=0&k=20&c=tBMCVZt7CW0KRBqkRg-MDySzxMiQqzUamGU9IHnH13Q=",
     ],
   },
   {
@@ -46,8 +52,8 @@ const cards = [
     link: "/all-menu/catering",
     images: [
       "https://media.istockphoto.com/id/1249206724/photo/banquet-catering-buffet-food.jpg?s=612x612&w=0&k=20&c=EDQZDZDQYeWT0UYasMivgDXwEa-QWPWEQn62szACVVM=",
-      "https://media.istockphoto.com/id/498472863/photo/final-touch-for-tasty-canapes.jpg?s=612x612&w=0&k=20&c=tsZMzSOGZEZhOAsooi_tSX0oJ4vhbH3vMwXYlu28wd0=",
-      "https://media.istockphoto.com/id/2174502255/photo/assorted-appetizers-and-gourmet-sliders-displayed-at-a-catered-event-in-an-elegant-venue.jpg?s=612x612&w=0&k=20&c=rDHGZtWr7hG4SvKkx4SVhYSVmEcUuVHzvZSboYLt79E=",
+      "/categories/cat-img2.jpeg",
+      "/categories/cat-img3.jpeg",
     ],
   },
 ];
