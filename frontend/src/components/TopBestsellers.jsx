@@ -40,9 +40,12 @@ const cards = [
     price: "₹259",
     link:"/store/",
     images: [
-      "https://media.istockphoto.com/id/1225535094/photo/pre-packaged-sandwiches-displayed-in-a-commercial-refrigerator.jpg?s=612x612&w=0&k=20&c=Hl7XtSZb-oSFWjg2hTifYJZ_Q6BWqGn6A0SBeScDKOU=",
-      "https://media.istockphoto.com/id/1446875650/photo/boxes-with-pre-packaged-vegetable-salads-in-a-commercial-fridge.jpg?s=612x612&w=0&k=20&c=fLqq9mk-ERwGD0ivnTH7k9m8_gySywWp2M6ogq3guSk=",
-      "https://media.istockphoto.com/id/497634049/photo/pre-packaged-ready-to-eat-food.jpg?s=612x612&w=0&k=20&c=DvMDKkHR8CrSXmj5CxZaW4z2zK6EfMQ36JLcv4CCp2Q=",
+      // "https://media.istockphoto.com/id/1225535094/photo/pre-packaged-sandwiches-displayed-in-a-commercial-refrigerator.jpg?s=612x612&w=0&k=20&c=Hl7XtSZb-oSFWjg2hTifYJZ_Q6BWqGn6A0SBeScDKOU=",
+      '/categories/frozen/img2.jpeg',
+      '/categories/frozen/img1.jpeg',
+      '/categories/frozen/img3.jpeg',
+      // "https://media.istockphoto.com/id/1446875650/photo/boxes-with-pre-packaged-vegetable-salads-in-a-commercial-fridge.jpg?s=612x612&w=0&k=20&c=fLqq9mk-ERwGD0ivnTH7k9m8_gySywWp2M6ogq3guSk=",
+      // "https://media.istockphoto.com/id/497634049/photo/pre-packaged-ready-to-eat-food.jpg?s=612x612&w=0&k=20&c=DvMDKkHR8CrSXmj5CxZaW4z2zK6EfMQ36JLcv4CCp2Q=",
     ],
   },
   {

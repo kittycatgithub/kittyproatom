@@ -42,6 +42,7 @@ import Store from './pages/ecommerce/Store'
 import StoreCart from './pages/ecommerce/StoreCart'
 import ProductOrders from './pages/seller/ProductOrders'
 import HospitalFoodService from './pages/HospitalFoodService'
+import Feedback from './pages/Feedback'
 
 const App = () => {
 
@@ -77,6 +78,7 @@ const App = () => {
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/storecart' element={<StoreCart/>}/>
       <Route path='/contact' element={<Contact/>}/>
+      <Route path='/general-1' element={<Feedback/>}/>
       <Route path='/store' element={<Store/>}/>
       <Route path='/fill-details/:_id' element={<FillDetails/>}/>
       <Route path='/order-review' element={<OrderReview/>}/>
