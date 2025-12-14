@@ -30,67 +30,67 @@ const TermsConditions = () => {
              {/* <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-5xl">
                                Our Story
               </h1> */}
-              <p className=" sm:mt-5 text-lg text-justify">Last Updated: 1st Dec 2025</p>
-              <p className="text-gray-900 sm:mt-5 text-lg text-justify">
+              <p className=" sm:mt-5 text-lg">Last Updated: 1st Dec 2025</p>
+              <p className="text-gray-900 sm:mt-5 text-lg">
                 Welcome to Baron Kitchen. By accessing or ordering from our website, you agree to the following Terms & Conditions. Please read them carefully.
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 1. General
               </h1>
-              <p className=" sm:mt-5 text-lg text-justify">
+              <p className=" sm:mt-5 text-lg">
                 These terms apply to all frozen products sold by Baron Kitchen within Nagpur city limits only.
                 We reserve the right to change these terms at any time. Updates will be posted on this page.              
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 2. Eligibility
               </h1>
-              <p className=" sm:mt-5 text-lg text-justify">
+              <p className=" sm:mt-5 text-lg">
                 Customers must: 
                 <ul>
-                  <li className='list-inside list-disc'>Be 18 years or older</li>
-                  <li className='list-inside list-disc'>Provide accurate contact and delivery details</li>
-                  <li className='list-inside list-disc'>Place orders only for addresses within Nagpur</li>
+                  <li className='ml-5 list-outside list-disc'>Be 18 years or older</li>
+                  <li className='ml-5 list-outside list-disc'>Provide accurate contact and delivery details</li>
+                  <li className='ml-5 list-outside list-disc'>Place orders only for addresses within Nagpur</li>
                 </ul>           
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 3. Product Information
               </h1>
-              <p className=" sm:mt-5 text-lg text-justify">
-                <li className='list-inside list-disc'>All images and descriptions are for representation only.</li>
-                <li className='list-inside list-disc'>Actual product weight, size, or appearance may vary slightly.</li>
-                <li className='list-inside list-disc'>Prices are subject to change without prior notice.</li>           
+              <p className=" sm:mt-5 text-lg">
+                <li className='ml-5 list-outside list-disc'>All images and descriptions are for representation only.</li>
+                <li className='ml-5 list-outside list-disc'>Actual product weight, size, or appearance may vary slightly.</li>
+                <li className='ml-5 list-outside list-disc'>Prices are subject to change without prior notice.</li>           
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 4. Order Acceptance
               </h1>
-              <p className=" sm:mt-5 text-lg text-justify">
+              <p className=" sm:mt-5 text-lg">
                   An order is confirmed only after:
-                  <li className='list-inside list-disc'>Successful payment</li>
-                  <li className='list-inside list-disc'>Verification of delivery location</li>
-                  <li className='list-inside list-disc'>Stock availability</li><br />
+                  <li className='ml-5 list-outside list-disc'>Successful payment</li>
+                  <li className='ml-5 list-outside list-disc'>Verification of delivery location</li>
+                  <li className='ml-5 list-outside list-disc'>Stock availability</li><br />
 
                   We may cancel an order if:
-                  <li className='list-inside list-disc'>The address is outside Nagpur</li>
-                  <li className='list-inside list-disc'>Payment fails</li>
-                  <li className='list-inside list-disc'>Stock is unavailable</li>
-                  <li className='list-inside list-disc'>A full refund will be issued in such cases</li>
+                  <li className='ml-5 list-outside list-disc'>The address is outside Nagpur</li>
+                  <li className='ml-5 list-outside list-disc'>Payment fails</li>
+                  <li className='ml-5 list-outside list-disc'>Stock is unavailable</li>
+                  <li className='ml-5 list-outside list-disc'>A full refund will be issued in such cases</li>
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 5. Payment Terms
               </h1>
-              <p className=" sm:mt-5 text-lg text-justify">
-                  <li className='list-inside list-disc'>Payments are accepted through secure third-party gateways</li>
-                  <li className='list-inside list-disc'>We do not store any card or UPI details</li>
-                  <li className='list-inside list-disc'>Orders are processed only after payment confirmation</li>
+              <p className=" sm:mt-5 text-lg">
+                  <li className='ml-5 list-outside list-disc'>Payments are accepted through secure third-party gateways</li>
+                  <li className='ml-5 list-outside list-disc'>We do not store any card or UPI details</li>
+                  <li className='ml-5 list-outside list-disc'>Orders are processed only after payment confirmation</li>
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 6. Delivery Terms
               </h1>
-              <p className=" sm:mt-5 text-lg text-justify">
-                <li className='list-inside list-disc'>Delivery is available within Nagpur city only</li>
-                <li className='list-inside list-disc'>Time slots are estimates and may vary due to traffic, weather or operational issues</li>
-                <li className='list-inside list-disc'>Customers must be available to receive the delivery</li>
-                <li className='list-inside list-disc'>Re-delivery charges may apply if the customer isunavailable</li>
+              <p className=" sm:mt-5 text-lg">
+                <li className='ml-5 list-outside list-disc'>Delivery is available within Nagpur city only</li>
+                <li className='ml-5 list-outside list-disc'>Time slots are estimates and may vary due to traffic, weather or operational issues</li>
+                <li className='ml-5 list-outside list-disc'>Customers must be available to receive the delivery</li>
+                <li className='ml-5 list-outside list-disc'>Re-delivery charges may apply if the customer isunavailable</li>
               </p><br />
               <h1 className="text-2xl pt-5 font-semibold">
                 (Full Shipping & Delivery Policy added below.)
@@ -98,30 +98,30 @@ const TermsConditions = () => {
               <h1 className="text-2xl pt-5 font-semibold">
                 7. Cancellations & Refunds
               </h1>
-              <p className=" sm:mt-5 text-lg text-justify">
+              <p className=" sm:mt-5 text-lg">
                   Please refer to the Refund & Cancellation Policy section below.(Integrated later in this document.)
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 8. Limitation of Liability
               </h1>
-              <p className=" sm:mt-5 text-lg text-justify">
+              <p className=" sm:mt-5 text-lg">
                 Baron Kitchen is not responsible for:
-                <li className='list-inside list-disc'>Improper storage of frozen products after delivery</li>
-                <li className='list-inside list-disc'>Delays caused by external factors beyond our control</li>
-                <li className='list-inside list-disc'>Misuse of products after purchase</li>
+                <li className='ml-5 list-outside list-disc'>Improper storage of frozen products after delivery</li>
+                <li className='ml-5 list-outside list-disc'>Delays caused by external factors beyond our control</li>
+                <li className='ml-5 list-outside list-disc'>Misuse of products after purchase</li>
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 9. Governing Law
               </h1>
-              <p className=" sm:mt-5 text-lg text-justify">
+              <p className=" sm:mt-5 text-lg">
                 All disputes are subject to the jurisdiction of Nagpur, Maharashtra.
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 10. Contact
               </h1>
-              <p className=" sm:mt-5 text-lg text-justify">
-                <li className='list-inside list-disc'>📞 9822990025</li>
-                <li className='list-inside list-disc'>📧 manager@baronkitchen.com</li>
+              <p className=" sm:mt-5 text-lg">
+                <li className='ml-5 list-outside list-disc'>📞 9822990025</li>
+                <li className='ml-5 list-outside list-disc'>📧 manager@baronkitchen.com</li>
               </p><br />
               <h1 className="text-2xl pt-5 font-semibold">
                 SHIPPING & DELIVERY POLICY
@@ -132,31 +132,31 @@ const TermsConditions = () => {
               <h1 className="text-2xl pt-5 font-semibold">
                 1. Delivery Coverage
               </h1>
-              <p className="sm:mt-5 text-lg text-justify">
-                <li className='list-inside list-disc'>We deliver frozen products only within Nagpur city limits.</li>
-                <li className='list-inside list-disc'>Orders outside Nagpur will be cancelled and refunded automatically.</li>
+              <p className="sm:mt-5 text-lg">
+                <li className='ml-5 list-outside list-disc'>We deliver frozen products only within Nagpur city limits.</li>
+                <li className='ml-5 list-outside list-disc'>Orders outside Nagpur will be cancelled and refunded automatically.</li>
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 2. Delivery Time
               </h1>
-              <p className="sm:mt-5 text-lg text-justify">
-                <li className='list-inside list-disc'>Deliveries are made between 9:00 AM –8:00 PM.</li>
-                <li className='list-inside list-disc'>Delivery slots are estimates and may vary due to: Traffic, Weather, Operational constraints</li>  
+              <p className="sm:mt-5 text-lg">
+                <li className='ml-5 list-outside list-disc'>Deliveries are made between 9:00 AM –8:00 PM.</li>
+                <li className='ml-5 list-outside list-disc'>Delivery slots are estimates and may vary due to: Traffic, Weather, Operational constraints</li>  
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 3. Delivery Attempts
               </h1>
-              <p className="sm:mt-5 text-lg text-justify">
-                <li className='list-inside list-disc'>The delivery person will call upon reaching the location.</li>
-                <li className='list-inside list-disc'>If the customer is unavailable, the delivery may be rescheduled once.</li>
-                <li className='list-inside list-disc'>Additional attempts may incur re-delivery charges.</li>
+              <p className="sm:mt-5 text-lg">
+                <li className='ml-5 list-outside list-disc'>The delivery person will call upon reaching the location.</li>
+                <li className='ml-5 list-outside list-disc'>If the customer is unavailable, the delivery may be rescheduled once.</li>
+                <li className='ml-5 list-outside list-disc'>Additional attempts may incur re-delivery charges.</li>
               </p>
               <h1 className="text-2xl pt-5 font-semibold">
                 4. Delivery Conditions
               </h1>
-              <p className="sm:mt-5 text-lg text-justify">
-                <li className='list-inside list-disc'>Customers must check the product upon delivery.</li>
-                <li className='list-inside list-disc'>Any issue (damage/incorrect item) must be reported immediately at the time of delivery with photo/video proof.</li>
+              <p className="sm:mt-5 text-lg">
+                <li className='ml-5 list-outside list-disc'>Customers must check the product upon delivery.</li>
+                <li className='ml-5 list-outside list-disc'>Any issue (damage/incorrect item) must be reported immediately at the time of delivery with photo/video proof.</li>
               </p>
               </div>
 
