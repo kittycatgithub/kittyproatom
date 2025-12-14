@@ -78,6 +78,14 @@ const Footer = () => {
                         <li><HashLink smooth to="/about#services">Services</HashLink></li>
                         <li className=""><a href="/contact"  className=" text-gray-800 hover:text-gray-900">Contact Us</a></li>
                    </ul>
+                   <div className='hidden md:block'>
+                        <h4 className="text-lg text-gray-900 font-medium pt-2 my-3">Terms & Policies</h4>
+                    <ul className="text-lg lg:text-md  transition-all duration-500">
+                        <li><a href="/refund-cancellation-policy"  className="text-gray-800 hover:text-gray-900">Refund & Cancellation Policy</a></li>
+                        <li><a href="/privacy-policy"  className=" text-gray-800 hover:text-gray-900">Privacy Policy</a></li>
+                        <li><a href="/terms-conditions"  className=" text-gray-800 hover:text-gray-900">Terms & Conditions</a></li>
+                   </ul>  
+                   </div>                   
                 </div>
                 {/* <!--End Col--> */}
                 <div className=" text-center sm:text-left">
@@ -90,8 +98,8 @@ const Footer = () => {
                         <li><a href="/all-menu/catering"  className=" text-gray-800 hover:text-gray-900">Catering</a></li>
                         {/* <li><a href="/categories/bulk-delivery"  className=" text-gray-800 hover:text-gray-900">Bulk Delivery</a></li> */}
                         {/* <li><a href="/all-menu/frozen-products"  className=" text-gray-800 hover:text-gray-900">Frozen Products</a></li> */}
-                </ul>                   
-                </div>  
+                </ul>                  
+                </div> 
                       {/* <!--End Col--> */}
                 <div className=" hidden text-center sm:block sm:text-left">
                     <h4 className="text-lg text-gray-900 font-medium mb-7">Contact Us</h4>
@@ -179,6 +187,16 @@ const Footer = () => {
         </div>
         </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-5">
+          
+          <div className='block md:hidden pt-2 px-7'>
+            <hr className='border-t border-gray-200'/>
+            <h4 className="text-lg text-center text-gray-900 font-medium my-3">Terms & Policies</h4>
+              <ul className="text-lg lg:text-md text-center  transition-all duration-500">
+                  <li><a href="/refund-cancellation-policy"  className="text-gray-800 hover:text-gray-900">Refund & Cancellation Policy</a></li>
+                  <li><a href="/privacy-policy"  className=" text-gray-800 hover:text-gray-900">Privacy Policy</a></li>
+                  <li><a href="/terms-conditions"  className=" text-gray-800 hover:text-gray-900">Terms & Conditions</a></li>
+              </ul>  
+          </div> 
             {/* <!--Grid--> */}
             <div className="grid grid-cols-1 sm:grid-cols-4 lg:grid-cols-5 gap-0 lg:gap-0 py-4 max-w-xs mx-auto sm:max-w-2xl md:max-w-3xl lg:max-w-full">
                

@@ -163,31 +163,73 @@ export const login = async ( req, res ) => {
 //   }
 // };
 
-const smtpTransporter = nodemailer.createTransport({
+// const smtpTransporter = nodemailer.createTransport({
+//   host: "smtp.gmail.com",
+//   port: 465,
+//   secure: true,
+//   auth: {
+//     user: process.env.GMAIL_USER,
+//     pass: process.env.GMAIL_APP_PASSWORD,
+//   },
+// });
+const smtpTransporter1 = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
   secure: true,
   auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD,
+    user: process.env.GMAIL_BARON,
+    pass: process.env.GMAIL_APP_PASSWORD_BARON,
   },
 });
 
+// export const feedback = async (req, res) => {
+//   try {
+//     const { name1, email1, email2, mobile1, mobile2, message1 } = req.body;
+
+//     await smtpTransporter1.sendMail({
+//       from: `"Feedback" <${process.env.GMAIL_BARON}>`,
+//       // to: process.env.GMAIL_USER,
+//       to: [
+//         process.env.GMAIL_USER,
+//         process.env.GMAIL_BARON,
+//       ],
+//       subject: "Feedback Received",
+//       html: `
+//         <h3>New Feedback</h3>
+//         <p><strong>Name:</strong> ${name1}</p>
+//         <p><strong>Email 1:</strong> ${email1}</p>
+//         <p><strong>Email 2:</strong> ${email2}</p>
+//         <p><strong>Mobile 1:</strong> ${mobile1}</p>
+//         <p><strong>Mobile 2:</strong> ${mobile2}</p>
+//         <p><strong>Message:</strong> ${message1}</p>
+//       `,
+//     });
+
+//     res.json({ success: true, message: "Feedback sent successfully" });
+
+//   } catch (err) {
+//     console.log(err);
+//     res.json({ success: false, message: err.message });
+//   }
+// };
+
 export const feedback = async (req, res) => {
   try {
-    const { name1, email1, email2, mobile1, mobile2, message1 } = req.body;
+    const { name1, email1, mobile1, message1 } = req.body;
 
-    await smtpTransporter.sendMail({
-      from: `"Feedback" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
+    await smtpTransporter1.sendMail({
+      from: `"Feedback" <${process.env.GMAIL_BARON}>`,
+      // to: process.env.GMAIL_USER,
+      to: [
+        process.env.GMAIL_USER,
+        process.env.GMAIL_BARON,
+      ],
       subject: "Feedback Received",
       html: `
         <h3>New Feedback</h3>
         <p><strong>Name:</strong> ${name1}</p>
         <p><strong>Email 1:</strong> ${email1}</p>
-        <p><strong>Email 2:</strong> ${email2}</p>
         <p><strong>Mobile 1:</strong> ${mobile1}</p>
-        <p><strong>Mobile 2:</strong> ${mobile2}</p>
         <p><strong>Message:</strong> ${message1}</p>
       `,
     });
@@ -204,7 +246,7 @@ export const contact = async (req, res) => {
   try {
     const { name2, email3, email4, mobile3, mobile4, message2 } = req.body;
 
-    await smtpTransporter.sendMail({
+    await smtpTransporter1.sendMail({
       from: `"Contact Request" <${process.env.GMAIL_USER}>`,
       to: process.env.GMAIL_USER,
       subject: "Contact Request Received",

@@ -12,9 +12,9 @@ const Contact = () => {
   const [ formData1, setFormData1 ] = useState({
     name1 : '',
     email1 : '',
-    email2 : '',
+    // email2 : '',
     mobile1 : '',
-    mobile2 : '',
+    // mobile2 : '',
     message1 : '',
   })
   const [ formData2, setFormData2 ] = useState({
@@ -52,9 +52,9 @@ const Contact = () => {
       setFormData1({
         name1 : '',
         email1 : '',
-        email2 : '',
+        // email2 : '',
         mobile1 : '',
-        mobile2 : '',
+        // mobile2 : '',
         message1 : '',
       })
     } else {
@@ -233,14 +233,10 @@ const Contact = () => {
                 We’d love to hear what you thought about us. It helps us to serve you better.  
                 <br/>
                 <br/>
-                Tell us what you enjoyed or what we can do better at Kahani Cafe.
+                Tell us what you enjoyed or what we can do better at Baron Kitchen.
                 We’d love to hear what you thought about us.
-
-            </p>
-         
-            <span className="inline-flex mt-6 justify-center sm:justify-start">
-             
-               
+            </p>         
+            <span className="inline-flex mt-6 justify-center sm:justify-start">                           
             </span>
         </div>
         <div className=" w-full mt-10 md:mt-0 md:pl-28">
@@ -256,7 +252,7 @@ const Contact = () => {
                             className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 leading-8 transition-colors duration-200 ease-in-out "/>
                     </div>
                 </div>                
-                <div className="p-2 w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-2 w-full grid grid-cols-1 gap-4">
                     <div className="relative">
                         <label htmlFor="email1" className="leading-7 py-4 text-lg text-gray-900">Primary Email</label>
                         <input type="email" id="email1" value={formData1.email1} name="email1" required onChange={handleChangeFeedBack}
@@ -264,15 +260,22 @@ const Contact = () => {
                                    focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
                                    leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
-                    <div className="relative">
+                    {/* <div className="relative">
+                        <label htmlFor="email1" className="leading-7 py-4 text-lg text-gray-900">Primary Email</label>
+                        <input type="email" id="email1" value={formData1.email1} name="email1" required onChange={handleChangeFeedBack}
+                            className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
+                                   focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
+                                   leading-8 transition-colors duration-200 ease-in-out" />
+                    </div> */}
+                    {/* <div className="relative">
                         <label htmlFor="email2" className="leading-7 py-4 text-lg text-gray-900">Secondary Email</label>
                         <input type="email" id="email2" value={formData1.email2} name="email2" required onChange={handleChangeFeedBack}
                             className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
                                    focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
                                    leading-8 transition-colors duration-200 ease-in-out" />
-                    </div>
+                    </div> */}
                 </div>
-                <div className="p-2 w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-2 w-full grid grid-cols-1 gap-4">
                     <div className="relative">
                         <label htmlFor="mobile1" className="leading-7 py-4 text-lg text-gray-900">Primary Mobile</label>
                         <input type="tel" id="mobile1" value={formData1.mobile1} name="mobile1" pattern="[0-9]{10}" required onChange={handleChangeFeedBack}
@@ -280,18 +283,18 @@ const Contact = () => {
                                    focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
                                    leading-8 transition-colors duration-200 ease-in-out" />
                     </div>
-                    <div className="relative">
+                    {/* <div className="relative">
                         <label htmlFor="mobile2" className="leading-7 py-4 text-lg text-gray-900">Secondary Mobile</label>
                         <input type="tel" id="mobile2" value={formData1.mobile2} name="mobile2" pattern="[0-9]{10}" required onChange={handleChangeFeedBack}
                             className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white 
                                    focus:ring-2 focus:ring-blue-200 text-base outline-none text-gray-900 py-1 px-1 
                                    leading-8 transition-colors duration-200 ease-in-out" />
-                   </div>
+                   </div> */}
                 </div>
                 <div className="p-2 w-full">
                     <div className="relative">
                         <label htmlFor="message1" value={formData1.message1} className="leading-7 py-4 text-lg text-gray-900">Your Message</label>
-                        <textarea id="message1" name="message1" required="" onChange={handleChangeFeedBack}
+                        <textarea id="message1" name="message1" required="" onChange={handleChangeFeedBack}  value={formData1.message1}
                             className="w-full bg-white rounded border border-gray-400 focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-200 h-32 text-base outline-none text-gray-900 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out "></textarea>
                     </div>
                 </div>

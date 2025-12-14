@@ -43,6 +43,9 @@ import StoreCart from './pages/ecommerce/StoreCart'
 import ProductOrders from './pages/seller/ProductOrders'
 import HospitalFoodService from './pages/HospitalFoodService'
 import Feedback from './pages/Feedback'
+import TermsConditions from './pages/TermsConditions'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import RefundCancellation from './pages/RefundCancellation'
 
 const App = () => {
 
@@ -75,6 +78,9 @@ const App = () => {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/about' element={<About/>}/>
+      <Route path='/terms-conditions' element={<TermsConditions/>}/>
+      <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
+      <Route path='/refund-cancellation-policy' element={<RefundCancellation/>}/>
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/storecart' element={<StoreCart/>}/>
       <Route path='/contact' element={<Contact/>}/>
