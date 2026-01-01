@@ -29,27 +29,27 @@ const Cart = () => {
     }, [products, cartItems] )
 
     const handleRemoveFromCart = (productId) => {
-  const isInCart = cart.some((item) => item._id === productId);
-  if (!isInCart) {
-    toast.error("Item not in Cart");
-    return;
-  }
-  setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
-  toast.success("Removed from Cart");
-};
+    const isInCart = cart.some((item) => item._id === productId);
+      if (!isInCart) {
+        toast.error("Item not in Cart");
+        return;
+      }
+      setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
+      toast.success("Removed from Cart");
+    };
 
-// Resume Button Logic
-const handleResume = ( product ) =>{
-    console.log(product._id)
-    navigate(`/fill-details/${product._id}`)
-}
+    // Resume Button Logic
+    const handleResume = ( product ) =>{
+        console.log(product._id)
+        navigate(`/fill-details/${product._id}`)
+    }
 return  (
         <div className=" md:flex-row py-16 max-w-6xl w-full px-3 mx-auto">
             <h1 className="text-3xl font-medium mb-6">
                     Shopping Cart <span className="text-sm text-indigo-500">{cart.length} Items</span>
                 </h1>
             <div className='grid lg:grid-cols-2 justify-between max-w-6xl space-y-3'>
-{console.log(cart)}
+            {/* {console.log(cart)} */}
                 {cart.map((product, index) => (
                     <div key={index} className="grid text-gray-700 border-1 border-gray-300 min-w-[340px]  md:max-w-lg items-center text-sm md:text-base font-normal">
                         <div className="flex md:gap-6 gap-3 justify-start p-2 items-start">

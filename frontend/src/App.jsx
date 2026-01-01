@@ -46,6 +46,7 @@ import Feedback from './pages/Feedback'
 import TermsConditions from './pages/TermsConditions'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import RefundCancellation from './pages/RefundCancellation'
+import ShippingDeliveryPolicy from './pages/ShippingDeliveryPolicy'
 
 const App = () => {
 
@@ -81,6 +82,8 @@ const App = () => {
       <Route path='/terms-conditions' element={<TermsConditions/>}/>
       <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
       <Route path='/refund-cancellation-policy' element={<RefundCancellation/>}/>
+      <Route path='/shipping-delivery-policy' element={<ShippingDeliveryPolicy/>}/>
+
       <Route path='/cart' element={<Cart/>}/>
       <Route path='/storecart' element={<StoreCart/>}/>
       <Route path='/contact' element={<Contact/>}/>

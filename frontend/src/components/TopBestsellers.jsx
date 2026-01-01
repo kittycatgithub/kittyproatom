@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 const cards = [
   {
     title: "Meal Thali & Snack Boxes",
+    badge: 'Packed Fresh Food',
     desc: "Classic delight with 100% real mozzarella cheese.",
     price: "₹95",
     link: "/all-menu/meal-thali-snack-boxes",
@@ -21,6 +22,7 @@ const cards = [
   },
   {
     title: "Bulk Delivery",
+    badge: 'Fresh Food By Kg',
     desc: "Flavorful trio of juicy paneer, crisp capsicum with spicy red paprika.",
     price: "₹259",
     link:"/",
@@ -36,6 +38,7 @@ const cards = [
   },
   {
     title: "Frozen Products",
+    badge: 'Frozen Goodness',
     desc: "The awesome foursome! Golden corn, black olives, capsicum, red paprika.",
     price: "₹259",
     link:"/store/",
@@ -50,6 +53,7 @@ const cards = [
   },
   {
     title: "Catering",
+    badge: "Baron's TOP Menu",
     desc: "Delightful combination of onion, capsicum, tomato & grilled mushroom.",
     price: "₹259",
     link: "/all-menu/catering",
@@ -106,7 +110,7 @@ const TopBestsellers = () => {
                 <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2L14.5 7L20 7.5L15.5 11L17 16L12 13.5L7 16L8.5 11L4 7.5L9.5 7L12 2Z" />
                 </svg>
-                Baron's TOP Menu
+                {item.badge}
               </div>
               {/* Customise Button */}
               {/* <button className="absolute z-50 right-3 bottom-3 bg-black/60 text-white text-sm px-3 py-1.5 rounded-md hover:bg-black/70">

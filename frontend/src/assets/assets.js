@@ -20,29 +20,29 @@ import box_icon from "./box_icon.svg";
 import trust_icon from "./trust_icon.svg";
 import black_arrow_icon from "./black_arrow_icon.svg";
 import white_arrow_icon from "./white_arrow_icon.svg";
-import main_banner_bg from "./main_banner_bg.png";
-import main_banner_bg_sm from "./main_banner_bg_sm.png";
-import bottom_banner_image from "./bottom_banner_image.png";
-import bottom_banner_image_sm from "./bottom_banner_image_sm.png";
+// import main_banner_bg from "./main_banner_bg.png";
+// import main_banner_bg_sm from "./main_banner_bg_sm.png";
+// import bottom_banner_image from "./bottom_banner_image.png";
+// import bottom_banner_image_sm from "./bottom_banner_image_sm.png";
 import add_address_iamge from "./add_address_image.svg";
 import organic_vegitable_image from "./organic_vegitable_image.png";
 import fresh_fruits_image from "./fresh_fruits_image.png";
 import bottles_image from "./bottles_image.png";
 import maggi_image from "./maggi_image.png";
-import dairy_product_image from "./dairy_product_image.png";
-import bakery_image from "./bakery_image.png";
-import grain_image from "./grain_image.png";
+// import dairy_product_image from "./dairy_product_image.png";
+// import bakery_image from "./bakery_image.png";
+// import grain_image from "./grain_image.png";
 import potato_image_1 from "./potato_image_1.png";
 import potato_image_2 from "./potato_image_2.png";
 import potato_image_3 from "./potato_image_3.png";
 import potato_image_4 from "./potato_image_4.png";
 import tomato_image from "./tomato_image.png";
 import carrot_image from "./carrot_image.png";
-import apple_image from "./apple_image.png";
-import amul_milk_image from "./amul_milk_image.png";
+// import apple_image from "./apple_image.png";
+// import amul_milk_image from "./amul_milk_image.png";
 import coca_cola_image from "./coca_cola_image.png";
 import brown_bread_image from "./brown_bread_image.png";
-import basmati_rice_image from "./basmati_rice_image.png";
+// import basmati_rice_image from "./basmati_rice_image.png";
 import paneer_image from "./paneer_image.png";
 import orange_image from "./orange_image.png";
 import pepsi_image from "./pepsi_image.png";
@@ -51,7 +51,7 @@ import cheese_image from "./cheese_image.png";
 import eggs_image from "./eggs_image.png";
 import spinach_image_1 from "./spinach_image_1.png";
 import onion_image_1 from "./onion_image_1.png";
-import banana_image_1 from "./banana_image_1.png";
+// import banana_image_1 from "./banana_image_1.png";
 import mango_image_1 from "./mango_image_1.png";
 import grapes_image_1 from "./grapes_image_1.png";
 import paneer_image_2 from "./paneer_image_2.png";
@@ -68,7 +68,14 @@ import whole_wheat_bread_image from "./whole_wheat_bread_image.png";
 import vanilla_muffins_image from "./vanilla_muffins_image.png";
 import quinoa_image from "./quinoa_image.png";
 import brown_rice_image from "./brown_rice_image.png";
-import barley_image from "./barley_image.png";
+import methi_paratha from './methi-paratha.jpeg'
+import khawa_roti from './khawa-roti.jpeg'
+import aloo_paratha from './aloo-paratha.jpeg'
+import paneer_paratha from './paneer-paratha.jpeg'
+import laccha_paratha from './laccha-paratha.jpeg'
+import mix_veg_paratha from './mix-veg-paratha.jpeg'
+import pooran_poli from './pooran-poli.jpeg'
+// import barley_image from "./barley_image.png";
 
 export const assets = {
   logo,
@@ -92,10 +99,10 @@ export const assets = {
   trust_icon,
   black_arrow_icon,
   white_arrow_icon,
-  main_banner_bg,
-  main_banner_bg_sm,
-  bottom_banner_image,
-  bottom_banner_image_sm,
+  // main_banner_bg,
+  // main_banner_bg_sm,
+  // bottom_banner_image,
+  // bottom_banner_image_sm,
   add_address_iamge,
   box_icon,
 };
@@ -259,7 +266,7 @@ export const dummyProducts = [
     category: "Fruits",
     price: 120,
     offerPrice: 110,
-    image: [apple_image],
+    // image: [apple_image],
     description: [
       "Crisp and juicy",
       "Rich in fiber",
@@ -293,7 +300,7 @@ export const dummyProducts = [
     category: "Fruits",
     price: 50,
     offerPrice: 45,
-    image: [banana_image_1],
+    // image: [banana_image_1],
     description: [
       "Sweet and ripe",
       "High in potassium",
@@ -344,7 +351,7 @@ export const dummyProducts = [
     category: "Dairy",
     price: 60,
     offerPrice: 55,
-    image: [amul_milk_image],
+    // image: [amul_milk_image],
     description: [
       "Pure and fresh",
       "Rich in calcium",
@@ -509,7 +516,7 @@ export const dummyProducts = [
     category: "Grains",
     price: 550,
     offerPrice: 520,
-    image: [basmati_rice_image],
+    // image: [basmati_rice_image],
     description: [
       "Long grain and aromatic",
       "Perfect for biryani and pulao",
@@ -573,7 +580,7 @@ export const dummyProducts = [
     category: "Grains",
     price: 150,
     offerPrice: 140,
-    image: [barley_image],
+    // image: [barley_image],
     description: [
       "Rich in fiber",
       "Helps improve digestion",
@@ -781,7 +788,8 @@ export const actualProducts = [
     _id: "gd46g23h",
     name: "Working Meal",
     path:"/categories/meal-snack/working-meal.jpeg",
-    badge: 'Best for Professional Events',    
+    // badge: 'Best for Professional Events',    
+    badge: 'Packed Fresh Food',    
     category: "meal-thali-snack-boxes",
    unit:"/thali",
     offerPrice: 170,
@@ -806,7 +814,7 @@ export const actualProducts = [
     _id: "gd47g34h",
     name: "Special Meal",
     path:"/categories/meal-snack/special-img1.jpg",
-    badge: 'Best for Professional Events',    
+    badge: 'Packed Fresh Food',    
     category: "meal-thali-snack-boxes",
     unit:"/thali",
     offerPrice: 210,
@@ -830,8 +838,8 @@ export const actualProducts = [
   {
     _id: "gd48g45h", 
     name: "Snack Box A",
-    path:"https://media.istockphoto.com/id/1319728998/photo/sandwich-with-lettuce-tomatoes-chicken-cheese-sorrel-and-a-cup-of-coffee-on-wooden-cutting.jpg?s=612x612&w=0&k=20&c=V0YMnDMKCQRlhJz8ipX4pJSju_Ss8ztFcMGSe_MWW_Y=",
-    badge: 'Best for Professional Events',  
+    path:"/categories/sna-img1.jpeg",
+    badge: 'Packed Fresh Food',  
     category: "meal-thali-snack-boxes",
     unit:"/snack box",
     offerPrice: 95,
@@ -855,7 +863,7 @@ export const actualProducts = [
     _id: "gd49g56h",
     name: "Snack Box B",
     path:"/categories/meal-snack/snack-box-b.jpeg",
-    badge: 'Best for Professional Events',  
+    badge: 'Packed Fresh Food',  
     category: "meal-thali-snack-boxes",
     unit:"/snack box",
     price: 18,
@@ -892,7 +900,7 @@ export const actualProducts = [
     ],
     // path:"https://media.istockphoto.com/id/1156130293/photo/group-of-gujarati-snacks-like-jalebi-fafda-thepla-khaman-dhokla-aloo-bhujiya-khandvi-khakra.jpg?s=612x612&w=0&k=20&c=aUBFopzsLwLQtPRv-QgLa26-EfCJi5qxO6O3kxHPolY=",
     path:"/categories/catering/breakfast.jpeg",
-    badge: 'Best for Professional Events',  
+    badge: "Baron's TOP Menu",  
     category: "catering",
     offerPrice: 190,
     image: [mango_image_1],
@@ -918,7 +926,7 @@ export const actualProducts = [
       "Packaged Bottled Water will be served",
     ],
     path:"/categories/catering/high-tea.jpeg",
-    badge: 'Best for Professional Events',  
+    badge: "Baron's TOP Menu",  
     category: "catering",
 
     offerPrice: 190,
@@ -947,10 +955,10 @@ export const actualProducts = [
       "Packaged Bottled Water will be served",
     ],
     path:"https://media.istockphoto.com/id/848643264/photo/north-indina-thali-lunch-plate-of-north-indian.jpg?s=612x612&w=0&k=20&c=J8Jg7VhqpSla7CwNai1yrlCplL1VTdr0QOB8ifG7KME=",
-    badge: 'Best for Professional Events',  
+    badge: "Baron's TOP Menu",  
     category: "catering",
     offerPrice: 380,
-    image: [banana_image_1],
+    // image: [banana_image_1],
     unit:"/guest",
     description: [
       "+ 5% GST",
@@ -966,7 +974,7 @@ export const actualProducts = [
     name: "Menu A",
     
     path:"/categories/catering/menu-a.jpeg",
-    badge: 'Best for Professional Events',  
+    badge: "Baron's TOP Menu",  
     menu:[
       "Special Veg",
       "Seasonal Veg",
@@ -1012,10 +1020,10 @@ export const actualProducts = [
       "Bottled Water",
     ],
     path:"/categories/catering/menu-b.jpeg",
-    badge: 'Best for Professional Events',  
+    badge: "Baron's TOP Menu",  
     category: "catering",
     offerPrice: 540,
-    image: [apple_image],
+    // image: [apple_image],
     unit:"/guest",
     description: [
       "+ 5% GST",
@@ -1044,7 +1052,7 @@ export const actualProducts = [
       "Bottled Water",
     ],
     path:"/categories/catering/menu-c.jpeg",
-    badge: 'Best for Professional Events',  
+    badge: "Baron's TOP Menu",  
     category: "catering",
     offerPrice: 670,
     image: [orange_image],
@@ -1073,7 +1081,7 @@ export const actualProducts = [
       "Dessert",
     ],
     path:"https://img.freepik.com/free-photo/gourmet-bowl-with-healthy-rice-meat-vegetables-generated-by-ai_188544-14076.jpg",
-    badge: 'Best for Professional Events',  
+    badge: "Baron's TOP Menu",  
     category: "bulk-delivery",
 
     offerPrice: 95,
@@ -1517,7 +1525,7 @@ export const saleProducts = [
     category: "Pooran Poli",
     price: 45,
     offerPrice: 35,
-    image: [whole_wheat_bread_image],
+    image: [pooran_poli],
     description: [
       "Healthy and nutritious",
       "Made with whole wheat flour",
@@ -1533,7 +1541,7 @@ export const saleProducts = [
     category: "Khowa Roti",
     price: 100,
     offerPrice: 40,
-    image: [vanilla_muffins_image],
+    image: [khawa_roti],
     description: [
       "Soft and fluffy",
       "Perfect for a quick snack",
@@ -1550,7 +1558,7 @@ export const saleProducts = [
 
     price: 55,
     offerPrice: 25,
-    image: [maggi_image],
+    image: [aloo_paratha],
     description: [
       "Instant and easy to cook",
       "Delicious taste",
@@ -1566,7 +1574,7 @@ export const saleProducts = [
     category: "Mix Veg Paratha",
     price: 45,
     offerPrice: 30,
-    image: [top_ramen_image],
+    image: [mix_veg_paratha],
     description: [
       "Quick and easy to prepare",
       "Spicy and flavorful",
@@ -1582,7 +1590,7 @@ export const saleProducts = [
     category: "Paneer Paratha",
     price: 35,
     offerPrice: 35,
-    image: [knorr_soup_image],
+    image: [paneer_paratha],
     description: [
       "Convenient for on-the-go",
       "Healthy and nutritious",
@@ -1598,7 +1606,7 @@ export const saleProducts = [
     category: "Laccha",
     price: 50,
     offerPrice: 18,
-    image: [yippee_image],
+    image: [laccha_paratha],
     description: [
       "Non-fried noodles for healthier choice",
       "Tasty and filling",
@@ -1614,7 +1622,7 @@ export const saleProducts = [
     category: "Methi Paratha",
     price: 40,
     offerPrice: 12,
-    image: [maggi_oats_image],
+    image: [methi_paratha],
     description: [
       "Healthy alternative with oats",
       "Good for digestion",

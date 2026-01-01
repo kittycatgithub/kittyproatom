@@ -10,7 +10,8 @@ const ProductCard = ({product}) => {
         // <div onClick={ ()=> {navigate(`/menu/${product.category.toLowerCase()}/${product._id}`);
         <div className="border border-gray-400 rounded-lg p-4 shadow-sm">
             <img
-              src="https://madhurasrecipe.com/wp-content/uploads/2023/03/Patawarachi-Puranpoli-Featured.jpg"
+            //   src="https://madhurasrecipe.com/wp-content/uploads/2023/03/Patawarachi-Puranpoli-Featured.jpg"
+              src={product.image}
               alt="Pizza"
               className="w-full h-60 object-cover rounded mb-2"
             />

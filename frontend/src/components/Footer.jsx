@@ -84,6 +84,7 @@ const Footer = () => {
                         <li><a href="/privacy-policy"  className=" text-gray-800 hover:text-gray-900">Privacy Policy</a></li>
                         <li><a href="/terms-conditions"  className=" text-gray-800 hover:text-gray-900">Terms & Conditions</a></li>
                         <li><a href="/refund-cancellation-policy"  className="text-gray-800 hover:text-gray-900">Refund & Cancellation Policy</a></li>
+                        <li><a href="/shipping-delivery-policy"  className="text-gray-800 hover:text-gray-900">Shipping & Delivery Policy</a></li>
                    </ul>  
                    </div>                   
                 </div>
@@ -188,13 +189,14 @@ const Footer = () => {
         </div>
         <div className="mx-auto max-w-7xl px-6 lg:px-5">
           
-          <div className='block md:hidden pt-2 px-7'>
+          <div className='block md:hidden pt-2'>
             <hr className='border-t border-gray-200'/>
             <h4 className="text-lg text-center text-gray-900 font-medium my-3">Terms & Policies</h4>
               <ul className="text-lg lg:text-md text-center  transition-all duration-500">
                   <li><a href="/privacy-policy"  className=" text-gray-800 hover:text-gray-900">Privacy Policy</a></li>
                   <li><a href="/terms-conditions"  className=" text-gray-800 hover:text-gray-900">Terms & Conditions</a></li>
                   <li><a href="/refund-cancellation-policy"  className="text-gray-800 hover:text-gray-900">Refund & Cancellation Policy</a></li>
+                  <li><a href="/shipping-delivery-policy"  className="text-gray-800 hover:text-gray-900">Shipping & Delivery Policy</a></li>
               </ul>  
           </div> 
             {/* <!--Grid--> */}

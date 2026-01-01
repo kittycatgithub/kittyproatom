@@ -24,7 +24,7 @@ const TermsConditions = () => {
 
   </div>
   </div>       
-       <div className=" w-screen text-gray-900 bg-gray-50 container">
+       <div className=" w-screen text-gray-900 bg-gray-50">
             <div className="px-6  sm:text-center md:mx-auto max-w-7xl lg:col-span-6 lg:flex lg:items-center lg:text-left">
               <div className='py-16'>
              {/* <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-5xl">

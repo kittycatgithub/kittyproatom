@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { assets } from '../../assets/assets'
 import { useAppContext } from '../../context/AppContext'
 import toast from 'react-hot-toast'
+import { HashLink } from 'react-router-hash-link'
 
 const NavbarStore = () => {
 
@@ -36,9 +37,11 @@ const NavbarStore = () => {
   return (
     <nav className=" flex items-center justify-between z-35 px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
 
-            <NavLink to='/' onClick={()=>setOpen(false)}>
+            <NavLink to='/store' onClick={()=>setOpen(false)}>
             <h1 className='text-xl font-semibold text-gray-600 lg:hidden'>Baron Kitchen</h1>
-                <img className="h-9 hidden" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoColored.svg" alt="logo" />
+                {/* <img className="h-9" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoColored.svg" alt="logo" /> */}
+                <img className='w-24 h-full' src="/baronfinalLogo.jpg"/>
+                <h1 className='text-xs text-center'>All About Food</h1>
             </NavLink>
 
             {/* Desktop Menu */}
@@ -46,6 +49,9 @@ const NavbarStore = () => {
             {/* Home,Services,Contact Us,Feedback */}
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/about'>About</NavLink>
+                <HashLink smooth to="/about#services">
+                    Services
+                </HashLink>
                 <NavLink to='/contact'>Contact</NavLink>
                 {/* <NavLink to='#'>Feedback</NavLink> */}
 
@@ -107,13 +113,13 @@ const NavbarStore = () => {
                 <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md flex-col items-start gap-5 px-5 pb-4 text-sm md:hidden`}>
              {/* Home,Services,Contact Us,Feedback */}
                 <NavLink to='/' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Home</NavLink>
-                <NavLink to='/about' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">About</NavLink>
+                <NavLink to='/about' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">About Us</NavLink>
                 <NavLink to='/services' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Services</NavLink>
                 {
                    user && 
                     <NavLink to='/my-orders' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">My Orders</NavLink>
                 }
-                <NavLink to='/contact' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Contact</NavLink>
+                <NavLink to='/contact' onClick={()=> setOpen(false)} className="block text-lg text-gray-700">Contact Us</NavLink>
                 {/* {
                     !user ? (
                      <button onClick={()=>{setOpen(false); setShowUserLogin(true)}} className="text-lg font-semibold cursor-pointer px-6 py-2 mt-2 bg-primary hover:bg-primary-dull transition text-white rounded-full">

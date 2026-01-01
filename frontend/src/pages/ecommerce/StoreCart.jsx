@@ -3,6 +3,7 @@ import { useAppContext } from "../../context/AppContext"
 // import { dummyAddress } from "../assets/assets1"
 import toast from "react-hot-toast"
 import { assets } from "../../assets/assets"
+import FooterBarStore from "../../components/FooterBarStore"
 
 const StoreCart = () => {
     const { products, storeProducts, currency, storeCartItems, removeFromStoreCart, getStoreCartCount, 
@@ -137,7 +138,8 @@ const StoreCart = () => {
                               scrollTo(0,0)
                             } } className="cursor-pointer w-24 h-24 flex items-center justify-center border border-gray-300 rounded">
                                 {/* <img className="max-w-full h-full object-cover" src={`${import.meta.env.VITE_BACKEND_URL}/products/${product.image}` } alt={product.name} /> */}
-                                <img className="max-w-full h-full object-cover " src="https://madhurasrecipe.com/wp-content/uploads/2023/03/Patawarachi-Puranpoli-Featured.jpg" alt={product.name} />
+                                {/* <img className="max-w-full h-full object-cover " src="https://madhurasrecipe.com/wp-content/uploads/2023/03/Patawarachi-Puranpoli-Featured.jpg" alt={product.name} /> */}
+                                <img className="max-w-full h-full object-cover"  src={product.image}  alt={product.name} />
                             </div>
                             <div>
                                 <p className="text-lg font-semibold">{product.name}</p>
@@ -260,6 +262,7 @@ const StoreCart = () => {
                   )
                 }     
             </div>
+            <div className='block lg:hidden'><FooterBarStore/></div>
         </div>
     ): null
 }
