@@ -954,7 +954,7 @@ export const actualProducts = [
       "Menu 8 ⟶ Mini Burger/ Pizza, Pasta, French Fries and Chocolate Mousse",
       "Packaged Bottled Water will be served",
     ],
-    path:"https://media.istockphoto.com/id/848643264/photo/north-indina-thali-lunch-plate-of-north-indian.jpg?s=612x612&w=0&k=20&c=J8Jg7VhqpSla7CwNai1yrlCplL1VTdr0QOB8ifG7KME=",
+    path:"/categories/cat-img3.jpeg",
     badge: "Baron's TOP Menu",  
     category: "catering",
     offerPrice: 380,
@@ -1483,39 +1483,7 @@ export const actualProducts = [
   //   createdAt: "2025-03-25T07:17:46.018Z",
   //   updatedAt: "2025-03-25T07:18:13.103Z",
   //   inStock: true,
-  // },
-  // {
-  //   _id: "in04i28r",
-  //   name: "Yippee Noodles 260g",
-  //   category: "Instant",
-  //   price: 50,
-  //   offerPrice: 45,
-  //   image: [yippee_image],
-  //   description: [
-  //     "Non-fried noodles for healthier choice",
-  //     "Tasty and filling",
-  //     "Convenient for busy schedules",
-  //   ],
-  //   createdAt: "2025-03-25T07:17:46.018Z",
-  //   updatedAt: "2025-03-25T07:18:13.103Z",
-  //   inStock: true,
-  // },
-  // {
-  //   _id: "in05j29q",
-  //   name: "Oats Noodles 72g",
-  //   category: "Instant",
-  //   price: 40,
-  //   offerPrice: 35,
-  //   image: [maggi_oats_image],
-  //   description: [
-  //     "Healthy alternative with oats",
-  //     "Good for digestion",
-  //     "Perfect for breakfast or snacks",
-  //   ],
-  //   createdAt: "2025-03-25T07:17:46.018Z",
-  //   updatedAt: "2025-03-25T07:18:13.103Z",
-  //   inStock: true,
-  // },
+  // }
 ];
 
 export const saleProducts = [
@@ -1523,7 +1491,7 @@ export const saleProducts = [
     _id: "bk04d32w",
     name: "Pooran Poli",
     category: "Pooran Poli",
-    price: 45,
+    price: 350,
     offerPrice: 35,
     image: [pooran_poli],
     description: [
@@ -1539,7 +1507,7 @@ export const saleProducts = [
     _id: "bk05e33v",
     name: "Khowa Roti",
     category: "Khowa Roti",
-    price: 100,
+    price: 375,
     offerPrice: 40,
     image: [khawa_roti],
     description: [
@@ -1556,8 +1524,25 @@ export const saleProducts = [
     name: "Aloo Paratha",
     category: "Aloo Paratha",
 
-    price: 55,
-    offerPrice: 25,
+    price: 210,
+    offerPrice: 0,
+    image: [aloo_paratha],
+    description: [
+      "Instant and easy to cook",
+      "Delicious taste",
+      "Popular among kids and adults",
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "in04i28r",
+    name: "Aloo Cheese Paratha",
+    category: "Aloo Paratha",
+
+    price: 250,
+    offerPrice: 0,
     image: [aloo_paratha],
     description: [
       "Instant and easy to cook",
@@ -1572,7 +1557,23 @@ export const saleProducts = [
     _id: "in02g26t",
     name: "Mix Veg Paratha",
     category: "Mix Veg Paratha",
-    price: 45,
+    price: 240,
+    offerPrice: 30,
+    image: [mix_veg_paratha],
+    description: [
+      "Quick and easy to prepare",
+      "Spicy and flavorful",
+      "Loved by college students and families",
+    ],
+    createdAt: "2025-03-25T07:17:46.018Z",
+    updatedAt: "2025-03-25T07:18:13.103Z",
+    inStock: true,
+  },
+  {
+    _id: "in05j29q",
+    name: "Mix Veg Cheese Paratha",
+    category: "Mix Veg Paratha",
+    price: 295,
     offerPrice: 30,
     image: [mix_veg_paratha],
     description: [
@@ -1588,8 +1589,8 @@ export const saleProducts = [
     _id: "in03h27s",
     name: "Paneer Paratha",
     category: "Paneer Paratha",
-    price: 35,
-    offerPrice: 35,
+    price: 295,
+    offerPrice: 0,
     image: [paneer_paratha],
     description: [
       "Convenient for on-the-go",
@@ -1604,8 +1605,8 @@ export const saleProducts = [
     _id: "in04i28r",
     name: "Laccha",
     category: "Laccha",
-    price: 50,
-    offerPrice: 18,
+    price: 180,
+    offerPrice: 0,
     image: [laccha_paratha],
     description: [
       "Non-fried noodles for healthier choice",
@@ -1620,8 +1621,8 @@ export const saleProducts = [
     _id: "in05j29q",
     name: "Methi Paratha",
     category: "Methi Paratha",
-    price: 40,
-    offerPrice: 12,
+    price: 140,
+    offerPrice: 0,
     image: [methi_paratha],
     description: [
       "Healthy alternative with oats",
