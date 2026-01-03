@@ -1607,7 +1607,7 @@ export const saleProducts = [
     inStock: true,
   },
   {
-    _id: "in04i28r",
+    _id: "in04i005r",
     name: "Laccha",
     category: "Laccha",
     price: 180,
@@ -1624,7 +1624,7 @@ export const saleProducts = [
     inStock: true,
   },
   {
-    _id: "in05j29q",
+    _id: "in05j005q",
     name: "Methi Paratha",
     category: "Methi Paratha",
     price: 140,
