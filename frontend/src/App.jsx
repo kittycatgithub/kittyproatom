@@ -85,10 +85,13 @@ const App = () => {
       <Route path='/shipping-delivery-policy' element={<ShippingDeliveryPolicy/>}/>
 
       <Route path='/cart' element={<Cart/>}/>
+
+      {/* Store Pages */}
       <Route path='/storecart' element={<StoreCart/>}/>
+      <Route path='/store' element={<Store/>}/>
+      
       <Route path='/contact' element={<Contact/>}/>
       <Route path='/general-1' element={<Feedback/>}/>
-      <Route path='/store' element={<Store/>}/>
       <Route path='/fill-details/:_id' element={<FillDetails/>}/>
       <Route path='/order-review' element={<OrderReview/>}/>
       {/* <Route path='/order-review/:_id' element={<OrderReview/>}/> */}

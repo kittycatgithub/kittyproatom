@@ -20,7 +20,10 @@ const ProductCard = ({product}) => {
               6 Veggie Blockbusters in 1 Epic Pan Pizza...
             </p> */}
             <div className="flex justify-between items-center mt-3">
-              <span className="font-bold text-green-600">{currency} {product.price}.00</span>
+                <div className="flex flex-col">
+                    <p className="font-bold text-green-600">{currency} {product.price}.00 <span className="font-medium text-sm text-themegray"> /box ({product.pcs} Pcs)</span></p>
+                    <span className="font-medium text-sm text-themegray"> 0% GST + Delivery Charges</span>
+                </div>
               <div onClick={ (e)=> { e.stopPropagation() } } className="text-black">
                         {!storeCartItems[product._id] ? (
                             <button onClick={() => addToStoreCart(product._id)}  className="flex cursor-pointer items-center justify-center gap-1 bg-indigo-100 border border-indigo-300 md:w-[130px] w-[180px] h-[34px] rounded font-medium" >

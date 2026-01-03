@@ -1492,7 +1492,8 @@ export const saleProducts = [
     name: "Pooran Poli",
     category: "Pooran Poli",
     price: 350,
-    offerPrice: 35,
+    pcs: 5,
+    offerPrice: 0,
     image: [pooran_poli],
     description: [
       "Healthy and nutritious",
@@ -1508,7 +1509,8 @@ export const saleProducts = [
     name: "Khowa Roti",
     category: "Khowa Roti",
     price: 375,
-    offerPrice: 40,
+    pcs: 5,
+    offerPrice: 0,
     image: [khawa_roti],
     description: [
       "Soft and fluffy",
@@ -1523,8 +1525,8 @@ export const saleProducts = [
     _id: "in01f25u",
     name: "Aloo Paratha",
     category: "Aloo Paratha",
-
     price: 210,
+    pcs: 5,
     offerPrice: 0,
     image: [aloo_paratha],
     description: [
@@ -1540,8 +1542,8 @@ export const saleProducts = [
     _id: "in04i28r",
     name: "Aloo Cheese Paratha",
     category: "Aloo Paratha",
-
     price: 250,
+    pcs: 5,
     offerPrice: 0,
     image: [aloo_paratha],
     description: [
@@ -1558,7 +1560,8 @@ export const saleProducts = [
     name: "Mix Veg Paratha",
     category: "Mix Veg Paratha",
     price: 240,
-    offerPrice: 30,
+    pcs: 5,
+    offerPrice: 0,
     image: [mix_veg_paratha],
     description: [
       "Quick and easy to prepare",
@@ -1574,7 +1577,8 @@ export const saleProducts = [
     name: "Mix Veg Cheese Paratha",
     category: "Mix Veg Paratha",
     price: 295,
-    offerPrice: 30,
+    pcs: 5,
+    offerPrice: 0,
     image: [mix_veg_paratha],
     description: [
       "Quick and easy to prepare",
@@ -1590,6 +1594,7 @@ export const saleProducts = [
     name: "Paneer Paratha",
     category: "Paneer Paratha",
     price: 295,
+    pcs: 5,
     offerPrice: 0,
     image: [paneer_paratha],
     description: [
@@ -1606,6 +1611,7 @@ export const saleProducts = [
     name: "Laccha",
     category: "Laccha",
     price: 180,
+    pcs: 8,
     offerPrice: 0,
     image: [laccha_paratha],
     description: [
@@ -1622,6 +1628,7 @@ export const saleProducts = [
     name: "Methi Paratha",
     category: "Methi Paratha",
     price: 140,
+    pcs: 8,
     offerPrice: 0,
     image: [methi_paratha],
     description: [
