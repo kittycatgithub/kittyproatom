@@ -49,13 +49,13 @@ const OurClients = () => {
   };
 
   const clientImages = [
-    "/images/0.jpg",
+    "/images/0.jpeg",
     "/images/1.jpg",
     "/images/2.jpg",
-    "/images/3.jpg",
+    "/images/3.jpeg",
     "/images/4.jpg",
     "/images/5.jpg",
-    "/images/6.jpg",
+    "/images/6.jpeg",
     "/images/7.jpg",
     "/images/8.jpg",
     "/images/9.jpg",
@@ -66,7 +66,7 @@ const OurClients = () => {
     <section id="clients" className="py-16 md:py-20 lg:py-10 bg-gradient-to-r from-blue-100 via-[#EFF6FF] to-blue-100">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-semibold text-center text-black mb-10">
-          Our Clients
+          Our Customers
         </h2>
 
         <Slider {...settings}>

@@ -17,7 +17,7 @@ const NonVeg = () => {
       SeasonalVeggies: [],
       Daals: [], 
       BasmatiRice: [],
-      NonVegCurry:[],
+      NonVegCurry:[], 
       NonVegRice:[],
       Rotis:[],
       Desserts: [],
@@ -58,34 +58,34 @@ const NonVeg = () => {
             { name:"Kashmiri Kofta", price:'₹550/kg',amount: 550 , img:"https://www.vegrecipesofindia.com/wp-content/uploads/2021/04/malai-kofta-2-500x500.jpg"},
             { name:"Shaam Savera", price:'₹550/kg',amount: 550 , img:"https://s3-ap-south-1.amazonaws.com/betterbutterbucket-silver/tanushree-aich2016081312295984.jpeg"},
             { name:"Veg Makhanwala", price:'₹550/kg',amount: 550 , img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBGP7coUqXiSuI-Nwaw4kEyVM8I9zwVbUJUg&s"},
-            { name:"Veg Keema Kasturi", price:'₹550/kg',amount: 550 , img:"https://shriannapurnahospitality.com/wp-content/uploads/2025/01/Kadai-Paneer-e1738142614862-300x300.jpg"},
+            { name:"Veg Keema Kasturi", price:'₹550/kg',amount: 550 , img:"/images/Catering/special-veg/veg-keema-kasturi.jpg"},
             { name:"Veg Egg Curry", price:'₹550/kg',amount: 550 , img:"https://myfoodstory.com/wp-content/uploads/2023/02/dhaba-style-egg-curry-square-1-500x500.jpg"},
             { name:"Sarso Ka Saag", price:'₹550/kg',amount: 550 , img:"https://images.herzindagi.info/image/2020/Oct/sarso-ka-saag-benefits-main.jpg"},
           ]
     },
     {       name:"SeasonalVeggies",
-        value: [{name:"Aloo Gobi Mutter / Mix Veg", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Veg Hydrabadi", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
-            {name:"Veg Jaipuri", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Veg Kolhapuri", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Kofta Curry", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
-            {name:"Green Tawa / Tawa Veg", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
-            {name:"Baby Corn Mutter", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Dum Aloo / Achari Aloo", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Jeera Aloo", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
-            {name:"Bhindi Fry/ Masala", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
-            {name:"Veg 65", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Achari Bhindi / Achari Gobi", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Gatte Ki Sabji", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
-            {name:"Rajma / Chana Masala", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
-            {name:"Kadhai Corn", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Pindi Chola", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Patodi Rassa", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
-            {name:"All Types of Usal", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
-            {name:"Masala Baingan", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Baingan Bharta", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
-            {name:"Zunka / Pithla", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"},
-            {name:"Patad Bhaji / Dal Bhaji", price:'₹450/kg',amount: 450 , img:"https://img.freepik.com/premium-photo/authentic-rogan-josh-indian-curry-with-rich-spices-tender-meatauthentic-rogan-josh-indian-curry-with-rich-spices-tender-meat_781325-4886.jpg?uid=R159003840&ga=GA1.1.367398006.1746862920&semt=ais_hybrid&w=740"}, 
+        value: [{name:"Aloo Gobi Mutter / Mix Veg", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/aloo-gobi-matar.jpg"}, 
+            {name:"Veg Hydrabadi", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/veg-hydrabadi.jpeg"},
+            {name:"Veg Jaipuri", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/veg-jaipuri.jpeg"}, 
+            {name:"Veg Kolhapuri", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/veg-kolhapuri.jpg"}, 
+            {name:"Kofta Curry", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/kofta-curry.jpg"},
+            {name:"Green Tawa / Tawa Veg", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/tawa-veg.jpg"},
+            {name:"Baby Corn Mutter", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/baby-corn-mutter.jpg"}, 
+            {name:"Dum Aloo / Achari Aloo", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/dum-aloo.jpg"}, 
+            {name:"Jeera Aloo", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/Jeera-Aloo.jpg"},
+            {name:"Bhindi Fry/ Masala", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/bhindi-masala.jpg"},
+            {name:"Veg 65", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/veg65.jpg"}, 
+            {name:"Achari Bhindi / Achari Gobi", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/achari-bhindi.jpg"}, 
+            {name:"Gatte Ki Sabji", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/gatte-ki-sabzi.jpg"},
+            {name:"Rajma / Chana Masala", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/rajma-masala.jpg"},
+            {name:"Kadhai Corn", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/kadhai-corn.jpg"}, 
+            {name:"Pindi Chola", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/pindi-chola.jpg"}, 
+            {name:"Patodi Rassa", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/patodi-rassa.jpg"},
+            {name:"All Types of Usal", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/usal.jpg"},
+            {name:"Masala Baingan", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/masala-baigan.jpg"}, 
+            {name:"Baingan Bharta", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/baigan-bharta.jpg"}, 
+            {name:"Zunka / Pithla", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/zunka.jpg"},
+            {name:"Patad Bhaji / Dal Bhaji", price:'₹450/kg',amount: 450 , img:"/images/Catering/seasonal-veg/dal-bhaji.png"}, 
            ]
     }, 
      {   name:"Daals",
@@ -94,7 +94,7 @@ const NonVeg = () => {
             {name:"Daal Tadka", price:'₹350/kg',amount: 350 , img:"https://vegecravings.com/wp-content/uploads/2018/01/Dal-Tadka-Recipe-Step-By-Step-Instructions-500x500.jpg"}, 
             {name:"Daal Fry", price:'₹350/kg',amount: 350 , img:"https://spicecravings.com/wp-content/uploads/2021/05/Dal-Tadka-Featured-500x500.jpg"},
           {name:"Daal Kolhapuri", price:'₹350/kg',amount: 350 , img:"https://gurukripahotel.com/wp-content/uploads/2025/05/dal-kolhapuri.jpg"}, 
-            {name:"Daal Dhabha", price:'₹350/kg',amount: 350 , img:"https://namastebharattaste.com/wp-content/uploads/2023/08/daal-dhawa.png"}, 
+            {name:"Daal Dhabha", price:'₹350/kg',amount: 350 , img:"/images/Catering/seasonal-veg/daal-dhaba.jpg"}, 
             {name:"Daal Lasani", price:'₹350/kg',amount: 350 , img:"https://jeyporedukaan.in/wp-content/uploads/2025/03/Dal-Tadka-Featured-768x768-1.jpg"},
           {name:"Daal Makhani", price:'₹350/kg',amount: 350 , img:"https://www.funfoodfrolic.com/wp-content/uploads/2023/04/Dal-Makhani-Blog-500x500.jpg"}, 
             {name:"Daal Nawabi", price:'₹350/kg',amount: 350 , img:"https://img-global.cpcdn.com/steps/d85024405e82b41c/400x400cq80/photo.jpg"}, 
@@ -109,7 +109,7 @@ const NonVeg = () => {
             { name:"Jeera Rice with Green Peas", price:'₹350/kg',amount: 350 , img:"https://img-global.cpcdn.com/steps/17829733a9c6a0d1/400x400cq80/photo.jpg"}, 
           { name:"Garlic Rice", price:'₹350/kg',amount: 350 , img:"https://garlicallday.com/wp-content/uploads/roasted-garlic-rice-in-clay-pot.jpg"},
             { name:"Lemon Rice", price:'₹350/kg',amount: 350 , img:"https://www.indianveggiedelight.com/wp-content/uploads/2023/03/lemon-rice-stovetop-featured.jpg"},
-            { name:"Curd Rice", price:'₹350/kg',amount: 350 , img:"https://www.indianveggiedelight.com/wp-content/uploads/2023/03/lemon-rice-stovetop-featured.jpg"}, 
+            { name:"Curd Rice", price:'₹350/kg',amount: 350 , img:"/images/Catering/basmati-rice/curd-rice.jpg"}, 
           { name:"Tamarind Rice", price:'₹350/kg',amount: 350 , img:"https://vegecravings.com/wp-content/uploads/2018/11/Pulihora-Tamarind-Rice-Recipe-Step-By-Step-Instructions.jpg"},
             { name:"Masala Bhaat", price:'₹350/kg',amount: 350 , img:"https://www.indianveggiedelight.com/wp-content/uploads/2020/03/masala-rice-new-1-featured.jpg"},
             { name:"Gola Bhaat", price:'₹350/kg',amount: 350 , img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQsGoock6ALysUu-aeAotu5Pn_xhH0wqkTrw&s"}, 
@@ -151,7 +151,7 @@ const NonVeg = () => {
     },  
     {   name:"Rotis",
         value: [{ name:"Chapati",price:'₹12/piece',amount: 12 , img:"https://www.tasteofhome.com/wp-content/uploads/2024/12/Chapati-Breads_EXPS_FT24_136906_JR_1213_2.jpg"},
-          { name:"Laccha Paratha",price:'₹20/piece',amount: 20 , img:"https://5.imimg.com/data5/ANDROID/Default/2021/8/YR/CH/UF/26801620/1628707032485-jpg-500x500.jpg"},
+          { name:"Laccha Paratha",price:'₹30/piece',amount: 30 , img:"https://5.imimg.com/data5/ANDROID/Default/2021/8/YR/CH/UF/26801620/1628707032485-jpg-500x500.jpg"},
             ]
     },
     {       name:"Desserts",
@@ -162,8 +162,8 @@ const NonVeg = () => {
 {name:"Chamcham",img:"https://cdn.ready-market.com.tw/21cd62de/Templates/pic/ANKO-Cham-Cham-1200x1200.jpg?v=4f1f0a97"},
 {name:"Rasbhari",img:"https://www.govindam.co.in/wp-content/uploads/2025/01/Rasbhari-Sweet-3.webp"},
 {name:"Rasmalai",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQKRN8_L8bzbrsJNA3ksQpgMMD8ynTG6aUnQ&s"},
-{name:"Angoorie Rasmalai",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQKRN8_L8bzbrsJNA3ksQpgMMD8ynTG6aUnQ&s"},
-{name:"Puran Poli",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQKRN8_L8bzbrsJNA3ksQpgMMD8ynTG6aUnQ&s"},
+{name:"Angoorie Rasmalai",img:"/images/Catering/desserts/angoori-rasmalai.jpg"},
+{name:"Puran Poli",img:"/images/Catering/desserts/puran-poli.jpg"},
 {name:"Khoa Poli",img:"https://cdn.dotpe.in/longtail/store-items/7916910/9P6QP42e.jpeg"},
 {name:"Til Poli",img:"https://www.recipesworld.co.uk/images/167335704149113316.webp"},
 {name:"Gajar Ka Halwa",img:"https://www.whiskaffair.com/wp-content/uploads/2019/05/Gajar-Ka-Halwa-2-3.jpg"},
@@ -200,7 +200,7 @@ const NonVeg = () => {
           {name:"Sambar Wadi (seasonal)", price:'₹400/kg',amount: 400 , img:"https://www.puvi.co/uploaded_images/1687243291.jpg"}, 
             {name:"Green Peas Kachori", price:'₹450/kg',amount: 450 , img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiD8ch-IdH-cZft0CUeae6vbJzBlmC7ZRldw&s"}, 
             {name:"Mix Veg Mini Samosa", price:'₹450/kg',amount: 450 , img:"https://pataks.ca/wp-content/uploads/2022/05/homemade-vegetable-samosas.jpg"},
-          {name:"Boondie Raita", price:'₹300/kg',amount: 300 , img:"https://dinedelicious.in/wp-content/uploads/2021/03/Boondi-raita-Recipe-2-500x500.jpg"}, 
+          {name:"Boondie Raita", price:'₹300/kg',amount: 300 , img:"/images/Catering/savouries/boondi-raita.jpg"}, 
             {name:"Pineapple / Mix Fruit Raita", price:'₹450/kg',amount: 450 , img:"https://www.tipsnrecipesblog.com/wp-content/uploads/2025/04/fruit-raita-main.jpg"}, 
             ]
     },
@@ -271,13 +271,14 @@ const NonVeg = () => {
                 <button onClick={() => {setIsActive("Daals")}} className={` rounded-md transition ${isActive === "Daals" ? " text-primary" : " text-black"}`}> Daals </button>
              </div>
              <div>
-                <button onClick={() => {setIsActive("BasmatiRice")}} className={` rounded-md transition ${isActive === "BasmatiRice" ? " text-primary" : " text-black"}`}> BasmatiRice </button>
+                <button onClick={() => {setIsActive("BasmatiRice")}} className={` rounded-md transition ${isActive === "BasmatiRice" ? " text-primary" : " text-black"}`}> Basmati Rice </button>
              </div>
              <div>  
                 <button onClick={() => {setIsActive("NonVegCurry")}} className={` rounded-md transition  justify-start text-start  ${isActive === "NonVegCurry" ? " text-primary" : " text-black"}`}> Non Veg Curry </button>
              </div>
              <div>
-                <button onClick={() => {setIsActive("NonVegRice")}} className={` rounded-md transition ${isActive === "NonVegRice" ? " text-primary" : " text-black"}`}> Non Veg Rice </button>
+                {/* <button onClick={() => {setIsActive("NonVegRice")}} className={` rounded-md transition ${isActive === "NonVegRice" ? " text-primary" : " text-black"}`}> Non Veg Rice </button> */}
+                <button onClick={() => {setIsActive("NonVegRice")}} className={` rounded-md transition ${isActive === "NonVegRice" ? " text-primary" : " text-black"}`}> Biryani </button>
              </div>
              <div>
                 <button onClick={() => {setIsActive("Rotis")}} className={` rounded-md transition ${isActive === "Rotis" ? " text-primary" : " text-black"}`}> Rotis </button>

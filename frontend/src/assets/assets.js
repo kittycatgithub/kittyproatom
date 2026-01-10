@@ -68,12 +68,14 @@ import whole_wheat_bread_image from "./whole_wheat_bread_image.png";
 import vanilla_muffins_image from "./vanilla_muffins_image.png";
 import quinoa_image from "./quinoa_image.png";
 import brown_rice_image from "./brown_rice_image.png";
-import methi_paratha from './methi-paratha.jpeg'
-import khawa_roti from './khawa-roti.jpeg'
-import aloo_paratha from './aloo-paratha.jpeg'
+import methi_paratha from './methi-paratha.jpeg';
+import khawa_roti from './khawa-roti.jpeg';
+import aloo_paratha from './aloo-paratha.jpeg';
+import aloo_cheese_paratha from './aloo-cheese-paratha.jpeg';
 import paneer_paratha from './paneer-paratha.jpeg'
 import laccha_paratha from './laccha-paratha.jpeg'
 import mix_veg_paratha from './mix-veg-paratha.jpeg'
+import mix_veg_cheese_paratha from './mix-veg-cheese-paratha.jpeg'
 import pooran_poli from './pooran-poli.jpeg'
 // import barley_image from "./barley_image.png";
 
@@ -1545,7 +1547,7 @@ export const saleProducts = [
     price: 250,
     pcs: 5,
     offerPrice: 0,
-    image: [aloo_paratha],
+    image: [aloo_cheese_paratha],
     description: [
       "Instant and easy to cook",
       "Delicious taste",
@@ -1579,7 +1581,7 @@ export const saleProducts = [
     price: 295,
     pcs: 5,
     offerPrice: 0,
-    image: [mix_veg_paratha],
+    image: [mix_veg_cheese_paratha],
     description: [
       "Quick and easy to prepare",
       "Spicy and flavorful",
