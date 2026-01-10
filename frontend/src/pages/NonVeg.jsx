@@ -156,31 +156,32 @@ const NonVeg = () => {
     },
     {       name:"Desserts",
         value: [
-          {name:"Gulab Jamun",img:"https://www.vegrecipesofindia.com/wp-content/uploads/2022/10/gulab-jamun-recipe-01.jpg"},
-{name:"Kala Jamun",img:"https://www.cookwithmanali.com/wp-content/uploads/2020/10/Kala-Jamun-500x500.jpg"},
-{name:"Rasgulla",img:"https://prashantcorner.com/cdn/shop/products/RASGULLA_2457ea2c-400a-4130-b540-b77966e63d07.jpg?v=1673073151&width=1946"},
-{name:"Chamcham",img:"https://cdn.ready-market.com.tw/21cd62de/Templates/pic/ANKO-Cham-Cham-1200x1200.jpg?v=4f1f0a97"},
-{name:"Rasbhari",img:"https://www.govindam.co.in/wp-content/uploads/2025/01/Rasbhari-Sweet-3.webp"},
-{name:"Rasmalai",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQKRN8_L8bzbrsJNA3ksQpgMMD8ynTG6aUnQ&s"},
-{name:"Angoorie Rasmalai",img:"/images/Catering/desserts/angoori-rasmalai.jpg"},
-{name:"Puran Poli",img:"/images/Catering/desserts/puran-poli.jpg"},
-{name:"Khoa Poli",img:"https://cdn.dotpe.in/longtail/store-items/7916910/9P6QP42e.jpeg"},
-{name:"Til Poli",img:"https://www.recipesworld.co.uk/images/167335704149113316.webp"},
-{name:"Gajar Ka Halwa",img:"https://www.whiskaffair.com/wp-content/uploads/2019/05/Gajar-Ka-Halwa-2-3.jpg"},
-{name:"Lauki Ka Halwa",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvNhRjiByE7EtuOPNAwDrfnHaCkUJ5NOCHwg&s"},
-{name:"Moong Daal Halwa",img:"https://www.mygingergarlickitchen.com/wp-content/rich-markup-images/1x1/1x1-rajasthani-moong-dal-halwa.jpg"},
-{name:"Basundi",img:"https://www.cookingcarnival.com/wp-content/uploads/2023/03/Basundi-4.jpg"},
-{name:"Any Type of Kheer",img:"https://www.indianveggiedelight.com/wp-content/uploads/2017/08/rice-kheer-instant-pot-featured-image.jpg"},
-{name:"Shahi Tukda",img:"https://www.whiskaffair.com/wp-content/uploads/2019/03/Shahi-Tukda-2-3.jpg"},
-{name:"Jalebi",img:"https://s3-ap-south-1.amazonaws.com/betterbutterbucket-silver/shubhi-mishra20171004002157988.jpeg"},
-{name:"Rabadi",img:"https://s3-ap-south-1.amazonaws.com/betterbutterbucket-silver/renu-chandratre2018032020403041.jpeg"},
-{name:"Ice Cream",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6HhedQdurLUbPn70JFdb0jldFgv7dZQnYBw&s"},
-{name:"Shree khand",img:"https://www.indianveggiedelight.com/wp-content/uploads/2023/03/shrikhand-featured.jpg"},
-{name:"Amrakhand",img:"https://ghodkesweets.com/wp-content/uploads/2020/10/amrakhand@2x.jpg"},
-{name:"Fruit Custard",img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSqTmswFi3QeHHPSPwF2XVWiyhJiNGYeserQ&s"},
-{name:"Mousse",img:"https://fullofplants.com/wp-content/uploads/2018/04/light-and-fluffy-aquafaba-strawberry-mousse-vegan-gluten-free-thumb-10.jpg"},
-{name:"Cheese Cake",img:"https://preppykitchen.com/wp-content/uploads/2022/07/cheesecake-blog-2.jpg"},
-{name:"Fruit Tart",img:"https://richanddelish.com/wp-content/uploads/2023/05/mini-fruit-tarts-2.jpg"}
+          {name:"Gulab Jamun", price:'₹18/pc',amount: 18 ,img:"https://www.vegrecipesofindia.com/wp-content/uploads/2022/10/gulab-jamun-recipe-01.jpg"},
+          {name:"Kala Jamun", price:'₹25/pc',amount: 25 ,img:"https://www.cookwithmanali.com/wp-content/uploads/2020/10/Kala-Jamun-500x500.jpg"},
+          {name:"Rasgulla", price:'₹18/pc',amount: 18 ,img:"https://prashantcorner.com/cdn/shop/products/RASGULLA_2457ea2c-400a-4130-b540-b77966e63d07.jpg?v=1673073151&width=1946"},
+          {name:"Chamcham", price:'₹18/pc',amount: 18 ,img:"https://cdn.ready-market.com.tw/21cd62de/Templates/pic/ANKO-Cham-Cham-1200x1200.jpg?v=4f1f0a97"},
+          {name:"Rasbhari", price:'₹480/kg',amount: 480 ,img:"https://www.govindam.co.in/wp-content/uploads/2025/01/Rasbhari-Sweet-3.webp"},
+          {name:"Rasmalai", price:'₹40/pc',amount: 40 ,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQKRN8_L8bzbrsJNA3ksQpgMMD8ynTG6aUnQ&s"},
+          {name:"Angoorie Rasmalai", price:'₹650/kg',amount: 650 ,img:"/images/Catering/desserts/angoori-rasmalai.jpg"},
+          {name:"Puran Poli", price:'₹70/pc',amount: 70 ,img:"/images/Catering/desserts/puran-poli.jpg"},
+          {name:"Khoa Poli", price:'₹80/pc',amount: 80 ,img:"https://cdn.dotpe.in/longtail/store-items/7916910/9P6QP42e.jpeg"},
+          // {name:"Til Poli", price:'₹150/pc',amount: 150 ,img:"https://www.recipesworld.co.uk/images/167335704149113316.webp"},
+          {name:"Gajar Ka Halwa", price:'₹650/kg',amount: 650 ,img:"https://www.whiskaffair.com/wp-content/uploads/2019/05/Gajar-Ka-Halwa-2-3.jpg"},
+          // {name:"Lauki Ka Halwa", price:'₹150/pc',amount: 150 ,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvNhRjiByE7EtuOPNAwDrfnHaCkUJ5NOCHwg&s"},
+          {name:"Kapoor Kand", price:'₹450/kg',amount: 450 ,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvNhRjiByE7EtuOPNAwDrfnHaCkUJ5NOCHwg&s"},
+          {name:"Moong Daal Halwa", price:'580/kg',amount: 580 ,img:"https://www.mygingergarlickitchen.com/wp-content/rich-markup-images/1x1/1x1-rajasthani-moong-dal-halwa.jpg"},
+          {name:"Basundi", price:'₹550/kg',amount: 550 ,img:"https://www.cookingcarnival.com/wp-content/uploads/2023/03/Basundi-4.jpg"},
+          {name:"Any Type of Kheer", price:'₹550/kg',amount: 550 ,img:"https://www.indianveggiedelight.com/wp-content/uploads/2017/08/rice-kheer-instant-pot-featured-image.jpg"},
+          {name:"Shahi Tukda", price:'₹500/kg',amount: 500 ,img:"https://www.whiskaffair.com/wp-content/uploads/2019/03/Shahi-Tukda-2-3.jpg"},
+          {name:"Jalebi", price:'₹250/kg',amount: 250 ,img:"https://s3-ap-south-1.amazonaws.com/betterbutterbucket-silver/shubhi-mishra20171004002157988.jpeg"},
+          {name:"Rabadi", price:'₹680/kg',amount: 680 ,img:"https://s3-ap-south-1.amazonaws.com/betterbutterbucket-silver/renu-chandratre2018032020403041.jpeg"},
+          // {name:"Ice Cream", price:'₹450/kg',amount: 150 ,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6HhedQdurLUbPn70JFdb0jldFgv7dZQnYBw&s"},
+          {name:"Shree khand", price:'₹280/kg',amount: 280 ,img:"https://www.indianveggiedelight.com/wp-content/uploads/2023/03/shrikhand-featured.jpg"},
+          {name:"Amrakhand", price:'₹300/kg',amount: 300 ,img:"https://ghodkesweets.com/wp-content/uploads/2020/10/amrakhand@2x.jpg"},
+          // {name:"Fruit Custard", price:'₹450/kg',amount: 150 ,img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSqTmswFi3QeHHPSPwF2XVWiyhJiNGYeserQ&s"},
+          // {name:"Mousse", price:'₹450/kg',amount: 150 ,img:"https://fullofplants.com/wp-content/uploads/2018/04/light-and-fluffy-aquafaba-strawberry-mousse-vegan-gluten-free-thumb-10.jpg"},
+          // {name:"Cheese Cake", price:'₹450/kg',amount: 150 ,img:"https://preppykitchen.com/wp-content/uploads/2022/07/cheesecake-blog-2.jpg"},
+          // {name:"Fruit Tart", price:'₹450/kg',amount: 150 ,img:"https://richanddelish.com/wp-content/uploads/2023/05/mini-fruit-tarts-2.jpg"}
    ]
     },
     {   name:"Savouries",
@@ -205,14 +206,14 @@ const NonVeg = () => {
             ]
     },
     {   name:"Salads",
-        value: [{name:"Green Salad", img:"https://leelalicious.com/wp-content/uploads/2018/08/Corn-Tomato-Avocado-Salad-Recipe-500x500.jpg"}, 
-            {name:"Sprouts Salad", img:"https://www.whiskaffair.com/wp-content/uploads/2020/04/Sprouts-Salad-3.jpg"}, 
-            {name:"Chick Peas Salad", img:"https://www.lisashealthykitchen.com/wp-content/uploads/chickpea-feta-cucumber-tomato-salad-recipe.jpg"}, 
-            {name:"Mix / Kakdi Koshimbir", img:"https://ministryofcurry.com/wp-content/uploads/2020/06/koshimbir_-4-500x500.jpg"}, 
-            {name:"Russian Salad", img:"https://soupchick.s3.amazonaws.com/wp-content/uploads/2023/12/07140219/SALAD0030_1.png"}, 
-            {name:"Mexican Salad", img:"https://veganheaven.org/wp-content/uploads/2020/05/Mexican-Salad-9.jpg"}, 
-            {name:"Cheese Macaroni Salad", img:"https://www.eatingonadime.com/wp-content/uploads/2023/01/EasyMacaroniSalad-Square-Pic.jpg"}, 
-            {name:"Corn Potato Salad", img:"https://www.peanutblossom.com/wp-content/uploads/2015/06/frenchpotatosalad-17.jpg"}]
+        value: [{name:"Green Salad", price:'₹150/kg',amount: 150, img:"https://leelalicious.com/wp-content/uploads/2018/08/Corn-Tomato-Avocado-Salad-Recipe-500x500.jpg"}, 
+            {name:"Sprouts Salad",price:'₹200/kg',amount: 200, img:"https://www.whiskaffair.com/wp-content/uploads/2020/04/Sprouts-Salad-3.jpg"}, 
+            {name:"Chick Peas Salad",price:'₹200/kg',amount: 200, img:"https://www.lisashealthykitchen.com/wp-content/uploads/chickpea-feta-cucumber-tomato-salad-recipe.jpg"}, 
+            {name:"Mix / Kakdi Koshimbir",price:'₹200/kg',amount: 200, img:"https://ministryofcurry.com/wp-content/uploads/2020/06/koshimbir_-4-500x500.jpg"}, 
+            {name:"Russian Salad",price:'₹300/kg',amount: 300, img:"https://soupchick.s3.amazonaws.com/wp-content/uploads/2023/12/07140219/SALAD0030_1.png"}, 
+            {name:"Mexican Salad",price:'₹300/kg',amount: 300, img:"https://veganheaven.org/wp-content/uploads/2020/05/Mexican-Salad-9.jpg"}, 
+            {name:"Cheese Macaroni Salad",price:'₹300/kg',amount: 300, img:"https://www.eatingonadime.com/wp-content/uploads/2023/01/EasyMacaroniSalad-Square-Pic.jpg"}, 
+            {name:"Corn Potato Salad",price:'₹250/kg',amount: 250, img:"https://www.peanutblossom.com/wp-content/uploads/2015/06/frenchpotatosalad-17.jpg"}]
     }, 
     ]
 
@@ -445,6 +446,7 @@ const NonVeg = () => {
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
             <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
+            <div className="text-price text-md md:text-lg text-center">{snackItem.price}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
                {selectedOptions.Desserts?.includes(snackItem.name) ? (
@@ -520,6 +522,7 @@ const NonVeg = () => {
           <div key={index} className="bg-white rounded-2xl py-2 px-1 shadow-md flex flex-col items-center  justify-between">
             <img src={snackItem.img} alt={snackItem.name} className="w-20 h-20 md:w-30 md:h-30 rounded-full mb-3" />
             <div className="text-black text-md md:text-lg text-center">{snackItem.name}</div>
+            <div className="text-price text-md md:text-lg text-center">{snackItem.price}</div>
             <div className='group'>
             <button onClick={ ()=> handleSelectedOptions(isActive, snackItem.name )}>
                 {selectedOptions.Salads?.includes(snackItem.name) ? (
