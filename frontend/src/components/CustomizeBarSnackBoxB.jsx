@@ -7,7 +7,7 @@ const CustomizeBarSnackBoxB = (selectedOptions) => {
 
   const {cart, setCart, selectedPlatter, navigate} = useAppContext()
   const {_id} = useParams()
-  console.log(_id)
+  // console.log(_id)
 
   // const handleCart = () => {
 
@@ -29,13 +29,13 @@ const CustomizeBarSnackBoxB = (selectedOptions) => {
 
     const updatedCart = [...prev, selectedPlatter];
     toast.success("Added To Cart");
-    console.log("Success", updatedCart);
+    // console.log("Success", updatedCart);
         navigate(`/fill-details/${_id}`)
 
     return updatedCart;
   });
 };
-  console.log("cart",cart)
+  // console.log("cart",cart)
 
   return (
         <div className="fixed bottom-0 left-0 w-full z-50 shadow-md">

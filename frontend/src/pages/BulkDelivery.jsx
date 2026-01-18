@@ -20,7 +20,7 @@ const BulkDelivery = () => {
   } )
 
   const handleCustomize = (product) => {
-    console.log(product)
+    // console.log(product)
     setSelectedPlatter(
       (prev)=> ({...prev,
                     _id: product._id,
@@ -40,7 +40,7 @@ const BulkDelivery = () => {
     }    
   }
   useEffect(() => {
-  console.log("Updated Platter:", selectedPlatter);
+  // console.log("Updated Platter:", selectedPlatter);
 }, [selectedPlatter]);
 
   return (

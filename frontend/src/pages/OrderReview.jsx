@@ -6,7 +6,7 @@ import { data } from "react-router-dom"
 import FooterBar from "../components/FooterBar"
 
 const OrderReview = () => {
-    const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, cart ,setCart , navigate, axios, user, setShowUserLogin} = useAppContext()
+    const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, cart ,setCart , navigate, axios, user, setShowUserLogin, setBulkItems} = useAppContext()
     const [cartArray , setCartArray] = useState([])
     const [addresses , setAddresses] = useState([])
     const [notes, setNotes] = useState({});
@@ -117,25 +117,35 @@ const handleResume = ( product ) =>{
         const filteredCart = cart.filter(
             item => item.details && Object.keys(item.details).length !== 0
         );
-        console.log(filteredCart, 'filteredCart')
+        // console.log(filteredCart, 'filteredCart')
 
         if (filteredCart.length === 0) {
             return toast.error("No items with valid details to place an order.");
         }
         
         for (const item of filteredCart) {
-            // ✅ Inline price calculation
+        // ✅ Inline price calculation
         const deliveryCharge = 100;
         // let gst = (item.offerPrice * item.details.guests * 5) / 100;
-        let gst = (item?.details?.totalPrice * item.details.guests * 5) / 100;
-        const finalPrice = (item?.details?.totalPrice * item.details.guests) + deliveryCharge + gst;
+
+        // Old working code
+        // let gst = (item?.details?.totalPrice * item.details.guests * 5) / 100;
+        // const finalPrice = (item?.details?.totalPrice * item.details.guests) + deliveryCharge + gst;
+
+        // Bulk Delivery modified code
+        let basePrice = item.category !== "bulk-delivery"
+                                ? item?.details?.totalPrice * item.details.guests
+                                : item?.totalPrice;
+
+        const gst = (basePrice * 5) / 100;
+        const finalPrice = basePrice + deliveryCharge + gst;
+
+
         // const finalPrice = (item.offerPrice * item.details.guests) + deliveryCharge + gst;
     
         // console.log(item.offerPrice, "item.offerPrice")
         // console.log(item.details.guests, "item.details.guests")
         // console.log(deliveryCharge, "deliveryCharge")
-        // console.log(gst, "gst")
-        // console.log(finalPrice, "finalPrice")
 
             const { data } = await axios.post('/api/order/cod', {
                 userId: user._id,
@@ -146,6 +156,7 @@ const handleResume = ( product ) =>{
                     badge: item.badge,
                     category: item.category,
                     offerPrice: finalPrice,
+                    totalPrice: item.totalPrice,
                     details: item.details,
                     selectedOptions: item.selectedOptions,
                     productDetails: item.productDetails || {},
@@ -155,7 +166,10 @@ const handleResume = ( product ) =>{
                 note: notes[item._id] || "", // 🔥 pick note for this product only
             });
             if (data.success) {
-                toast.success(data.message, { duration: 3000 });
+                setBulkItems([])
+                basePrice = 0;
+                setTotalAmount(0)
+                toast.success(data.message, { duration: 3000 });            
             } else {
                 toast.error(`${data.message}`);
             }
@@ -169,7 +183,7 @@ const handleResume = ( product ) =>{
 
     if (paymentOption === "Full Payment") {
         const filteredCart = cart.filter(  item => item.details && Object.keys(item.details).length !== 0  );
-        console.log(filteredCart, 'filteredCart')
+        // console.log(filteredCart, 'filteredCart')
 
         if (filteredCart.length === 0) {
             return toast.error("No items with valid details to place an order.");
@@ -203,9 +217,21 @@ const handleResume = ( product ) =>{
         for (const item of filteredCart) {
             // ✅ Inline price calculation
             const deliveryCharge = 100;
-            // let gst = (item.offerPrice * item.details.guests * 5) / 100;
-            let gst = (item?.details?.totalPrice * item.details.guests * 5) / 100;
-            const finalPrice = (item?.details?.totalPrice * item.details.guests) + deliveryCharge + gst;
+            
+            // let gst = (item?.details?.totalPrice * item.details.guests * 5) / 100;
+            // const finalPrice = (item?.details?.totalPrice * item.details.guests) + deliveryCharge + gst;
+
+                    // Bulk Delivery modified code
+            const basePrice = item.category !== "bulk-delivery"
+                                ? item?.details?.totalPrice * item.details.guests
+                                : item?.totalPrice;
+
+            const gst = (basePrice * 5) / 100;
+            const finalPrice = basePrice + deliveryCharge + gst;
+
+            // const finalPrice =  (baseItemPrice * item?.details?.guests) + deliveryCharge + gst;
+            // setBasePrice(baseItemPrice)
+            
             // const finalPrice = (item.offerPrice * item.details.guests) + deliveryCharge + gst;
 
             // ---- CREATE RAZORPAY ORDER ----
@@ -218,6 +244,7 @@ const handleResume = ( product ) =>{
                     badge: item.badge,
                     category: item.category,
                     offerPrice: finalPrice,
+                    totalPrice: item.totalPrice,
                     details: item.details,
                     selectedOptions: item.selectedOptions,
                     productDetails: item.productDetails || {},
@@ -227,7 +254,10 @@ const handleResume = ( product ) =>{
                 note: notes[item._id] || "", // 🔥 pick note for this product only
             });
             if (data.success) {
-                console.log(data?.order, 'Razorpay API Response')
+                // console.log(data?.order, 'Razorpay API Response')
+                setBulkItems([]);
+                basePrice = 0;
+                setTotalAmount(0)
                 toast.success(data.message, { duration: 3000 });
             } else {
                 toast.error(`${data.message}`);
@@ -239,11 +269,13 @@ const handleResume = ( product ) =>{
         navigate('/my-orders');
         scrollTo(0,0)
     }
+
+    // Module is Currently Inactive
     if (paymentOption === "Half Payment") {
         const filteredCart = cart.filter(
             item => item.details && Object.keys(item.details).length !== 0
         );
-        console.log(filteredCart, 'filteredCart')
+        // console.log(filteredCart, 'filteredCart')
 
         if (filteredCart.length === 0) {
             return toast.error("No items with valid details to place an order.");
@@ -253,8 +285,21 @@ const handleResume = ( product ) =>{
             // ✅ Inline price calculation
     const deliveryCharge = 100;
     // let gst = (item.offerPrice * item.details.guests * 5) / 100;
-    let gst = (item?.details?.totalPrice * item.details.guests * 5) / 100;
-    const finalPrice = (item?.details?.totalPrice * item.details.guests) + deliveryCharge + gst;
+    
+    // Old Working code
+    // let gst = (item?.details?.totalPrice * item.details.guests * 5) / 100;
+    // const finalPrice = (item?.details?.totalPrice * item.details.guests) + deliveryCharge + gst;
+
+    // New working code of bulk delivery
+    const basePrice =
+        item.category !== "bulk-delivery"
+            ? item?.details?.totalPrice * item.details.guests
+            : item?.totalPrice;
+
+        const gst = (basePrice * 5) / 100;
+
+        const finalPrice = basePrice + deliveryCharge + gst;
+
     // const finalPrice = (item.offerPrice * item.details.guests) + deliveryCharge + gst;
     
     // console.log(item.offerPrice, "item.offerPrice")
@@ -272,6 +317,7 @@ const handleResume = ( product ) =>{
                     badge: item.badge,
                     category: item.category,
                     offerPrice: finalPrice,
+                    totalPrice: item?.totalPrice || 0,
                     details: item.details,
                     selectedOptions: item.selectedOptions,
                     productDetails: item.productDetails || {},
@@ -282,6 +328,9 @@ const handleResume = ( product ) =>{
             });
 
             if (data.success) {
+                setBulkItems([]);
+                basePrice = 0;
+                setTotalAmount(0)
                 toast.success(data.message, { duration: 3000 });
             } else {
                 toast.error(`${data.message}`);
@@ -295,7 +344,7 @@ const handleResume = ( product ) =>{
     }
 } catch (error) {
     toast.error("Something went wrong while placing the order.");
-    console.error(error);
+    // console.error(error);
 }
  }
  
@@ -326,7 +375,7 @@ const [price, setPrice] = useState(0);
 const [gst, setGst] = useState(0);
 const [shipping] = useState(100);
 const [totalAmount, setTotalAmount] = useState(0);
-console.log(totalAmount, "totalAmount")
+// console.log(totalAmount, "totalAmount")
 
    useEffect(() => {
   const gstAmount = (price * 5) / 100; // 5% GST
@@ -340,6 +389,9 @@ console.log(totalAmount, "totalAmount")
     const total = cart.reduce((sum, product) => {
       if (product?.details?.totalPrice && product?.details?.guests) {
         return sum + (product.details.totalPrice * product.details.guests);
+      }
+      else {
+        return sum + (product.totalPrice);
       }
       return sum;
     }, 0);
@@ -363,7 +415,7 @@ console.log(totalAmount, "totalAmount")
                     <p className="text-center">Edit</p>
                     <p className="text-center">Action</p>
                 </div> */}
-{console.log(cart)}
+{/* {console.log(cart)} */}
                 {cart.map((product, index) => (
                    <div key={index} className="mb-3">
                      { product?.details?.date  ? 
@@ -371,7 +423,8 @@ console.log(totalAmount, "totalAmount")
                     (<div  className=" text-gray-500 items-center text-sm md:text-base font-medium pt-3 border rounded-sm  pl-1 ">
                         <div className="flex flex-col lg:flex-row md:gap-6 gap-3 md:justify-around">
                             <div className="flex flex-row gap-6">
-                                <div className="cursor-pointer w-24 h-24 flex items-start justify-start border border-gray-300 rounded">
+                                {/* <div className="cursor-pointer w-24 h-24 flex items-start justify-start border border-gray-300 rounded"> */}
+                                <div className="cursor-pointer max-w-18 max-h-18 flex items-start justify-start border border-gray-300 rounded">
                                 <img className="max-w-full h-full object-cover" src={product.path} alt={product.name} />
                             </div>
                             <div className="space-y-1 text-gray-700 text-sm">
@@ -384,12 +437,33 @@ console.log(totalAmount, "totalAmount")
                                 <p>Date - {product.details.date}</p>
                                 <p>Guests - {product.details.guests}</p>
                                 <p>Time - {product.details.time}</p>
-                                <p>
-                                 Price - {currency} {new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests)}
-                                </p>
-                                <p>
+                                {
+                                    product.category !== 'bulk-delivery' ? (
+                                        <div>
+                                            <p>
+                                            Price - {currency} {new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests)}
+                                            </p>
+                                            <p className="pt-1">
+                                            5% GST - {currency}{new Intl.NumberFormat('en-IN').format( product.details.totalPrice * product.details.guests*0.05)}
+                                            </p>
+                                        </div>
+                                        
+                                    ) : (   <div>
+                                             <p>
+                                            Price - {currency} {new Intl.NumberFormat('en-IN').format(product.totalPrice)}
+                                            </p>
+                                            <p className="pt-1">
+                                            5% GST - {currency}{new Intl.NumberFormat('en-IN').format( product.totalPrice *0.05)}
+                                            </p>
+                                            </div>                                           
+                                    )
+                                }
+                                 {/* <p>
+                                  Price - {currency} {new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests)}
+                                 </p> */}
+                                {/* <p>
                                  5% GST - {currency}{new Intl.NumberFormat('en-IN').format( product.details.totalPrice * product.details.guests*0.05)}
-                                </p>
+                                </p> */}
                                 <p>
                                  Shipping Fee - {currency}{shipping}
                                 </p>

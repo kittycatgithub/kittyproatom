@@ -31,7 +31,7 @@ const Feedback = () => {
 
     const {data} = await axios.post('/api/user/feedback', formData1)
     if(data.success){
-      console.log(data.message)
+      // console.log(data.message)
       toast.success( data.message, {duration:3000} )
       setFormData1({
         name1 : '',

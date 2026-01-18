@@ -14,7 +14,6 @@ const CustomizeBar = (selectedOptions) => {
   //     [...prev, selectedPlatter]
   //    )
   //    toast.success("Added To Cart")
-  //   console.log("Success" , cart)
   // }
   // console.log((Object?.values(selectedPlatter?.selectedOptions)?.filter( (item)=> item !== null ).length !== 0), 'Hello')
 
@@ -99,7 +98,6 @@ const CustomizeBar = (selectedOptions) => {
           }
         }   
 };
-  // console.log("cart",cart)
   // console.log("selectedOptions",selectedOptions)
   // console.log("selectedPlatter",selectedPlatter)
 

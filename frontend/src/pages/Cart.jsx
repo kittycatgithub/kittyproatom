@@ -5,7 +5,7 @@ import toast from "react-hot-toast"
 import FooterBar from "../components/FooterBar"
 
 const Cart = () => {
-    const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, cart ,setCart , navigate} = useAppContext()
+    const {products, currency, cartItems, removeFromCart, getCartCount, updateCartItem, getCartAmount, cart ,setCart , navigate, setBulkItems} = useAppContext()
     const [cartArray , setCartArray] = useState([])
     const [addresses , setAddresses] = useState(dummyAddress)
 
@@ -35,12 +35,15 @@ const Cart = () => {
         return;
       }
       setCart((prevCart) => prevCart.filter((item) => item._id !== productId));
+      // Clearing Prices
+      setBulkItems([]);
+      
       toast.success("Removed from Cart");
     };
 
     // Resume Button Logic
     const handleResume = ( product ) =>{
-        console.log(product._id)
+        // console.log(product._id)
         navigate(`/fill-details/${product._id}`)
     }
 return  (

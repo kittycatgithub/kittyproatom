@@ -19,7 +19,7 @@ const ProductCategory = () => {
   const alreadyInCart = cart.some((item) => item._id === product._id);
   if (alreadyInCart) {
     toast.error("Already in Cart");
-    console.log(cart)
+    // console.log(cart)
     return;
   }
 
@@ -33,7 +33,6 @@ const ProductCategory = () => {
   //     [{ ...product, selectedOptions }]
   //   )
   //   )
-  console.log(cart)
   toast.success("Added To Cart");
   navigate(`/fill-details/${product._id}`)
   scrollTo(0,0)
@@ -76,7 +75,7 @@ const handleRemoveFromCart = (productId) => {
       keyword: "catering",
     };
     }  
-    console.log("Updated Platter (inside setSelectedPlatter):", updatedPlatter);
+    // console.log("Updated Platter (inside setSelectedPlatter):", updatedPlatter);
     return updatedPlatter});
     if (product.name === "Snack Box A"){
       // console.log(product._id)

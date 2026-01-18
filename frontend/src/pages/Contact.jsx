@@ -47,7 +47,7 @@ const Contact = () => {
 
     const {data} = await axios.post('/api/user/feedback', formData1)
     if(data.success){
-      console.log(data.message)
+      // console.log(data.message)
       toast.success( data.message, {duration:3000} )
       setFormData1({
         name1 : '',
@@ -65,7 +65,7 @@ const Contact = () => {
   const handleSubmitContact = async (e) => {
     e.preventDefault(); // ⛔ stops the page refresh
     const {data} = await axios.post('/api/user/contact', formData2)
-      console.log("Response:", data)   // ← check this
+      // console.log("Response:", data)   // ← check this
     if(data.success){
       toast.success( data.message, {duration:3000} )
       setFormData2({

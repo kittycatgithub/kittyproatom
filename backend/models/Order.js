@@ -9,6 +9,7 @@ const orderSchema = new mongoose.Schema({
         path: {type: String, required: true},
         category: {type: String, required: true},
         offerPrice: {type: Number, required: true}, 
+        totalPrice: {type: Number, required: false}, 
         details: { type : Object, required: true},
         selectedOptions: { type : Object, required: true},
         productDetails: { type : Object},

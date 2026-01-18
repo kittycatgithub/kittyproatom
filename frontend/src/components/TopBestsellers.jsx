@@ -26,7 +26,7 @@ const cards = [
     desc: "Flavorful trio of juicy paneer, crisp capsicum with spicy red paprika.",
     price: "₹259",
     link:"/",
-    // link:"/select-bulk/ek56j67k",
+    link:"/select-bulk/ek56j67k",
     images: [
       "/categories/bulk/bulk-img1.jpeg",
       "/categories/bulk/bulk-img2.jpg",

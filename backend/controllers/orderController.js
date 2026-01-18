@@ -99,7 +99,6 @@ export const initRazorpayOrder = async (req, res) => {
   }
 };
 
-
 // Place Order Razorpay : /api/order/razorpay
 export const placeOrderRazorpay = async (req, res) => {
     try {

@@ -16,8 +16,9 @@ export default function FillDetails () {
     const {_id} = useParams()
     
     const filteredProduct = actualProducts.filter( (product)=> product._id.toLowerCase() === _id )
-    console.log("filteredProduct", filteredProduct[0]?.name)
-    console.log("cart", cart)
+    // console.log("filteredProduct", filteredProduct[0]?.name)
+    // console.log("cart", cart)
+
     // let minGuests = 15;
     let maxGuests = 2000;
     const originalPrice = 249;
@@ -56,15 +57,15 @@ export default function FillDetails () {
   const getPricePerPlate = () => {
 
     if (filteredProduct[0].name == "Working Meal"){     
-      if (guests <= 50) return 170
-      if (guests > 50 && guests <= 100) return (170 - (170 * 0.05)); // 5% discount
-      if ( guests > 100) return (170 - (170 * 0.10)); // 10% discount
+      if (guests <= 50) return 180
+      if (guests > 50 && guests <= 100) return (180 - (180 * 0.05)); // 5% discount
+      if ( guests > 100) return (180 - (180 * 0.10)); // 10% discount
     }
     if (filteredProduct[0].name == "Special Meal"){
-      // if (guests <=2000) return 210
-      if (guests <= 50) return 210
-      if (guests > 50 && guests <= 100) return (210 - (210 * 0.05)); // 5% discount
-      if ( guests > 100) return (210 - (210 * 0.10)); // 10% discount
+      // if (guests <=2000) return 220
+      if (guests <= 50) return 220
+      if (guests > 50 && guests <= 100) return (220 - (220 * 0.05)); // 5% discount
+      if ( guests > 100) return (220 - (220 * 0.10)); // 10% discount
     }
     if (filteredProduct[0].name == "Snack Box A"){
       // if (guests <=2000) return 210
@@ -109,7 +110,7 @@ export default function FillDetails () {
       // return 380   
     }
     if (filteredProduct[0].name == "Breakfast"){
-      console.log('condition executed')
+      // console.log('condition executed')
       if ( guests >= 15 && guests <= 24 ) return 190
       if ( guests >= 25 && guests <= 49 ) return 170
       if ( guests >= 50 ) return 150
@@ -183,7 +184,9 @@ const slots =
 
   const handleFormChange = (field, value) => {
     setDetails(
-      (prev) => { const newDetails = {...prev, [field]:value} ;  console.log(newDetails) ; return newDetails}
+      (prev) => { const newDetails = {...prev, [field]:value} ;  
+                                      console.log(newDetails) ; 
+                                      return newDetails}
     ) 
    }
 
@@ -199,14 +202,14 @@ const slots =
       toast.error(`Please fill all fields. Missing: ${missingNames}`);
     } else {
       const mergedObject = { ...filteredProduct[0], details };
-    console.log("mergedObject",mergedObject)
+    // console.log("mergedObject",mergedObject)
      const existingIndex = cart.findIndex(item => item._id === mergedObject._id);
 
   if (existingIndex !== -1) {
     // Replace existing item only
     const updatedCart = [...cart];
     updatedCart[existingIndex] = {...updatedCart[existingIndex], ...mergedObject};
-    console.log(updatedCart[existingIndex], "hello")
+    // console.log(updatedCart[existingIndex], "hello")
 setCart((prev) => [
   ...prev.filter((item) => item._id !== updatedCart[existingIndex]._id),
   updatedCart[existingIndex],
@@ -215,7 +218,7 @@ setCart((prev) => [
     navigate(`/order-review`);
   } else {
     // Do nothing if the item is not in cart
-    console.log('Item not in cart, so not updating.');
+    // console.log('Item not in cart, so not updating.');
   }
     // navigate(`/order-review`)
     // navigate(`/order-review/${_id}`)

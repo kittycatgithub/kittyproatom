@@ -794,7 +794,7 @@ export const actualProducts = [
     badge: 'Packed Fresh Food',    
     category: "meal-thali-snack-boxes",
    unit:"/thali",
-    offerPrice: 170,
+    offerPrice: 180,
     image: [potato_image_1, potato_image_2, potato_image_3, potato_image_4],
     menu: [
       "One Veg (Paneer/Non-Paneer)",
@@ -819,7 +819,7 @@ export const actualProducts = [
     badge: 'Packed Fresh Food',    
     category: "meal-thali-snack-boxes",
     unit:"/thali",
-    offerPrice: 210,
+    offerPrice: 220,
     image: [tomato_image],
     menu: [
       "One Paneer Veg",

@@ -4,7 +4,8 @@ import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 
 const CustomizeBarBulk = ({ selectedOptions, setSelectedOptions  }) => {
-  const { cart, setCart, selectedPlatter, setSelectedPlatter, navigate } = useAppContext();
+  const { cart, setCart, selectedPlatter, setSelectedPlatter, navigate, bulkItems, setBulkItems } = useAppContext();
+  // console.log(bulkItems, 'bulkItems')
   const { _id } = useParams();
 
   const [showModal, setShowModal] = useState(false);
@@ -15,7 +16,22 @@ const CustomizeBarBulk = ({ selectedOptions, setSelectedOptions  }) => {
   (items) => Array.isArray(items) && items.length > 0
 );
 
-console.log(selectedOptions)
+// console.log(selectedOptions)
+
+  const pieceItems = new Set([
+    // Rotis
+    "Chapati",
+    "Laccha Paratha",
+
+    // Desserts (pc)
+    "Gulab Jamun",
+    "Kala Jamun",
+    "Rasgulla",
+    "Chamcham",
+    "Rasmalai",
+    "Puran Poli",
+    "Khoa Poli",
+  ]);
 
   // Proceed button
   const handleProceed = () => {
@@ -25,18 +41,35 @@ console.log(selectedOptions)
     }
     // Build defaults for all selected items (but don't overwrite existing qty/unit)
     const defaults = { ...productDetails };
+
     Object.entries(selectedOptions || {}).forEach(([category, items]) => {
       items.forEach((item) => {
         const key = `${category}:${item}`;
+
+        const unit =
+          category === "Rotis" || pieceItems.has(item) ? "pc" : "kg";
+
         defaults[key] = {
           ...(defaults[key] || {}),
-          // default unit to 'kg' only if not already set
-          unit: defaults[key]?.unit || "kg",
-          // keep qty as-is (do not default qty unless you want to)
+          unit: defaults[key]?.unit || unit,
           qty: defaults[key]?.qty ?? "",
         };
       });
     });
+
+    // Old Code
+    // Object.entries(selectedOptions || {}).forEach(([category, items]) => {
+    //   items.forEach((item) => {
+    //     const key = `${category}:${item}`;
+    //     defaults[key] = {
+    //       ...(defaults[key] || {}),
+    //       // default unit to 'kg' only if not already set
+    //       unit: defaults[key]?.unit || "kg",
+    //       // keep qty as-is (do not default qty unless you want to)
+    //       qty: defaults[key]?.qty ?? "",
+    //     };
+    //   });
+    // });
     setProductDetails(defaults);
     setShowModal(true);
   };
@@ -48,6 +81,17 @@ console.log(selectedOptions)
       ...prev,
       [key]: { ...prev[key], [field]: value },
     }));
+
+        // update bulkItems (actual data)
+    if (field === "qty") {
+      setBulkItems(prev =>
+        prev.map(bulk =>
+          bulk.item === item
+            ? { ...bulk, qty: Number(value) }
+            : bulk
+        )
+      );
+    };
   };
 
   // Add to cart after modal form
@@ -87,10 +131,16 @@ console.log(selectedOptions)
       return;
     }
 
+    const totalPrice = bulkItems.reduce((total, item) => {
+        if (!item.item || item.qty <= 0) return total;
+        return total + item.price * item.qty;
+      }, 0);
+
     const platterWithDetails = {
       ...selectedPlatter,
       productDetails,
-      selectedOptions: {}
+      selectedOptions: {},
+      totalPrice: totalPrice
     };
 
     setCart((prev) => [...prev, platterWithDetails]);
@@ -114,6 +164,11 @@ const handleRemoveItem = (category, item) => {
   const key = `${category}:${item}`;
   const newDetails = { ...productDetails };
   delete newDetails[key];
+
+    // 3️⃣ Remove from bulkItems
+    setBulkItems(prev =>
+      prev.filter(bulk => bulk.item !== item)
+    );
 
   setProductDetails(newDetails);
   setSelectedOptions(updated);
@@ -160,7 +215,7 @@ const handleRemoveItem = (category, item) => {
               return (
                 <div
                   key={idx}
-                  className="grid grid-cols-[1fr_auto_auto_auto] gap-3 items-center mb-2 border border-gray-400 rounded p-3 bg-gray-50"
+                  className="grid grid-cols-[1fr_auto_auto_auto] gap-2 items-center mb-2 border border-gray-400 rounded p-3 bg-gray-50"
                 >
                   {/* Product Name */}
                   <span className="text-gray-800 font-medium">{item}</span>
@@ -180,15 +235,17 @@ const handleRemoveItem = (category, item) => {
 
                   {/* Unit */}
                   <select
-                    className="border px-0.5 py-2 rounded w-11"
+                    // className="border px-0.5 py-2 rounded w-11"
+                    className=" py-2 rounded w-11 outline-none"
                     value={productDetails[key]?.unit || "kg"}
                     required
                     onChange={(e) =>
                       handleInputChange(category, item, "unit", e.target.value)
                     }
+                    disabled
                   >
                     {/* <option value="">Unit</option> */}
-                    {/* <option value="pcs">pcs</option>     */}
+                    <option value="pc">pc</option>    
                     <option value="kg">kg</option>
                     {/* <option value="g">g</option> */}
                     {/* <option value="ltr">ltr</option> */}

@@ -101,7 +101,7 @@ const SelectOptionsBreakfast = () => {
     // };
     const handleSelectedOptions = ( isActive ) =>{
       const selectedMenu = snacks.filter( (item)=> item.name === isActive  )
-      console.log(selectedMenu)
+      // console.log(selectedMenu)
        if( isActive === "Menu1" ){
         setSelectedOptions( {
           Menu1: ["Idli", "Medu Wada", "Sambar", "Chutney", "Tea", "Coffee", "Cookies", "BottledWater"],
@@ -177,7 +177,7 @@ const SelectOptionsBreakfast = () => {
     };
     useEffect( ()=> {
         setSelectedPlatter( (prev)=> ({ ...prev, selectedOptions: selectedOptions })  )
-        console.log("selectedOptions",selectedOptions)
+        // console.log("selectedOptions",selectedOptions)
     }, [selectedOptions] )
 
     const productDetail = actualProducts.filter( (product)=> product._id === "ek54j45k" )

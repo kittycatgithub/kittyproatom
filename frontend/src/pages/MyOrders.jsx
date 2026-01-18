@@ -58,7 +58,7 @@ const MyOrders = () => {
     </div>  
       </div>
         
-
+    {/* {console.log(myOrders)} */}
        {myOrders.map((order, index) => (
   <div key={index} className="border border-gray-300 rounded-lg mb-10 p-4 py-5 max-w-6xl shadow-xl hover:shadow">
     <p className="flex justify-between md:items-center text-gray-600 md:font-medium max-md:flex-col">
