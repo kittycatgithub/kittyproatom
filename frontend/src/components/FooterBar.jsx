@@ -7,7 +7,8 @@ const FooterBar = () => {
          <div
     className="flex h-14 justify-around border-t border-gray-200 bg-white shadow-lg"
   >
-    <NavLink to={"tel:+919822990025"} onClick={() => window.scrollTo(0, 0)} className="flex flex-col items-center justify-center text-gray-950">
+    {/* <NavLink to={"tel:+919822990025"} onClick={() => window.scrollTo(0, 0)} className="flex flex-col items-center justify-center text-gray-950"> */}
+    <NavLink to={"tel:+919096201044"} onClick={() => window.scrollTo(0, 0)} className="flex flex-col items-center justify-center text-gray-950">
       {/* <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
