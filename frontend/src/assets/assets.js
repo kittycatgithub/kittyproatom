@@ -931,7 +931,7 @@ export const actualProducts = [
     badge: "Baron's TOP Menu",  
     category: "catering",
 
-    offerPrice: 220,
+    offerPrice: 230,
     image: [mango_image_1],
     unit:"/guest",
     description: [
