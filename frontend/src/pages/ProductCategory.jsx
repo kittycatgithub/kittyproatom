@@ -103,6 +103,10 @@ const handleRemoveFromCart = (productId) => {
       navigate(`/select-short-menu/${product._id}`)
       scrollTo(0,0)
     }    
+    if (product.name === "High Tea"){
+      navigate(`/select-high-tea/${product._id}`)
+      scrollTo(0,0)
+    }    
     if (product.name === "Breakfast"){
       navigate(`/select-breakfast/${product._id}`)
       scrollTo(0,0)

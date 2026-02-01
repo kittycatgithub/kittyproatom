@@ -539,6 +539,17 @@ const [totalAmount, setTotalAmount] = useState(0);
     );
   })
 ) : null}
+                                {product.name === "High Tea" && product.selectedOptions ? (
+  Object.entries(product.selectedOptions).map(([key, value], index) => {
+    if (!value || value.length === 0) return null;
+
+    return (
+      <p key={index} className="text-sm">
+        {key} ⟶ {value.join(", ")}
+      </p>
+    );
+  })
+) : null}
                         </div>                       
                             </div>
                             <div className="pb-2">

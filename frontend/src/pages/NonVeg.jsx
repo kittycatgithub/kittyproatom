@@ -125,6 +125,8 @@ const NonVeg = () => {
     {   name:"NonVegCurry",
         value: [{ name:"Chicken Curry",  price:'₹1300/kg',amount: 1300 ,unit: 'kg', img:"https://www.cubesnjuliennes.com/wp-content/uploads/2020/07/Instant-Pot-Chicken-Curry-Recipe.jpg"},
           { name:"Mutton Curry",  price:'₹1750/kg',amount: 1750 ,unit: 'kg', img:"https://myannoyingopinions.com/wp-content/uploads/2021/06/mutton-curry-with-yogurt.jpg?w=584"},
+          { name:"Fish Curry (Maral)",  price:'₹1800/kg',amount: 1800 ,unit: 'kg', img:"/images/Catering/non-veg-curry/maral-fish.jpg"},
+          { name:"Fish Curry (Rohu)",  price:'₹1400/kg',amount: 1400 ,unit: 'kg', img:"/images/Catering/non-veg-curry/rohu-fish.jpg"},
             ]
     },
     {   name:"NonVegRice",
@@ -151,7 +153,7 @@ const NonVeg = () => {
     },  
     {   name:"Rotis",
         value: [{ name:"Chapati",price:'₹12/piece',amount: 12 ,unit: 'pc', img:"https://www.tasteofhome.com/wp-content/uploads/2024/12/Chapati-Breads_EXPS_FT24_136906_JR_1213_2.jpg"},
-          { name:"Laccha Paratha",price:'₹30/piece',amount: 30 ,unit: 'pc', img:"https://5.imimg.com/data5/ANDROID/Default/2021/8/YR/CH/UF/26801620/1628707032485-jpg-500x500.jpg"},
+          { name:"Laccha Paratha",price:'₹20/piece',amount: 20 ,unit: 'pc', img:"https://5.imimg.com/data5/ANDROID/Default/2021/8/YR/CH/UF/26801620/1628707032485-jpg-500x500.jpg"},
             ]
     },
     {       name:"Desserts",

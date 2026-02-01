@@ -94,7 +94,8 @@ const Footer = () => {
                     <ul className="text-lg lg:text-md  transition-all duration-500">
                         <li><a href="/all-menu/meal-thali-snack-boxes"  className="text-gray-800 hover:text-gray-900">Meal Thali & Snack Boxes</a></li>
                         {/* <li><a href="/all-menu/meal-thali-snack-boxes"  className="text-gray-800 hover:text-gray-900">Snack Boxes</a></li> */}
-                        <li><a href="/select-bulk/ek56j67k"  className=" text-gray-800 hover:text-gray-900">Bulk Delivery</a></li>
+                        {/* <li><a href="/select-bulk/ek56j67k"  className=" text-gray-800 hover:text-gray-900">Bulk Delivery</a></li> */}
+                        <li><a href="/bulk-delivery/ek56j67k"  className=" text-gray-800 hover:text-gray-900">Bulk Delivery</a></li>
                         <li><a href="/store"  className=" text-gray-800 hover:text-gray-900">Frozen Products</a></li>
                         <li><a href="/all-menu/catering"  className=" text-gray-800 hover:text-gray-900">Catering</a></li>
                         {/* <li><a href="/categories/bulk-delivery"  className=" text-gray-800 hover:text-gray-900">Bulk Delivery</a></li> */}

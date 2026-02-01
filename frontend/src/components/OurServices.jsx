@@ -36,14 +36,15 @@ const services = [
     description: "Convenient and tasty they are your go to meal solutions.",
     button: "Thali Brochure",
     image: "Thali_Baron_website.avif",
-    link: "./Baron_Packed_Thali_2025.pdf" // replace with actual path
+    // link: "./Baron_Packed_Thali_2025.pdf" // replace with actual path
+    link: "./Baron_Packed_Thali_n_Sancks_Box_Menu_2026.pdf" // replace with actual path
   },
   {
     title: "Outdoor Catering / Delivery",
     description: "Ask for complete buffet service or just deliveries. Click to download the menu.",
     button: "ODC Menu 2025",
     image: "ODC_Baron.avif",
-    link: "./Baron Catering Menu 2025.pdf" // replace with actual path
+    link: "./Baron Catering Menu 2026.pdf" // replace with actual path
   },
   {
     title: "Hospital / Corporate Catering",

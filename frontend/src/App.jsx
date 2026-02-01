@@ -47,6 +47,7 @@ import TermsConditions from './pages/TermsConditions'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import RefundCancellation from './pages/RefundCancellation'
 import ShippingDeliveryPolicy from './pages/ShippingDeliveryPolicy'
+import SelectOptionsHighTea from './pages/SelectOptionsHighTea'
 
 const App = () => {
 
@@ -107,12 +108,14 @@ const App = () => {
       <Route path='/select-menu-b/:_id' element={<SelectOptionsMenuB/>}/>
       <Route path='/select-menu-c/:_id' element={<SelectOptionsMenuC/>}/>
       <Route path='/select-short-menu/:_id' element={<SelectOptionsShortMenu/>}/>
+      <Route path='/select-high-tea/:_id' element={<SelectOptionsHighTea/>}/>
       <Route path='/select-breakfast/:_id' element={<SelectOptionsBreakfast/>}/>
       <Route path='/hospital-and-corporate-food-service' element={<HospitalFoodService/>}/>
 
       {/* Bulk Delivery */}
       <Route path='/select-veg/:_id' element={<Veg/>}/>
-      <Route path='/select-bulk/:_id' element={<NonVeg/>}/>      
+      {/* <Route path='/select-bulk/:_id' element={<NonVeg/>}/>       */}
+      <Route path='/bulk-delivery/:_id' element={<NonVeg/>}/>      
       <Route path='/all-menu' element={<AllMenus/>}/>
       <Route path='/all-menu/:category' element={<ProductCategory />}/>
       <Route path='/add-address' element={<AddAddress />}/>

@@ -16,7 +16,7 @@ export default function FillDetails () {
     const {_id} = useParams()
     
     const filteredProduct = actualProducts.filter( (product)=> product._id.toLowerCase() === _id )
-    // console.log("filteredProduct", filteredProduct[0]?.name)
+    console.log("filteredProduct", filteredProduct[0]?.name)
     // console.log("cart", cart)
 
     // let minGuests = 15;
@@ -32,7 +32,7 @@ export default function FillDetails () {
           setMinGuests(10)
           setGuests(10)
         }
-        if( filteredProduct[0]?.name === 'Breakfast' || filteredProduct[0]?.name === 'Short Menu'|| filteredProduct[0]?.name === 'Menu A'|| filteredProduct[0]?.name === 'Menu B'|| filteredProduct[0]?.name === 'Menu C') {
+        if( filteredProduct[0]?.name === 'Breakfast' || filteredProduct[0]?.name === 'Short Menu'|| filteredProduct[0]?.name === 'High Tea'|| filteredProduct[0]?.name === 'Menu A'|| filteredProduct[0]?.name === 'Menu B'|| filteredProduct[0]?.name === 'Menu C') {
           // console.log('if code executed',  filteredProduct[0]?.name)
           setMinGuests(15)
           setGuests(15)
@@ -82,38 +82,45 @@ export default function FillDetails () {
 
     // No Discounts given to other Categories i.e. Catering And Bulk Delivery
     if (filteredProduct[0].name == "Menu A"){
-      if ( guests >= 15 && guests <= 24 ) return 430
-      if ( guests >= 25 && guests <= 49 ) return 400
-      if ( guests >= 50 && guests <= 100 ) return 360
-      if ( guests > 100 ) return 340
+      if ( guests >= 15 && guests <= 24 ) return 450
+      if ( guests >= 25 && guests <= 49 ) return 420
+      if ( guests >= 50 && guests <= 100 ) return 380
+      if ( guests > 100 ) return 360
       // return 430  
     }
     if (filteredProduct[0].name == "Menu B"){
-      if ( guests >= 15 && guests <= 24 ) return 540
-      if ( guests >= 25 && guests <= 49 ) return 510
-      if ( guests >= 50 && guests <= 100 ) return 470
-      if ( guests > 100 ) return 450
+      if ( guests >= 15 && guests <= 24 ) return 560
+      if ( guests >= 25 && guests <= 49 ) return 530
+      if ( guests >= 50 && guests <= 100 ) return 490
+      if ( guests > 100 ) return 470
       // return 540   
     }
     if (filteredProduct[0].name == "Menu C"){
-      if ( guests >= 15 && guests <= 24 ) return 670
-      if ( guests >= 25 && guests <= 49 ) return 640
-      if ( guests >= 50 && guests <= 100 ) return 600
-      if ( guests > 100 ) return 580
+      if ( guests >= 15 && guests <= 24 ) return 690
+      if ( guests >= 25 && guests <= 49 ) return 660
+      if ( guests >= 50 && guests <= 100 ) return 620
+      if ( guests > 100 ) return 600
       // return 670   
     }
     if (filteredProduct[0].name == "Short Menu"){
-      if ( guests >= 15 && guests <= 24 ) return 380
-      if ( guests >= 25 && guests <= 49 ) return 350
-      if ( guests >= 50 && guests <= 100 ) return 310
-      if ( guests > 100 ) return 290
+      if ( guests >= 15 && guests <= 24 ) return 360
+      if ( guests >= 25 && guests <= 49 ) return 330
+      if ( guests >= 50 && guests <= 100 ) return 290
+      if ( guests > 100 ) return 270
       // return 380   
     }
     if (filteredProduct[0].name == "Breakfast"){
       // console.log('condition executed')
-      if ( guests >= 15 && guests <= 24 ) return 190
-      if ( guests >= 25 && guests <= 49 ) return 170
-      if ( guests >= 50 ) return 150
+      if ( guests >= 15 && guests <= 24 ) return 210
+      if ( guests >= 25 && guests <= 49 ) return 190
+      if ( guests >= 50 ) return 170
+      // return 190   
+    }
+    if (filteredProduct[0].name == "High Tea"){
+      console.log('condition executed')
+      if ( guests >= 15 && guests <= 24 ) return 230
+      if ( guests >= 25 && guests <= 49 ) return 210
+      if ( guests >= 50 ) return 190
       // return 190   
     }
 

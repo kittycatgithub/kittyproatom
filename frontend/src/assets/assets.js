@@ -919,19 +919,19 @@ export const actualProducts = [
     name: "High Tea",
     
     menu:[
-      "Menu 1 ⟶ Idli, Medu Wada, Sambar, Chutney, Tea, Coffee and Cookies",
-      "Aloo Poha, Chana Rassa, Batata Wada, Tea, Coffee and Cookies",
-      "Misal Pao, Dhokla, Chutney, Tea, Coffee and Cookies",
-      "Sprouts Usal, Chiwda, Sabudana Khichadi, Dahi Chutney, Tea, Coffee, Cookies",
-      "Upma, Chutney, Wada Pao, Lasan Chutney, Tea, Coffee and Cookies",
-      "Veg Sandwich, Mayo Dip. Veg Cutlet, Muffin, Tea, Coffee, Cookies",
+      "Menu 1 ⟶ Dhokla, Cutlet, Tea, Coffee and Tea Cake",
+      "Menu 2 ⟶ Sandwich, Mini Samosa, Tea, Coffee and Tea Cake",
+      "Menu 3 ⟶ Spring Roll, Veg Momo, Tea, Coffee and Tea Cake",
+      "Menu 4 ⟶ Papdi Chaat, Ragda Pattis, Tea, Coffee and Tea Cake",
+      "Menu 5 ⟶ Usal Chiwda, Aloo Bonda, Tea, Coffee and Tea Cake",
+      "Menu 6 ⟶ Vada Pao, Green Peas Kachori, Tea, Coffee and Tea Cake",
       "Packaged Bottled Water will be served",
     ],
     path:"/categories/catering/high-tea.jpeg",
     badge: "Baron's TOP Menu",  
     category: "catering",
 
-    offerPrice: 190,
+    offerPrice: 220,
     image: [mango_image_1],
     unit:"/guest",
     description: [

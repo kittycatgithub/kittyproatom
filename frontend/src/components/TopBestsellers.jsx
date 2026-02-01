@@ -25,8 +25,9 @@ const cards = [
     badge: 'Fresh Food By Kg',
     desc: "Flavorful trio of juicy paneer, crisp capsicum with spicy red paprika.",
     price: "₹259",
-    link:"/",
-    link:"/select-bulk/ek56j67k",
+    // link:"/",
+    // link:"/select-bulk/ek56j67k",
+    link:"/bulk-delivery/ek56j67k",
     images: [
       "/categories/bulk/bulk-img1.jpeg",
       "/categories/bulk/bulk-img2.jpg",
