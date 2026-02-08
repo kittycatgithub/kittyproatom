@@ -1,5 +1,9 @@
 import Order from "../models/Order.js";
 import Razorpay from 'razorpay'
+import invoiceTemplate from "../templates/invoiceTemplate.js";
+import User from "../models/User.js";
+import nodemailer from 'nodemailer'
+
 
 // global variables
 const currency = 'inr'
@@ -11,6 +15,16 @@ const razorpayInstance = new Razorpay({
 })
 
 // use this Razorpay Instance i.e razorpayInstance, create Razorpay Payment Controller function
+
+const smtpTransporter1 = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false, // ❗ important
+  auth: {
+    user: process.env.GMAIL_BARON,
+    pass: process.env.GMAIL_APP_PASSWORD_BARON,
+  },
+});
 
 // Place Order COD : /api/order/cod
 export const placeOrderCOD = async ( req, res ) => {
@@ -54,15 +68,52 @@ export const placeOrderCOD = async ( req, res ) => {
         // Generate custom orderId
         const orderId = `BISPL/${month}/${year}/${serialNumber}`;
 
-        await Order.create({
+        const order = await Order.create({
             orderId,   // <-- custom field
             userId,
-            platters,
+            platters,   
             address,
             note,
             paymentType: "COD",
         })
         // amount,
+
+        /* ---------------- FETCH USER EMAIL ---------------- */
+
+        const user = await User.findById(userId).lean();
+        if (!user?.email) {
+        return res.json({
+            success: false,
+            message: "User email not found",
+        });
+        }
+
+        /* ---------------- SEND INVOICE EMAIL (HTML) ---------------- */
+
+        await smtpTransporter1.sendMail({
+        from: `"BISPL Catering" <${process.env.GMAIL_BARON}>`,
+        to: user.email, 
+        // cc: process.env.GMAIL_BARON, // 👈 ADMIN COPY
+        cc: [
+            // process.env.GMAIL_BARON,
+            "riyabawane10@gmail.com",
+        ],
+
+        subject: "Order Successful",
+        html: invoiceTemplate(order),
+        });
+        console.log('Email Sent Successfully')
+
+        /* -------- SEND ADMIN EMAIL -------- */
+
+        // await smtpTransporter1.sendMail({
+        // // from: `"BISPL Catering" <${process.env.GMAIL_BARON}>`,
+        // from: `"BISPL Catering" <${process.env.GMAIL_BARON}>`,
+        // to: process.env.GMAIL_BARON,
+        // subject: `New Order Received – ${order.orderId}`,
+        // html: adminOrderTemplate(order, user),
+        // });
+
 
         // return res.json({ success: true, message: "Order Placed Successfully" })
         return res.json({ success: true, message: "Thank You For Order! You will soon receive call from us." })
@@ -134,7 +185,7 @@ export const placeOrderRazorpay = async (req, res) => {
         // Generate custom orderId
         const orderId = `BISPL/${month}/${year}/${serialNumber}`;
 
-        await Order.create({
+        const order = await Order.create({
             orderId,   // <-- custom field
             userId,
             platters,
@@ -157,6 +208,33 @@ export const placeOrderRazorpay = async (req, res) => {
         //     }
         //     return  res.json({ success: true, order, key: process.env.RAZORPAY_KEY_ID, message: "Thank You For Order! You will soon receive call from us." })
         // } )
+
+        /* ---------------- FETCH USER EMAIL ---------------- */
+
+        const user = await User.findById(userId).lean();
+        if (!user?.email) {
+        return res.json({
+            success: false,
+            message: "User email not found",
+        });
+        }
+
+        /* ---------------- SEND INVOICE EMAIL (HTML) ---------------- */
+
+        await smtpTransporter1.sendMail({
+        from: `"BISPL Catering" <${process.env.GMAIL_BARON}>`,
+        to: user.email, 
+        // cc: process.env.GMAIL_BARON, // 👈 ADMIN COPY
+        cc: [
+            // process.env.GMAIL_BARON,
+            "riyabawane10@gmail.com",
+        ],
+
+        subject: "Order Successful",
+        html: invoiceTemplate(order),
+        });
+        console.log('Email Sent Successfully')
+
 
         // return res.json({ success: true, message: "Order Placed Successfully" })
         return res.json({ success: true,  message: "Thank You For Order! You will soon receive call from us." })

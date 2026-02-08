@@ -1,0 +1,13 @@
+/* invoice.css - optional */
+#invoice-template {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 16mm;
+  background: white;
+}
+
+/* force page breaks when printing from browser */
+.page-break { page-break-after: always; }
+
+/* avoid scaling surprises */
+html, body { background: #f5f7fa; }

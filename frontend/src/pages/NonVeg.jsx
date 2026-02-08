@@ -7,7 +7,7 @@ const NonVeg = () => {
     const {selectedPlatter, setSelectedPlatter , navigate, bulkItems, setBulkItems } = useAppContext()
     useEffect(()=> {
       // setSelectedPlatter({_id: 'ek56j67k', name: 'Non-Vegetarian', path: 'https://img.freepik.com/free-photo/gourmet-bowl-wi…-meat-vegetables-generated-by-ai_188544-14076.jpg', category: 'bulk-delivery'})
-      setSelectedPlatter({_id: 'ek56j67k', name: 'Bulk Delivery', path: 'https://img.freepik.com/free-photo/gourmet-bowl-wi…-meat-vegetables-generated-by-ai_188544-14076.jpg', category: 'bulk-delivery'})
+      setSelectedPlatter({_id: 'ek56j67k', name: 'Bulk Delivery', path: '/categories/bulk/bulk-img2.jpg', category: 'bulk-delivery'})
     }, [])
     // console.log("select Platter" , selectedPlatter)
     const [selectedOptions, setSelectedOptions] = useState({

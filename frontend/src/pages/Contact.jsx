@@ -156,7 +156,7 @@ const Contact = () => {
             </svg>
             <div>
               <h3 className="font-bold text-lg mb-1">Hours</h3>
-              <p className="text-gray-700">Everyday - 10:30 AM – 04:00 AM</p>
+              <p className="text-gray-700">Everyday - 06:00 AM – 06:00 PM</p>
             </div>
             {/* <div>
               <h3 className="font-bold text-lg mb-1">Email</h3>

@@ -22,6 +22,9 @@ await connectDB()
 // const allowedOrigins = ['https://72.60.219.19', 'http://72.60.219.19','http://localhost:5173', 'https://www.baronkitchen.com', 'https://baronkitchen.com', 'https://api.baronkitchen.com']
 const allowedOrigins = ['https://72.60.219.19', 'http://72.60.219.19', 'https://www.baronkitchen.com', 'https://baronkitchen.com', 'https://api.baronkitchen.com']
 
+// Serve static files
+app.use("/public", express.static("public"));
+
 // Middleware configuration
 app.use(express.json()) // all requests coming to server, will be parsed into JSON format using json method
 app.use( cookieParser() )

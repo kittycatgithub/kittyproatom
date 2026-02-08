@@ -32,3 +32,23 @@
   scrollbar-width: none;
 }
 
+/* Force html2canvas-safe colors */
+.invoice-pdf * {
+  color: rgb(0, 0, 0) !important;
+  background-color: rgb(255, 255, 255) !important;
+  border-color: rgb(0, 0, 0) !important;
+}
+
+/* 🚨 html2canvas SAFE ZONE */
+.invoice-pdf,
+.invoice-pdf * {
+  color: rgb(0, 0, 0) !important;
+  background-color: rgb(255, 255, 255) !important;
+  border-color: rgb(0, 0, 0) !important;
+
+  /* kill modern color functions */
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+

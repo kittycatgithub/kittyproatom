@@ -1082,7 +1082,8 @@ export const actualProducts = [
       "Laccha Paratha",
       "Dessert",
     ],
-    path:"https://img.freepik.com/free-photo/gourmet-bowl-with-healthy-rice-meat-vegetables-generated-by-ai_188544-14076.jpg",
+    // path:"https://img.freepik.com/free-photo/gourmet-bowl-with-healthy-rice-meat-vegetables-generated-by-ai_188544-14076.jpg",
+    path:"/categories/bulk/bulk-img2.jpg",
     badge: "Baron's TOP Menu",  
     category: "bulk-delivery",
 
@@ -1110,7 +1111,7 @@ export const actualProducts = [
       "Laccha Paratha",
       "Dessert",
     ],
-    path:"https://img.freepik.com/free-photo/gourmet-bowl-with-healthy-rice-meat-vegetables-generated-by-ai_188544-14076.jpg",
+    path:"/categories/bulk/bulk-img2.jpg",
     badge: 'Best for Professional Events',  
     category: "bulk-delivery",
 

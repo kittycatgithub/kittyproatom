@@ -6,6 +6,7 @@ import FooterBar from '../components/FooterBar'
 import InvoiceTemplate from '../components/InvoiceTemplate'
 import { useReactToPrint } from "react-to-print";
 import { saleProducts } from '../assets/assets'
+import DownloadInvoiceButton from '../components/DownloadInvoiceButton'
 
 const MyOrders = () => {
 
@@ -58,7 +59,7 @@ const MyOrders = () => {
     </div>  
       </div>
         
-    {/* {console.log(myOrders)} */}
+    {console.log(myOrders)}
        {myOrders.map((order, index) => (
   <div key={index} className="border border-gray-300 rounded-lg mb-10 p-4 py-5 max-w-6xl shadow-xl hover:shadow">
     <p className="flex justify-between md:items-center text-gray-600 md:font-medium max-md:flex-col">
@@ -87,7 +88,8 @@ const MyOrders = () => {
             <p>Occassion : {item?.details?.occasion || "Not Selected"}</p>
             <p>Guests : {item?.details?.guests || "1"}</p>
             {/* <p>Status : {order.status || "Order Placed"}</p> */}
-            <p>Date : {new Date(order.createdAt).toLocaleDateString("en-GB")}</p>
+            {/* <p>Date : {new Date(order.createdAt).toLocaleDateString("en-GB")}</p> */}
+            <p>Date : { item?.details?.date }</p>
             <p className="text-gray-900 text-md font-medium">
               {/* Amount : {currency} {item?.offerPrice * (item?.details?.guests || 1)} */}
               Amount : {currency} {item?.offerPrice}
@@ -288,14 +290,20 @@ const MyOrders = () => {
     }
     <div className='flex justify-between'>
       <div className=''>
-        <Link onClick={(e) => { e.preventDefault(); handleInvoice(order); }}
+        {/* <Link onClick={(e) => { e.preventDefault(); handleInvoice(order); }}
             className="relative px-4 py-1 rounded-full overflow-hidden group border-2 border-primary text-primary-dull hover:text-white inline-block"
           >
             <span className="absolute inset-0 bg-primary transform -translate-x-full group-hover:translate-x-0 transition duration-300"></span>
             <span className="relative z-10 group-hover:text-white">
               Generate Invoice
             </span>
-          </Link>
+          </Link> */}
+          {/* <InvoiceTemplate ref={componentRef} order={order} /> */}
+          {/* <div ref={componentRef} className="invoice-pdf">
+            <InvoiceTemplate order={order} />
+          </div> */}
+
+          <DownloadInvoiceButton order={order} fileName={`Invoice_${order.orderId}.pdf`} />
           {/* Hidden invoice layout */}
       <div style={{ display: "none" }}>
         {/* <InvoiceTemplate ref={componentRef} order={order} /> */}
