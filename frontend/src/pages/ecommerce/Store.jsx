@@ -8,13 +8,14 @@ import FooterBarStore from "../../components/FooterBarStore";
 
 const filters = ["Veg Only", "Non Veg Only"];
 const categories = [
-  "Pooran Poli", 
-"Khowa Roti", 
-"Aloo Paratha", 
-"Mix Veg Paratha", 
-"Paneer Paratha", 
-"Laccha",
-"Methi Paratha",
+  "All",
+  "Pooran Poli",
+  "Khowa Roti",
+  "Aloo Paratha",
+  "Mix Veg Paratha",
+  "Paneer Paratha",
+  "Laccha",
+  "Methi Paratha",
 ];
 
 const sortOptions = [
@@ -25,10 +26,10 @@ const sortOptions = [
 
 export default function Store() {
   const [activeFilter, setActiveFilter] = useState(null);
-  const [activeCategory, setActiveCategory] = useState("Pooran Poli");
+  const [activeCategory, setActiveCategory] = useState("All");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [sortDrawerOpen, setSortDrawerOpen] = useState(false);
-  const { storeProducts } = useAppContext()
+  const { storeProducts } = useAppContext();
 
   return (
     <div className="relative w-full font-sans">
@@ -66,17 +67,17 @@ export default function Store() {
       {/* Categories Horizontal Scroll */}
       <div className="overflow-x-auto whitespace-nowrap bg-gray-50 px-2 py-3 flex gap-4 border-b border-b-gray-400 no-scrollbar">
         <div className="max-w-7xl mx-auto">
-            {categories.map((cat, idx) => (
-              <button
-                key={idx}
-                className={`text-sm whitespace-nowrap px-4 py-2 ml-2 rounded-full cursor-pointer ${
-                  activeCategory === cat ? "bg-black text-white" : "bg-gray-200"
-                }`}
-                onClick={() => setActiveCategory(cat)}
-              >
-                {cat}
-              </button>
-            ))}
+          {categories.map((cat, idx) => (
+            <button
+              key={idx}
+              className={`text-sm whitespace-nowrap px-4 py-2 ml-2 rounded-full cursor-pointer ${
+                activeCategory === cat ? "bg-black text-white" : "bg-gray-200"
+              }`}
+              onClick={() => setActiveCategory(cat)}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
       </div>
       <div className="max-w-7xl mx-auto">
@@ -86,8 +87,22 @@ export default function Store() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {
               // storeProducts.filter( (product)=> product.inStock ).map( ( product, index )=> <ProductCard key={index}  product={product} /> )
-              
-              storeProducts.filter( (product)=> product.category === activeCategory ).map( ( product, index )=> <ProductCard key={index}  product={product} /> )
+
+              // storeProducts
+              //   .filter((product) => product.category === activeCategory)
+              //   .map((product, index) => (
+              //     <ProductCard key={index} product={product} />
+              //   ))
+
+              storeProducts
+                .filter((product) =>
+                  activeCategory === "All"
+                    ? true
+                    : product.category === activeCategory,
+                )
+                .map((product, index) => (
+                  <ProductCard key={index} product={product} />
+                ))
             }
           </div>
         </div>
@@ -121,7 +136,6 @@ export default function Store() {
           </div>
         </div>
       </div>
-      
 
       {/* Right Side Sort Drawer */}
       <div
@@ -162,7 +176,9 @@ export default function Store() {
         ></div>
       )}
       {/* <div className='block lg:hidden'><FooterBarStore/></div> */}
-      <div className='block lg:hidden'><FooterBarStore/></div>
+      <div className="block lg:hidden">
+        <FooterBarStore />
+      </div>
     </div>
   );
 }

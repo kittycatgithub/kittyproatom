@@ -70,6 +70,11 @@ export const AppContextProvider = ({children})=>{
         setStoreCartItems(storeCartData)
     }
 
+    const clearStoreCart = () => {
+    setStoreCartItems({});
+    setStoreCart([]);
+    };
+
 
     // Fetch Seller Status
     const fetchSeller = async () => {
@@ -231,7 +236,7 @@ const getStoreCartAmount = () =>{
 }
 
     const value = {navigate, user, setUser, isSeller, setIsSeller, showUserLogin, setShowUserLogin, products, storeProducts, currency, addToCart, updateCartItem
-        , removeFromCart, cartItems , searchQuery , setSearchQuery, selectedPlatter, setSelectedPlatter, cart, setCart, getCartAmount, getCartCount
+        , removeFromCart, clearStoreCart, cartItems , searchQuery , setSearchQuery, selectedPlatter, setSelectedPlatter, cart, setCart, getCartAmount, getCartCount
         , axios, addToStoreCart, updateStoreCartItem, removeFromStoreCart, storeCartItems, getStoreCartCount, bulkItems, setBulkItems
     }
 

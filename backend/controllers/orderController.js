@@ -95,7 +95,7 @@ export const placeOrderCOD = async ( req, res ) => {
         to: user.email, 
         // cc: process.env.GMAIL_BARON, // 👈 ADMIN COPY
         cc: [
-            // process.env.GMAIL_BARON,
+            process.env.GMAIL_BARON,
             "riyabawane10@gmail.com",
         ],
 
@@ -226,7 +226,7 @@ export const placeOrderRazorpay = async (req, res) => {
         to: user.email, 
         // cc: process.env.GMAIL_BARON, // 👈 ADMIN COPY
         cc: [
-            // process.env.GMAIL_BARON,
+            process.env.GMAIL_BARON,
             "riyabawane10@gmail.com",
         ],
 
@@ -234,7 +234,6 @@ export const placeOrderRazorpay = async (req, res) => {
         html: invoiceTemplate(order),
         });
         console.log('Email Sent Successfully')
-
 
         // return res.json({ success: true, message: "Order Placed Successfully" })
         return res.json({ success: true,  message: "Thank You For Order! You will soon receive call from us." })
@@ -246,7 +245,7 @@ export const placeOrderRazorpay = async (req, res) => {
 
 export const placeOrderStore = async ( req, res ) => {
     try {
-        const { userId, platters, address, items, storeamount, note } = req.body;
+        const { userId, platters, address, items, storeamount, note, paymentOption } = req.body;
         if(!address || items.length === 0){
             return res.json({ success: false, message: "Invalid Data" })
         } 
@@ -258,7 +257,6 @@ export const placeOrderStore = async ( req, res ) => {
         let serialNumber = '0001' // default for first order of the year
 
         // MongoDB auto-generates _id and you cannot convert it into: BISPL/11/2025/0001. This is why we create a custom formatted orderId.
-
         const lastOrder = await Order.findOne()
                                      .sort({createdAt : -1 }) // get latest order
                                      .exec()
@@ -286,7 +284,8 @@ export const placeOrderStore = async ( req, res ) => {
             storeamount,
             address,
             note: '',
-            paymentType: "Online",
+            // paymentType: "Online",
+            paymentType: paymentOption,
         })
         // amount,
 

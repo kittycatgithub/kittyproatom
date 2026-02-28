@@ -44,7 +44,7 @@ export default function FillDetails () {
         }
     },[] )
        useEffect(() => {
-      handleFormChange('guests',guests)
+      handleFormChange('guests', guests)
     }, [guests]);
 
     
@@ -260,7 +260,7 @@ setCart((prev) => [
 const hours = now.getHours();
 
 // If before 6PM → 1 day ahead, else → 2 days ahead
-const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
+const minSelectableDate = new Date();
 
   return (
     <div className="p-4 max-w-md mx-auto bg-white min-h-screen">
@@ -282,20 +282,20 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
         <select value={details.occasion || ""} onChange={(e) => handleFormChange('occasion', e.target.value)} className="w-full border rounded px-3 py-2 mt-1">
           <option value="" >Select</option>
           <option value="Travel" >Travel</option>
-          <option value="Engagement" >Engagement</option>
-          <option value="Workshops">Workshops</option>
-          <option value="House Warming">House Warming</option>
+          <option value="Corporate Event">Corporate Event</option>
+          <option value="Workshop">Workshop</option>
+          <option value="Family Get-Together">Family Get-Together</option>
+          <option value="Birthday Party">Birthday Party</option>
+          <option value="Puja / House Warming">Puja / House Warming</option>
+          <option value="Wedding Event">Wedding Event</option>
+          {/* <option value="House Warming">House Warming</option> */}
+          {/* <option value="Engagement" >Engagement</option>
           <option value="Kitty Party">Kitty Party</option>
           <option value="Cocktail Party">Cocktail Party</option>
-          <option value="Wedding">Wedding</option>
           <option value="Haldi">Haldi</option>
           <option value="Reception">Reception</option>
           <option value="Farm House Party">Farm House Party</option>
-          <option value="Puja">Puja</option>
-          <option value="Family Get-Together">Family Get-Together</option>
-          <option value="Birthday Party">Birthday Party</option>
-          <option value="Corporate Events">Corporate Events</option>
-          <option value="House Party">House Party</option>
+          <option value="House Party">House Party</option> */}
         </select>
       </div>
 
@@ -354,7 +354,7 @@ const minSelectableDate = addDays(now, hours < 18 ? 1 : 2);
       {showModal && (
   <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
     <div className="bg-white rounded-lg p-6 shadow-lg">
-      <h2 className="text-lg mb-4">Pick a date</h2>
+      <h2 className="text-lg mb-4">Pick Date (6 hrs prior)</h2>
       <DatePicker
         selected={selectedDate}
         onChange={handleDateChange}

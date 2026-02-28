@@ -125,7 +125,8 @@ const handleResume = ( product ) =>{
         
         for (const item of filteredCart) {
         // ✅ Inline price calculation
-        const deliveryCharge = 100;
+        // const deliveryCharge = 100;
+        const deliveryCharge = 105;
         // let gst = (item.offerPrice * item.details.guests * 5) / 100;
 
         // Old working code
@@ -156,6 +157,7 @@ const handleResume = ( product ) =>{
                     badge: item.badge,
                     category: item.category,
                     offerPrice: finalPrice,
+                    pricePerPlatter: item.offerPrice,
                     totalPrice: item.totalPrice,
                     details: item.details,
                     selectedOptions: item.selectedOptions,
@@ -216,7 +218,7 @@ const handleResume = ( product ) =>{
         
         for (const item of filteredCart) {
             // ✅ Inline price calculation
-            const deliveryCharge = 100;
+            const deliveryCharge = 105;
             
             // let gst = (item?.details?.totalPrice * item.details.guests * 5) / 100;
             // const finalPrice = (item?.details?.totalPrice * item.details.guests) + deliveryCharge + gst;
@@ -244,6 +246,7 @@ const handleResume = ( product ) =>{
                     badge: item.badge,
                     category: item.category,
                     offerPrice: finalPrice,
+                    pricePerPlatter: item.offerPrice,
                     totalPrice: item.totalPrice,
                     details: item.details,
                     selectedOptions: item.selectedOptions,
@@ -283,7 +286,8 @@ const handleResume = ( product ) =>{
         
         for (const item of filteredCart) {
             // ✅ Inline price calculation
-    const deliveryCharge = 100;
+            // const deliveryCharge = 100;
+            const deliveryCharge = 105;
     // let gst = (item.offerPrice * item.details.guests * 5) / 100;
     
     // Old Working code
@@ -317,6 +321,7 @@ const handleResume = ( product ) =>{
                     badge: item.badge,
                     category: item.category,
                     offerPrice: finalPrice,
+                    pricePerPlatter: item.offerPrice,
                     totalPrice: item?.totalPrice || 0,
                     details: item.details,
                     selectedOptions: item.selectedOptions,
@@ -373,7 +378,7 @@ const handleNoteChange = (productId, value) => {
 //  Pricing Calculation
 const [price, setPrice] = useState(0);
 const [gst, setGst] = useState(0);
-const [shipping] = useState(100);
+const [shipping] = useState(105);
 const [totalAmount, setTotalAmount] = useState(0);
 // console.log(totalAmount, "totalAmount")
 
@@ -381,12 +386,13 @@ const [totalAmount, setTotalAmount] = useState(0);
   const gstAmount = (price * 5) / 100; // 5% GST
   setGst(gstAmount);
 //   setTotalAmount(price + gstAmount + shipping * cart.length); // Total = price + GST + delivery
-  setTotalAmount(price + gstAmount + shipping * cart.filter(product => product?.details?.date).length); // Total = price + GST + delivery
-}, [price, shipping]);
+  setTotalAmount(price + gstAmount + shipping * cart.filter(product => product?.details?.date ).length); // Total = price + GST + delivery
+}, [price, shipping]); 
 
   useEffect(() => {
   if (cart && cart.length > 0) {
-    const total = cart.reduce((sum, product) => {
+    // const total = cart.reduce((sum, product) => { 
+    const total = cart.filter(product => product?.details?.date).reduce((sum, product) => {  //code for all Order Review Calculations
       if (product?.details?.totalPrice && product?.details?.guests) {
         return sum + (product.details.totalPrice * product.details.guests);
       }
@@ -415,7 +421,7 @@ const [totalAmount, setTotalAmount] = useState(0);
                     <p className="text-center">Edit</p>
                     <p className="text-center">Action</p>
                 </div> */}
-{/* {console.log(cart)} */}
+{console.log(cart)}
                 {cart.map((product, index) => (
                    <div key={index} className="mb-3">
                      { product?.details?.date  ? 
@@ -441,7 +447,7 @@ const [totalAmount, setTotalAmount] = useState(0);
                                     product.category !== 'bulk-delivery' ? (
                                         <div>
                                             <p>
-                                            Price - {currency} {new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests)}
+                                            Total Price - {currency} {new Intl.NumberFormat('en-IN').format(product.details.totalPrice * product.details.guests)}
                                             </p>
                                             <p className="pt-1">
                                             5% GST - {currency}{new Intl.NumberFormat('en-IN').format( product.details.totalPrice * product.details.guests*0.05)}

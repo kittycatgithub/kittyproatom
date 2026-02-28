@@ -9,7 +9,7 @@ const invoiceTemplate = (order, userName = "Customer") => {
         1
       </td>
       <td align="right" style="border-bottom:1px solid #eaeaea;">
-        ₹${item.offerPrice}
+        ₹${item.pricePerPlatter}
       </td>
     </tr>
   `).join("");
@@ -112,7 +112,7 @@ Order Placed
 <th align="left" style="padding:10px 8px;">Items</th>
 <th align="center" width="60" style="white-space:nowrap;">Qty</th>
 <th align="right" width="90" style="padding-right:8px;white-space:nowrap;">
-Price
+Rate
 </th>
 </tr>
 ${itemsHTML}

@@ -86,6 +86,7 @@ const MyOrders = () => {
           <div className="ml-4 text-gray-800 w-[200px]">
             <h2 className="text-xl font-medium ">Details</h2>
             <p>Occassion : {item?.details?.occasion || "Not Selected"}</p>
+            <p>Price/platter : {currency} {item?.details?.totalPrice || "NA"}</p>
             <p>Guests : {item?.details?.guests || "1"}</p>
             {/* <p>Status : {order.status || "Order Placed"}</p> */}
             {/* <p>Date : {new Date(order.createdAt).toLocaleDateString("en-GB")}</p> */}
