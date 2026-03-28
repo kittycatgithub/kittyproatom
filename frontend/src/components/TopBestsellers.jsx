@@ -9,7 +9,7 @@ const cards = [
     title: "Meal Thali & Snack Boxes",
     badge: 'Packed Fresh Food',
     desc: "Classic delight with 100% real mozzarella cheese.",
-    price: "₹95",
+    price: "₹105",
     link: "/all-menu/meal-thali-snack-boxes",
     images: [
       "/categories/tha-img1.jpeg",

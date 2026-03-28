@@ -794,7 +794,7 @@ export const actualProducts = [
     badge: 'Packed Fresh Food',    
     category: "meal-thali-snack-boxes",
    unit:"/thali",
-    offerPrice: 180,
+    offerPrice: 200,
     image: [potato_image_1, potato_image_2, potato_image_3, potato_image_4],
     menu: [
       "One Veg (Paneer/Non-Paneer)",
@@ -819,7 +819,7 @@ export const actualProducts = [
     badge: 'Packed Fresh Food',    
     category: "meal-thali-snack-boxes",
     unit:"/thali",
-    offerPrice: 220,
+    offerPrice: 240,
     image: [tomato_image],
     menu: [
       "One Paneer Veg",
@@ -844,7 +844,7 @@ export const actualProducts = [
     badge: 'Packed Fresh Food',  
     category: "meal-thali-snack-boxes",
     unit:"/snack box",
-    offerPrice: 95,
+    offerPrice: 105,
     image: [carrot_image],
     menu: [
       "3 Layered Sandwitch (1 Triangle)",
@@ -869,7 +869,7 @@ export const actualProducts = [
     category: "meal-thali-snack-boxes",
     unit:"/snack box",
     price: 18,
-    offerPrice: 120,
+    offerPrice: 130,
     image: [spinach_image_1],
     menu: [
       "3 Layered Sandwitch (1 Triangle)",
@@ -904,7 +904,7 @@ export const actualProducts = [
     path:"/categories/catering/breakfast.jpeg",
     badge: "Baron's TOP Menu",  
     category: "catering",
-    offerPrice: 190,
+    offerPrice: 230,
     image: [mango_image_1],
     unit:"/guest",
     description: [
@@ -931,7 +931,7 @@ export const actualProducts = [
     badge: "Baron's TOP Menu",  
     category: "catering",
 
-    offerPrice: 230,
+    offerPrice: 250,
     image: [mango_image_1],
     unit:"/guest",
     description: [
@@ -959,7 +959,7 @@ export const actualProducts = [
     path:"/categories/cat-img3.jpeg",
     badge: "Baron's TOP Menu",  
     category: "catering",
-    offerPrice: 380,
+    offerPrice: 360,
     // image: [banana_image_1],
     unit:"/guest",
     description: [
@@ -992,7 +992,7 @@ export const actualProducts = [
       "",   
     ],
     category: "catering",
-    offerPrice: 430,
+    offerPrice: 470,
     image: [onion_image_1],
     unit:"/guest",
     description: [
@@ -1024,7 +1024,7 @@ export const actualProducts = [
     path:"/categories/catering/menu-b.jpeg",
     badge: "Baron's TOP Menu",  
     category: "catering",
-    offerPrice: 540,
+    offerPrice: 580,
     // image: [apple_image],
     unit:"/guest",
     description: [
@@ -1056,7 +1056,7 @@ export const actualProducts = [
     path:"/categories/catering/menu-c.jpeg",
     badge: "Baron's TOP Menu",  
     category: "catering",
-    offerPrice: 670,
+    offerPrice: 710,
     image: [orange_image],
     unit:"/guest",
     description: [

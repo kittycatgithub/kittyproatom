@@ -57,47 +57,55 @@ export default function FillDetails () {
   const getPricePerPlate = () => {
 
     if (filteredProduct[0].name == "Working Meal"){     
-      if (guests <= 50) return 180
-      if (guests > 50 && guests <= 100) return (180 - (180 * 0.05)); // 5% discount
-      if ( guests > 100) return (180 - (180 * 0.10)); // 10% discount
+      if (guests <= 50) return 200
+      // if (guests > 50 && guests <= 100) return (200 - (200 * 0.05)); // 5% discount
+      if (guests > 50 && guests <= 100) return 200; 
+      // if ( guests > 100) return (200 - (200 * 0.10)); // 10% discount
+      if ( guests > 100) return 200; 
     }
     if (filteredProduct[0].name == "Special Meal"){
       // if (guests <=2000) return 220
-      if (guests <= 50) return 220
-      if (guests > 50 && guests <= 100) return (220 - (220 * 0.05)); // 5% discount
-      if ( guests > 100) return (220 - (220 * 0.10)); // 10% discount
+      if (guests <= 50) return 240
+      // if (guests > 50 && guests <= 100) return (240 - (240 * 0.05)); // 5% discount
+      if (guests > 50 && guests <= 100) return 240; // 5% discount
+      // if ( guests > 100) return (240 - (240 * 0.10)); // 10% discount
+      if ( guests > 100) return 240; // 10% discount
     }
     if (filteredProduct[0].name == "Snack Box A"){
       // if (guests <=2000) return 210
-      if (guests <= 50) return 95
-      if (guests > 50 && guests <= 100) return (95 - (95 * 0.05)); // 5% discount
-      if ( guests > 100) return (95 - (95 * 0.10)); // 10% discount
+      if (guests <= 50) return 105
+      // if (guests > 50 && guests <= 100) return (105 - (105 * 0.05)); // 5% discount
+      if (guests > 50 && guests <= 100) return 105; // 5% discount
+      // if ( guests > 100) return (105 - (105 * 0.10)); // 10% discount
+      if ( guests > 100) return 105; // 10% discount
     }
     if (filteredProduct[0].name == "Snack Box B"){
       // if (guests <=2000) return 210
-      if (guests <= 50) return 120
-      if (guests > 50 && guests <= 100) return (120 - (120 * 0.05)); // 5% discount
-      if ( guests > 100) return (120 - (120 * 0.10)); // 10% discount
+      if (guests <= 50) return 130
+      // if (guests > 50 && guests <= 100) return (130 - (130 * 0.05)); // 5% discount
+      if (guests > 50 && guests <= 100) return 130; // 5% discount
+      // if ( guests > 100) return (130 - (130 * 0.10)); // 10% discount
+      if ( guests > 100) return 130; // 10% discount
     }
 
     // No Discounts given to other Categories i.e. Catering And Bulk Delivery
     if (filteredProduct[0].name == "Menu A"){
-      if ( guests >= 15 && guests <= 24 ) return 450
-      if ( guests >= 25 && guests <= 49 ) return 420
+      if ( guests >= 15 && guests <= 24 ) return 470
+      if ( guests >= 25 && guests <= 49 ) return 440
       if ( guests >= 50 && guests <= 100 ) return 380
       if ( guests > 100 ) return 360
       // return 430  
     }
     if (filteredProduct[0].name == "Menu B"){
-      if ( guests >= 15 && guests <= 24 ) return 560
-      if ( guests >= 25 && guests <= 49 ) return 530
+      if ( guests >= 15 && guests <= 24 ) return 580
+      if ( guests >= 25 && guests <= 49 ) return 550
       if ( guests >= 50 && guests <= 100 ) return 490
       if ( guests > 100 ) return 470
       // return 540   
     }
     if (filteredProduct[0].name == "Menu C"){
-      if ( guests >= 15 && guests <= 24 ) return 690
-      if ( guests >= 25 && guests <= 49 ) return 660
+      if ( guests >= 15 && guests <= 24 ) return 710
+      if ( guests >= 25 && guests <= 49 ) return 680
       if ( guests >= 50 && guests <= 100 ) return 620
       if ( guests > 100 ) return 600
       // return 670   
@@ -111,15 +119,15 @@ export default function FillDetails () {
     }
     if (filteredProduct[0].name == "Breakfast"){
       // console.log('condition executed')
-      if ( guests >= 15 && guests <= 24 ) return 210
-      if ( guests >= 25 && guests <= 49 ) return 190
+      if ( guests >= 15 && guests <= 24 ) return 230
+      if ( guests >= 25 && guests <= 49 ) return 200
       if ( guests >= 50 ) return 170
       // return 190   
     }
     if (filteredProduct[0].name == "High Tea"){
       console.log('condition executed')
-      if ( guests >= 15 && guests <= 24 ) return 230
-      if ( guests >= 25 && guests <= 49 ) return 210
+      if ( guests >= 15 && guests <= 24 ) return 250
+      if ( guests >= 25 && guests <= 49 ) return 220
       if ( guests >= 50 ) return 190
       // return 190   
     }

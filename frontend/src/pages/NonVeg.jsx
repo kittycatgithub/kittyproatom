@@ -123,15 +123,15 @@ const NonVeg = () => {
           ]
     },
     {   name:"NonVegCurry",
-        value: [{ name:"Chicken Curry",  price:'₹1300/kg',amount: 1300 ,unit: 'kg', img:"https://www.cubesnjuliennes.com/wp-content/uploads/2020/07/Instant-Pot-Chicken-Curry-Recipe.jpg"},
-          { name:"Mutton Curry",  price:'₹1750/kg',amount: 1750 ,unit: 'kg', img:"https://myannoyingopinions.com/wp-content/uploads/2021/06/mutton-curry-with-yogurt.jpg?w=584"},
+        value: [{ name:"Chicken Curry",  price:'₹1400/kg',amount: 1400 ,unit: 'kg', img:"https://www.cubesnjuliennes.com/wp-content/uploads/2020/07/Instant-Pot-Chicken-Curry-Recipe.jpg"},
+          { name:"Mutton Curry",  price:'₹1850/kg',amount: 1850 ,unit: 'kg', img:"https://myannoyingopinions.com/wp-content/uploads/2021/06/mutton-curry-with-yogurt.jpg?w=584"},
           { name:"Fish Curry (Maral)",  price:'₹1800/kg',amount: 1800 ,unit: 'kg', img:"/images/Catering/non-veg-curry/maral-fish.jpg"},
           { name:"Fish Curry (Rohu)",  price:'₹1400/kg',amount: 1400 ,unit: 'kg', img:"/images/Catering/non-veg-curry/rohu-fish.jpg"},
             ]
     },
     {   name:"NonVegRice",
-        value: [{ name:"Chicken Biryani", price:'₹1300/kg',amount: 1300 ,unit: 'kg', img:"https://ministryofcurry.com/wp-content/uploads/2024/06/chicken-biryani-5.jpg"},
-          { name:"Mutton Biryani", price:'₹1750/kg',amount: 1750 ,unit: 'kg', img:"https://www.cubesnjuliennes.com/wp-content/uploads/2021/03/Best-Mutton-Biryani-Recipe.jpg"},
+        value: [{ name:"Chicken Biryani", price:'₹1400/kg',amount: 1400 ,unit: 'kg', img:"https://ministryofcurry.com/wp-content/uploads/2024/06/chicken-biryani-5.jpg"},
+          { name:"Mutton Biryani", price:'₹1850/kg',amount: 1850 ,unit: 'kg', img:"https://www.cubesnjuliennes.com/wp-content/uploads/2021/03/Best-Mutton-Biryani-Recipe.jpg"},
             ]
     },
     {   name:"Starters",
