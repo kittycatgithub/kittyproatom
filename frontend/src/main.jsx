@@ -5,11 +5,13 @@ import App from './App.jsx'
 import {BrowserRouter} from 'react-router-dom';
 import { AppContextProvider } from './context/AppContext.jsx';
 import StickyCallUs from './components/StickyCallUs.jsx';
+import StickyWhatsapp from './components/StickyWhatsapp.jsx';
 
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <AppContextProvider>
+      <StickyWhatsapp/>
       <StickyCallUs/>
       <App />
     </AppContextProvider>
