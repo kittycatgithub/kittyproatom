@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useAppContext } from '../../context/AppContext';
 import { assets, dummyOrders, saleProducts } from '../../assets/assets';
 import toast from 'react-hot-toast';
+import DownloadInvoiceButton from '../../components/DownloadInvoiceButton';
 
 const Orders = () => {
 
@@ -83,6 +84,7 @@ const Orders = () => {
                         </p>
                       </div>
                     </div>
+                      
                     <div className="flex flex-col justify-center md:ml-8 mb-4 md:mb-0 text-gray-800 ">
                       <h2 className="text-xl font-medium ">{item.name}</h2>
             
@@ -227,6 +229,8 @@ const Orders = () => {
                             <h1>Update : </h1>
                         <select onChange={ (e)=> handleStatus(e.target.value, order) } className="border mx-2 border-gray-300 outline-none">
                             <option value="">Select</option>
+                            <option value="Order Accepted">Order Accepted</option>
+                            <option value="Order Rejected">Order Rejected</option>
                             <option value="Food is being prepared">Food is being prepared</option>
                             <option value="Out For Delivery">Out For Delivery</option>
                             <option value="Food Delivered">Food Delivered</option>
@@ -293,6 +297,8 @@ const Orders = () => {
                             <h1>Update : </h1>
                         <select onChange={ (e)=> handleStatus(e.target.value, order) } className="border mx-2 border-gray-300 outline-none">
                             <option value="">Select</option>
+                            <option value="Order Accepted">Order Accepted</option>
+                            <option value="Order Rejected">Order Rejected</option>
                             <option value="Food is being prepared">Food is being prepared</option>
                             <option value="Out For Delivery">Out For Delivery</option>
                             <option value="Food Delivered">Food Delivered</option>
@@ -301,6 +307,7 @@ const Orders = () => {
                     </div>
                       </div>
                     }
+                <DownloadInvoiceButton order={order} fileName={`Invoice_${order.orderId}.pdf`} />
                </div>
             ))}
         </div>
